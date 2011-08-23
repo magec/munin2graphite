@@ -1,0 +1,18 @@
+:global:
+  :log: STDOUT 
+  :log_level: DEBUG
+:carbon:
+  :hostname: CARBON_HOSTNAME
+  :port: 2003
+:graphite:
+  :endpoint: http://GRAPHITE_HOST/
+  :metric_prefix: METRIC_PREFIX 
+  :graph_prefix: GRAPHICS_PREFIX 
+  :user: GRAPHITE_WEB_USER 
+  :password: GRAPHITE_WEB_PASSWORD 
+:scheduler:
+  :metrics_period: 5m
+  :graphs_period: 10m
+:munin_node:
+  :hostname: MUNIN_HOST 
+  :port: 4949
