@@ -1,0 +1,172 @@
+require File.expand_path(File.join(File.dirname(__FILE__),"/test_init"))
+
+class TestMuninGraph < Test::Unit::TestCase
+
+  def setup
+    Munin2Graphite::Config.config_file = TEST_CONFIG_FILE
+    @munin = Munin.new(Munin2Graphite::Config[:munin_node][:hostname],Munin2Graphite::Config[:munin_node][:port])
+    @simple_graph = MuninGraph.new(<<END
+graph_title ACPI Thermal zone temperatures
+graph_vlabel Celcius
+graph_category sensors
+graph_info This graph shows the temperature in different ACPI Thermal zones.  If there is only one it will usually be the case temperature.
+THM0.label THM0
+THM0.colour black
+THM1.label THM1
+END
+)
+    @apache_graph = MuninGraph.new(<<END
+graph_title Apache accesses
+graph_args --base 1000
+graph_vlabel accesses / ${graph_period}
+graph_category apache
+accesses80.label port 80
+accesses80.type DERIVE
+accesses80.max 1000000
+accesses80.min 0
+accesses80.info The number of accesses (pages and other items served) globaly on the Apache server
+END
+)
+
+    @processes_graph = MuninGraph.new(<<END
+graph_title Apache processes
+graph_args --base 1000 -l 0
+graph_category apache
+graph_order busy80 idle80 
+graph_vlabel processes
+graph_total total
+busy80.label busy servers 80
+busy80.draw AREA
+busy80.colour 33cc00
+idle80.label idle servers 80
+idle80.draw STACK
+idle80.colour 0033ff
+free80.label free slots 80
+free80.draw STACK
+free80.colour ccff00
+END
+)    
+
+    @log_graph = MuninGraph.new(<<END
+config iostat_ios
+graph_title IO Service time
+graph_args --base 1000 --logarithmic
+graph_category disk
+graph_vlabel seconds
+graph_info For each applicable disk device this plugin shows the latency (or delay) for I/O operations on that disk device.  The delay is in part made up of waiting for the disk to flush the data, and if data arrives at the disk faster than it can read or write it then the delay time will include the time needed for waiting in the queue.
+dev104_0_rtime.label cciss/c0d0 read
+dev104_0_rtime.type GAUGE
+dev104_0_rtime.draw LINE2
+dev104_0_rtime.cdef dev104_0_rtime,1000,/
+dev104_0_wtime.label cciss/c0d0 write
+dev104_0_wtime.type GAUGE
+dev104_0_wtime.draw LINE2
+dev104_0_wtime.cdef dev104_0_wtime,1000,/
+dev104_16_rtime.label cciss/c0d1 read
+dev104_16_rtime.type GAUGE
+dev104_16_rtime.draw LINE2
+dev104_16_rtime.cdef dev104_16_rtime,1000,/
+dev104_16_wtime.label cciss/c0d1 write
+dev104_16_wtime.type GAUGE
+dev104_16_wtime.draw LINE2
+dev104_16_wtime.cdef dev104_16_wtime,1000,/
+END
+)
+    @simple_graph.config = Munin2Graphite::Config[:graphite].merge({ 
+                                                                     :metric_prefix => "campus.frontends.linux",
+                                                                     :category => "sensors", 
+                                                                     :hostname => "aleia",
+                                                                     :metric => "acpi"}
+                                                                   )
+    @apache_graph.config = Munin2Graphite::Config[:graphite].merge({ :metric_prefix => "campus.frontends.linux",
+                                                                     :category => "apache",
+                                                                     :hostname => "aleia",
+                                                                     :metric => "apache_accesses"
+                                                                   })
+
+    @processes_graph.config = Munin2Graphite::Config[:graphite].merge({ 
+                                                                        :metric_prefix => "campus.frontends.linux",
+                                                                        :category => "apache",
+                                                                        :hostname => "aleia",
+                                                                        :metric => "apache_processes"
+                                                                   })
+    @log_graph.config = Munin2Graphite::Config[:graphite].merge({
+                                                                        :metric_prefix => "campus.frontends.linux",
+                                                                        :category => "apache",
+                                                                        :hostname => "aleia",
+                                                                        :metric => "iostat_ios"
+                                                                })
+  end
+
+  def test_get_title
+    root = @simple_graph.root
+    assert_equal root.children.length, 6
+  end
+
+  def test_compilation_on_simple_graph
+    root = @simple_graph.root
+    root.compile
+    field_declarations = root.children_of_class(FieldDeclarationNode)
+    assert_equal field_declarations.first.compile,"alias(campus.frontends.linux.aleia.sensors.acpi.THM0,'THM0')"
+    assert_equal root.graph_properties[:colorList], ["black"]
+    assert_equal root.graph_properties[:vtitle], "Celcius"
+    assert_equal root.graph_properties[:title], "ACPI Thermal zone temperatures"
+  end
+
+  def test_compilation_on_derivative_graph
+    root = @apache_graph.root
+    field_declarations = root.children_of_class(FieldDeclarationNode)
+    root.compile
+    assert_equal field_declarations.first.compile,"alias(nonNegativeDerivative(campus.frontends.linux.aleia.apache.apache_accesses.accesses80),'port 80')"
+    assert_equal root.graph_properties[:yMax], 1000000
+    assert_equal root.graph_properties[:yMin], 0
+    assert_equal root.properties[:base] , 1000
+    assert_equal root.graph_properties[:title], "Apache accesses"
+  end
+
+  def test_children_of_class
+    root = @simple_graph.root
+    assert_equal root.children_of_class(GlobalDeclarationNode).length, 4
+    field_declarations = root.children_of_class(FieldDeclarationNode)
+#   puts field_declarations.map(&:properties).inspect
+    assert_equal field_declarations.length,2
+    assert_equal field_declarations.first.children.length,2
+    assert_equal field_declarations[1].children.length,1
+  end
+
+  def test_stacked_graph    
+    root = @processes_graph.root
+    @processes_graph.root.compile
+    assert_equal @processes_graph.root.graph_properties[:areaMode] , "stacked"
+  end
+
+  def test_random_colors
+    root = @processes_graph.root
+    @processes_graph.root.compile
+    assert_equal @processes_graph.root.graph_properties[:colorList].first , "#33cc00"
+  end
+
+  def test_logarithmic_graph
+    root = @log_graph.root
+    root.compile
+    root.targets.each do |target|
+      assert_not_nil target.compile =~ /log/
+    end
+  end
+
+  def test_global_attributes_can_appear_wherever
+    graph = MuninGraph.new(<<END
+graph_title Load average
+graph_args --base 1000 -l 0
+graph_vlabel load
+graph_scale no
+graph_category system
+load.label load
+graph_info The load average of the machine describes how many processes are in the run-queue (scheduled to run "immediately").
+load.info 5 minute load average
+END
+)
+    graph.root.url
+  end
+
+end

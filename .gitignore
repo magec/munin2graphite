@@ -1,0 +1,13 @@
+.bundle
+db/*.sqlite3
+config/database.yml
+log/*.log
+vendor/cache/**
+config/yaia.pem*
+tmp/**/*
+Gemfile.lock
+db/schema.rb
+public/stylesheets/.sass-cache
+*~
+test/config.yml
+conf/config.yml
