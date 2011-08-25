@@ -84,7 +84,7 @@ class MuninGraph
             {:matcher => /(\w+)\.skipdraw\ .*$/,:klass => SkipDrawFieldPropertyNode},
             {:matcher => /(\w+)\.sum\ .*$/,:klass => SumFieldPropertyNode},
             {:matcher => /(\w+)\.stack\ .*$/,:klass => StackFieldPropertyNode},
-            {:matcher => /(\w+)\.linevalue[:color[:label]]\ .*$/,:klass => LineValueFieldPropertyNode},
+            {:matcher => /(\w+)\.linevalue\[:color\[:label\]\]\ .*$/,:klass => LineValueFieldPropertyNode},
             {:matcher => /(\w+)\.oldname\ .*$/,:klass => OldNameFieldPropertyNode},
             {:matcher => /(\w+)\.value\ .*$/,:klass => ValueFieldPropertyNode} 
      ]
