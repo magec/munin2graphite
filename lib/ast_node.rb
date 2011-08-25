@@ -38,7 +38,7 @@ class ASTNode
   end
 
   def compile
-    children.map(&:compile) if children
+    children.map{|i| i.compile} if children
   end
   
   # Returns the FieldDeclaration Nodes
@@ -68,7 +68,7 @@ class ASTNode
   # This returns the url field of the graph after compiling it
   def url
     self.compile
-    url = "#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map(&:compile).compact.join("&target="))
+    url = "#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map{|i| i.compile}.compact.join("&target="))
   end
 
 end
