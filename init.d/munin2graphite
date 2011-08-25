@@ -14,6 +14,6 @@ require 'rubygems'
 $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 require 'daemons'
 
-DAEMON=File.expand_path(File.join(File.dirname(__FILE__),"..","bin","munin-graphite.rb"))
-Daemons.run(DAEMON)#,{:dir_mode  => :system, :monitor => true})
+DAEMON="/server/graphite/bin/munin-graphite.rb"
+Daemons.run(DAEMON,{:dir_mode  => :system, :monitor => true})
 
