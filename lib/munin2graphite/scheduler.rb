@@ -34,7 +34,6 @@ module Munin2Graphite
       @config.log.info("Begin getting metrics")
       metric_base = @config[:graphite][:metric_prefix]
       all_metrics = Array.new
-      @carbon = Carbon.new(@config[:carbon][:hostname],@config[:carbon][:port])
       @munin  = Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port])
       @munin.nodes.each do |node|
         node_name = metric_base + "." + node.split(".").first
@@ -48,15 +47,17 @@ module Munin2Graphite
         values.each do |metric,results|          
           category = @munin.get_category(metric)
           results.each do |k,v|
+ 	    carbon = Carbon.new(@config[:carbon][:hostname],@config[:carbon][:port])
             string_to_send="#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}".gsub("-","_")
             @config.log.debug("Sending #{string_to_send}")
-            @carbon.send(string_to_send)
+            carbon.send(string_to_send)
+            carbon.close
+ 	    carbon = nil 
           end
         end
       end
       @config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
       @munin.close
-      @carbon.close
     end
 
     ##
@@ -77,14 +78,11 @@ module Munin2Graphite
     def start
       @config.log.info("Scheduler started")
       @scheduler = Rufus::Scheduler.start_new
-
+obtain_metrics
       @scheduler.every @config[:scheduler][:metrics_period] do
         obtain_metrics
       end
       obtain_graphs
-      @scheduler.every @config[:scheduler][:graphs_period] do
-        obtain_graphs
-      end      
     end
     
   end
