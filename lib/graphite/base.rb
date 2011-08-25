@@ -1,4 +1,4 @@
-require 'net/https'
+require 'net/http'
 
 module Graphite
   class Base    
