@@ -72,25 +72,25 @@ dev104_16_wtime.draw LINE2
 dev104_16_wtime.cdef dev104_16_wtime,1000,/
 END
 )
-    @simple_graph.config = Munin2Graphite::Config[:graphite].merge({ 
+    @simple_graph.config = Munin2Graphite::Config.merge({ 
                                                                      :metric_prefix => "campus.frontends.linux",
                                                                      :category => "sensors", 
                                                                      :hostname => "aleia",
                                                                      :metric => "acpi"}
                                                                    )
-    @apache_graph.config = Munin2Graphite::Config[:graphite].merge({ :metric_prefix => "campus.frontends.linux",
+    @apache_graph.config = Munin2Graphite::Config.merge({ :metric_prefix => "campus.frontends.linux",
                                                                      :category => "apache",
                                                                      :hostname => "aleia",
                                                                      :metric => "apache_accesses"
                                                                    })
 
-    @processes_graph.config = Munin2Graphite::Config[:graphite].merge({ 
+    @processes_graph.config = Munin2Graphite::Config.merge({ 
                                                                         :metric_prefix => "campus.frontends.linux",
                                                                         :category => "apache",
                                                                         :hostname => "aleia",
                                                                         :metric => "apache_processes"
                                                                    })
-    @log_graph.config = Munin2Graphite::Config[:graphite].merge({
+    @log_graph.config = Munin2Graphite::Config.merge({
                                                                         :metric_prefix => "campus.frontends.linux",
                                                                         :category => "apache",
                                                                         :hostname => "aleia",
@@ -137,7 +137,14 @@ END
   def test_stacked_graph    
     root = @processes_graph.root
     @processes_graph.root.compile
-    assert_equal @processes_graph.root.graph_properties[:areaMode] , "stacked"
+    stacked = false
+    root.targets.each do |target|
+      if target.compile =~ /stacked/
+        stacked = true
+      end
+    end
+    assert_equal stacked,true
+
   end
 
   def test_random_colors
@@ -166,6 +173,7 @@ graph_info The load average of the machine describes how many processes are in t
 load.info 5 minute load average
 END
 )
+    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
     graph.root.url
   end
 

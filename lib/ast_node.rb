@@ -210,11 +210,7 @@ end
 class DrawFieldPropertyNode < FieldPropertyNode
   def apply_function(operand)
     if @value == "STACK" || @value == "AREA"
-      root_node.graph_properties[:areaMode] = "stacked"
-    else
-      if root_node.graph_properties[:areaMode] == "stacked"
-        self.parent.properties[:hide] = true
-      end
+      return "stacked(#{operand})"
     end
     return operand
   end
