@@ -26,8 +26,13 @@ class Munin
   attr_accessor :hostname
   
   def initialize(host='127.0.0.1', port=4949)
-    @munin = TCPSocket.new(host, port)
     @hostname = host
+    @port = port
+    new_connection
+  end
+
+  def new_connection
+    @munin = TCPSocket.new(@host, @port)
     @munin.gets
   end
   
@@ -73,7 +78,12 @@ class Munin
 
 private
   def get_response(cmd)
-    @munin.puts(cmd)
+    begin
+      @munin.puts(cmd)
+    rescue
+      new_connection
+      @munin.puts(cmd)
+    end
     stop = false 
     response = Array.new
     while stop == false
