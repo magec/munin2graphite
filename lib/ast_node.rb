@@ -68,7 +68,7 @@ class ASTNode
   # This returns the url field of the graph after compiling it
   def url
     self.compile
-    url = "#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map{|i| i.compile}.compact.join("&target="))
+    url = URI.escape("#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map{|i| i.compile}.compact.join("&target=")))
   end
 
 end
@@ -143,6 +143,9 @@ class FieldDeclarationNode < ASTNode
     if self.root_node.properties[:logarithmic]
       aux = "log(#{aux},10)"
     end
+    if self.properties[:stacked]
+      aux = "stacked(#{aux})"
+    end
     if self.properties[:alias]
       aux =  "alias(#{aux},'#{self.properties[:alias]}')"
     end
@@ -201,7 +204,8 @@ class TypeFieldPropertyNode < FieldPropertyNode
   
   def apply_function(operand)
     if @value == "DERIVE" || @value == "COUNTER"
-      return "nonNegativeDerivative(#{operand})"
+      # The scaling is because of the minutes/seconds"
+      return "scale(nonNegativeDerivative(#{operand}),0.0166666666666667)"
     end
     operand
   end
@@ -210,7 +214,7 @@ end
 class DrawFieldPropertyNode < FieldPropertyNode
   def apply_function(operand)
     if @value == "STACK" || @value == "AREA"
-      return "stacked(#{operand})"
+      parent.properties[:stacked] = true
     end
     return operand
   end
