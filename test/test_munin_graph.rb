@@ -117,7 +117,7 @@ END
     root = @apache_graph.root
     field_declarations = root.children_of_class(FieldDeclarationNode)
     root.compile
-    assert_equal field_declarations.first.compile,"alias(nonNegativeDerivative(campus.frontends.linux.aleia.apache.apache_accesses.accesses80),'port 80')"
+    assert_equal field_declarations.first.compile,"alias(scale(nonNegativeDerivative(campus.frontends.linux.aleia.apache.apache_accesses.accesses80),0.0166666666666667),'port 80')"
     assert_equal root.graph_properties[:yMax], 1000000
     assert_equal root.graph_properties[:yMin], 0
     assert_equal root.properties[:base] , 1000
@@ -175,6 +175,24 @@ END
 )
     graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
     graph.root.url
+  end
+
+  def test_host_name_changed
+    graph = MuninGraph.new(<<END
+host_name Firewalls
+graph_title Load average
+graph_args --base 1000 -l 0
+graph_vlabel load
+graph_scale no
+graph_category system
+load.label load
+graph_info The load average of the machine describes how many processes are in the run-queue (scheduled to run "immediately").
+load.info 5 minute load average
+END
+)
+    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})    
+    graph.root.url
+    assert_equal graph.root.properties[:hostname] , "Firewalls"
   end
 
 end
