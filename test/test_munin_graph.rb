@@ -147,6 +147,11 @@ END
 
   end
 
+  def test_variable_substitution
+    @apache_graph.root.compile
+    assert_not_match @apache_graph.root.url, /graph_period/
+  end
+
   def test_random_colors
     root = @processes_graph.root
     @processes_graph.root.compile
