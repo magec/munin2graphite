@@ -32,7 +32,7 @@ class Munin
   end
 
   def new_connection
-    @munin = TCPSocket.new(@host, @port)
+    @munin = TCPSocket.new(@hostname, @port)
     @munin.gets
   end
   
@@ -42,8 +42,8 @@ class Munin
   end			 
   
   # Metrics available in the node
-  def metrics 
-    get_response("list")[0].split(" ")
+  def metrics(node = "")
+    get_response("list #{node}")[0].split(" ")
   end
 
   def get_category(metric)
@@ -93,7 +93,7 @@ private
         stop = true
       else
         response << line 
-        stop = true if cmd == "list"
+        stop = true if cmd =~ /list/
       end
     end
     response
