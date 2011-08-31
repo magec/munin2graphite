@@ -55,9 +55,11 @@ module Munin2Graphite
           values.each do |metric,results|          
             category = munin.get_category(metric)
             results.each do |k,v|
-              string_to_send="#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}".gsub("-","_")
-              @config.log.debug("Sending #{string_to_send}")
-              carbon.send(string_to_send)
+              if v != "U" # Undefined values are ignored
+                string_to_send="#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}".gsub("-","_")
+                @config.log.debug("Sending #{string_to_send}")
+                carbon.send(string_to_send)
+              end
             end
           end
           carbon.close
