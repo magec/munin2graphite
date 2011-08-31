@@ -8,8 +8,8 @@ class ASTNode
     @root_node = nil
     @raw_data = raw_data
     @children = []
-    @properties = {}
-    @graph_properties = {}
+    @properties = {:graph_period => "seconds"}
+    @graph_properties = {}    
     @parent = nil
   end
 
@@ -45,12 +45,26 @@ class ASTNode
   def targets
     children_of_class(FieldDeclarationNode)
   end
+
+  def process_variables(properties)
+    [:vtitle,:title].each do |key|
+      aux = properties[key]
+      properties[key].scan(/\$\{(.*)\}/).each do 
+        if self.properties.has_key? $1.to_sym
+          aux.gsub!(/\$\{#{$1}\}/,self.properties[$1.to_sym])
+        end
+      end
+      properties[key] = aux
+
+    end
+  end
   
   # Returns the global properties as url values
   def properties_to_url
-
+    
     # Color List initialization
     aux_graph_properties = self.graph_properties.clone
+    process_variables(aux_graph_properties)
     aux_graph_properties[:colorList] = aux_graph_properties[:colorList].join(",") if aux_graph_properties[:colorList]
 
     # Change of the base stuff
@@ -127,7 +141,13 @@ class HostNameGlobalDeclarationNode < GlobalDeclarationNode
   end
 end
 class UpdateGlobalDeclarationNode < GlobalDeclarationNode; end
-class GraphPeriodGlobalDeclarationNode < GlobalDeclarationNode; end
+class GraphPeriodGlobalDeclarationNode < GlobalDeclarationNode; 
+  def compile
+    if @raw_data =~ /graph_period (.*)$/
+      root_node.properties[:graph_period] = $1
+    end
+  end
+end
 class GraphVTitleGlobalDeclarationNode < GlobalDeclarationNode; end
 class ServiceOrderGlobalDeclarationNode < GlobalDeclarationNode; end
 class GraphWidthGlobalDeclarationNode < GlobalDeclarationNode; end
