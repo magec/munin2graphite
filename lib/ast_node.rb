@@ -119,7 +119,13 @@ class GraphOrderGlobalDeclarationNode < GlobalDeclarationNode; end
 class GraphTotalGlobalDeclarationNode < GlobalDeclarationNode; end
 class GraphScaleGlobalDeclarationNode < GlobalDeclarationNode; end
 class GraphGlobalDeclarationNode < GlobalDeclarationNode; end
-class HostNameGlobalDeclarationNode < GlobalDeclarationNode; end
+class HostNameGlobalDeclarationNode < GlobalDeclarationNode
+  def compile
+    if @raw_data =~ /host_name (.*)$/
+      root_node.properties[:hostname] = $1
+    end
+  end
+end
 class UpdateGlobalDeclarationNode < GlobalDeclarationNode; end
 class GraphPeriodGlobalDeclarationNode < GlobalDeclarationNode; end
 class GraphVTitleGlobalDeclarationNode < GlobalDeclarationNode; end
