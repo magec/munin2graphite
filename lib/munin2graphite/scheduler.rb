@@ -35,29 +35,38 @@ module Munin2Graphite
       metric_base = @config[:graphite][:metric_prefix]
       all_metrics = Array.new
       @munin  = Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port])
-      @munin.nodes.each do |node|
-        node_name = metric_base + "." + node.split(".").first
-        @config.log.debug("Doing #{node_name}")
-        values = {}
-
-        @munin.metrics.each do |metric|
-          values[metric] =  @munin.values_for metric
-        end        
-
-        values.each do |metric,results|          
-          category = @munin.get_category(metric)
-          results.each do |k,v|
- 	    carbon = Carbon.new(@config[:carbon][:hostname],@config[:carbon][:port])
-            string_to_send="#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}".gsub("-","_")
-            @config.log.debug("Sending #{string_to_send}")
-            carbon.send(string_to_send)
-            carbon.close
- 	    carbon = nil 
-          end
-        end
-      end
-      @config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
+      nodes = @munin.nodes
       @munin.close
+      threads = []
+      nodes.each do |node|
+        threads << Thread.new do 
+          node_name = metric_base + "." + node.split(".").first
+	  @config.log.debug("Doing #{node_name}")
+          values = {}
+          munin  = Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port])
+  	  @config.log.debug("Asking for: #{node}")		
+          metric_time = Time.now
+  	  metrics = munin.metrics(node)
+          metrics.each do |metric|
+            values[metric] =  Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port]).values_for metric
+          end        
+ 	  @config.log.debug("Done with: #{node} (#{Time.now - metric_time} s)")	
+          carbon = Carbon.new(@config[:carbon][:hostname],@config[:carbon][:port])
+          values.each do |metric,results|          
+            category = munin.get_category(metric)
+            results.each do |k,v|
+              string_to_send="#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}".gsub("-","_")
+              @config.log.debug("Sending #{string_to_send}")
+              carbon.send(string_to_send)
+            end
+          end
+          carbon.close
+          carbon = nil 
+          munin.close
+	end
+      end
+      threads.each { |i| i.join }
+      @config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
     end
 
     ##
