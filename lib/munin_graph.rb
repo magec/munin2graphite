@@ -107,11 +107,15 @@ class MuninGraph
                current_node.add_child node
                current_node = node
              elsif current_node.properties[:field_name] != $1
-               # We use the one declared before (note that different metrics could not be interlaced)
-               node = FieldDeclarationNode.new("")
-               node.properties[:field_name] = $1
-               current_node.parent.add_child node
-               current_node = node
+               if (aux = @root.children_of_class(FieldDeclarationNode).find { |i| i.properties[:field_name] == $1 } )
+                 current_node =  aux
+               else
+                 # We use the one declared before (note that different metrics could not be interlaced)
+                 node = FieldDeclarationNode.new("")
+                 node.properties[:field_name] = $1
+                 current_node.parent.add_child node
+                 current_node = node
+               end
              end
              current_node.add_child token[:klass].send("new",line)
            else
