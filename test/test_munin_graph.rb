@@ -200,4 +200,34 @@ END
     assert_equal graph.root.properties[:hostname] , "Firewalls"
   end
 
+
+  def test_multi_line
+    graph = MuninGraph.new(<<END                                                                                                                            
+graph_order down up
+graph_title eth2 traffic
+graph_args --base 1000
+  graph_vlabel bits in (-) / out (+) per ${graph_period}
+graph_category network
+graph_info This graph shows the traffic of the eth2 network interface. Please note that the traffic is shown in bits per second, not bytes. IMPORTANT: On 32 bit systems the data source for this plugin uses 32bit counters, which makes the plugin unreliable and unsuitable for most 100Mb (or faster) interfaces, where traffic is expected to exceed 50Mbps over a 5 minute period.  This means that this plugin is unsuitable for most 32 bit production environments. To avoid this problem, use the ip_ plugin instead.  There should be no problems on 64 bit systems running 64 bit kernels.
+down.label received
+down.type COUNTER
+down.graph no
+down.cdef down,8,*
+up.label bps
+up.type COUNTER
+up.negative down
+up.cdef up,8,*
+up.max 1000000000
+up.info Traffic of the eth2 interface. Maximum speed is 1000 Mbps.
+down.max 1000000000
+END
+)
+    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
+    graph.root.compile
+    assert_equal graph.root.children_of_class(FieldDeclarationNode).length , 2
+     graph.root.url
+  end
+
+
+
 end
