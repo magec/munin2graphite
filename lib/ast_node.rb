@@ -53,7 +53,7 @@ class ASTNode
         if self.properties.has_key? $1.to_sym
           aux.gsub!(/\$\{#{$1}\}/,self.properties[$1.to_sym])
         end
-      end
+      end if properties[key]
       properties[key] = aux
 
     end
