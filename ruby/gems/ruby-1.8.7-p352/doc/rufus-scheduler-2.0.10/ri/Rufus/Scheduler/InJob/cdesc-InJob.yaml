@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: If this InJob is a timeout job, parent points to the job that is subject to the timeout.
+  name: parent
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Job that occurs once, in a certain amount of time.
+constants: []
+
+full_name: Rufus::Scheduler::InJob
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: determine_at
+name: InJob
+superclass: SimpleJob

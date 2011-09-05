@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The name of the country.
+full_name: TZInfo::Country#name
+is_singleton: false
+name: name
+params: ()
+visibility: public

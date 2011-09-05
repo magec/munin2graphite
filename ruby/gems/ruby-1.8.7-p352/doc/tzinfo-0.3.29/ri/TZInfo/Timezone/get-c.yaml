@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a timezone by its identifier (e.g. &quot;Europe/London&quot;, &quot;America/Chicago&quot; or &quot;UTC&quot;).
+- !ruby/struct:SM::Flow::P 
+  body: Raises InvalidTimezoneIdentifier if the timezone couldn't be found.
+full_name: TZInfo::Timezone::get
+is_singleton: true
+name: get
+params: (identifier)
+visibility: public

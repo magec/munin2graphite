@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: this function is only used to daemonize the currently running process (Daemons.daemonize)
+full_name: Daemons::Application#start_none
+is_singleton: false
+name: start_none
+params: ()
+visibility: public

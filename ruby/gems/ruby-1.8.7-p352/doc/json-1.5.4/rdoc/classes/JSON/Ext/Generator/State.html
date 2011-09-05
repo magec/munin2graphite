@@ -1,0 +1,1332 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: JSON::Ext::Generator::State</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">JSON::Ext::Generator::State</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/ext/json/ext/generator/generator_c.html">
+                ext/json/ext/generator/generator.c
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000172">[]</a>&nbsp;&nbsp;
+      <a href="#M000200">[]</a>&nbsp;&nbsp;
+      <a href="#M000163">allow_nan?</a>&nbsp;&nbsp;
+      <a href="#M000191">allow_nan?</a>&nbsp;&nbsp;
+      <a href="#M000158">array_nl</a>&nbsp;&nbsp;
+      <a href="#M000186">array_nl</a>&nbsp;&nbsp;
+      <a href="#M000187">array_nl=</a>&nbsp;&nbsp;
+      <a href="#M000159">array_nl=</a>&nbsp;&nbsp;
+      <a href="#M000164">ascii_only?</a>&nbsp;&nbsp;
+      <a href="#M000192">ascii_only?</a>&nbsp;&nbsp;
+      <a href="#M000190">check_circular?</a>&nbsp;&nbsp;
+      <a href="#M000162">check_circular?</a>&nbsp;&nbsp;
+      <a href="#M000198">configure</a>&nbsp;&nbsp;
+      <a href="#M000170">configure</a>&nbsp;&nbsp;
+      <a href="#M000168">depth</a>&nbsp;&nbsp;
+      <a href="#M000196">depth</a>&nbsp;&nbsp;
+      <a href="#M000197">depth=</a>&nbsp;&nbsp;
+      <a href="#M000169">depth=</a>&nbsp;&nbsp;
+      <a href="#M000147">from_state</a>&nbsp;&nbsp;
+      <a href="#M000175">from_state</a>&nbsp;&nbsp;
+      <a href="#M000173">generate</a>&nbsp;&nbsp;
+      <a href="#M000201">generate</a>&nbsp;&nbsp;
+      <a href="#M000150">indent</a>&nbsp;&nbsp;
+      <a href="#M000178">indent</a>&nbsp;&nbsp;
+      <a href="#M000151">indent=</a>&nbsp;&nbsp;
+      <a href="#M000179">indent=</a>&nbsp;&nbsp;
+      <a href="#M000177">initialize_copy</a>&nbsp;&nbsp;
+      <a href="#M000149">initialize_copy</a>&nbsp;&nbsp;
+      <a href="#M000188">max_nesting</a>&nbsp;&nbsp;
+      <a href="#M000160">max_nesting</a>&nbsp;&nbsp;
+      <a href="#M000189">max_nesting=</a>&nbsp;&nbsp;
+      <a href="#M000161">max_nesting=</a>&nbsp;&nbsp;
+      <a href="#M000174">merge</a>&nbsp;&nbsp;
+      <a href="#M000202">merge</a>&nbsp;&nbsp;
+      <a href="#M000148">new</a>&nbsp;&nbsp;
+      <a href="#M000176">new</a>&nbsp;&nbsp;
+      <a href="#M000156">object_nl</a>&nbsp;&nbsp;
+      <a href="#M000184">object_nl</a>&nbsp;&nbsp;
+      <a href="#M000157">object_nl=</a>&nbsp;&nbsp;
+      <a href="#M000185">object_nl=</a>&nbsp;&nbsp;
+      <a href="#M000194">quirks_mode</a>&nbsp;&nbsp;
+      <a href="#M000166">quirks_mode</a>&nbsp;&nbsp;
+      <a href="#M000167">quirks_mode=</a>&nbsp;&nbsp;
+      <a href="#M000195">quirks_mode=</a>&nbsp;&nbsp;
+      <a href="#M000165">quirks_mode?</a>&nbsp;&nbsp;
+      <a href="#M000193">quirks_mode?</a>&nbsp;&nbsp;
+      <a href="#M000152">space</a>&nbsp;&nbsp;
+      <a href="#M000180">space</a>&nbsp;&nbsp;
+      <a href="#M000153">space=</a>&nbsp;&nbsp;
+      <a href="#M000181">space=</a>&nbsp;&nbsp;
+      <a href="#M000182">space_before</a>&nbsp;&nbsp;
+      <a href="#M000154">space_before</a>&nbsp;&nbsp;
+      <a href="#M000183">space_before=</a>&nbsp;&nbsp;
+      <a href="#M000155">space_before=</a>&nbsp;&nbsp;
+      <a href="#M000171">to_h</a>&nbsp;&nbsp;
+      <a href="#M000199">to_h</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000147" class="method-detail">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000147.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000147.html');return false;">
+          <span class="method-name"> from_state(opts)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <a href="State.html">State</a> object from <em>opts</em>, which
+ought to be Hash to create a <a href="State.html#M000148">new</a> <a
+href="State.html">State</a> instance configured by <em>opts</em>, something
+else to create an unconfigured instance. If <em>opts</em> is a <a
+href="State.html">State</a> object, it is just returned.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000175" class="method-detail">
+        <a name="M000175"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000175.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000175.html');return false;">
+          <span class="method-name"> from_state(opts)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <a href="State.html">State</a> object from <em>opts</em>, which
+ought to be Hash to create a <a href="State.html#M000148">new</a> <a
+href="State.html">State</a> instance configured by <em>opts</em>, something
+else to create an unconfigured instance. If <em>opts</em> is a <a
+href="State.html">State</a> object, it is just returned.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000148" class="method-detail">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000148.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000148.html');return false;">
+          <span class="method-name"> new(opts = {})<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Instantiates a <a href="State.html#M000148">new</a> <a
+href="State.html">State</a> object, configured by <em>opts</em>.
+</p>
+<p>
+<em>opts</em> can have the following keys:
+</p>
+<ul>
+<li><b><a href="State.html#M000150">indent</a></b>: a string used to <a
+href="State.html#M000150">indent</a> levels (default: &#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000152">space</a></b>: a string that is put after,
+a : or , delimiter (default: &#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000154">space_before</a></b>: a string that is put
+before a : pair delimiter (default: &#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000156">object_nl</a></b>: a string that is put at
+the end of a <a href="../../../JSON.html">JSON</a> object (default:
+&#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000158">array_nl</a></b>: a string that is put at
+the end of a <a href="../../../JSON.html">JSON</a> array (default:
+&#8217;&#8217;),
+
+</li>
+<li><b>allow_nan</b>: true if NaN, Infinity, and -Infinity should be generated,
+otherwise an exception is thrown, if these values are encountered. This
+options defaults to false.
+
+</li>
+<li><b><a href="State.html#M000166">quirks_mode</a></b>: Enables <a
+href="State.html#M000166">quirks_mode</a> for parser, that is for example
+generating single <a href="../../../JSON.html">JSON</a> values instead of
+documents is possible.
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000176" class="method-detail">
+        <a name="M000176"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000176.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000176.html');return false;">
+          <span class="method-name"> new(opts = {})<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Instantiates a <a href="State.html#M000148">new</a> <a
+href="State.html">State</a> object, configured by <em>opts</em>.
+</p>
+<p>
+<em>opts</em> can have the following keys:
+</p>
+<ul>
+<li><b><a href="State.html#M000150">indent</a></b>: a string used to <a
+href="State.html#M000150">indent</a> levels (default: &#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000152">space</a></b>: a string that is put after,
+a : or , delimiter (default: &#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000154">space_before</a></b>: a string that is put
+before a : pair delimiter (default: &#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000156">object_nl</a></b>: a string that is put at
+the end of a <a href="../../../JSON.html">JSON</a> object (default:
+&#8217;&#8217;),
+
+</li>
+<li><b><a href="State.html#M000158">array_nl</a></b>: a string that is put at
+the end of a <a href="../../../JSON.html">JSON</a> array (default:
+&#8217;&#8217;),
+
+</li>
+<li><b>allow_nan</b>: true if NaN, Infinity, and -Infinity should be generated,
+otherwise an exception is thrown, if these values are encountered. This
+options defaults to false.
+
+</li>
+<li><b><a href="State.html#M000166">quirks_mode</a></b>: Enables <a
+href="State.html#M000166">quirks_mode</a> for parser, that is for example
+generating single <a href="../../../JSON.html">JSON</a> values instead of
+documents is possible.
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000172" class="method-detail">
+        <a name="M000172"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000172.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000172.html');return false;">
+          <span class="method-name"> [](name)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the value returned by method <tt>name</tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000200" class="method-detail">
+        <a name="M000200"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000200.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000200.html');return false;">
+          <span class="method-name"> [](name)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the value returned by method <tt>name</tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000163" class="method-detail">
+        <a name="M000163"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000163.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000163.html');return false;">
+          <span class="method-name"> allow_nan?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if NaN, Infinity, and -Infinity should be generated,
+otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000191" class="method-detail">
+        <a name="M000191"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000191.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000191.html');return false;">
+          <span class="method-name"> allow_nan?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if NaN, Infinity, and -Infinity should be generated,
+otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000158" class="method-detail">
+        <a name="M000158"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000158.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000158.html');return false;">
+          <span class="method-name"> array_nl()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> array.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000186" class="method-detail">
+        <a name="M000186"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000186.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000186.html');return false;">
+          <span class="method-name"> array_nl()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> array.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000187" class="method-detail">
+        <a name="M000187"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000187.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000187.html');return false;">
+          <span class="method-name"> array_nl=(array_nl)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> array.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000159" class="method-detail">
+        <a name="M000159"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000159.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000159.html');return false;">
+          <span class="method-name"> array_nl=(array_nl)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> array.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000164" class="method-detail">
+        <a name="M000164"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000164.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000164.html');return false;">
+          <span class="method-name"> ascii_only?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if NaN, Infinity, and -Infinity should be generated,
+otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000192" class="method-detail">
+        <a name="M000192"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000192.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000192.html');return false;">
+          <span class="method-name"> ascii_only?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if NaN, Infinity, and -Infinity should be generated,
+otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000190" class="method-detail">
+        <a name="M000190"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000190.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000190.html');return false;">
+          <span class="method-name"> check_circular?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if circular data structures should be checked, otherwise
+returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000162" class="method-detail">
+        <a name="M000162"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000162.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000162.html');return false;">
+          <span class="method-name"> check_circular?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if circular data structures should be checked, otherwise
+returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000198" class="method-detail">
+        <a name="M000198"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000198.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000198.html');return false;">
+          <span class="method-name"> configure(opts)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Configure this <a href="State.html">State</a> instance with the Hash
+<em>opts</em>, and return itself.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000170" class="method-detail">
+        <a name="M000170"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000170.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000170.html');return false;">
+          <span class="method-name"> configure(opts)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Configure this <a href="State.html">State</a> instance with the Hash
+<em>opts</em>, and return itself.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000168" class="method-detail">
+        <a name="M000168"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000168.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000168.html');return false;">
+          <span class="method-name"> depth<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This integer returns the current <a href="State.html#M000168">depth</a> of
+data structure nesting.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000196" class="method-detail">
+        <a name="M000196"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000196.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000196.html');return false;">
+          <span class="method-name"> depth<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This integer returns the current <a href="State.html#M000168">depth</a> of
+data structure nesting.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000197" class="method-detail">
+        <a name="M000197"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000197.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000197.html');return false;">
+          <span class="method-name"> depth=(depth)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This sets the maximum level of data structure nesting in the generated <a
+href="../../../JSON.html">JSON</a> to the integer <a
+href="State.html#M000168">depth</a>, <a
+href="State.html#M000160">max_nesting</a> = 0 if no maximum should be
+checked.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000169" class="method-detail">
+        <a name="M000169"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000169.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000169.html');return false;">
+          <span class="method-name"> depth=(depth)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This sets the maximum level of data structure nesting in the generated <a
+href="../../../JSON.html">JSON</a> to the integer <a
+href="State.html#M000168">depth</a>, <a
+href="State.html#M000160">max_nesting</a> = 0 if no maximum should be
+checked.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000173" class="method-detail">
+        <a name="M000173"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000173.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000173.html');return false;">
+          <span class="method-name"> generate(obj)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generates a valid <a href="../../../JSON.html">JSON</a> document from
+object <tt>obj</tt> and returns the result. If no valid <a
+href="../../../JSON.html">JSON</a> document can be created this method
+raises a <a href="../../GeneratorError.html">GeneratorError</a> exception.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000201" class="method-detail">
+        <a name="M000201"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000201.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000201.html');return false;">
+          <span class="method-name"> generate(obj)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generates a valid <a href="../../../JSON.html">JSON</a> document from
+object <tt>obj</tt> and returns the result. If no valid <a
+href="../../../JSON.html">JSON</a> document can be created this method
+raises a <a href="../../GeneratorError.html">GeneratorError</a> exception.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000150" class="method-detail">
+        <a name="M000150"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000150.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000150.html');return false;">
+          <span class="method-name"> indent()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to <a href="State.html#M000150">indent</a> levels in
+the <a href="../../../JSON.html">JSON</a> text.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000178" class="method-detail">
+        <a name="M000178"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000178.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000178.html');return false;">
+          <span class="method-name"> indent()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to <a href="State.html#M000150">indent</a> levels in
+the <a href="../../../JSON.html">JSON</a> text.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000151" class="method-detail">
+        <a name="M000151"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000151.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000151.html');return false;">
+          <span class="method-name"> indent=(indent)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to <a href="State.html#M000150">indent</a> levels in
+the <a href="../../../JSON.html">JSON</a> text.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000179" class="method-detail">
+        <a name="M000179"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000179.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000179.html');return false;">
+          <span class="method-name"> indent=(indent)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to <a href="State.html#M000150">indent</a> levels in
+the <a href="../../../JSON.html">JSON</a> text.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000177" class="method-detail">
+        <a name="M000177"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000177.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000177.html');return false;">
+          <span class="method-name"> initialize_copy(orig)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initializes this object from orig if it to be duplicated/cloned and returns
+it.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000149.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000149.html');return false;">
+          <span class="method-name"> initialize_copy(orig)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initializes this object from orig if it to be duplicated/cloned and returns
+it.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000188" class="method-detail">
+        <a name="M000188"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000188.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000188.html');return false;">
+          <span class="method-name"> max_nesting<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This integer returns the maximum level of data structure nesting in the
+generated <a href="../../../JSON.html">JSON</a>, <a
+href="State.html#M000160">max_nesting</a> = 0 if no maximum is checked.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000160" class="method-detail">
+        <a name="M000160"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000160.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000160.html');return false;">
+          <span class="method-name"> max_nesting<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This integer returns the maximum level of data structure nesting in the
+generated <a href="../../../JSON.html">JSON</a>, <a
+href="State.html#M000160">max_nesting</a> = 0 if no maximum is checked.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000189" class="method-detail">
+        <a name="M000189"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000189.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000189.html');return false;">
+          <span class="method-name"> max_nesting=(depth)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This sets the maximum level of data structure nesting in the generated <a
+href="../../../JSON.html">JSON</a> to the integer <a
+href="State.html#M000168">depth</a>, <a
+href="State.html#M000160">max_nesting</a> = 0 if no maximum should be
+checked.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000161" class="method-detail">
+        <a name="M000161"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000161.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000161.html');return false;">
+          <span class="method-name"> max_nesting=(depth)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This sets the maximum level of data structure nesting in the generated <a
+href="../../../JSON.html">JSON</a> to the integer <a
+href="State.html#M000168">depth</a>, <a
+href="State.html#M000160">max_nesting</a> = 0 if no maximum should be
+checked.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000174" class="method-detail">
+        <a name="M000174"></a>
+
+        <div class="method-heading">
+          <span class="method-name">merge</span><span class="method-args">(p1)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="State.html#M000170">configure</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000202" class="method-detail">
+        <a name="M000202"></a>
+
+        <div class="method-heading">
+          <span class="method-name">merge</span><span class="method-args">(p1)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="State.html#M000170">configure</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000156" class="method-detail">
+        <a name="M000156"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000156.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000156.html');return false;">
+          <span class="method-name"> object_nl()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> object (or Hash).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000184" class="method-detail">
+        <a name="M000184"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000184.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000184.html');return false;">
+          <span class="method-name"> object_nl()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> object (or Hash).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000157" class="method-detail">
+        <a name="M000157"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000157.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000157.html');return false;">
+          <span class="method-name"> object_nl=(object_nl)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> object (or Hash).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000185" class="method-detail">
+        <a name="M000185"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000185.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000185.html');return false;">
+          <span class="method-name"> object_nl=(object_nl)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is put at the end of a line that holds a <a
+href="../../../JSON.html">JSON</a> object (or Hash).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000194" class="method-detail">
+        <a name="M000194"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000194.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000194.html');return false;">
+          <span class="method-name"> quirks_mode?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if quirks mode is enabled. Otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000166" class="method-detail">
+        <a name="M000166"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000166.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000166.html');return false;">
+          <span class="method-name"> quirks_mode?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if quirks mode is enabled. Otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000167" class="method-detail">
+        <a name="M000167"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000167.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000167.html');return false;">
+          <span class="method-name"> quirks_mode=(enable)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+If set to true, enables the <a href="State.html#M000166">quirks_mode</a>
+mode.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000195" class="method-detail">
+        <a name="M000195"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000195.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000195.html');return false;">
+          <span class="method-name"> quirks_mode=(enable)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+If set to true, enables the <a href="State.html#M000166">quirks_mode</a>
+mode.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000165" class="method-detail">
+        <a name="M000165"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000165.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000165.html');return false;">
+          <span class="method-name"> quirks_mode?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if quirks mode is enabled. Otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000193" class="method-detail">
+        <a name="M000193"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000193.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000193.html');return false;">
+          <span class="method-name"> quirks_mode?<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true, if quirks mode is enabled. Otherwise returns false.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000152" class="method-detail">
+        <a name="M000152"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000152.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000152.html');return false;">
+          <span class="method-name"> space()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+between the tokens in a <a href="../../../JSON.html">JSON</a> string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000180" class="method-detail">
+        <a name="M000180"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000180.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000180.html');return false;">
+          <span class="method-name"> space()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+between the tokens in a <a href="../../../JSON.html">JSON</a> string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000153" class="method-detail">
+        <a name="M000153"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000153.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000153.html');return false;">
+          <span class="method-name"> space=(space)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+between the tokens in a <a href="../../../JSON.html">JSON</a> string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000181" class="method-detail">
+        <a name="M000181"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000181.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000181.html');return false;">
+          <span class="method-name"> space=(space)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+between the tokens in a <a href="../../../JSON.html">JSON</a> string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000182" class="method-detail">
+        <a name="M000182"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000182.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000182.html');return false;">
+          <span class="method-name"> space_before()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+before the &#8217;:&#8217; in <a href="../../../JSON.html">JSON</a>
+objects.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000154" class="method-detail">
+        <a name="M000154"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000154.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000154.html');return false;">
+          <span class="method-name"> space_before()<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+before the &#8217;:&#8217; in <a href="../../../JSON.html">JSON</a>
+objects.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000183" class="method-detail">
+        <a name="M000183"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000183.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000183.html');return false;">
+          <span class="method-name"> space_before=(space_before)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+before the &#8217;:&#8217; in <a href="../../../JSON.html">JSON</a>
+objects.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000155" class="method-detail">
+        <a name="M000155"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000155.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000155.html');return false;">
+          <span class="method-name"> space_before=(space_before)<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This string is used to insert a <a href="State.html#M000152">space</a>
+before the &#8217;:&#8217; in <a href="../../../JSON.html">JSON</a>
+objects.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000171" class="method-detail">
+        <a name="M000171"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000171.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000171.html');return false;">
+          <span class="method-name"> to_h<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the configuration instance variables as a hash, that can be passed
+to the <a href="State.html#M000170">configure</a> method.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000199" class="method-detail">
+        <a name="M000199"></a>
+
+        <div class="method-heading">
+          <a href="State.src/M000199.html" target="Code" class="method-signature"
+            onclick="popupCode('State.src/M000199.html');return false;">
+          <span class="method-name"> to_h<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the configuration instance variables as a hash, that can be passed
+to the <a href="State.html#M000170">configure</a> method.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

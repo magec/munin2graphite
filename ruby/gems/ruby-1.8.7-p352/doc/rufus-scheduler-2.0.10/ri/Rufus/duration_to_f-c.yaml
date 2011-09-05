@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Ensures that a duration is a expressed as a Float instance.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  duration_to_f(&quot;10s&quot;)\n"
+- !ruby/struct:SM::Flow::P 
+  body: will yield 10.0
+full_name: Rufus::duration_to_f
+is_singleton: true
+name: duration_to_f
+params: (s)
+visibility: public

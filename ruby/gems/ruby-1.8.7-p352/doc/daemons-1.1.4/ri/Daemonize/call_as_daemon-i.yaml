@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemonize#call_as_daemon
+is_singleton: false
+name: call_as_daemon
+params: (block, logfile_name = nil, app_name = nil)
+visibility: public

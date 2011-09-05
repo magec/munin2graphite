@@ -1,0 +1,81 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: app_argv
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: controller_argv
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: the ApplicationGroup the application belongs to
+  name: group
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: my private options
+  name: options
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: the Pid instance belonging to this application
+  name: pid
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SIGNAL
+  value: "(RUBY_PLATFORM =~ /win32/ ? 'KILL' : 'TERM')"
+full_name: Daemons::Application
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: change_privilege
+- !ruby/object:RI::MethodSummary 
+  name: exception_log
+- !ruby/object:RI::MethodSummary 
+  name: logdir
+- !ruby/object:RI::MethodSummary 
+  name: logfile
+- !ruby/object:RI::MethodSummary 
+  name: output_logfile
+- !ruby/object:RI::MethodSummary 
+  name: pidfile_dir
+- !ruby/object:RI::MethodSummary 
+  name: reload
+- !ruby/object:RI::MethodSummary 
+  name: running?
+- !ruby/object:RI::MethodSummary 
+  name: script
+- !ruby/object:RI::MethodSummary 
+  name: show_status
+- !ruby/object:RI::MethodSummary 
+  name: start
+- !ruby/object:RI::MethodSummary 
+  name: start_exec
+- !ruby/object:RI::MethodSummary 
+  name: start_load
+- !ruby/object:RI::MethodSummary 
+  name: start_none
+- !ruby/object:RI::MethodSummary 
+  name: start_proc
+- !ruby/object:RI::MethodSummary 
+  name: started
+- !ruby/object:RI::MethodSummary 
+  name: stop
+- !ruby/object:RI::MethodSummary 
+  name: zap
+- !ruby/object:RI::MethodSummary 
+  name: zap!
+name: Application
+superclass: Object

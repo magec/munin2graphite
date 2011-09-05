@@ -1,0 +1,100 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Daemonize Library
+- !ruby/struct:SM::Flow::P 
+  body: February. 4, 2005 Travis Whitton &lt;whitton@atlantic.net&gt;
+- !ruby/struct:SM::Flow::P 
+  body: Daemonize allows you to easily modify any existing Ruby program to run as a daemon. See README.rdoc for more details.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: How to install
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "1."
+    body: su to root
+  - !ruby/struct:SM::Flow::LI 
+    label: "2."
+    body: ruby install.rb
+  type: :NUMBER
+- !ruby/struct:SM::Flow::P 
+  body: build the docs if you want to
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "3."
+    body: rdoc --main README.rdoc daemonize.rb README.rdoc
+  type: :NUMBER
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Copying
+- !ruby/struct:SM::Flow::P 
+  body: The Daemonize extension module is copywrited free software by Travis Whitton &lt;whitton@atlantic.net&gt;. You can redistribute it under the terms specified in the COPYING file of the Ruby distribution.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: WARRANTY
+- !ruby/struct:SM::Flow::P 
+  body: THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+- !ruby/struct:SM::Flow::RULE 
+  width: 2
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Purpose
+- !ruby/struct:SM::Flow::P 
+  body: Daemonize is a module derived from Perl's Proc::Daemon module. This module allows you to easily modify any existing Ruby program to run as a daemon. A daemon is a process that runs in the background with no controlling terminal. Generally servers (like FTP and HTTP servers) run as daemon processes. Note, do not make the mistake that a daemon == server. Converting a program to a daemon by hand is a relatively simple process; however, this module will save you the effort of repeatedly looking up the procedure, and it will also insure that your programs are daemonized in the safest and most corrects fashion possible.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Procedure
+- !ruby/struct:SM::Flow::P 
+  body: "The Daemonize module does the following:"
+- !ruby/struct:SM::Flow::P 
+  body: Forks a child and exits the parent process.
+- !ruby/struct:SM::Flow::P 
+  body: Becomes a session leader (which detaches the program from the controlling terminal).
+- !ruby/struct:SM::Flow::P 
+  body: Forks another child process and exits first child. This prevents the potential of acquiring a controlling terminal.
+- !ruby/struct:SM::Flow::P 
+  body: Changes the current working directory to &quot;/&quot;.
+- !ruby/struct:SM::Flow::P 
+  body: Clears the file creation mask.
+- !ruby/struct:SM::Flow::P 
+  body: Closes file descriptors.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Example usage
+- !ruby/struct:SM::Flow::P 
+  body: "Using the Daemonize module is extremely simple:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "    require 'daemonize'\n\n    class TestDaemon\n      include Daemonize\n\n      def initialize\n        daemonize()\n        loop do\n          # do some work here\n        end\n      end\n    end\n"
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Credits
+- !ruby/struct:SM::Flow::P 
+  body: Daemonize was written by Travis Whitton and is based on Perl's Proc::Daemonize, which was written by Earl Hood. The above documentation is also partially borrowed from the Proc::Daemonize POD documentation.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VERSION
+  value: "\"0.1.1m\""
+full_name: Daemonize
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: call_as_daemon
+- !ruby/object:RI::MethodSummary 
+  name: daemonize
+- !ruby/object:RI::MethodSummary 
+  name: redirect_io
+- !ruby/object:RI::MethodSummary 
+  name: safefork
+- !ruby/object:RI::MethodSummary 
+  name: simulate
+name: Daemonize
+superclass: 

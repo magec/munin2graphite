@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Represents a linked timezone defined in a data module.
+constants: []
+
+full_name: TZInfo::LinkedTimezoneInfo
+includes: []
+
+instance_methods: []
+
+name: LinkedTimezoneInfo
+superclass: TimezoneInfo

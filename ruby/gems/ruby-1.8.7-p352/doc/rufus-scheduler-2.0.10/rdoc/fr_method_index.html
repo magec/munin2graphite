@@ -1,0 +1,123 @@
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+
+    Methods
+
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Methods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="rdoc-style.css" type="text/css" />
+  <base target="docwin" />
+</head>
+<body>
+<div id="index">
+  <h1 class="section-bar">Methods</h1>
+  <div id="index-entries">
+    <a href="classes/Rufus/Scheduler/CronJobQueue.html#M000133"><< (Rufus::Scheduler::CronJobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000122"><< (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000161">add_cron_job (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000160">add_job (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000154">all_jobs (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000143">at (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/LegacyMethods.html#M000115">at_job_count (Rufus::Scheduler::LegacyMethods)</a><br />
+    <a href="classes/Rufus.html#M000109">at_to_f (Rufus)</a><br />
+    <a href="classes/Rufus/Scheduler/Schedulable.html#M000112">call (Rufus::Scheduler::Schedulable)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000158">combine_opts (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000162">complain_if_blocking_and_timeout (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000147">cron (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/LegacyMethods.html#M000117">cron_job_count (Rufus::Scheduler::LegacyMethods)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000153">cron_jobs (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus.html#M000100">current_time_millis (Rufus)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000127">delete (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/InJob.html#M000174">determine_at (Rufus::Scheduler::InJob)</a><br />
+    <a href="classes/Rufus/Scheduler/EveryJob.html#M000137">determine_at (Rufus::Scheduler::EveryJob)</a><br />
+    <a href="classes/Rufus/Scheduler/SimpleJob.html#M000129">determine_at (Rufus::Scheduler::SimpleJob)</a><br />
+    <a href="classes/Rufus/Scheduler/CronJob.html#M000183">determine_at (Rufus::Scheduler::CronJob)</a><br />
+    <a href="classes/Rufus/Scheduler/EveryJob.html#M000136">determine_frequency (Rufus::Scheduler::EveryJob)</a><br />
+    <a href="classes/Rufus.html#M000108">duration_to_f (Rufus)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000145">every (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/LegacyMethods.html#M000116">every_job_count (Rufus::Scheduler::LegacyMethods)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000155">find_by_tag (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/LegacyMethods.html#M000114">find_jobs (Rufus::Scheduler::LegacyMethods)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000157">get_queue (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000151">handle_exception (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000141">in (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler.html#M000111">is_cron_string (Rufus::Scheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000128">job_to_trigger (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000152">jobs (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/PlainScheduler.html#M000179">join (Rufus::Scheduler::PlainScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/EmScheduler.html#M000187">join (Rufus::Scheduler::EmScheduler)</a><br />
+    <a href="classes/Rufus/CronLine.html#M000190">matches? (Rufus::CronLine)</a><br />
+    <a href="classes/Rufus/Scheduler/EveryJob.html#M000134">new (Rufus::Scheduler::EveryJob)</a><br />
+    <a href="classes/Rufus/Scheduler/SignalScheduler.html#M000175">new (Rufus::Scheduler::SignalScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000164">new (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/CronJobQueue.html#M000131">new (Rufus::Scheduler::CronJobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/CronJob.html#M000180">new (Rufus::Scheduler::CronJob)</a><br />
+    <a href="classes/Rufus/CronLine.html#M000189">new (Rufus::CronLine)</a><br />
+    <a href="classes/Rufus/Scheduler/EmScheduler.html#M000184">new (Rufus::Scheduler::EmScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/InJob.html#M000173">new (Rufus::Scheduler::InJob)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000139">new (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000120">new (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/SimpleJob.html#M000130">next_time (Rufus::Scheduler::SimpleJob)</a><br />
+    <a href="classes/Rufus/CronLine.html#M000191">next_time (Rufus::CronLine)</a><br />
+    <a href="classes/Rufus/Scheduler/CronJob.html#M000182">next_time (Rufus::Scheduler::CronJob)</a><br />
+    <a href="classes/Rufus.html#M000096">now (Rufus)</a><br />
+    <a href="classes/Rufus.html#M000101">parse_time_string (Rufus)</a><br />
+    <a href="classes/Rufus/Scheduler/LegacyMethods.html#M000118">pending_job_count (Rufus::Scheduler::LegacyMethods)</a><br />
+    <a href="classes/Rufus/Scheduler/LegacyMethods.html#M000119">precision (Rufus::Scheduler::LegacyMethods)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000165">running (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000166">running? (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000148">schedule (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000144">schedule_at (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000146">schedule_every (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000142">schedule_in (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000169">schedule_info (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/EveryJob.html#M000138">schedule_next (Rufus::Scheduler::EveryJob)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000125">select (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000126">size (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/EmScheduler.html#M000185">start (Rufus::Scheduler::EmScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/PlainScheduler.html#M000177">start (Rufus::Scheduler::PlainScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler.html#M000110">start_new (Rufus::Scheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000140">start_new (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000159">step (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/SignalScheduler.html#M000176">stop (Rufus::Scheduler::SignalScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/PlainScheduler.html#M000178">stop (Rufus::Scheduler::PlainScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/EmScheduler.html#M000186">stop (Rufus::Scheduler::EmScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000167">tags (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000168">tags= (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus.html#M000098">time_to_iso8601_date (Rufus)</a><br />
+    <a href="classes/Rufus/CronLine.html#M000192">to_array (Rufus::CronLine)</a><br />
+    <a href="classes/Rufus.html#M000102">to_datetime (Rufus)</a><br />
+    <a href="classes/Rufus.html#M000107">to_duration_hash (Rufus)</a><br />
+    <a href="classes/Rufus.html#M000106">to_duration_string (Rufus)</a><br />
+    <a href="classes/Rufus.html#M000103">to_gm_time (Rufus)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000124">to_h (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus.html#M000097">to_iso8601_date (Rufus)</a><br />
+    <a href="classes/Rufus.html#M000104">to_local_time (Rufus)</a><br />
+    <a href="classes/Rufus.html#M000099">to_ruby_time (Rufus)</a><br />
+    <a href="classes/Rufus.html#M000105">to_ttime (Rufus)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000170">trigger (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/EveryJob.html#M000135">trigger (Rufus::Scheduler::EveryJob)</a><br />
+    <a href="classes/Rufus/Scheduler/Schedulable.html#M000113">trigger (Rufus::Scheduler::Schedulable)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000171">trigger_block (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/CronJob.html#M000181">trigger_if_matches (Rufus::Scheduler::CronJob)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000163">trigger_job (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/EmScheduler.html#M000188">trigger_job (Rufus::Scheduler::EmScheduler)</a><br />
+    <a href="classes/Rufus/Scheduler/CronJobQueue.html#M000132">trigger_matching_jobs (Rufus::Scheduler::CronJobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000121">trigger_matching_jobs (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000156">trigger_threads (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/JobQueue.html#M000123">unschedule (Rufus::Scheduler::JobQueue)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000149">unschedule (Rufus::Scheduler::SchedulerCore)</a><br />
+    <a href="classes/Rufus/Scheduler/Job.html#M000172">unschedule (Rufus::Scheduler::Job)</a><br />
+    <a href="classes/Rufus/Scheduler/SchedulerCore.html#M000150">unschedule_by_tag (Rufus::Scheduler::SchedulerCore)</a><br />
+  </div>
+</div>
+</body>
+</html>

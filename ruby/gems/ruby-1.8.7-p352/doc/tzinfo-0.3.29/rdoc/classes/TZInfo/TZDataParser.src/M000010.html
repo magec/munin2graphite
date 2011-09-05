@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>parse_offset (TZInfo::TZDataParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/tzdataparser.rb, line 147</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">parse_offset</span>(<span class="ruby-identifier">offset</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Invalid time: #{offset}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">offset</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/^(-)?(?:([0-9]+)(?::([0-9]+)(?::([0-9]+))?)?)?$/</span>
+      
+      <span class="ruby-identifier">negative</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">$1</span>.<span class="ruby-identifier">nil?</span>      
+      <span class="ruby-identifier">hour</span> = <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">minute</span> = <span class="ruby-identifier">$3</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">$3</span>.<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">second</span> = <span class="ruby-identifier">$4</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">$4</span>.<span class="ruby-identifier">to_i</span>
+      
+      <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">hour</span>
+      <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
+      <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">minute</span>
+      <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
+      <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">second</span>
+      <span class="ruby-identifier">seconds</span> = <span class="ruby-operator">-</span><span class="ruby-identifier">seconds</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">negative</span>
+      <span class="ruby-identifier">seconds</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

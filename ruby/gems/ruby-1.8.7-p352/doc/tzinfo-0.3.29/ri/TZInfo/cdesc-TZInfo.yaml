@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: ""
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: TZDataCountryTimezone
+  value: Struct.new(:timezone, :description, :location)
+full_name: TZInfo
+includes: []
+
+instance_methods: []
+
+name: TZInfo
+superclass: 

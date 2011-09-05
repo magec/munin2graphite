@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Used by TZInfo internally to represent either a Time, DateTime or integer timestamp (seconds since 1970-01-01 00:00:00).
+constants: []
+
+full_name: TZInfo::TimeOrDateTime
+includes: []
+
+instance_methods: []
+
+name: TimeOrDateTime
+superclass: Object

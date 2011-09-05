@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Monitor::new
+is_singleton: true
+name: new
+params: (an_app)
+visibility: public

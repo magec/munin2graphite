@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A tz data day of the month reference. Can either be an absolute day, a last week day or a week day &gt;= or &lt;= than a specific day of month.
+constants: []
+
+full_name: TZInfo::TZDataDayOfMonth
+includes: []
+
+instance_methods: []
+
+name: TZDataDayOfMonth
+superclass: Object

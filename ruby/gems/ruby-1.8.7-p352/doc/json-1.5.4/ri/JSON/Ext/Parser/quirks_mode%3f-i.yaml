@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a true, if this parser is in quirks_mode, false otherwise.
+full_name: JSON::Ext::Parser#quirks_mode?
+is_singleton: false
+name: quirks_mode?
+params: " quirks_mode?()\n"
+visibility: public

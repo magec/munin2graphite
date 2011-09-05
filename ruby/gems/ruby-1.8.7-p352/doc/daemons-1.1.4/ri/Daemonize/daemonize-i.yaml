@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method causes the current running process to become a daemon
+full_name: Daemonize#daemonize
+is_singleton: false
+name: daemonize
+params: (logfile_name = nil, app_name = nil)
+visibility: public

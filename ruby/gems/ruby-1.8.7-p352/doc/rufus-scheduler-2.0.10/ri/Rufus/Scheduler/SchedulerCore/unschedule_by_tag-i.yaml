@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Given a tag, unschedules all the jobs that bear that tag.
+full_name: Rufus::Scheduler::SchedulerCore#unschedule_by_tag
+is_singleton: false
+name: unschedule_by_tag
+params: (tag)
+visibility: public

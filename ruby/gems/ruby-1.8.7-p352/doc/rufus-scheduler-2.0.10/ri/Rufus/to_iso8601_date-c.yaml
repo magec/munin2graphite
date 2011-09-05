@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: As the name implies.
+full_name: Rufus::to_iso8601_date
+is_singleton: true
+name: to_iso8601_date
+params: (date)
+visibility: public

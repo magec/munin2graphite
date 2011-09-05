@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This string is used to indent levels in the JSON text.
+full_name: JSON::Ext::Generator::State#indent
+is_singleton: false
+name: indent
+params: " indent()\n"
+visibility: public

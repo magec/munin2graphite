@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A Timezone based on a DataTimezoneInfo.
+constants: []
+
+full_name: TZInfo::DataTimezone
+includes: []
+
+instance_methods: []
+
+name: DataTimezone
+superclass: InfoTimezone

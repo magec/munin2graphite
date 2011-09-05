@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Thrown if no offsets have been defined when calling period_for_utc or periods_for_local. Indicates an error in the timezone data.
+constants: []
+
+full_name: TZInfo::NoOffsetsDefined
+includes: []
+
+instance_methods: []
+
+name: NoOffsetsDefined
+superclass: StandardError

@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Turns a string like '1m10s' into a float like '70.0', more formally, turns a time duration expressed as a string into a Float instance (millisecond count).
+- !ruby/struct:SM::Flow::P 
+  body: w -&gt; week d -&gt; day h -&gt; hour m -&gt; minute s -&gt; second M -&gt; month y -&gt; year 'nada' -&gt; millisecond
+- !ruby/struct:SM::Flow::P 
+  body: "Some examples :"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Rufus.parse_time_string &quot;0.5&quot;    # =&gt; 0.5\n  Rufus.parse_time_string &quot;500&quot;    # =&gt; 0.5\n  Rufus.parse_time_string &quot;1000&quot;   # =&gt; 1.0\n  Rufus.parse_time_string &quot;1h&quot;     # =&gt; 3600.0\n  Rufus.parse_time_string &quot;1h10s&quot;  # =&gt; 3610.0\n  Rufus.parse_time_string &quot;1w2d&quot;   # =&gt; 777600.0\n"
+full_name: Rufus::parse_time_string
+is_singleton: true
+name: parse_time_string
+params: (string)
+visibility: public

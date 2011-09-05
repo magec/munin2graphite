@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: current_time_and_period
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the current Time and TimezonePeriod as an array. The first element is the time, the second element is the period.
+full_name: TZInfo::Timezone#current_period_and_time
+is_singleton: false
+name: current_period_and_time
+params: ()
+visibility: public
