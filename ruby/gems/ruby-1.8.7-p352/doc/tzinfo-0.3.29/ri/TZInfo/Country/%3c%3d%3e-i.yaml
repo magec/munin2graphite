@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Compare two Countries based on their code. Returns -1 if c is less than self, 0 if c is equal to self and +1 if c is greater than self.
+full_name: TZInfo::Country#<=>
+is_singleton: false
+name: <=>
+params: (c)
+visibility: public

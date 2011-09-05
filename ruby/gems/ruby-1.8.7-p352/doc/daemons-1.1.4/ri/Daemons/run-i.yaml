@@ -1,0 +1,76 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Passes control to Daemons. This is used in wrapper-scripts that are supposed to control other ruby scripts or external applications. Control is completely passed to the daemons library. Such wrapper script should be invoked with command line options like 'start' or 'stop' to do anything useful.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "+script+:"
+    body: This is the path to the script that should be run as a daemon. Please note that Daemons runs this script with <tt>load &lt;script&gt;</tt>. Also note that Daemons cannot detect the directory in which the controlling script resides, so this has to be either an absolute path or you have to run the controlling script from the appropriate directory.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+options+:"
+    body: A hash that may contain one or more of the options listed below
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: "Options:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:app_name</tt>:"
+    body: The name of the application. This will be used to contruct the name of the pid files and log files. Defaults to the basename of the script.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:ARGV</tt>:"
+    body: An array of strings containing parameters and switches for Daemons. This includes both parameters for Daemons itself and the controlled scripted. These are assumed to be separated by an array element '--', .e.g. ['start', 'f', '--', 'param1_for_script', 'param2_for_script']. If not given, ARGV (the parameters given to the Ruby process) will be used.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:dir_mode</tt>:"
+    body: Either <tt>:script</tt> (the directory for writing the pid files to given by <tt>:dir</tt> is interpreted relative to the script location given by <tt>script</tt>, the default) or <tt>:normal</tt> (the directory given by <tt>:dir</tt> is interpreted as a (absolute or relative) path) or <tt>:system</tt> (<tt>/var/run</tt> is used as the pid file directory)
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:dir</tt>:"
+    body: Used in combination with <tt>:dir_mode</tt> (description above)
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:multiple</tt>:"
+    body: Specifies whether multiple instances of the same script are allowed to run at the same time
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:ontop</tt>:"
+    body: When given (i.e. set to true), stay on top, i.e. do not daemonize the application (but the pid-file and other things are written as usual)
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:mode</tt>:"
+    body: <tt>:load</tt> Load the script with <tt>Kernel.load</tt>; note that :stop_proc only works for the :load (and :proc) mode. <tt>:exec</tt> Execute the script file with <tt>Kernel.exec</tt>
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:backtrace</tt>:"
+    body: Write a backtrace of the last exceptions to the file '[app_name].log' in the pid-file directory if the application exits due to an uncaught exception
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:monitor</tt>:"
+    body: Monitor the programs and restart crashed instances
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:log_dir</tt>:"
+    body: A specific directory to put the log files into (when not given, resort to the default location as derived from the :dir_mode and :dir options
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:log_output</tt>:"
+    body: When given (i.e. set to true), redirect both STDOUT and STDERR to a logfile named '[app_name].output' in the pid-file directory
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:keep_pid_files</tt>:"
+    body: When given do not delete lingering pid-files (files for which the process is no longer running).
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:hard_exit</tt>:"
+    body: When given use exit! to end a daemons instead of exit (this will for example not call at_exit handlers).
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:stop_proc</tt>:"
+    body: A proc that will be called when the daemonized process receives a request to stop (works only for :load and :proc mode)
+  type: :NOTE
+- !ruby/struct:SM::Flow::RULE 
+  width: 3
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: "Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  options = {\n    :app_name   =&gt; &quot;my_app&quot;,\n    :ARGV       =&gt; ['start', '-f', '--', 'param_for_myscript']\n    :dir_mode   =&gt; :script,\n    :dir        =&gt; 'pids',\n    :multiple   =&gt; true,\n    :ontop      =&gt; true,\n    :mode       =&gt; :exec,\n    :backtrace  =&gt; true,\n    :monitor    =&gt; true\n  }\n\n  Daemons.run(File.join(File.dirname(<em>FILE</em>), 'myscript.rb'), options)\n"
+full_name: Daemons#run
+is_singleton: false
+name: run
+params: (script, options = {})
+visibility: public

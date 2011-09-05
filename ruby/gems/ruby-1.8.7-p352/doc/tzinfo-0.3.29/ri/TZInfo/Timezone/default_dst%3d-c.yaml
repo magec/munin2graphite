@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets the default value of the optional dst parameter of the local_to_utc and period_for_local methods. Can be set to nil, true or false.
+- !ruby/struct:SM::Flow::P 
+  body: The value of default_dst defaults to nil if unset.
+full_name: TZInfo::Timezone::default_dst=
+is_singleton: true
+name: default_dst=
+params: (value)
+visibility: public

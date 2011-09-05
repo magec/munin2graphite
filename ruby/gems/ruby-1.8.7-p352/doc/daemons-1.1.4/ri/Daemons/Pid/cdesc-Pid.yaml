@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: dir
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: running?
+comment: 
+constants: []
+
+full_name: Daemons::Pid
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: cleanup
+- !ruby/object:RI::MethodSummary 
+  name: exist?
+- !ruby/object:RI::MethodSummary 
+  name: pid
+- !ruby/object:RI::MethodSummary 
+  name: pid=
+- !ruby/object:RI::MethodSummary 
+  name: running?
+name: Pid
+superclass: Object

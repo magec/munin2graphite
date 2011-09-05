@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Offset from the local time where daylight savings is in effect (seconds). E.g.: utc_offset could be -5 hours. Normally, std_offset would be 0. During daylight savings, std_offset would typically become +1 hours."
+full_name: TZInfo::TimezonePeriod#std_offset
+is_singleton: false
+name: std_offset
+params: ()
+visibility: public

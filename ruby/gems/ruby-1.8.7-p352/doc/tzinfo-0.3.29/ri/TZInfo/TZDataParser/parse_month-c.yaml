@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parses a month specified in the tz data and converts it to a number between 1 and 12 representing January to December.
+full_name: TZInfo::TZDataParser::parse_month
+is_singleton: true
+name: parse_month
+params: (month)
+visibility: public

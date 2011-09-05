@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the TimezonePeriod for the given UTC time. utc can either be a DateTime, Time or integer timestamp (Time.to_i). Any timezone information in utc is ignored (it is treated as a UTC time).
+full_name: TZInfo::Timezone#period_for_utc
+is_singleton: false
+name: period_for_utc
+params: (utc)
+visibility: public

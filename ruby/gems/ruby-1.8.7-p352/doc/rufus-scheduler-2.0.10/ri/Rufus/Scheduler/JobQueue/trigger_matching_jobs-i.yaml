@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Triggers all the jobs that are scheduled for 'now'.
+full_name: Rufus::Scheduler::JobQueue#trigger_matching_jobs
+is_singleton: false
+name: trigger_matching_jobs
+params: ()
+visibility: public

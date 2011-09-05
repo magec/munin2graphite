@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Rufus</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Rufus</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/rufus/sc/version_rb.html">
+                lib/rufus/sc/version.rb
+                </a>
+        <br />
+                <a href="../files/lib/rufus/sc/rtime_rb.html">
+                lib/rufus/sc/rtime.rb
+                </a>
+        <br />
+                <a href="../files/lib/rufus/sc/jobqueues_rb.html">
+                lib/rufus/sc/jobqueues.rb
+                </a>
+        <br />
+                <a href="../files/lib/rufus/sc/cronline_rb.html">
+                lib/rufus/sc/cronline.rb
+                </a>
+        <br />
+                <a href="../files/lib/rufus/sc/jobs_rb.html">
+                lib/rufus/sc/jobs.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000109">at_to_f</a>&nbsp;&nbsp;
+      <a href="#M000100">current_time_millis</a>&nbsp;&nbsp;
+      <a href="#M000108">duration_to_f</a>&nbsp;&nbsp;
+      <a href="#M000096">now</a>&nbsp;&nbsp;
+      <a href="#M000101">parse_time_string</a>&nbsp;&nbsp;
+      <a href="#M000098">time_to_iso8601_date</a>&nbsp;&nbsp;
+      <a href="#M000102">to_datetime</a>&nbsp;&nbsp;
+      <a href="#M000107">to_duration_hash</a>&nbsp;&nbsp;
+      <a href="#M000106">to_duration_string</a>&nbsp;&nbsp;
+      <a href="#M000103">to_gm_time</a>&nbsp;&nbsp;
+      <a href="#M000097">to_iso8601_date</a>&nbsp;&nbsp;
+      <a href="#M000104">to_local_time</a>&nbsp;&nbsp;
+      <a href="#M000099">to_ruby_time</a>&nbsp;&nbsp;
+      <a href="#M000105">to_ttime</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Rufus/Scheduler.html" class="link">Rufus::Scheduler</a><br />
+Class <a href="Rufus/CronLine.html" class="link">Rufus::CronLine</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">FLOAT_DURATION</td>
+          <td>=</td>
+          <td class="context-item-value">/^\d*\.\d*$/</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DURATIONS2M</td>
+          <td>=</td>
+          <td class="context-item-value">[     [ 'y', 365 * 24 * 3600 ],     [ 'M', 30 * 24 * 3600 ],     [ 'w', 7 * 24 * 3600 ],     [ 'd', 24 * 3600 ],     [ 'h', 3600 ],     [ 'm', 60 ],     [ 's', 1 ]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DURATIONS2</td>
+          <td>=</td>
+          <td class="context-item-value">DURATIONS2M.dup</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DURATIONS</td>
+          <td>=</td>
+          <td class="context-item-value">DURATIONS2M.inject({}) do |r, (k, v)|     r[k] = v</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">parse_time_string</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">parse_duration_string</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">to_duration_string</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">to_time_string</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000109.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000109.html');return false;">
+          <span class="method-name">at_to_f</span><span class="method-args">(at)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ensures an &#8216;at&#8217; value is translated to a float (to be compared
+with the float coming from time.to_f)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000100.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000100.html');return false;">
+          <span class="method-name">current_time_millis</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Equivalent to java.lang.System.currentTimeMillis()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000108.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000108.html');return false;">
+          <span class="method-name">duration_to_f</span><span class="method-args">(s)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ensures that a duration is a expressed as a Float instance.
+</p>
+<pre>
+  duration_to_f(&quot;10s&quot;)
+</pre>
+<p>
+will yield 10.0
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000096" class="method-detail">
+        <a name="M000096"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000096.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000096.html');return false;">
+          <span class="method-name">now</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the current time as an ISO date string
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000101.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000101.html');return false;">
+          <span class="method-name">parse_time_string</span><span class="method-args">(string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turns a string like &#8216;1m10s&#8217; into a float like
+&#8216;70.0&#8217;, more formally, turns a time duration expressed as a
+string into a Float instance (millisecond count).
+</p>
+<p>
+w -&gt; week d -&gt; day h -&gt; hour m -&gt; minute s -&gt; second M -&gt;
+month y -&gt; year &#8216;nada&#8217; -&gt; millisecond
+</p>
+<p>
+Some examples :
+</p>
+<pre>
+  Rufus.parse_time_string &quot;0.5&quot;    # =&gt; 0.5
+  Rufus.parse_time_string &quot;500&quot;    # =&gt; 0.5
+  Rufus.parse_time_string &quot;1000&quot;   # =&gt; 1.0
+  Rufus.parse_time_string &quot;1h&quot;     # =&gt; 3600.0
+  Rufus.parse_time_string &quot;1h10s&quot;  # =&gt; 3610.0
+  Rufus.parse_time_string &quot;1w2d&quot;   # =&gt; 777600.0
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000098" class="method-detail">
+        <a name="M000098"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000098.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000098.html');return false;">
+          <span class="method-name">time_to_iso8601_date</span><span class="method-args">(time)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+the old method we used to generate our ISO datetime strings
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000102.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000102.html');return false;">
+          <span class="method-name">to_datetime</span><span class="method-args">(time)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Converts a Time instance to a DateTime one
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000107.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000107.html');return false;">
+          <span class="method-name">to_duration_hash</span><span class="method-args">(seconds, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turns a number of seconds (integer or Float) into a hash like in :
+</p>
+<pre>
+  Rufus.to_duration_hash 0.051
+    # =&gt; { :ms =&gt; &quot;51&quot; }
+  Rufus.to_duration_hash 7.051
+    # =&gt; { :s =&gt; 7, :ms =&gt; &quot;51&quot; }
+  Rufus.to_duration_hash 0.120 + 30 * 24 * 3600 + 1
+    # =&gt; { :w =&gt; 4, :d =&gt; 2, :s =&gt; 1, :ms =&gt; &quot;120&quot; }
+</pre>
+<p>
+This method is used by <a href="Rufus.html#M000106">to_duration_string</a>
+(to_time_string) behind the scene.
+</p>
+<p>
+Options are :
+</p>
+<ul>
+<li>:months, if set to true, months (M) of 30 days will be taken into account
+when building up the result
+
+</li>
+<li>:drop_seconds, if set to true, seconds and milliseconds will be trimmed
+from the result
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000106.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000106.html');return false;">
+          <span class="method-name">to_duration_string</span><span class="method-args">(seconds, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turns a number of seconds into a a time string
+</p>
+<pre>
+  Rufus.to_duration_string 0                    # =&gt; '0s'
+  Rufus.to_duration_string 60                   # =&gt; '1m'
+  Rufus.to_duration_string 3661                 # =&gt; '1h1m1s'
+  Rufus.to_duration_string 7 * 24 * 3600        # =&gt; '1w'
+  Rufus.to_duration_string 30 * 24 * 3600 + 1   # =&gt; &quot;4w2d1s&quot;
+</pre>
+<p>
+It goes from seconds to the year. Months are not counted (as they are of
+variable length). Weeks are counted.
+</p>
+<p>
+For 30 days months to be counted, the second parameter of this method can
+be set to true.
+</p>
+<pre>
+  Rufus.to_time_string 30 * 24 * 3600 + 1, true   # =&gt; &quot;1M1s&quot;
+</pre>
+<p>
+(to_time_string is an alias for <a
+href="Rufus.html#M000106">to_duration_string</a>)
+</p>
+<p>
+If a Float value is passed, milliseconds will be displayed without
+&#8216;marker&#8216;
+</p>
+<pre>
+  Rufus.to_duration_string 0.051                       # =&gt;&quot;51&quot;
+  Rufus.to_duration_string 7.051                       # =&gt;&quot;7s51&quot;
+  Rufus.to_duration_string 0.120 + 30 * 24 * 3600 + 1  # =&gt;&quot;4w2d1s120&quot;
+</pre>
+<p>
+(this behaviour mirrors the one found for <a
+href="Rufus.html#M000101">parse_time_string</a>()).
+</p>
+<p>
+Options are :
+</p>
+<ul>
+<li>:months, if set to true, months (M) of 30 days will be taken into account
+when building up the result
+
+</li>
+<li>:drop_seconds, if set to true, seconds and milliseconds will be trimmed
+from the result
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000103.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000103.html');return false;">
+          <span class="method-name">to_gm_time</span><span class="method-args">(dtime)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000097" class="method-detail">
+        <a name="M000097"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000097.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000097.html');return false;">
+          <span class="method-name">to_iso8601_date</span><span class="method-args">(date)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+As the name implies.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000104.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000104.html');return false;">
+          <span class="method-name">to_local_time</span><span class="method-args">(dtime)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000099" class="method-detail">
+        <a name="M000099"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000099.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000099.html');return false;">
+          <span class="method-name">to_ruby_time</span><span class="method-args">(sdate)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a Ruby time
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="Rufus.src/M000105.html" target="Code" class="method-signature"
+            onclick="popupCode('Rufus.src/M000105.html');return false;">
+          <span class="method-name">to_ttime</span><span class="method-args">(d, method)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

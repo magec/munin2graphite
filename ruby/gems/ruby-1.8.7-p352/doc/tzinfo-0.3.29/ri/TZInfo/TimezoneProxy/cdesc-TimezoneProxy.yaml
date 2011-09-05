@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _load
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A proxy class representing a timezone with a given identifier. TimezoneProxy inherits from Timezone and can be treated like any Timezone loaded with Timezone.get.
+- !ruby/struct:SM::Flow::P 
+  body: The first time an attempt is made to access the data for the timezone, the real Timezone is loaded. If the proxy's identifier was not valid, then an exception will be raised at this point.
+constants: []
+
+full_name: TZInfo::TimezoneProxy
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _dump
+- !ruby/object:RI::MethodSummary 
+  name: identifier
+- !ruby/object:RI::MethodSummary 
+  name: period_for_utc
+- !ruby/object:RI::MethodSummary 
+  name: periods_for_local
+name: TimezoneProxy
+superclass: Timezone

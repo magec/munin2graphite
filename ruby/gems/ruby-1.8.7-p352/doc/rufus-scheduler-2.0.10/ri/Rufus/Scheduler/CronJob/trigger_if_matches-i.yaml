@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Rufus::Scheduler::CronJob#trigger_if_matches
+is_singleton: false
+name: trigger_if_matches
+params: (time)
+visibility: public

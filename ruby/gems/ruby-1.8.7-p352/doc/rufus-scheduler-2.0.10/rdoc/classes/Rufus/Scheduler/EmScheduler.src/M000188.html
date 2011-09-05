@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>trigger_job (Rufus::Scheduler::EmScheduler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/scheduler.rb, line 474</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trigger_job</span>(<span class="ruby-identifier">blocking</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+
+      <span class="ruby-identifier">m</span> = <span class="ruby-identifier">blocking</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">next_tick</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:defer</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-comment cmt"># :next_tick monopolizes the EM</span>
+        <span class="ruby-comment cmt"># :defer executes its block in another thread</span>
+
+      <span class="ruby-constant">EM</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">m</span>) { <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

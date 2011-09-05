@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a frozen array of all the timezones for the for the country as CountryTimezone instances (containing extra information about each zone). These are in an order that
+- !ruby/struct:SM::Flow::VERB 
+  body: "  (1) makes some geographical sense, and\n  (2) puts the most populous zones first, where that does not contradict (1).\n"
+full_name: TZInfo::Country#zone_info
+is_singleton: false
+name: zone_info
+params: ()
+visibility: public

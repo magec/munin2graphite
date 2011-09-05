@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Application#pidfile_dir
+is_singleton: false
+name: pidfile_dir
+params: ()
+visibility: public

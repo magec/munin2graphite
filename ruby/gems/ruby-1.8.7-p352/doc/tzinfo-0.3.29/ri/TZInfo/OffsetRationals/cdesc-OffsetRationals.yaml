@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a method for getting Rationals for a timezone offset in seconds. Pre-reduced rationals are returned for all the half-hour intervals between -14 and +14 hours to avoid having to call gcd at runtime.
+constants: []
+
+full_name: TZInfo::OffsetRationals
+includes: []
+
+instance_methods: []
+
+name: OffsetRationals
+superclass: 

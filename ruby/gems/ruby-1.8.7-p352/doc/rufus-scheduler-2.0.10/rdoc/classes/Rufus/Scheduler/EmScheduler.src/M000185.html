@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>start (Rufus::Scheduler::EmScheduler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/scheduler.rb, line 429</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>
+
+      <span class="ruby-ivar">@em_thread</span> = <span class="ruby-keyword kw">nil</span>
+
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">EM</span>.<span class="ruby-identifier">reactor_running?</span>
+        <span class="ruby-ivar">@em_thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> { <span class="ruby-constant">EM</span>.<span class="ruby-identifier">run</span> }
+        <span class="ruby-keyword kw">while</span> (<span class="ruby-keyword kw">not</span> <span class="ruby-constant">EM</span>.<span class="ruby-identifier">reactor_running?</span>)
+          <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">pass</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt">#unless EM.reactor_running?</span>
+      <span class="ruby-comment cmt">#  t = Thread.current</span>
+      <span class="ruby-comment cmt">#  @em_thread = Thread.new { EM.run { t.wakeup } }</span>
+      <span class="ruby-comment cmt">#  Thread.stop # EM will wake us up when it's ready</span>
+      <span class="ruby-comment cmt">#end</span>
+
+      <span class="ruby-ivar">@timer</span> = <span class="ruby-constant">EM</span><span class="ruby-operator">::</span><span class="ruby-constant">PeriodicTimer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@frequency</span>) { <span class="ruby-identifier">step</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

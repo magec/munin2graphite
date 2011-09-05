@@ -1,0 +1,43 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Execute the block in a new daemon. <tt>Daemons.call</tt> will return immediately after spawning the daemon with the new Application object as a return value.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "+options+:"
+    body: A hash that may contain one or more of the options listed below
+  - !ruby/struct:SM::Flow::LI 
+    label: "+block+:"
+    body: The block to call in the daemon.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: "Options:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:multiple</tt>:"
+    body: Specifies whether multiple instances of the same script are allowed to run at the same time
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:ontop</tt>:"
+    body: When given, stay on top, i.e. do not daemonize the application
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:backtrace</tt>:"
+    body: Write a backtrace of the last exceptions to the file '[app_name].log' in the pid-file directory if the application exits due to an uncaught exception
+  type: :NOTE
+- !ruby/struct:SM::Flow::RULE 
+  width: 3
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: "Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  options = {\n    :backtrace  =&gt; true,\n    :monitor    =&gt; true,\n    :ontop      =&gt; true\n  }\n\n  Daemons.call(options) begin\n    # Server loop:\n    loop {\n      conn = accept_conn()\n      serve(conn)\n    }\n  end\n"
+full_name: Daemons#call
+is_singleton: false
+name: call
+params: (options = {}, &block)
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Rufus::Scheduler::LegacyMethods#at_job_count
+is_singleton: false
+name: at_job_count
+params: ()
+visibility: public

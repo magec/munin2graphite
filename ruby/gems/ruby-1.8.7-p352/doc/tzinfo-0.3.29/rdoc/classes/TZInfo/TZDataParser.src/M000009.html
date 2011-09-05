@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>parse_month (TZInfo::TZDataParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/tzdataparser.rb, line 114</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">parse_month</span>(<span class="ruby-identifier">month</span>)
+      <span class="ruby-identifier">lower</span> = <span class="ruby-identifier">month</span>.<span class="ruby-identifier">downcase</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^jan/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^feb/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">2</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^mar/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">3</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^apr/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">4</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^may/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">5</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^jun/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">6</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^jul/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">7</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^aug/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">8</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^sep/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">9</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^oct/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">10</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^nov/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">11</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^dec/</span>
+        <span class="ruby-ivar">@month</span> = <span class="ruby-value">12</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Invalid month: #{month}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

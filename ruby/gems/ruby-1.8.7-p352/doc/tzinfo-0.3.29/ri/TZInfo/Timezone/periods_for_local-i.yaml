@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the set of TimezonePeriod instances that are valid for the given local time as an array. If you just want a single period, use period_for_local instead and specify how ambiguities should be resolved. Returns an empty array if no periods are found for the given time.
+full_name: TZInfo::Timezone#periods_for_local
+is_singleton: false
+name: periods_for_local
+params: (local)
+visibility: public

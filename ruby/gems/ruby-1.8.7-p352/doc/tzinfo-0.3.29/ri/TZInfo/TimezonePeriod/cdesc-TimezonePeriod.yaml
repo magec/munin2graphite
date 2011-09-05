@@ -1,0 +1,82 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The TimezoneTransitionInfo that defines the end of this TimezonePeriod (may be nil if unbounded).
+  name: end_transition
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The TimezoneOffsetInfo for this period.
+  name: offset
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The TimezoneTransitionInfo that defines the start of this TimezonePeriod (may be nil if unbounded).
+  name: start_transition
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A period of time in a timezone where the same offset from UTC applies.
+- !ruby/struct:SM::Flow::P 
+  body: All the methods that take times accept instances of Time, DateTime or integer timestamps.
+constants: []
+
+full_name: TZInfo::TimezonePeriod
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: abbreviation
+- !ruby/object:RI::MethodSummary 
+  name: dst?
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: hash
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: local_after_start?
+- !ruby/object:RI::MethodSummary 
+  name: local_before_end?
+- !ruby/object:RI::MethodSummary 
+  name: local_end
+- !ruby/object:RI::MethodSummary 
+  name: local_start
+- !ruby/object:RI::MethodSummary 
+  name: std_offset
+- !ruby/object:RI::MethodSummary 
+  name: to_local
+- !ruby/object:RI::MethodSummary 
+  name: to_utc
+- !ruby/object:RI::MethodSummary 
+  name: utc_after_start?
+- !ruby/object:RI::MethodSummary 
+  name: utc_before_end?
+- !ruby/object:RI::MethodSummary 
+  name: utc_end
+- !ruby/object:RI::MethodSummary 
+  name: utc_offset
+- !ruby/object:RI::MethodSummary 
+  name: utc_start
+- !ruby/object:RI::MethodSummary 
+  name: utc_total_offset
+- !ruby/object:RI::MethodSummary 
+  name: utc_total_offset_rational
+- !ruby/object:RI::MethodSummary 
+  name: valid_for_local?
+- !ruby/object:RI::MethodSummary 
+  name: valid_for_utc?
+- !ruby/object:RI::MethodSummary 
+  name: zone_identifier
+name: TimezonePeriod
+superclass: Object

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Daemons::Controller)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/controller.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">argv</span> = [])
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+      <span class="ruby-ivar">@argv</span> = <span class="ruby-identifier">argv</span>
+      
+      <span class="ruby-comment cmt"># Allow an app_name to be specified. If not specified use the</span>
+      <span class="ruby-comment cmt"># basename of the script.</span>
+      <span class="ruby-ivar">@app_name</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:app_name</span>]
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:script</span>]
+        <span class="ruby-ivar">@script</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:script</span>])
+    
+        <span class="ruby-ivar">@app_name</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">split</span>(<span class="ruby-ivar">@script</span>)[<span class="ruby-value">1</span>]
+      <span class="ruby-keyword kw">end</span>
+    
+      <span class="ruby-ivar">@app_name</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'unknown_application'</span>
+      
+      <span class="ruby-ivar">@command</span>, <span class="ruby-ivar">@controller_part</span>, <span class="ruby-ivar">@app_part</span> = <span class="ruby-constant">Controller</span>.<span class="ruby-identifier">split_argv</span>(<span class="ruby-identifier">argv</span>)
+    
+      <span class="ruby-comment cmt">#@options[:dir_mode] ||= :script</span>
+    
+      <span class="ruby-ivar">@optparse</span> = <span class="ruby-constant">Optparse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Construct a new TimezoneProxy for the given identifier. The identifier is not checked when constructing the proxy. It will be validated on the when the real Timezone is loaded.
+full_name: TZInfo::TimezoneProxy::new
+is_singleton: true
+name: new
+params: (identifier)
+visibility: public

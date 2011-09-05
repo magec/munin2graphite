@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Application#change_privilege
+is_singleton: false
+name: change_privilege
+params: ()
+visibility: public

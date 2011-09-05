@@ -1,0 +1,43 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A description of this timezone in relation to the country, e.g. &quot;Eastern Time&quot;. This is usually nil for countries having only a single Timezone.
+  name: description
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The zone identifier.
+  name: identifier
+  rw: R
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A Timezone within a Country. This contains extra information about the Timezone that is specific to the Country (a Timezone could be used by multiple countries).
+constants: []
+
+full_name: TZInfo::CountryTimezone
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: description_or_friendly_identifier
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: hash
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: latitude
+- !ruby/object:RI::MethodSummary 
+  name: longitude
+- !ruby/object:RI::MethodSummary 
+  name: timezone
+name: CountryTimezone
+superclass: Object

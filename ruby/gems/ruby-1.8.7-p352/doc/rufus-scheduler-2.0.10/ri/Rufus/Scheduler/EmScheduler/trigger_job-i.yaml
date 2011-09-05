@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If 'blocking' is set to true, the block will get called at the 'next_tick'. Else the block will get called via 'defer' (own thread).
+full_name: Rufus::Scheduler::EmScheduler#trigger_job
+is_singleton: false
+name: trigger_job
+params: (blocking, &block)
+visibility: protected

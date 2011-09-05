@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initializes a new TZDataParser. input_dir must contain the extracted tzdata tarball. output_dir is the location to output the modules (in definitions and indexes directories).
+full_name: TZInfo::TZDataParser::new
+is_singleton: true
+name: new
+params: (input_dir, output_dir)
+visibility: public

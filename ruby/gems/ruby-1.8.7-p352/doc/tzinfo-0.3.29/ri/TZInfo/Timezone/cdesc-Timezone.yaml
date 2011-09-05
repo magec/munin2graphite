@@ -1,0 +1,92 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _load
+- !ruby/object:RI::MethodSummary 
+  name: all
+- !ruby/object:RI::MethodSummary 
+  name: all_country_zone_identifiers
+- !ruby/object:RI::MethodSummary 
+  name: all_country_zones
+- !ruby/object:RI::MethodSummary 
+  name: all_data_zone_identifiers
+- !ruby/object:RI::MethodSummary 
+  name: all_data_zones
+- !ruby/object:RI::MethodSummary 
+  name: all_identifiers
+- !ruby/object:RI::MethodSummary 
+  name: all_linked_zone_identifiers
+- !ruby/object:RI::MethodSummary 
+  name: all_linked_zones
+- !ruby/object:RI::MethodSummary 
+  name: default_dst
+- !ruby/object:RI::MethodSummary 
+  name: default_dst=
+- !ruby/object:RI::MethodSummary 
+  name: get
+- !ruby/object:RI::MethodSummary 
+  name: get_proxy
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: us_zone_identifiers
+- !ruby/object:RI::MethodSummary 
+  name: us_zones
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Timezone is the base class of all timezones. It provides a factory method get to access timezones by identifier. Once a specific Timezone has been retrieved, DateTimes, Times and timestamps can be converted between the UTC and the local time for the zone. For example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  tz = TZInfo::Timezone.get('America/New_York')\n  puts tz.utc_to_local(DateTime.new(2005,8,29,15,35,0)).to_s\n  puts tz.local_to_utc(Time.utc(2005,8,29,11,35,0)).to_s\n  puts tz.utc_to_local(1125315300).to_s\n"
+- !ruby/struct:SM::Flow::P 
+  body: Each time conversion method returns an object of the same type it was passed.
+- !ruby/struct:SM::Flow::P 
+  body: The timezone information all comes from the tz database (see http://www.twinsun.com/tz/tz-link.htm)
+constants: []
+
+full_name: TZInfo::Timezone
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Comparable
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: <=>
+- !ruby/object:RI::MethodSummary 
+  name: _dump
+- !ruby/object:RI::MethodSummary 
+  name: current_period
+- !ruby/object:RI::MethodSummary 
+  name: current_period_and_time
+- !ruby/object:RI::MethodSummary 
+  name: current_time_and_period
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: friendly_identifier
+- !ruby/object:RI::MethodSummary 
+  name: hash
+- !ruby/object:RI::MethodSummary 
+  name: identifier
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: local_to_utc
+- !ruby/object:RI::MethodSummary 
+  name: name
+- !ruby/object:RI::MethodSummary 
+  name: now
+- !ruby/object:RI::MethodSummary 
+  name: period_for_local
+- !ruby/object:RI::MethodSummary 
+  name: period_for_utc
+- !ruby/object:RI::MethodSummary 
+  name: periods_for_local
+- !ruby/object:RI::MethodSummary 
+  name: strftime
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: utc_to_local
+name: Timezone
+superclass: Object
