@@ -1,0 +1,11 @@
+Host ubuntu
+Port 2220
+
+Host *
+HostName localhost
+User vboxtest
+UserKnownHostsFile /dev/null
+StrictHostKeyChecking no
+IdentitiesOnly yes
+ControlMaster auto
+ControlPath /tmp/socket-%r@%h:%p

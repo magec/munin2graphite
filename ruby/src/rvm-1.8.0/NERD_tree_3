@@ -1,0 +1,51 @@
+" Press ? for help
+
+.. (up a dir)
+<wayneeseguin/projects/rvm/rvm/
+|+autom4te.cache/
+|+bdsm/
+|+bin/
+|+binscripts/
+|~config/
+| |-db
+| |-Gemfile
+| |-known
+| `-md5
+|+contrib/
+|+docs/
+|+examples/
+|+gems/
+|+gemsets/
+|+help/
+|+lib/
+|+man/
+|+meta/
+|+patches/
+|+pkg/
+|+releases/
+|+rubygems/
+|+scripts/
+|+share/
+|+test/
+|+tmp/
+|-aclocal.m4
+|-bdsmup*
+|-ChangeLog
+|-config.log
+|-config.status*
+|-configure*
+|-depcomp* -> /usr/share/automake-1.10/depcomp [RO]
+|-History.txt
+|-install* -> /Users/wayneeseguin/projects/rvm/rvm/scripts/install
+|-INSTALL -> /usr/share/automake-1.10/INSTALL [RO]
+|-install-sh* -> /usr/share/automake-1.10/install-sh [RO]
+|-LICENCE
+|-Makefile
+|-Makefile.in
+|-Manifest.txt
+|-missing* -> /usr/share/automake-1.10/missing [RO]
+|-NERD_tree_1
+|-Rakefile
+|-README
+|-README.txt -> /Users/wayneeseguin/projects/rvm/rvm/README
+`-VERSION

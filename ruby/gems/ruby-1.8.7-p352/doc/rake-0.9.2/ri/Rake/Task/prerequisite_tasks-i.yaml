@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: List of prerequisite tasks
+full_name: Rake::Task#prerequisite_tasks
+is_singleton: false
+name: prerequisite_tasks
+params: ()
+visibility: public

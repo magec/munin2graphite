@@ -1,0 +1,23 @@
+have_func: checking for iconv() in iconv.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/iconv    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <iconv.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))iconv; return 0; }
+/* end */
+
+--------------------
+
+checking for const of iconv() 2nd argument... -------------------- no
+
+gcc -E -I../.. -I../../. -I../.././ext/iconv    -g -O2  -fPIC    conftest.c  |
+iconv (iconv_t __cd, char **__restrict __inbuf,
+       size_t *__restrict __inbytesleft,
+       char **__restrict __outbuf,
+       size_t *__restrict __outbytesleft);
+--------------------
+

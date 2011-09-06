@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>option_list (Rake::RDocTask)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/rake/rdoctask.rb, line 165</span>
+165:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">option_list</span>
+166:         <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">dup</span>
+167:         <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;-o&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@rdoc_dir</span>
+168:         <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;--main&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">quote</span>(<span class="ruby-identifier">main</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">main</span>
+169:         <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;--title&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">quote</span>(<span class="ruby-identifier">title</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">title</span>
+170:         <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;-T&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">quote</span>(<span class="ruby-identifier">template</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template</span>
+171:         <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;--inline-source&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">inline_source</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@options</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">&quot;--inline-source&quot;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@options</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">&quot;-S&quot;</span>)
+172:         <span class="ruby-identifier">result</span>
+173:       <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,818 @@
+have_library: checking for t_open() in -lnsl... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lnsl  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘t_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))t_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lnsl  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccAPx6eH.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/socket/conftest.c:3: undefined reference to `t_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { t_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for socket() in -lsocket... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lsocket  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘socket’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))socket; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lsocket  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lsocket
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { socket(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for arpa/inet.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <arpa/inet.h>
+/* end */
+
+--------------------
+
+checking for ipv6... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <sys/types.h>
+2: #include <sys/socket.h>
+3: int
+4: main()
+5: {
+6:   socket(AF_INET6, SOCK_STREAM, 0);
+7: }
+/* end */
+
+--------------------
+
+checking for ipv6 type... -------------------- unknown
+
+have_macro: checking for IPV6_INRIA_VERSION in netinet/in.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:4:3: error: #error 
+conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
+checked program was:
+/* begin */
+1: #include <netinet/in.h>
+2: /*top*/
+3: #ifndef IPV6_INRIA_VERSION
+4: # error
+5: >>>>>> IPV6_INRIA_VERSION undefined <<<<<<
+6: #endif
+/* end */
+
+--------------------
+
+have_macro: checking for __KAME__ in netinet/in.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:4:3: error: #error 
+conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
+checked program was:
+/* begin */
+1: #include <netinet/in.h>
+2: /*top*/
+3: #ifndef __KAME__
+4: # error
+5: >>>>>> __KAME__ undefined <<<<<<
+6: #endif
+/* end */
+
+--------------------
+
+have_macro: checking for _TOSHIBA_INET6 in sys/param.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:4:3: error: #error 
+conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
+checked program was:
+/* begin */
+1: #include <sys/param.h>
+2: /*top*/
+3: #ifndef _TOSHIBA_INET6
+4: # error
+5: >>>>>> _TOSHIBA_INET6 undefined <<<<<<
+6: #endif
+/* end */
+
+--------------------
+
+have_macro: checking for __V6D__ in sys/v6config.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:1:26: error: sys/v6config.h: No such file or directory
+conftest.c:4:3: error: #error 
+conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
+checked program was:
+/* begin */
+1: #include <sys/v6config.h>
+2: /*top*/
+3: #ifndef __V6D__
+4: # error
+5: >>>>>> __V6D__ undefined <<<<<<
+6: #endif
+/* end */
+
+--------------------
+
+have_macro: checking for _ZETA_MINAMI_INET6 in sys/param.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:4:3: error: #error 
+conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
+checked program was:
+/* begin */
+1: #include <sys/param.h>
+2: /*top*/
+3: #ifndef _ZETA_MINAMI_INET6
+4: # error
+5: >>>>>> _ZETA_MINAMI_INET6 undefined <<<<<<
+6: #endif
+/* end */
+
+--------------------
+
+have_library: checking for main() in -linet6... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -linet6  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -linet6
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -linet6  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -linet6
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { main(); return 0; }
+/* end */
+
+--------------------
+
+--------------------
+
+have_struct_member: checking for struct sockaddr_in.sin_len in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:10: error: ‘struct sockaddr_in’ has no member named ‘sin_len’
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: /*top*/
+ 9: int main() { return 0; }
+10: int s = (char *)&((struct sockaddr_in*)0)->sin_len - (char *)0;
+/* end */
+
+--------------------
+
+have_struct_member: checking for struct sockaddr_storage.ss_family in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: /*top*/
+ 9: int main() { return 0; }
+10: int s = (char *)&((struct sockaddr_storage*)0)->ss_family - (char *)0;
+/* end */
+
+--------------------
+
+have_struct_member: checking for struct sockaddr.sa_len in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:10: error: ‘struct sockaddr’ has no member named ‘sa_len’
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: /*top*/
+ 9: int main() { return 0; }
+10: int s = (char *)&((struct sockaddr*)0)->sa_len - (char *)0;
+/* end */
+
+--------------------
+
+have_header: checking for netinet/tcp.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <netinet/tcp.h>
+/* end */
+
+--------------------
+
+have_header: checking for netinet/udp.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <netinet/udp.h>
+/* end */
+
+--------------------
+
+have_func: checking for sendmsg()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘sendmsg’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))sendmsg; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { sendmsg(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for recvmsg()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘recvmsg’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))recvmsg; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { recvmsg(); return 0; }
+/* end */
+
+--------------------
+
+have_struct_member: checking for struct msghdr.msg_control in sys/types.h,sys/socket.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #include <sys/types.h>
+2: #include <sys/socket.h>
+3: 
+4: /*top*/
+5: int main() { return 0; }
+6: int s = (char *)&((struct msghdr*)0)->msg_control - (char *)0;
+/* end */
+
+--------------------
+
+have_struct_member: checking for struct msghdr.msg_accrights in sys/types.h,sys/socket.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c:6: error: ‘struct msghdr’ has no member named ‘msg_accrights’
+checked program was:
+/* begin */
+1: #include <sys/types.h>
+2: #include <sys/socket.h>
+3: 
+4: /*top*/
+5: int main() { return 0; }
+6: int s = (char *)&((struct msghdr*)0)->msg_accrights - (char *)0;
+/* end */
+
+--------------------
+
+checking for wide getaddrinfo... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+  1: #include <sys/types.h>
+  2: #include <netdb.h>
+  3: #include <string.h>
+  4: #include <sys/socket.h>
+  5: #include <netinet/in.h>
+  6: #include <arpa/inet.h>
+  7: 
+  8: #include <stdlib.h>
+  9: 
+ 10: #ifndef EXIT_SUCCESS
+ 11: #define EXIT_SUCCESS 0
+ 12: #endif
+ 13: #ifndef EXIT_FAILURE
+ 14: #define EXIT_FAILURE 1
+ 15: #endif
+ 16: 
+ 17: #ifndef AF_LOCAL
+ 18: #define AF_LOCAL AF_UNIX
+ 19: #endif
+ 20: 
+ 21: int
+ 22: main()
+ 23: {
+ 24:   int passive, gaierr, inet4 = 0, inet6 = 0;
+ 25:   struct addrinfo hints, *ai, *aitop;
+ 26:   char straddr[INET6_ADDRSTRLEN], strport[16];
+ 27: #ifdef _WIN32
+ 28:   WSADATA retdata;
+ 29: 
+ 30:   WSAStartup(MAKEWORD(2, 0), &retdata);
+ 31: #endif
+ 32: 
+ 33:   for (passive = 0; passive <= 1; passive++) {
+ 34:     memset(&hints, 0, sizeof(hints));
+ 35:     hints.ai_family = AF_UNSPEC;
+ 36:     hints.ai_protocol = IPPROTO_TCP;
+ 37:     hints.ai_flags = passive ? AI_PASSIVE : 0;
+ 38:     hints.ai_socktype = SOCK_STREAM;
+ 39:     if ((gaierr = getaddrinfo(NULL, "54321", &hints, &aitop)) != 0) {
+ 40:       (void)gai_strerror(gaierr);
+ 41:       goto bad;
+ 42:     }
+ 43:     for (ai = aitop; ai; ai = ai->ai_next) {
+ 44:       if (ai->ai_family == AF_LOCAL) continue;
+ 45:       if (ai->ai_addr == NULL)
+ 46:         goto bad;
+ 47: #if defined(_AIX)
+ 48:       if (ai->ai_family == AF_INET6 && passive) {
+ 49:         inet6++;
+ 50:         continue;
+ 51:       }
+ 52:       ai->ai_addr->sa_len = ai->ai_addrlen;
+ 53:       ai->ai_addr->sa_family = ai->ai_family;
+ 54: #endif
+ 55:       if (ai->ai_addrlen == 0 ||
+ 56:           getnameinfo(ai->ai_addr, ai->ai_addrlen,
+ 57:                       straddr, sizeof(straddr), strport, sizeof(strport),
+ 58:                       NI_NUMERICHOST|NI_NUMERICSERV) != 0) {
+ 59:         goto bad;
+ 60:       }
+ 61:       if (strcmp(strport, "54321") != 0) {
+ 62:         goto bad;
+ 63:       }
+ 64:       switch (ai->ai_family) {
+ 65:       case AF_INET:
+ 66:         if (passive) {
+ 67:           if (strcmp(straddr, "0.0.0.0") != 0) {
+ 68:             goto bad;
+ 69:           }
+ 70:         } else {
+ 71:           if (strcmp(straddr, "127.0.0.1") != 0) {
+ 72:             goto bad;
+ 73:           }
+ 74:         }
+ 75:         inet4++;
+ 76:         break;
+ 77:       case AF_INET6:
+ 78:         if (passive) {
+ 79:           if (strcmp(straddr, "::") != 0) {
+ 80:             goto bad;
+ 81:           }
+ 82:         } else {
+ 83:           if (strcmp(straddr, "::1") != 0) {
+ 84:             goto bad;
+ 85:           }
+ 86:         }
+ 87:         inet6++;
+ 88:         break;
+ 89:       case AF_UNSPEC:
+ 90:         goto bad;
+ 91:         break;
+ 92:       default:
+ 93:         /* another family support? */
+ 94:         break;
+ 95:       }
+ 96:     }
+ 97:   }
+ 98: 
+ 99:   if (!(inet4 == 0 || inet4 == 2))
+100:     goto bad;
+101:   if (!(inet6 == 0 || inet6 == 2))
+102:     goto bad;
+103: 
+104:   if (aitop)
+105:     freeaddrinfo(aitop);
+106:   exit(EXIT_SUCCESS);
+107: 
+108:  bad:
+109:   if (aitop)
+110:     freeaddrinfo(aitop);
+111:   exit(EXIT_FAILURE);
+112: }
+/* end */
+
+./conftest
+--------------------
+
+have_type: checking for struct addrinfo in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: /*top*/
+ 9: typedef struct addrinfo conftest_type;
+10: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_func: checking for freehostent()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘freehostent’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))freehostent; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccOZxV7U.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/socket/conftest.c:3: undefined reference to `freehostent'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { freehostent(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for freeaddrinfo()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘freeaddrinfo’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))freeaddrinfo; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { freeaddrinfo(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for gai_strerror()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘gai_strerror’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))gai_strerror; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { gai_strerror(); return 0; }
+/* end */
+
+--------------------
+
+checking for gai_strerror() returns const pointer... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+conftest.c: In function ‘conftest_gai_strerror_is_const’:
+conftest.c:12: error: assignment of read-only location
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: #include <stdlib.h>
+ 9: void
+10: conftest_gai_strerror_is_const()
+11: {
+12:     *gai_strerror(0) = 0;
+13: }
+/* end */
+
+--------------------
+
+have_func: checking for getnameinfo() in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: /*top*/
+ 9: int main() { return 0; }
+10: int t() { void ((*volatile p)()); p = (void ((*)()))getnameinfo; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for getaddrinfo() in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: /*top*/
+ 9: int main() { return 0; }
+10: int t() { void ((*volatile p)()); p = (void ((*)()))getaddrinfo; return 0; }
+/* end */
+
+--------------------
+
+have_type: checking for socklen_t in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+ 1: #include <sys/types.h>
+ 2: #include <netdb.h>
+ 3: #include <string.h>
+ 4: #include <sys/socket.h>
+ 5: #include <netinet/in.h>
+ 6: #include <arpa/inet.h>
+ 7: 
+ 8: /*top*/
+ 9: typedef socklen_t conftest_type;
+10: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_header: checking for sys/un.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <sys/un.h>
+/* end */
+
+--------------------
+
+have_header: checking for sys/uio.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <sys/uio.h>
+/* end */
+
+--------------------
+
+have_func: checking for socket()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘socket’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))socket; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { socket(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for hsterror()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘hsterror’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))hsterror; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccOA1aqO.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/socket/conftest.c:3: undefined reference to `hsterror'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { hsterror(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for getipnodebyname()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘getipnodebyname’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))getipnodebyname; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccijBrEQ.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/socket/conftest.c:3: undefined reference to `getipnodebyname'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { getipnodebyname(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for gethostbyname2()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘gethostbyname2’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))gethostbyname2; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { gethostbyname2(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for socketpair()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘socketpair’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))socketpair; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { socketpair(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for gethostname()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘gethostname’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))gethostname; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/socket    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { gethostname(); return 0; }
+/* end */
+
+--------------------
+

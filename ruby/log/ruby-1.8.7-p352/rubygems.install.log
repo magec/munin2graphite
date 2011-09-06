@@ -1,0 +1,31 @@
+[2011-09-06 11:37:38] GEM_PATH="/server/graphite/ruby//gems/ruby-1.8.7-p352:/server/graphite/ruby//gems/ruby-1.8.7-p352@global:/server/graphite/ruby//gems/ruby-1.8.7-p352:/server/graphite/ruby//gems/ruby-1.8.7-p352@global" GEM_HOME="/server/graphite/ruby//gems/ruby-1.8.7-p352" "/server/graphite/ruby//rubies/ruby-1.8.7-p352/bin/ruby" "/server/graphite/ruby//src/rubygems-1.8.6/setup.rb"
+RubyGems 1.8.6 installed
+
+﻿=== 1.8.6 / 2011-07-25
+
+* 1 major enhancement:
+
+  * Restore behavior of Gem::Specification#loaded?  Ruby Bug #5032
+
+* 1 minor enhancement:
+
+  * Add autorequires and delay startup of RubyGems until require is called.
+    See Ruby bug #4962
+
+* 1 bug fix:
+
+  * Clean up SourceIndex.add_specs to not be so damn noisy. (tadman)
+  * Added missing APPLE_GEM_HOME in paths.
+  * Extend YAML::Syck::DefaultKey fixing to `marshal_dump` as well.
+  * Fix #29216: check correct bin_dir in check_that_user_bin_dir_is_in_path.
+  * Revert Gem.latest_load_paths to working order (PathSupport revert).
+  * Restore normalization of GEM_HOME.
+  * Handle the Syck DefaultKey problem once and for all.
+  * Fix SystemStackError occurring with "gem list -r -a" on 1.9.
+
+
+------------------------------------------------------------------------------
+
+RubyGems installed the following executables:
+	/server/graphite/ruby//rubies/ruby-1.8.7-p352/bin/gem
+

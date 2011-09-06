@@ -1,0 +1,71 @@
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=10UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=100UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=1000UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=10000UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=100000UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=1000000UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=10000000UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=100000000UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=1000000000UL -c conftest.c"
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+
+"gcc -I../.. -I../../. -I../.././ext/bigdecimal    -g -O2  -fPIC    -DBASE=10000000000UL -c conftest.c"
+conftest.c:2: error: size of array ‘conftest_const’ is negative
+checked program was:
+/* begin */
+1: /*top*/
+2: int conftest_const[((BASE * (BASE+1)) / BASE == (BASE+1)) ? 1 : -1];
+/* end */
+

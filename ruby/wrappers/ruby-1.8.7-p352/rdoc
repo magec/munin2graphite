@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ -s "/server/graphite/ruby//environments/ruby-1.8.7-p352" ]]
+then
+  source "/server/graphite/ruby//environments/ruby-1.8.7-p352"
+  exec rdoc "$@"
+else
+  echo "ERROR: Missing RVM environment file: '/server/graphite/ruby//environments/ruby-1.8.7-p352'" >&2
+  exit 1
+fi
+  

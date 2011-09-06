@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Rake::Task)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/rake/task.rb, line 71</span>
+71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">task_name</span>, <span class="ruby-identifier">app</span>)
+72:       <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">task_name</span>.<span class="ruby-identifier">to_s</span>
+73:       <span class="ruby-ivar">@prerequisites</span> = []
+74:       <span class="ruby-ivar">@actions</span> = []
+75:       <span class="ruby-ivar">@already_invoked</span> = <span class="ruby-keyword kw">false</span>
+76:       <span class="ruby-ivar">@full_comment</span> = <span class="ruby-keyword kw">nil</span>
+77:       <span class="ruby-ivar">@comment</span> = <span class="ruby-keyword kw">nil</span>
+78:       <span class="ruby-ivar">@lock</span> = <span class="ruby-constant">Monitor</span>.<span class="ruby-identifier">new</span>
+79:       <span class="ruby-ivar">@application</span> = <span class="ruby-identifier">app</span>
+80:       <span class="ruby-ivar">@scope</span> = <span class="ruby-identifier">app</span>.<span class="ruby-identifier">current_scope</span>
+81:       <span class="ruby-ivar">@arg_names</span> = <span class="ruby-keyword kw">nil</span>
+82:       <span class="ruby-ivar">@locations</span> = []
+83:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

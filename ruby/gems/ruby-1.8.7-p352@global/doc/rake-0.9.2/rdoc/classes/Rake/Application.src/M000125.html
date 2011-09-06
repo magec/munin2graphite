@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>display_tasks_and_comments (Rake::Application)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/rake/application.rb, line 205</span>
+205:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display_tasks_and_comments</span>
+206:       <span class="ruby-identifier">displayable_tasks</span> = <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+207:         <span class="ruby-identifier">t</span>.<span class="ruby-identifier">comment</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">show_task_pattern</span>
+208:       }
+209:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">show_tasks</span>
+210:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:tasks</span>
+211:         <span class="ruby-identifier">width</span> = <span class="ruby-identifier">displayable_tasks</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">name_with_args</span>.<span class="ruby-identifier">length</span> }.<span class="ruby-identifier">max</span> <span class="ruby-operator">||</span> <span class="ruby-value">10</span>
+212:         <span class="ruby-identifier">max_column</span> = <span class="ruby-identifier">truncate_output?</span> <span class="ruby-value">? </span><span class="ruby-identifier">terminal_width</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">-</span> <span class="ruby-value">7</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+213:         <span class="ruby-identifier">displayable_tasks</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+214:           <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;#{name} %-#{width}s  # %s\n&quot;</span>,
+215:             <span class="ruby-identifier">t</span>.<span class="ruby-identifier">name_with_args</span>, <span class="ruby-identifier">max_column</span> <span class="ruby-value">? </span><span class="ruby-identifier">truncate</span>(<span class="ruby-identifier">t</span>.<span class="ruby-identifier">comment</span>, <span class="ruby-identifier">max_column</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">comment</span>
+216:         <span class="ruby-keyword kw">end</span>
+217:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:describe</span>
+218:         <span class="ruby-identifier">displayable_tasks</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+219:           <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{name} #{t.name_with_args}&quot;</span>
+220:           <span class="ruby-identifier">t</span>.<span class="ruby-identifier">full_comment</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+221:             <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;    #{line}&quot;</span>
+222:           <span class="ruby-keyword kw">end</span>
+223:           <span class="ruby-identifier">puts</span>
+224:         <span class="ruby-keyword kw">end</span>
+225:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:lines</span>
+226:         <span class="ruby-identifier">displayable_tasks</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+227:           <span class="ruby-identifier">t</span>.<span class="ruby-identifier">locations</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">loc</span><span class="ruby-operator">|</span>
+228:             <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;#{name} %-30s %s\n&quot;</span>,<span class="ruby-identifier">t</span>.<span class="ruby-identifier">name_with_args</span>, <span class="ruby-identifier">loc</span>
+229:           <span class="ruby-keyword kw">end</span>
+230:         <span class="ruby-keyword kw">end</span>
+231:       <span class="ruby-keyword kw">else</span>
+232:         <span class="ruby-identifier">fail</span> <span class="ruby-node">&quot;Unknown show task mode: '#{options.show_tasks}'&quot;</span>
+233:       <span class="ruby-keyword kw">end</span>
+234:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

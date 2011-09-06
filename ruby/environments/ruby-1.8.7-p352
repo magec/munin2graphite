@@ -1,0 +1,11 @@
+export PATH="/server/graphite/ruby//gems/ruby-1.8.7-p352/bin:/server/graphite/ruby//gems/ruby-1.8.7-p352@global/bin:/server/graphite/ruby//rubies/ruby-1.8.7-p352/bin:/usr/local/bin:$PATH"
+rvm_path='/server/graphite/ruby/' ; export rvm_path
+RUBY_VERSION='ruby-1.8.7-p352' ; export RUBY_VERSION
+GEM_HOME='/server/graphite/ruby//gems/ruby-1.8.7-p352' ; export GEM_HOME
+GEM_PATH='/server/graphite/ruby//gems/ruby-1.8.7-p352:/server/graphite/ruby//gems/ruby-1.8.7-p352@global' ; export GEM_PATH
+MY_RUBY_HOME='/server/graphite/ruby//rubies/ruby-1.8.7-p352' ; export MY_RUBY_HOME
+IRBRC='/server/graphite/ruby//rubies/ruby-1.8.7-p352/.irbrc' ; export IRBRC
+rvm_ruby_string='ruby-1.8.7-p352' ; export rvm_ruby_string
+unset rvm_gemset_name
+unset MAGLEV_HOME
+unset RBXOPT

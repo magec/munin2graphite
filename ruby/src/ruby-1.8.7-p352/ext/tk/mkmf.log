@@ -1,0 +1,419 @@
+have_func: checking for ruby_native_thread_p() in ruby.h... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘ruby_native_thread_p’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))ruby_native_thread_p; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccoyR36K.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/tk/conftest.c:5: undefined reference to `ruby_native_thread_p'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { ruby_native_thread_p(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_errinfo() in ruby.h... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘rb_errinfo’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_errinfo; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cckV8LHZ.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/tk/conftest.c:5: undefined reference to `rb_errinfo'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { rb_errinfo(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_safe_level() in ruby.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘rb_safe_level’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_safe_level; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { rb_safe_level(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_lookup() in ruby.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_hash_lookup; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_proc_new() in ruby.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘rb_proc_new’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_proc_new; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { rb_proc_new(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_obj_untrust() in ruby.h... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘rb_obj_untrust’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_obj_untrust; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cc0GNCIV.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/tk/conftest.c:5: undefined reference to `rb_obj_untrust'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { rb_obj_untrust(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_obj_taint() in ruby.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_obj_taint; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_set_safe_level_force() in ruby.h... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘rb_set_safe_level_force’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_set_safe_level_force; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccSUujWg.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/tk/conftest.c:5: undefined reference to `rb_set_safe_level_force'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { rb_set_safe_level_force(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_sourcefile() in ruby.h... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘rb_sourcefile’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_sourcefile; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cckrZ8Ac.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/tk/conftest.c:5: undefined reference to `rb_sourcefile'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { rb_sourcefile(); return 0; }
+/* end */
+
+--------------------
+
+have_struct_member: checking for struct RArray.ptr in ruby.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int s = (char *)&((struct RArray*)0)->ptr - (char *)0;
+/* end */
+
+--------------------
+
+have_struct_member: checking for struct RArray.len in ruby.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int s = (char *)&((struct RArray*)0)->len - (char *)0;
+/* end */
+
+--------------------
+
+have_library: checking for t_open() in -lnsl... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lnsl  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘t_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))t_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lnsl  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccYsOWav.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/tk/conftest.c:3: undefined reference to `t_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { t_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for socket() in -lsocket... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lsocket  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘socket’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))socket; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lsocket  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lsocket
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { socket(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for dlopen() in -ldl... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldl  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dlopen’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dlopen; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldl  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dlopen(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for log() in -lm... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -lruby-static -lm -ldl  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <math.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))log; return 0; }
+/* end */
+
+--------------------
+
+"gcc -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC     -c conftest.c"
+conftest.c:4:3: error: #error 
+conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: /*top*/
+3: #ifndef HAVE_NATIVETHREAD
+4: # error
+5: >>>>>> HAVE_NATIVETHREAD undefined <<<<<<
+6: #endif
+/* end */
+
+find_library: checking for XOpenDisplay() in -lX11... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -lruby-static -lX11 -lm -ldl  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘XOpenDisplay’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))XOpenDisplay; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -lruby-static -lX11 -lm -ldl  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lX11
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { XOpenDisplay(); return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L/usr/lib/X11 -Wl,-R/usr/lib/X11 -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -lruby-static -lX11 -lm -ldl  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘XOpenDisplay’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))XOpenDisplay; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/tk    -g -O2  -fPIC   conftest.c  -L. -L../.. -L/usr/lib/X11 -Wl,-R/usr/lib/X11 -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -lruby-static -lX11 -lm -ldl  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lX11
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { XOpenDisplay(); return 0; }
+/* end */
+
+--------------------
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rsync -av --exclude ruby ${projects_path}/bdsm/extensions/builtin/core/modules/shell ${projects_path}/rvm/rvm/scripts/bdsm
+

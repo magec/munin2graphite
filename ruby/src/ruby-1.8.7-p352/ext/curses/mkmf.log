@@ -1,0 +1,94 @@
+have_library: checking for tgetent() in -ltinfo... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ltinfo  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘tgetent’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))tgetent; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ltinfo  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -ltinfo
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { tgetent(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for tgetent() in -ltermcap... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ltermcap  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘tgetent’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))tgetent; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ltermcap  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { tgetent(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for ncurses.h... -------------------- no
+
+"gcc -E -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC    conftest.c -o conftest.i"
+conftest.c:1:21: error: ncurses.h: No such file or directory
+checked program was:
+/* begin */
+1: #include <ncurses.h>
+/* end */
+
+--------------------
+
+have_header: checking for ncurses/curses.h... -------------------- no
+
+"gcc -E -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC    conftest.c -o conftest.i"
+conftest.c:1:28: error: ncurses/curses.h: No such file or directory
+checked program was:
+/* begin */
+1: #include <ncurses/curses.h>
+/* end */
+
+--------------------
+
+have_header: checking for curses_colr/curses.h... -------------------- no
+
+"gcc -E -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC    conftest.c -o conftest.i"
+conftest.c:1:32: error: curses_colr/curses.h: No such file or directory
+checked program was:
+/* begin */
+1: #include <curses_colr/curses.h>
+/* end */
+
+--------------------
+
+have_header: checking for curses.h... -------------------- no
+
+"gcc -E -I../.. -I../../. -I../.././ext/curses    -g -O2  -fPIC    conftest.c -o conftest.i"
+conftest.c:1:20: error: curses.h: No such file or directory
+checked program was:
+/* begin */
+1: #include <curses.h>
+/* end */
+
+--------------------
+

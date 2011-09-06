@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Send the message to the default rake output (which is $stderr).
+full_name: Rake::FileUtilsExt#rake_output_message
+is_singleton: false
+name: rake_output_message
+params: (message)
+visibility: public

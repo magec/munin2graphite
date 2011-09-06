@@ -1,0 +1,1578 @@
+have_library: checking for t_open() in -lnsl... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lnsl  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘t_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))t_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lnsl  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccuFLmwu.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `t_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { t_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for socket() in -lsocket... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lsocket  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘socket’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))socket; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lsocket  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lsocket
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { socket(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for assert.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <assert.h>
+/* end */
+
+--------------------
+
+have_header: checking for openssl/ssl.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <openssl/ssl.h>
+/* end */
+
+--------------------
+
+have_library: checking for OpenSSL_add_all_digests() in -lcrypto... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘OpenSSL_add_all_digests’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))OpenSSL_add_all_digests; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { OpenSSL_add_all_digests(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for SSL_library_init() in -lssl... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘SSL_library_init’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))SSL_library_init; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { SSL_library_init(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for openssl/conf_api.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <openssl/conf_api.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_str_set_len() in ruby.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_str_set_len; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_block_call() in ruby.h... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include <ruby.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_block_call; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ERR_peek_last_error()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ERR_peek_last_error’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ERR_peek_last_error; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ERR_peek_last_error(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for BN_mod_add()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘BN_mod_add’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))BN_mod_add; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { BN_mod_add(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for BN_mod_sqr()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘BN_mod_sqr’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))BN_mod_sqr; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { BN_mod_sqr(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for BN_mod_sub()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘BN_mod_sub’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))BN_mod_sub; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { BN_mod_sub(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for BN_pseudo_rand_range()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘BN_pseudo_rand_range’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))BN_pseudo_rand_range; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { BN_pseudo_rand_range(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for BN_rand_range()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘BN_rand_range’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))BN_rand_range; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { BN_rand_range(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for CONF_get1_default_config_file()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘CONF_get1_default_config_file’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))CONF_get1_default_config_file; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { CONF_get1_default_config_file(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_CIPHER_CTX_copy()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_CIPHER_CTX_copy’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_CIPHER_CTX_copy; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccG9oCrN.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `EVP_CIPHER_CTX_copy'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_CIPHER_CTX_copy(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_CIPHER_CTX_set_padding()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_CIPHER_CTX_set_padding’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_CIPHER_CTX_set_padding; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_CIPHER_CTX_set_padding(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_CipherFinal_ex()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_CipherFinal_ex’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_CipherFinal_ex; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_CipherFinal_ex(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_CipherInit_ex()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_CipherInit_ex’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_CipherInit_ex; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_CipherInit_ex(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_DigestFinal_ex()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_DigestFinal_ex’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_DigestFinal_ex; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_DigestFinal_ex(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_DigestInit_ex()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_DigestInit_ex’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_DigestInit_ex; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_DigestInit_ex(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_cleanup()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_MD_CTX_cleanup’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_MD_CTX_cleanup; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_MD_CTX_cleanup(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_create()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_MD_CTX_create’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_MD_CTX_create; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_MD_CTX_create(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_destroy()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_MD_CTX_destroy’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_MD_CTX_destroy; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_MD_CTX_destroy(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_init()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘EVP_MD_CTX_init’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))EVP_MD_CTX_init; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { EVP_MD_CTX_init(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for HMAC_CTX_cleanup()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘HMAC_CTX_cleanup’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))HMAC_CTX_cleanup; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { HMAC_CTX_cleanup(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for HMAC_CTX_copy()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘HMAC_CTX_copy’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))HMAC_CTX_copy; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cckqOMZd.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `HMAC_CTX_copy'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { HMAC_CTX_copy(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for HMAC_CTX_init()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘HMAC_CTX_init’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))HMAC_CTX_init; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { HMAC_CTX_init(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for PEM_def_callback()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘PEM_def_callback’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))PEM_def_callback; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { PEM_def_callback(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for PKCS5_PBKDF2_HMAC()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘PKCS5_PBKDF2_HMAC’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))PKCS5_PBKDF2_HMAC; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccMp5DRJ.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `PKCS5_PBKDF2_HMAC'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { PKCS5_PBKDF2_HMAC(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for PKCS5_PBKDF2_HMAC_SHA1()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘PKCS5_PBKDF2_HMAC_SHA1’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))PKCS5_PBKDF2_HMAC_SHA1; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { PKCS5_PBKDF2_HMAC_SHA1(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509V3_set_nconf()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509V3_set_nconf’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509V3_set_nconf; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509V3_set_nconf(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509V3_EXT_nconf_nid()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509V3_EXT_nconf_nid’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509V3_EXT_nconf_nid; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509V3_EXT_nconf_nid(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_CRL_add0_revoked()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509_CRL_add0_revoked’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509_CRL_add0_revoked; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509_CRL_add0_revoked(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_CRL_set_issuer_name()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509_CRL_set_issuer_name’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509_CRL_set_issuer_name; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509_CRL_set_issuer_name(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_CRL_set_version()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509_CRL_set_version’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509_CRL_set_version; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509_CRL_set_version(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_CRL_sort()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509_CRL_sort’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509_CRL_sort; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509_CRL_sort(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_NAME_hash_old()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509_NAME_hash_old’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509_NAME_hash_old; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccSDZdMK.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `X509_NAME_hash_old'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509_NAME_hash_old(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_get_ex_data()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509_STORE_get_ex_data’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509_STORE_get_ex_data; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccK8PwBS.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `X509_STORE_get_ex_data'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509_STORE_get_ex_data(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_set_ex_data()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘X509_STORE_set_ex_data’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))X509_STORE_set_ex_data; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccIUJ0P1.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `X509_STORE_set_ex_data'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { X509_STORE_set_ex_data(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for OBJ_NAME_do_all_sorted()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘OBJ_NAME_do_all_sorted’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))OBJ_NAME_do_all_sorted; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { OBJ_NAME_do_all_sorted(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_SESSION_get_id()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘SSL_SESSION_get_id’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))SSL_SESSION_get_id; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { SSL_SESSION_get_id(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for OPENSSL_cleanse()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘OPENSSL_cleanse’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))OPENSSL_cleanse; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { OPENSSL_cleanse(); return 0; }
+/* end */
+
+--------------------
+
+"gcc -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #define FOO(...) foo(__VA_ARGS__)
+2:  int x(){FOO(1);FOO(1,2);FOO(1,2,3);}
+/* end */
+
+have_func: checking for SSLv2_method()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘SSLv2_method’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))SSLv2_method; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { SSLv2_method(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSLv2_server_method()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘SSLv2_server_method’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))SSLv2_server_method; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { SSLv2_server_method(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSLv2_client_method()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘SSLv2_client_method’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))SSLv2_client_method; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { SSLv2_client_method(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_set_tlsext_host_name() in openssl/ssl.h... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘SSL_set_tlsext_host_name’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include <openssl/ssl.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))SSL_set_tlsext_host_name; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccCNB6sm.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:5: undefined reference to `SSL_set_tlsext_host_name'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include <openssl/ssl.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { SSL_set_tlsext_host_name(); return 0; }
+/* end */
+
+--------------------
+
+have_macro: checking for SSL_set_tlsext_host_name in openssl/ssl.h... -------------------- no
+
+"gcc -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC     -c conftest.c"
+conftest.c:4:3: error: #error 
+conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
+checked program was:
+/* begin */
+1: #include <openssl/ssl.h>
+2: /*top*/
+3: #ifndef SSL_set_tlsext_host_name
+4: # error
+5: >>>>>> SSL_set_tlsext_host_name undefined <<<<<<
+6: #endif
+/* end */
+
+--------------------
+
+have_header: checking for openssl/engine.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <openssl/engine.h>
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_add()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_add’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_add; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_add(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_builtin_engines()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_builtin_engines’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_builtin_engines; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_builtin_engines(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_openbsd_dev_crypto()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_openbsd_dev_crypto’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_openbsd_dev_crypto; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccyhlnVU.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_openbsd_dev_crypto'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_openbsd_dev_crypto(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_get_digest()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_get_digest’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_get_digest; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_get_digest(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_get_cipher()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_get_cipher’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_get_cipher; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_get_cipher(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_cleanup()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_cleanup’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_cleanup; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_cleanup(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_4758cca()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_4758cca’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_4758cca; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccIqjUKA.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_4758cca'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_4758cca(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_aep()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_aep’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_aep; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cceYdn6N.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_aep'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_aep(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_atalla()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_atalla’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_atalla; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cc4pKqkW.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_atalla'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_atalla(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_chil()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_chil’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_chil; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccYTo3q4.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_chil'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_chil(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_cswift()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_cswift’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_cswift; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccaRF9te.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_cswift'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_cswift(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_nuron()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_nuron’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_nuron; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccekNkGq.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_nuron'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_nuron(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_sureware()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_sureware’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_sureware; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccwR4uch.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_sureware'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_sureware(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_ubsec()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘ENGINE_load_ubsec’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ENGINE_load_ubsec; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-static -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccmdJEjp.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl/conftest.c:3: undefined reference to `ENGINE_load_ubsec'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { ENGINE_load_ubsec(); return 0; }
+/* end */
+
+--------------------
+
+"gcc -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #include <openssl/opensslv.h>
+2: #if OPENSSL_VERSION_NUMBER < 0x00907000L
+3: # error "OpenSSL version is less than 0.9.7."
+4: #endif
+/* end */
+
+have_header: checking for openssl/ocsp.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <openssl/ocsp.h>
+/* end */
+
+--------------------
+
+have_struct_member: checking for EVP_CIPHER_CTX.flags in openssl/evp.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #include <openssl/evp.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int s = (char *)&((EVP_CIPHER_CTX*)0)->flags - (char *)0;
+/* end */
+
+--------------------
+
+have_struct_member: checking for EVP_CIPHER_CTX.engine in openssl/evp.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #include <openssl/evp.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int s = (char *)&((EVP_CIPHER_CTX*)0)->engine - (char *)0;
+/* end */
+
+--------------------
+
+have_struct_member: checking for X509_ATTRIBUTE.single in openssl/x509.h... -------------------- yes
+
+"gcc -I../.. -I../../. -I../.././ext/openssl    -g -O2  -fPIC     -c conftest.c"
+checked program was:
+/* begin */
+1: #include <openssl/x509.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int s = (char *)&((X509_ATTRIBUTE*)0)->single - (char *)0;
+/* end */
+
+--------------------
+
