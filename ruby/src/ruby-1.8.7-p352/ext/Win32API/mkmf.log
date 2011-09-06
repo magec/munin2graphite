@@ -1,0 +1,11 @@
+have_header: checking for windows.h... -------------------- no
+
+"gcc -E -I../.. -I../../. -I../.././ext/Win32API    -g -O2  -fPIC    conftest.c -o conftest.i"
+conftest.c:1:21: error: windows.h: No such file or directory
+checked program was:
+/* begin */
+1: #include <windows.h>
+/* end */
+
+--------------------
+

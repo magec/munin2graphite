@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+source "$rvm_scripts_path/base"
+source "$rvm_scripts_path/functions/build"
+source "$rvm_scripts_path/functions/db"
+source "$rvm_scripts_path/functions/pakages"
+
+#
+# Functions
+#
+usage()
+{
+  cat -v "${rvm_help_path}/build"
+}
+
+download()
+{
+  #   ruby
+  #   dependencies (zlib,readline,openssl,iconv)
+  for dependency in zlib readline openssl iconv ; do
+
+  done
+}
+
+extract()
+{
+  #   ruby
+  #   dependencies (zlib,readline,openssl,iconv)
+}
+
+compile()
+{
+  #   ruby
+  #   dependencies
+}
+
+install()
+{
+  #   dependencies
+  #   ruby
+}
+
+package()
+{
+  # create tarballs in $rvm_builds_path
+  # .tar.gz
+  # .bz2
+}
+
+checksum()
+{
+  #   md5
+  #   sha1
+}
+
+#
+# Parse Args
+#
+while [[ $# -gt 0 ]] ; do
+
+  token="$1" ; shift
+
+  case "$token" in
+    --trace)
+      set -o xtrace
+export PS4="+ \${BASH_SOURCE##\${rvm_path:-}} : \${FUNCNAME[0]:+\${FUNCNAME[0]}()}  \${LINENO} > "
+      ;;
+
+    usage|help)
+      usage
+      exit 0
+      ;;
+
+    *,*)
+      ruby_strings="$token"
+      ;;
+
+    *)
+      # Check for proper ruby_string
+      ;;
+  esac
+done
+
+true ${ruby_string:?ERROR: A ruby must be selected.}
+
+for ruby_string in ${ruby_strings} ; do
+  download
+  extract
+  compile
+  install
+  package
+  checksum
+done

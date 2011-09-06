@@ -1,0 +1,131 @@
+" Press ? for help
+
+.. (up a dir)
+<wayneeseguin/projects/rvm/rvm/
+|+autom4te.cache/
+|+bin/
+|+binscripts/
+|+config/
+|+contrib/
+|+docs/
+|+examples/
+|+gems/
+|+gemsets/
+|+help/
+|+hooks/
+|+lib/
+|+man/
+|+meta/
+|+patches/
+|+pkg/
+|+releases/
+|+rubygems/
+|~scripts/
+| |+extras/
+| |~functions/
+| | |+hooks/
+| | |+manage/
+| | |-benchmark
+| | |-build
+| | |-bundler
+| | |-cleanup
+| | |-db
+| | |-developer
+| | |-env
+| | |-environment
+| | |-fun
+| | |-gemset
+| | |-group
+| | |-implode
+| | |-init
+| | |-install
+| | |-installer*
+| | |-irbrc
+| | |-logging
+| | |-pkg
+| | |-reset
+| | |-rvmrc
+| | |-state
+| | `-utility
+| |+zsh/
+| |-alias*
+| |-aliases
+| |-array
+| |-base
+| |-build
+| |-cd
+| |-cleanup*
+| |-cli
+| |-color*
+| |-completion
+| |-current*
+| |-db*
+| |-default
+| |-disk-usage*
+| |-docs*
+| |-env*
+| |-environment-convertor*
+| |-extract
+| |-fetch*
+| |-gemsets
+| |-get*
+| |-group*
+| |-hash*
+| |-help*
+| |-hook*
+| |-info*
+| |-initialize
+| |-install*
+| |-irbrc
+| |-irbrc.rb
+| |-list*
+| |-maglev*
+| |-manage*
+| |-match*
+| |-md5*
+| |-migrate*
+| |-monitor*
+| |-notes*
+| |-override_gem*
+| |-package
+| |-patches
+| |-patchsets*
+| |-pkg*
+| |-repair*
+| |-rtfm*
+| |-rubygems*
+| |-rvm*
+| |-rvm-install* -> /Users/wayneeseguin/projects/rvm/rvm/scripts/install
+| |-selector*
+| |-set*
+| |-snapshot*
+| |-tools*
+| |-update* -> /Users/wayneeseguin/projects/rvm/rvm/scripts/install
+| |-upgrade*
+| |-version
+| `-wrapper*
+|+share/
+|+test/
+|+tmp/
+|-aclocal.m4
+|-bdsmup*
+|-ChangeLog
+|-config.log
+|-config.status*
+|-configure*
+|-depcomp* -> /usr/share/automake-1.10/depcomp [RO]
+|-History.txt
+|-install* -> /Users/wayneeseguin/projects/rvm/rvm/scripts/install
+|-INSTALL -> /usr/share/automake-1.10/INSTALL [RO]
+|-install-sh* -> /usr/share/automake-1.10/install-sh [RO]
+|-LICENCE
+|-Makefile
+|-Makefile.in
+|-Manifest.txt
+|-missing* -> /usr/share/automake-1.10/missing [RO]
+|-NERD_tree_1
+|-NERD_tree_3
+|-Rakefile
+|-README
+|-README.txt -> /Users/wayneeseguin/projects/rvm/rvm/README
+`-VERSION

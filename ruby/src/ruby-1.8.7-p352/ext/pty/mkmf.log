@@ -1,0 +1,103 @@
+have_header: checking for sys/stropts.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <sys/stropts.h>
+/* end */
+
+--------------------
+
+have_func: checking for setresuid()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘setresuid’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))setresuid; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { setresuid(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for libutil.h... -------------------- no
+
+"gcc -E -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC    conftest.c -o conftest.i"
+conftest.c:1:21: error: libutil.h: No such file or directory
+checked program was:
+/* begin */
+1: #include <libutil.h>
+/* end */
+
+--------------------
+
+have_header: checking for pty.h... -------------------- yes
+
+"gcc -E -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <pty.h>
+/* end */
+
+--------------------
+
+have_library: checking for openpty() in -lutil... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lutil  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘openpty’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))openpty; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lutil  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { openpty(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for openpty()... -------------------- yes
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lutil  -lruby-static -lutil  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘openpty’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))openpty; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/pty    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lutil  -lruby-static -lutil  -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { openpty(); return 0; }
+/* end */
+
+--------------------
+

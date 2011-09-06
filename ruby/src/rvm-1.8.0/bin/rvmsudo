@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+args=()
+sudo_args=()
+command_found=0
+while [[ $# -gt 0 ]] ; do
+  token="${1}" ; shift
+
+  case "${token}" in
+    --trace)
+      export PS4="+ \${BASH_SOURCE##\${rvm_path:-}} : \${FUNCNAME[0]:+\${FUNCNAME[0]}()}  \${LINENO} > "
+      set -o xtrace
+      shift
+      ;;
+
+    --verbose)
+      set -o verbose
+      shift
+      ;;
+  -*) 
+      if [ "$command_found" != 0 ]; then
+        args=("${args[@]}" "$token")
+      else
+        # found a switch for sudo
+        sudo_args=("${args[@]}" "$token")
+      fi
+      ;;
+  *)
+    command_found=1
+    args=("${args[@]}" "$token")
+    ;;
+  esac
+done
+
+if [ "$command_found" != 0 ]; then
+  command="sudo ${sudo_args[@]} /usr/bin/env PATH='$PATH'"
+
+  [[ -n "${GEM_HOME:-}" ]] && command="${command} GEM_HOME='$GEM_HOME' "
+  [[ -n "${GEM_PATH:-}" ]] && command="${command} GEM_PATH='$GEM_PATH' "
+
+  command="${command} ${args[@]}"
+else
+  command="sudo ${sudo_args[@]}"
+fi
+
+eval "${command}"

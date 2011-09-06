@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NUMBERS
+  value: "[       MAJOR = 0,       MINOR = 9,       BUILD = 2,     ]"
+full_name: Rake::Version
+includes: []
+
+instance_methods: []
+
+name: Version
+superclass: 

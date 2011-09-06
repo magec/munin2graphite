@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Local Rake override to fix bug in Ruby 0.8.2
+constants: []
+
+full_name: Test::Unit::Collector::Dir
+includes: []
+
+instance_methods: []
+
+name: Dir
+superclass: Object

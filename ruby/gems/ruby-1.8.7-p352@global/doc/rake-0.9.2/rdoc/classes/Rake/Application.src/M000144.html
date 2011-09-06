@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>rakefile_location (Rake::Application)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/rake/application.rb, line 580</span>
+580:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rakefile_location</span> <span class="ruby-identifier">backtrace</span> = <span class="ruby-identifier">caller</span>
+581:       <span class="ruby-identifier">backtrace</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>[<span class="ruby-regexp re">/([^:]+):/</span>,<span class="ruby-value">1</span>] }
+582: 
+583:       <span class="ruby-identifier">re</span> = <span class="ruby-node">/^#{@rakefile}$/</span>
+584:       <span class="ruby-identifier">re</span> = <span class="ruby-node">/#{re.source}/i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">windows?</span>
+585: 
+586:       <span class="ruby-identifier">backtrace</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">str</span><span class="ruby-operator">|</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">re</span> } <span class="ruby-operator">||</span> <span class="ruby-value str">''</span>
+587:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

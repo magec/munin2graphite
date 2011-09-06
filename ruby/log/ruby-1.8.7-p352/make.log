@@ -1,0 +1,368 @@
+[2011-09-06 11:36:54] make 
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c array.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c bignum.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c class.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c compar.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c dir.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c dln.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c enum.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c enumerator.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c error.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c eval.c
+eval.c: In function ‘rb_eval_string_wrap’:
+eval.c:1744: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘rb_eval_cmd’:
+eval.c:1885: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘call_trace_func’:
+eval.c:2736: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘rb_raise_jump’:
+eval.c:4770: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘method_missing’:
+eval.c:5736: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘rb_call0’:
+eval.c:5894: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘rb_f_eval’:
+eval.c:6696: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘exec_under’:
+eval.c:6720: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘rb_load’:
+eval.c:7036: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘call_end_proc’:
+eval.c:8071: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘rb_f_END’:
+eval.c:8084: warning: assignment discards qualifiers from pointer target type
+eval.c: In function ‘mproc’:
+eval.c:9860: warning: assignment discards qualifiers from pointer target type
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c file.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c gc.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c hash.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c inits.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c io.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c marshal.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c math.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c numeric.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c object.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c pack.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c parse.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c process.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c prec.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c random.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c range.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c re.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c regex.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c ruby.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c signal.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c sprintf.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c st.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c string.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c struct.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c time.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c util.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c variable.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c version.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c dmyext.c
+ar rcu libruby-static.a array.o bignum.o class.o compar.o dir.o dln.o enum.o enumerator.o error.o eval.o file.o gc.o hash.o inits.o io.o marshal.o math.o numeric.o object.o pack.o parse.o process.o prec.o random.o range.o re.o regex.o ruby.o signal.o sprintf.o st.o string.o struct.o time.o util.o variable.o version.o  dmyext.o
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -I. -I.    -c main.c
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -L.  -rdynamic -Wl,-export-dynamic   main.o  libruby-static.a -lrt -ldl -lcrypt -lm   -o miniruby
+rbconfig.rb updated
+gcc -shared -Wl,-soname,libruby.so.1.8   array.o bignum.o class.o compar.o dir.o dln.o enum.o enumerator.o error.o eval.o file.o gc.o hash.o inits.o io.o marshal.o math.o numeric.o object.o pack.o parse.o process.o prec.o random.o range.o re.o regex.o ruby.o signal.o sprintf.o st.o string.o struct.o time.o util.o variable.o version.o  dmyext.o -lrt -ldl -lcrypt -lm   -o libruby.so.1.8.7
+compiling Win32API
+compiling bigdecimal
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/bigdecimal'
+mkdir -p ../../.ext/x86_64-linux
+gcc -I. -I../.. -I../../. -I../.././ext/bigdecimal -DBASE=1000000000UL -DBASE_FIG=9    -fPIC -g -O2  -fPIC   -c bigdecimal.c
+gcc -shared -o ../../.ext/x86_64-linux/bigdecimal.so bigdecimal.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+mkdir -p ../../.ext/common/bigdecimal
+cp ../.././ext/bigdecimal/lib/bigdecimal/math.rb ../../.ext/common/bigdecimal
+cp ../.././ext/bigdecimal/lib/bigdecimal/jacobian.rb ../../.ext/common/bigdecimal
+cp ../.././ext/bigdecimal/lib/bigdecimal/util.rb ../../.ext/common/bigdecimal
+cp ../.././ext/bigdecimal/lib/bigdecimal/newton.rb ../../.ext/common/bigdecimal
+cp ../.././ext/bigdecimal/lib/bigdecimal/ludcmp.rb ../../.ext/common/bigdecimal
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/bigdecimal'
+compiling curses
+compiling dbm
+compiling digest
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest'
+gcc -I. -I../.. -I../../. -I../.././ext/digest   -fPIC -g -O2  -fPIC   -c digest.c
+digest.c: In function ‘rb_digest_instance_inspect’:
+digest.c:280: warning: assignment discards qualifiers from pointer target type
+gcc -shared -o ../../.ext/x86_64-linux/digest.so digest.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+cp ../.././ext/digest/lib/sha1.rb ../../.ext/common
+cp ../.././ext/digest/lib/digest.rb ../../.ext/common
+cp ../.././ext/digest/lib/md5.rb ../../.ext/common
+cp ../.././ext/digest/digest.h ../../.ext/x86_64-linux
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest'
+compiling digest/bubblebabble
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/bubblebabble'
+mkdir -p ../../../.ext/x86_64-linux/digest
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/bubblebabble -I../../.././ext/digest/bubblebabble/.. -DHAVE_CONFIG_H    -fPIC -g -O2  -fPIC   -c bubblebabble.c
+gcc -shared -o ../../../.ext/x86_64-linux/digest/bubblebabble.so bubblebabble.o -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/bubblebabble'
+compiling digest/md5
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/md5'
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/md5 -I../../.././ext/digest/md5/.. -DHAVE_CONFIG_H -DHAVE_OPENSSL_MD5_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H    -fPIC -g -O2  -fPIC   -c md5init.c
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/md5 -I../../.././ext/digest/md5/.. -DHAVE_CONFIG_H -DHAVE_OPENSSL_MD5_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H    -fPIC -g -O2  -fPIC   -c md5ossl.c
+gcc -shared -o ../../../.ext/x86_64-linux/digest/md5.so md5init.o md5ossl.o -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lcrypto  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/md5'
+compiling digest/rmd160
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/rmd160'
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/rmd160 -I../../.././ext/digest/rmd160/.. -DNDEBUG -DHAVE_CONFIG_H -DHAVE_OPENSSL_RIPEMD_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H    -fPIC -g -O2  -fPIC   -c rmd160init.c
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/rmd160 -I../../.././ext/digest/rmd160/.. -DNDEBUG -DHAVE_CONFIG_H -DHAVE_OPENSSL_RIPEMD_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H    -fPIC -g -O2  -fPIC   -c rmd160ossl.c
+gcc -shared -o ../../../.ext/x86_64-linux/digest/rmd160.so rmd160init.o rmd160ossl.o -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lcrypto  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/rmd160'
+compiling digest/sha1
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/sha1'
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/.. -DHAVE_CONFIG_H -DHAVE_OPENSSL_SHA_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H    -fPIC -g -O2  -fPIC   -c sha1init.c
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/.. -DHAVE_CONFIG_H -DHAVE_OPENSSL_SHA_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H    -fPIC -g -O2  -fPIC   -c sha1ossl.c
+gcc -shared -o ../../../.ext/x86_64-linux/digest/sha1.so sha1init.o sha1ossl.o -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lcrypto  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/sha1'
+compiling digest/sha2
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/sha2'
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/sha2 -I../../.././ext/digest/sha2/.. -DHAVE_CONFIG_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H -DHAVE_TYPE_UINT64_T    -fPIC -g -O2  -fPIC   -c sha2.c
+gcc -I. -I../../.. -I../../../. -I../../.././ext/digest/sha2 -I../../.././ext/digest/sha2/.. -DHAVE_CONFIG_H -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H -DHAVE_TYPE_UINT64_T    -fPIC -g -O2  -fPIC   -c sha2init.c
+gcc -shared -o ../../../.ext/x86_64-linux/digest/sha2.so sha2.o sha2init.o -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+mkdir -p ../../../.ext/common/digest
+cp ../../.././ext/digest/sha2/lib/sha2.rb ../../../.ext/common/digest
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/digest/sha2'
+compiling dl
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dl'
+gcc -I. -I../.. -I../../. -I../.././ext/dl -DHAVE_DLFCN_H -DHAVE_DLOPEN -DHAVE_DLCLOSE -DHAVE_DLSYM -DHAVE_DLERROR    -I. -fPIC -g -O2  -fPIC  -fno-defer-pop -fno-omit-frame-pointer  -c ptr.c
+Generating call.func
+  void
+  char
+  short
+  int
+  long
+  float
+  double
+gcc -I. -I../.. -I../../. -I../.././ext/dl -DHAVE_DLFCN_H -DHAVE_DLOPEN -DHAVE_DLCLOSE -DHAVE_DLSYM -DHAVE_DLERROR    -I. -fPIC -g -O2  -fPIC  -fno-defer-pop -fno-omit-frame-pointer  -c sym.c
+gcc -I. -I../.. -I../../. -I../.././ext/dl -DHAVE_DLFCN_H -DHAVE_DLOPEN -DHAVE_DLCLOSE -DHAVE_DLSYM -DHAVE_DLERROR    -I. -fPIC -g -O2  -fPIC  -fno-defer-pop -fno-omit-frame-pointer  -c handle.c
+Generating callback.func
+Generating cbtable.func
+gcc -I. -I../.. -I../../. -I../.././ext/dl -DHAVE_DLFCN_H -DHAVE_DLOPEN -DHAVE_DLCLOSE -DHAVE_DLSYM -DHAVE_DLERROR    -I. -fPIC -g -O2  -fPIC  -fno-defer-pop -fno-omit-frame-pointer  -c dl.c
+gcc -shared -o ../../.ext/x86_64-linux/dl.so ptr.o sym.o handle.o dl.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -ldl  -lrt -ldl -lcrypt -lm   -lc
+mkdir -p ../../.ext/common/dl
+cp ../.././ext/dl/lib/dl/struct.rb ../../.ext/common/dl
+cp ../.././ext/dl/lib/dl/import.rb ../../.ext/common/dl
+cp ../.././ext/dl/lib/dl/types.rb ../../.ext/common/dl
+cp ../.././ext/dl/lib/dl/win32.rb ../../.ext/common/dl
+cp dlconfig.h ../../.ext/x86_64-linux
+cp ../.././ext/dl/dl.h ../../.ext/x86_64-linux
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dl'
+compiling etc
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/etc'
+gcc -I. -I../.. -I../../. -I../.././ext/etc -DHAVE_GETLOGIN -DHAVE_GETPWENT -DHAVE_GETGRENT -DHAVE_ST_PW_GECOS -DHAVE_ST_PW_PASSWD -DHAVE_ST_GR_PASSWD -DHAVE_TYPE_UID_T -DPW_UID2VAL=UINT2NUM -DPW_VAL2UID=NUM2UINT -DHAVE_TYPE_GID_T -DPW_GID2VAL=UINT2NUM -DPW_VAL2GID=NUM2UINT    -fPIC -g -O2  -fPIC   -c etc.c
+gcc -shared -o ../../.ext/x86_64-linux/etc.so etc.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/etc'
+compiling fcntl
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/fcntl'
+gcc -I. -I../.. -I../../. -I../.././ext/fcntl   -fPIC -g -O2  -fPIC   -c fcntl.c
+gcc -shared -o ../../.ext/x86_64-linux/fcntl.so fcntl.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/fcntl'
+compiling gdbm
+compiling iconv
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/iconv'
+gcc -I. -I../.. -I../../. -I../.././ext/iconv -DHAVE_ICONV    -fPIC -g -O2  -fPIC   -c iconv.c
+gcc -shared -o ../../.ext/x86_64-linux/iconv.so iconv.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/iconv'
+compiling io/wait
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/io/wait'
+mkdir -p ../../../.ext/x86_64-linux/io
+gcc -I. -I../../.. -I../../../. -I../../.././ext/io/wait -DFIONREAD_HEADER="<sys/ioctl.h>"    -fPIC -g -O2  -fPIC   -c wait.c
+gcc -shared -o ../../../.ext/x86_64-linux/io/wait.so wait.o -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+mkdir -p ../../../.ext/common/io
+cp ../../.././ext/io/wait/lib/nonblock.rb ../../../.ext/common/io
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/io/wait'
+compiling nkf
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/nkf'
+gcc -I. -I../.. -I../../. -I../.././ext/nkf   -fPIC -g -O2  -fPIC   -c nkf.c
+gcc -shared -o ../../.ext/x86_64-linux/nkf.so nkf.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+cp ../.././ext/nkf/lib/kconv.rb ../../.ext/common
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/nkf'
+compiling openssl
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl'
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkey_rsa.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_ns_spki.c
+ossl_ns_spki.c: In function ‘ossl_spki_initialize’:
+ossl_ns_spki.c:67: warning: passing argument 2 of ‘d2i_NETSCAPE_SPKI’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkcs7.c
+ossl_pkcs7.c: In function ‘ossl_pkcs7si_new’:
+ossl_pkcs7.c:89: warning: passing argument 2 of ‘ASN1_dup’ from incompatible pointer type
+ossl_pkcs7.c: In function ‘DupPKCS7SignerPtr’:
+ossl_pkcs7.c:102: warning: passing argument 2 of ‘ASN1_dup’ from incompatible pointer type
+ossl_pkcs7.c: In function ‘ossl_pkcs7ri_new’:
+ossl_pkcs7.c:115: warning: passing argument 2 of ‘ASN1_dup’ from incompatible pointer type
+ossl_pkcs7.c: In function ‘DupPKCS7RecipientPtr’:
+ossl_pkcs7.c:128: warning: passing argument 2 of ‘ASN1_dup’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509name.c
+ossl_x509name.c: In function ‘ossl_x509name_initialize’:
+ossl_x509name.c:143: warning: passing argument 2 of ‘d2i_X509_NAME’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509revoked.c
+ossl_x509revoked.c: In function ‘ossl_x509revoked_new’:
+ossl_x509revoked.c:48: warning: passing argument 2 of ‘ASN1_dup’ from incompatible pointer type
+ossl_x509revoked.c: In function ‘DupX509RevokedPtr’:
+ossl_x509revoked.c:64: warning: passing argument 2 of ‘ASN1_dup’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_bio.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_bn.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_hmac.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509attr.c
+ossl_x509attr.c: In function ‘ossl_x509attr_initialize’:
+ossl_x509attr.c:104: warning: passing argument 2 of ‘d2i_X509_ATTRIBUTE’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_config.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_rand.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509req.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkcs12.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_ssl_session.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509cert.c
+ossl_x509cert.c: In function ‘ossl_x509_inspect’:
+ossl_x509cert.c:693: warning: initialization discards qualifiers from pointer target type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_ssl.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509crl.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_engine.c
+ossl_engine.c: In function ‘ossl_engine_inspect’:
+ossl_engine.c:347: warning: initialization discards qualifiers from pointer target type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_cipher.c
+ossl_cipher.c: In function ‘ossl_cipher_init’:
+ossl_cipher.c:191: warning: initialization discards qualifiers from pointer target type
+ossl_cipher.c: In function ‘ossl_cipher_update_deprecated’:
+ossl_cipher.c:314: warning: assignment discards qualifiers from pointer target type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509store.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c openssl_missing.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkcs5.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkey_dsa.c
+ossl_pkey_dsa.c: In function ‘ossl_dsa_initialize’:
+ossl_pkey_dsa.c:165: warning: passing argument 1 of ‘PEM_ASN1_read_bio’ from incompatible pointer type
+ossl_pkey_dsa.c:165: warning: passing argument 4 of ‘PEM_ASN1_read_bio’ from incompatible pointer type
+ossl_pkey_dsa.c: In function ‘ossl_dsa_to_public_key’:
+ossl_pkey_dsa.c:370: warning: passing argument 2 of ‘ASN1_dup’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_digest.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_asn1.c
+ossl_asn1.c: In function ‘decode_bool’:
+ossl_asn1.c:317: warning: passing argument 2 of ‘d2i_ASN1_BOOLEAN’ from incompatible pointer type
+ossl_asn1.c: In function ‘decode_int’:
+ossl_asn1.c:332: warning: passing argument 2 of ‘d2i_ASN1_INTEGER’ from incompatible pointer type
+ossl_asn1.c: In function ‘decode_enum’:
+ossl_asn1.c:372: warning: passing argument 2 of ‘d2i_ASN1_ENUMERATED’ from incompatible pointer type
+ossl_asn1.c: In function ‘decode_null’:
+ossl_asn1.c:389: warning: passing argument 2 of ‘d2i_ASN1_NULL’ from incompatible pointer type
+ossl_asn1.c: In function ‘decode_obj’:
+ossl_asn1.c:406: warning: passing argument 2 of ‘d2i_ASN1_OBJECT’ from incompatible pointer type
+ossl_asn1.c: In function ‘decode_time’:
+ossl_asn1.c:434: warning: passing argument 2 of ‘d2i_ASN1_TIME’ from incompatible pointer type
+ossl_asn1.c: In function ‘ossl_asn1_decode0’:
+ossl_asn1.c:726: warning: passing argument 1 of ‘ASN1_get_object’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkey.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_ocsp.c
+ossl_ocsp.c: In function ‘ossl_ocspreq_initialize’:
+ossl_ocsp.c:114: warning: passing argument 2 of ‘d2i_OCSP_REQUEST’ from incompatible pointer type
+ossl_ocsp.c: In function ‘ossl_ocspres_initialize’:
+ossl_ocsp.c:321: warning: passing argument 2 of ‘d2i_OCSP_RESPONSE’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkey_dh.c
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_x509ext.c
+ossl_x509ext.c: In function ‘ossl_x509ext_initialize’:
+ossl_x509ext.c:286: warning: passing argument 2 of ‘d2i_X509_EXTENSION’ from incompatible pointer type
+gcc -I. -I../.. -I../../. -I../.././ext/openssl -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC   -c ossl_pkey_ec.c
+gcc -shared -o ../../.ext/x86_64-linux/openssl.so ossl_pkey_rsa.o ossl_ns_spki.o ossl_x509.o ossl_pkcs7.o ossl_x509name.o ossl_x509revoked.o ossl_bio.o ossl_bn.o ossl_hmac.o ossl_x509attr.o ossl_config.o ossl_rand.o ossl_x509req.o ossl_pkcs12.o ossl_ssl_session.o ossl_x509cert.o ossl_ssl.o ossl.o ossl_x509crl.o ossl_engine.o ossl_cipher.o ossl_x509store.o openssl_missing.o ossl_pkcs5.o ossl_pkey_dsa.o ossl_digest.o ossl_asn1.o ossl_pkey.o ossl_ocsp.o ossl_pkey_dh.o ossl_x509ext.o ossl_pkey_ec.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lssl -lcrypto  -lrt -ldl -lcrypt -lm   -lc
+mkdir -p ../../.ext/common/net
+mkdir -p ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/net/ftptls.rb ../../.ext/common/net
+cp ../.././ext/openssl/lib/net/telnets.rb ../../.ext/common/net
+cp ../.././ext/openssl/lib/openssl.rb ../../.ext/common
+cp ../.././ext/openssl/lib/openssl/bn.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/ssl.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/digest.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/pkcs7.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/x509.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/ssl-internal.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/buffering.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/config.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/x509-internal.rb ../../.ext/common/openssl
+cp ../.././ext/openssl/lib/openssl/cipher.rb ../../.ext/common/openssl
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/openssl'
+compiling pty
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/pty'
+gcc -I. -I../.. -I../../. -I../.././ext/pty -DHAVE_SYS_STROPTS_H -DHAVE_SETRESUID -DHAVE_PTY_H -DHAVE_OPENPTY    -fPIC -g -O2  -fPIC   -c pty.c
+gcc -shared -o ../../.ext/x86_64-linux/pty.so pty.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lutil  -lrt -ldl -lcrypt -lm   -lc
+cp ../.././ext/pty/lib/expect.rb ../../.ext/common
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/pty'
+compiling racc/cparse
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/racc/cparse'
+mkdir -p ../../../.ext/x86_64-linux/racc
+gcc -I. -I../../.. -I../../../. -I../../.././ext/racc/cparse   -fPIC -g -O2  -fPIC   -c cparse.c
+gcc -shared -o ../../../.ext/x86_64-linux/racc/cparse.so cparse.o -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/racc/cparse'
+compiling readline
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/readline'
+gcc -I. -I../.. -I../../. -I../.././ext/readline -DHAVE_READLINE_READLINE_H -DHAVE_READLINE_HISTORY_H -DHAVE_RL_FILENAME_COMPLETION_FUNCTION -DHAVE_RL_USERNAME_COMPLETION_FUNCTION -DHAVE_RL_COMPLETION_MATCHES -DHAVE_RL_DEPREP_TERM_FUNCTION -DHAVE_RL_COMPLETION_APPEND_CHARACTER -DHAVE_RL_BASIC_WORD_BREAK_CHARACTERS -DHAVE_RL_COMPLETER_WORD_BREAK_CHARACTERS -DHAVE_RL_BASIC_QUOTE_CHARACTERS -DHAVE_RL_COMPLETER_QUOTE_CHARACTERS -DHAVE_RL_FILENAME_QUOTE_CHARACTERS -DHAVE_RL_ATTEMPTED_COMPLETION_OVER -DHAVE_RL_LIBRARY_VERSION -DHAVE_RL_EVENT_HOOK -DHAVE_RL_CLEANUP_AFTER_SIGNAL -DHAVE_RL_CLEAR_SIGNALS -DHAVE_RL_VI_EDITING_MODE -DHAVE_RL_EMACS_EDITING_MODE -DHAVE_REPLACE_HISTORY_ENTRY -DHAVE_REMOVE_HISTORY    -fPIC -g -O2  -fPIC   -c readline.c
+gcc -shared -o ../../.ext/x86_64-linux/readline.so readline.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lreadline -ltermcap  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/readline'
+compiling sdbm
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/sdbm'
+gcc -I. -I../.. -I../../. -I../.././ext/sdbm   -fPIC -g -O2  -fPIC   -c _sdbm.c
+gcc -I. -I../.. -I../../. -I../.././ext/sdbm   -fPIC -g -O2  -fPIC   -c init.c
+gcc -shared -o ../../.ext/x86_64-linux/sdbm.so _sdbm.o init.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/sdbm'
+compiling socket
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/socket'
+gcc -I. -I../.. -I../../. -I../.././ext/socket -DHAVE_ARPA_INET_H -DENABLE_IPV6 -DINET6 -DHAVE_SOCKADDR_STORAGE -DHAVE_NETINET_TCP_H -DHAVE_NETINET_UDP_H -DHAVE_SENDMSG -DHAVE_RECVMSG -DHAVE_ST_MSG_CONTROL -DHAVE_TYPE_STRUCT_ADDRINFO -DHAVE_FREEADDRINFO -DHAVE_GAI_STRERROR -DGAI_STRERROR_CONST -DHAVE_GETNAMEINFO -DHAVE_GETADDRINFO -DHAVE_TYPE_SOCKLEN_T -DHAVE_SYS_UN_H -DHAVE_SYS_UIO_H -DHAVE_SOCKET -DHAVE_GETHOSTBYNAME2 -DHAVE_SOCKETPAIR -DHAVE_GETHOSTNAME    -fPIC -g -O2  -fPIC   -c socket.c
+gcc -shared -o ../../.ext/x86_64-linux/socket.so socket.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/socket'
+compiling stringio
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/stringio'
+gcc -I. -I../.. -I../../. -I../.././ext/stringio   -fPIC -g -O2  -fPIC   -c stringio.c
+gcc -shared -o ../../.ext/x86_64-linux/stringio.so stringio.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/stringio'
+compiling strscan
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/strscan'
+gcc -I. -I../.. -I../../. -I../.././ext/strscan   -fPIC -g -O2  -fPIC   -c strscan.c
+gcc -shared -o ../../.ext/x86_64-linux/strscan.so strscan.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/strscan'
+compiling syck
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/syck'
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c syck.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c node.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c emitter.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c rubyext.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c handler.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c bytecode.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c gram.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c yaml2byte.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c token.c
+gcc -I. -I../.. -I../../. -I../.././ext/syck -DHAVE_ST_H    -fPIC -g -O2  -fPIC   -c implicit.c
+gcc -shared -o ../../.ext/x86_64-linux/syck.so syck.o node.o emitter.o rubyext.o handler.o bytecode.o gram.o yaml2byte.o token.o implicit.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/syck'
+compiling syslog
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/syslog'
+gcc -I. -I../.. -I../../. -I../.././ext/syslog -DHAVE_SYSLOG_H -DHAVE_OPENLOG -DHAVE_SETLOGMASK    -fPIC -g -O2  -fPIC   -c syslog.c
+gcc -shared -o ../../.ext/x86_64-linux/syslog.so syslog.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/syslog'
+compiling thread
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/thread'
+gcc -I. -I../.. -I../../. -I../.././ext/thread   -DUSE_MEM_POOLS -fPIC -g -O2  -fPIC   -c thread.c
+gcc -shared -o ../../.ext/x86_64-linux/thread.so thread.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby  -lrt -ldl -lcrypt -lm   -lc
+cp ../.././ext/thread/lib/thread.rb ../../.ext/common
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/thread'
+compiling tk
+check functions.........
+check struct members..
+check libraries....
+Use ActiveTcl libraries (if available).
+Search tclConfig.sh and tkConfig.sh..............................
+Fail to find [tclConfig.sh, tkConfig.sh]
+Use X11 libraries (or use TK_XINCLUDES/TK_XLIBSW information on tkConfig.sh).
+Warning:: cannot find X11 library. tcltklib will not be compiled (tcltklib is disabled on your Ruby. That is, Ruby/Tk will not work). Please check configure options. If your Tcl/Tk don't require X11, please try --without-X11.
+Can't find X11 libraries. 
+So, can't make tcltklib.so which is required by Ruby/Tk.
+compiling tk/tkutil
+compiling win32ole
+compiling zlib
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/zlib'
+gcc -I. -I../.. -I../../. -I../.././ext/zlib -DHAVE_ZLIB_H  -DOS_CODE=OS_UNIX    -fPIC -g -O2  -fPIC   -c zlib.c
+gcc -shared -o ../../.ext/x86_64-linux/zlib.so zlib.o -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lz  -lrt -ldl -lcrypt -lm   -lc
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352/ext/zlib'
+making ruby
+make[1]: Entering directory `/server/graphite/ruby/src/ruby-1.8.7-p352'
+gcc -g -O2  -fPIC    -DRUBY_EXPORT -D_GNU_SOURCE=1  -L.  -rdynamic -Wl,-export-dynamic   main.o  -Wl,-R -Wl,/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -L/server/graphite/ruby//rubies/ruby-1.8.7-p352/lib -lruby -lrt -ldl -lcrypt -lm   -o ruby
+make[1]: Leaving directory `/server/graphite/ruby/src/ruby-1.8.7-p352'

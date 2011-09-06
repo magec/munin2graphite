@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Warn about deprecated usage.
+- !ruby/struct:SM::Flow::P 
+  body: "Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "   Rake.application.deprecate(&quot;import&quot;, &quot;Rake.import&quot;, caller.first)\n"
+full_name: Rake::Application#deprecate
+is_singleton: false
+name: deprecate
+params: (old_usage, new_usage, call_site)
+visibility: public

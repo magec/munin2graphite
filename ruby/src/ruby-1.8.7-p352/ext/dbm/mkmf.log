@@ -1,0 +1,342 @@
+have_library: checking for __db_ndbm_open() in -ldb... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldb  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘__db_ndbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))__db_ndbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldb  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -ldb
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { __db_ndbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for __db_ndbm_open()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘__db_ndbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))__db_ndbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccOzX7K4.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dbm/conftest.c:3: undefined reference to `__db_ndbm_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { __db_ndbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for __db_ndbm_open() in -ldb2... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldb2  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘__db_ndbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))__db_ndbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldb2  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -ldb2
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { __db_ndbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for __db_ndbm_open()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘__db_ndbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))__db_ndbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cc0XhKzk.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dbm/conftest.c:3: undefined reference to `__db_ndbm_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { __db_ndbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for dbm_open() in -ldb1... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldb1  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldb1  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -ldb1
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dbm_open()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccz6Zhym.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dbm/conftest.c:3: undefined reference to `dbm_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for dbm_open() in -ldbm... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldbm  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -ldbm  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -ldbm
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dbm_open()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccUvcr9m.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dbm/conftest.c:3: undefined reference to `dbm_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for dbm_open() in -lgdbm... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lgdbm  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lgdbm  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lgdbm
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dbm_open()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/ccIJ1qQt.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dbm/conftest.c:3: undefined reference to `dbm_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lgdbm... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lgdbm  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lgdbm
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lgdbm  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lgdbm
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { main(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for dbm_open() in -lqdbm... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lqdbm  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static -lqdbm  -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lqdbm
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dbm_open()... -------------------- no
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘dbm_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))dbm_open; return 0; }
+/* end */
+
+"gcc -o conftest -I../.. -I../../. -I../.././ext/dbm    -g -O2  -fPIC   conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -lruby-static  -lrt -ldl -lcrypt -lm   -lc"
+/tmp/cc6P8TfM.o: In function `t':
+/server/graphite/ruby/src/ruby-1.8.7-p352/ext/dbm/conftest.c:3: undefined reference to `dbm_open'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { dbm_open(); return 0; }
+/* end */
+
+--------------------
+

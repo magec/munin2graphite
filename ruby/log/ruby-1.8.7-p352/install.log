@@ -1,0 +1,9 @@
+[2011-09-06 11:37:37] make install
+./miniruby -I./lib -I.ext/common -I./- -r./ext/purelib.rb  ./instruby.rb --make="make" --dest-dir="" --extout=".ext" --mflags="" --make-flags="" --data-mode=0644 --prog-mode=0755 --installed-list .installed.list --mantype="doc"
+installing binary commands
+installing command scripts
+installing library scripts
+installing headers
+installing manpages
+installing extension objects
+installing extension scripts
