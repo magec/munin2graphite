@@ -15,5 +15,5 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 require 'daemons'
 
 DAEMON="/server/graphite/bin/munin-graphite.rb" 
-Daemons.run(DAEMON,{:dir_mode  => :system, :monitor => true,:ARGV => ["/server/graphite/config/config.solaris.yml"]})
+Daemons.run(DAEMON,{:dir_mode  => :system, :monitor => true,:ARGV => ["/server/graphite/conf/config.solaris.yml"]})
 
