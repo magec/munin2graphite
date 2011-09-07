@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+### BEGIN INIT INFO
+# Provides: munin2graphite
+# Required-Start: $network $remote_fs $munin-node
+# Required-Stop: $null
+# Default-Start:  3 5
+# Default-Stop:   0 1 2 6
+# Short-Description: Populates carbon agents with munin-node data
+# Description:    munin graphs to graphite servers
+### END INIT INFO
+
+require 'rubygems'        
+$:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+require 'daemons'
+
+DAEMON="/server/graphite/bin/munin-graphite.rb" 
+Daemons.run(DAEMON,{:dir_mode  => :system, :monitor => true,:ARGV => ["/server/graphite/config/config.solaris.yml"]})
+
