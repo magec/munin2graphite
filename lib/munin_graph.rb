@@ -41,6 +41,7 @@ class MuninGraph
     graph = Graphite::MyGraph.new
     self.root.compile
     graph.url = self.root.url
+    self.root.properties[:category] ||= "other"
     graph.name = "#{@config[:graphite][:graph_prefix]}.#{@config[:hostname]}.#{self.root.properties[:category]}.#{self.root.properties[:metric]}"
     return graph
   end
