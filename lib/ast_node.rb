@@ -38,6 +38,9 @@ class ASTNode
   end
 
   def compile
+    # The compilation is done twice cause there are certain cases where is necessary, a better implementation would control whether this is needed
+    # or not, but given the small impact I just do it twice
+    children.map{|i| i.compile} if children
     children.map{|i| i.compile} if children
   end
   
@@ -172,6 +175,9 @@ class FieldDeclarationNode < ASTNode
     if self.properties[:stacked]
       aux = "stacked(#{aux})"
     end
+    if self.properties[:is_negative]
+      aux = "scale(#{aux},-1)"
+    end
     if self.properties[:alias]
       aux =  "alias(#{aux},'#{self.properties[:alias]}')"
     end
@@ -305,7 +311,10 @@ end
 class ExtInfoFieldPropertyNode < FieldPropertyNode; end
 class NegativeFieldPropertyNode < FieldPropertyNode
   def apply_function(operand)
-    return "scale(#{operand},-1)"
+    # We have to mark the other node as negative (note that for this to work we have to compile twice
+    node = self.root_node.targets.find { |i| i.properties[:field_name] == @value }
+    node.properties[:is_negative] = true if node
+    return operand
   end
 end
 
