@@ -224,6 +224,7 @@ END
 )
     graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
     graph.root.compile
+    assert_match graph.root.url , /alias\(scale\(scale\(scale\(nonNegativeDerivative\(campus.frontends.linux.localhost.network.load.down\),0.0166666666666667\),8\),-1/
     assert_equal graph.root.children_of_class(FieldDeclarationNode).length , 2
      graph.root.url
   end
