@@ -170,7 +170,7 @@ class FieldDeclarationNode < ASTNode
       aux = i.apply_function(aux)
     end if children[1..-1]
     if self.root_node.properties[:logarithmic]
-      aux = "log(#{aux},10)"
+      # NOT IMPLEMENTED the logarithmic means that a logarithmic scale is to be used not that a log function has to be implemented aux = "log(#{aux},10)"
     end
     if self.properties[:stacked]
       aux = "stacked(#{aux})"
