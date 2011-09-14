@@ -5,6 +5,7 @@ module Graphite
 
     def save!
       MyGraph.get("/composer/mygraph/",:action => "save", :graphName => name,:url => url.gsub("&","%26"))
+      Munin2Graphite::Config.log.debug("Saving: #{name} ") 
     end
 
     def delete!
