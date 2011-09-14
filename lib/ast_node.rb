@@ -94,7 +94,7 @@ end
 class GlobalDeclarationNode < ASTNode
   def initialize(line)
     super
-    line =~ /^(\w*)\ (.*)/
+    line =~ /^([\w_]*)\ (.*)/
     @value = $2
   end
 end
@@ -199,7 +199,7 @@ class FieldPropertyNode < ASTNode
   
   def initialize(line)
     super   
-    line =~ /(\w+)\.(\w+)\ (.*)$/
+    line =~ /([\w_]+)\.(\w+)\ (.*)$/
     @metric   = $1
     @function = $2
     @value    = $3
