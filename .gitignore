@@ -12,3 +12,4 @@ public/stylesheets/.sass-cache
 test/config.yml
 conf/config.yml
 conf/config.solaris.yml
+conf/config-*.yml
