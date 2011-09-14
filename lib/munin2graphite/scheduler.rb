@@ -35,7 +35,7 @@ module Munin2Graphite
       metric_base = @config[:graphite][:metric_prefix]
       all_metrics = Array.new
       @munin  = Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port])
-      nodes = @munin.nodes
+      nodes = @config[:munin_node][:nodes] || @munin.nodes
       @munin.close
       threads = []
       nodes.each do |node|
@@ -48,7 +48,7 @@ module Munin2Graphite
           metric_time = Time.now
   	  metrics = munin.metrics(node)
           metrics.each do |metric|
-            values[metric] =  Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port]).values_for metric
+            values[metric] =  munin.values_for metric
           end        
  	  @config.log.debug("Done with: #{node} (#{Time.now - metric_time} s)")	
           carbon = Carbon.new(@config[:carbon][:hostname],@config[:carbon][:port])
@@ -77,10 +77,16 @@ module Munin2Graphite
       time = Time.now
       @config.log.info("Begin : Sending Graph Information to Graphite")
       @munin  = Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port])
-      @munin.metrics.each do |metric|
+      nodes = @config[:munin_node][:nodes] || @munin.nodes
+      nodes.each do |node|
+      @config.log.info("Graphs for #{node}")
+      @munin.metrics(node).each do |metric|
+        @config.log.info("Configuring #{metric}")
         munin_graph = @munin.graph_for metric
-        munin_graph.config = Munin2Graphite::Config.merge(:metric => metric,:hostname => @munin.nodes.first.split(".").first)
+        munin_graph.config = Munin2Graphite::Config.merge(:metric => "#{metric}",:hostname => node.split(".").first)
+	 @config.log.debug("Saving graph #{metric}")
         munin_graph.to_graphite.save!
+      end
       end
       @config.log.info("End   : Sending Graph Information to Graphite, elapsed time (#{Time.now - time}s)")
       @munin.close
