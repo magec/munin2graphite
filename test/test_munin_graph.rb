@@ -229,6 +229,58 @@ END
      graph.root.url
   end
 
+  def test_network_graph
+    graph = MuninGraph.new(<<END
+host_name Switxos
+graph_category cdshospitalet
+graph_title cdshospitalet
+graph_info Model: 1H582x25 Firmware: 03.07.14.1
+graph_args --base 1000
+graph_vlabel Errors in (G) / out (B) per ${graph_period}
+fe-0-1.errors-in.label Errors IN
+fe-0-1.errors-in.draw LINE1
+fe-0-1.errors-in.type DERIVE
+fe-0-1.errors-in.cdef fe-0-1.errors-in,8,*
+fe-0-1.errors-in.max 2000000000
+fe-0-1.errors-in.min 0
+fe-0-1.errors-out.label Errors OUT
+fe-0-1.errors-out.draw LINE1
+fe-0-1.errors-out.type DERIVE
+fe-0-1.errors-out.cdef fe-0-1.errors-out,8,*
+fe-0-1.errors-out.max 2000000000
+fe-0-1.errors-out.min 0
+fe-0-2.errors-in.label Errors IN
+fe-0-2.errors-in.draw LINE1
+fe-0-2.errors-in.type DERIVE
+fe-0-2.errors-in.cdef fe-0-2.errors-in,8,*
+fe-0-2.errors-in.max 2000000000
+fe-0-2.errors-in.min 0
+fe-0-2.errors-out.label Errors OUT
+fe-0-2.errors-out.draw LINE1
+fe-0-2.errors-out.type DERIVE
+fe-0-2.errors-out.cdef fe-0-2.errors-out,8,*
+fe-0-2.errors-out.max 2000000000
+fe-0-2.errors-out.min 0
+fe-0-4.errors-in.label Errors IN
+fe-0-4.errors-in.draw LINE1
+fe-0-4.errors-in.type DERIVE
+fe-0-4.errors-in.cdef fe-0-4.errors-in,8,*
+fe-0-4.errors-in.max 2000000000
+fe-0-4.errors-in.min 0
+fe-0-4.errors-out.label Errors OUT
+fe-0-4.errors-out.draw LINE1
+fe-0-4.errors-out.type DERIVE
+fe-0-4.errors-out.cdef fe-0-4.errors-out,8,*
+fe-0-4.errors-out.max 2000000000
+fe-0-4.errors-out.min 0
+END
+)
+    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
+    graph.root.compile
+    puts graph.root.url.inspect
+    
+  end
+
 
 
 end
