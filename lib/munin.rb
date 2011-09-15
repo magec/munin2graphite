@@ -73,7 +73,11 @@ class Munin
   end
 
   def close
-    @munin.close
+    begin
+      @munin.close  
+    rescue IOError
+    end
+  
   end
 
 private
@@ -87,8 +91,13 @@ private
     stop = false 
     response = Array.new
     while stop == false
-      line = @munin.gets
-      line.chomp!
+      begin
+        line = @munin.gets
+      rescue
+        new_connection
+        line = @munin.gets
+      end
+      line.chomp! if line
       if line == '.'
         stop = true
       else
