@@ -173,7 +173,7 @@ class FieldDeclarationNode < ASTNode
   end
 
   def compile
-    aux = children.first.apply_function(metric)
+    aux = children.first.apply_function(metric.gsub("-","_"))
     children[1..-1].each do |i|
       aux = i.apply_function(aux)
     end if children[1..-1]
