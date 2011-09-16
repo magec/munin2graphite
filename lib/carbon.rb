@@ -24,9 +24,12 @@ class Carbon
   end
   
   def send(msg)
-    @carbon.puts(msg)
+    @carbon.write(msg)
   end
   
+  def flush
+    @carbon.flush
+  end
   def close
     @carbon.close
   end
