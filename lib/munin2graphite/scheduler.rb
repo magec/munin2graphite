@@ -43,28 +43,43 @@ module Munin2Graphite
           node_name = metric_base + "." + node.split(".").first
 	  @config.log.debug("Doing #{node_name}")
           values = {}
+
+          
           munin  = Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port])
   	  @config.log.debug("Asking for: #{node}")		
           metric_time = Time.now
   	  metrics = munin.metrics(node)
+          metrics_threads = []
+          categories = {}
           metrics.each do |metric|
-            values[metric] =  munin.values_for metric
+            metrics_threads << Thread.new do
+              local_munin  = Munin.new(@config[:munin_node][:hostname],@config[:munin_node][:port])
+              values[metric] =  local_munin.values_for metric
+              categories[metric] = local_munin.get_category(metric)
+              local_munin.close
+              local_munin = nil
+            end
           end        
+          metrics_threads.each {|i| i.join;i.kill}
  	  @config.log.debug("Done with: #{node} (#{Time.now - metric_time} s)")	
           carbon = Carbon.new(@config[:carbon][:hostname],@config[:carbon][:port])
+          string_to_send = ""
           values.each do |metric,results|          
-            category = munin.get_category(metric)
+            category = categories[metric]
             results.each do |k,v|
               if v != "U" # Undefined values are ignored
-                string_to_send="#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}".gsub("-","_")
-                @config.log.debug("Sending #{string_to_send}")
-                carbon.send(string_to_send)
+                string_to_send += "#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}\n".gsub("-","_")                
               end
             end
           end
+          send_time = Time.now
+          carbon.send(string_to_send)
+          @config.log.debug("Sent data (elapsed time #{Time.now - send_time}s)")
+          carbon.flush
           carbon.close
           carbon = nil 
           munin.close
+          munin 
 	end
       end
       threads.each { |i| i.join }
