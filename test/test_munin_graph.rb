@@ -108,7 +108,6 @@ END
     root.compile
     field_declarations = root.children_of_class(FieldDeclarationNode)
     assert_equal field_declarations.first.compile,"alias(campus.frontends.linux.aleia.sensors.acpi.THM0,'THM0')"
-    assert_equal root.graph_properties[:colorList], ["black"]
     assert_equal root.graph_properties[:vtitle], "Celcius"
     assert_equal root.graph_properties[:title], "ACPI Thermal zone temperatures"
   end
@@ -149,7 +148,7 @@ END
 
   def test_variable_substitution
     @apache_graph.root.compile
-    assert_not_match @apache_graph.root.url, /graph_period/
+    assert_nil  @apache_graph.root.url =~ /graph_period/
   end
 
   def test_random_colors
@@ -224,6 +223,8 @@ END
 )
     graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
     graph.root.compile
+    color_list = graph.root.graph_properties[:colorList]
+    assert_equal color_list.first , color_list[1] # Thew should be drawn with the same color
     assert_match graph.root.url , /alias\(scale\(scale\(scale\(nonNegativeDerivative\(campus.frontends.linux.localhost.network.load.down\),0.0166666666666667\),8\),-1/
     assert_equal graph.root.children_of_class(FieldDeclarationNode).length , 2
      graph.root.url
