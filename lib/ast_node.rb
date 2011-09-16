@@ -4,12 +4,20 @@ class ASTNode
 
   attr_accessor :properties, :children, :parent , :root_node, :graph_properties
 
+  def default_colors
+    %w(#00CC00 #0066B3 #FF8000 #FFCC00 #330099 #990099 #CCFF00 #FF0000 #808080
+       #008F00 #00487D #B35A00 #B38F00         #6B006B #8FB300 #B30000 #BEBEBE
+       #80FF80 #80C9FF #FFC080 #FFE680 #AA80FF #EE00CC #FF8080
+       #666600 #FFBFFF #00FFCC #CC6699 #999900)
+  end
+
   def initialize(raw_data)
     @root_node = nil
     @raw_data = raw_data
     @children = []
     @properties = {:graph_period => "seconds"}
     @graph_properties = {}    
+    @graph_properties[:colorList] = default_colors
     @parent = nil
   end
 
