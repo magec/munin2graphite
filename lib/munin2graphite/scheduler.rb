@@ -79,7 +79,8 @@ module Munin2Graphite
           carbon.close
           carbon = nil 
           munin.close
-          munin 
+          munin = nil
+          nil
 	end
       end
       threads.each { |i| i.join }
