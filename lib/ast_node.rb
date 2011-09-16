@@ -86,14 +86,14 @@ class ASTNode
       aux_graph_properties.delete :yMin
     end
 
-    aux = aux_graph_properties.map{|i,j| "#{i}=#{URI.escape(j.to_s)}"}.join("&")
+    aux = aux_graph_properties.map{|i,j| "#{i}=#{URI.escape(j.to_s.gsub('%','percent'))}"}.join("&")
     return aux
   end
 
   # This returns the url field of the graph after compiling it
   def url
     self.compile
-    url = URI.escape("#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map{|i| i.compile}.compact.join("&target=")))
+    url = "#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map{|i| i.compile}.compact.join("&target="))
   end
 
 end
