@@ -321,7 +321,11 @@ class NegativeFieldPropertyNode < FieldPropertyNode
   def apply_function(operand)
     # We have to mark the other node as negative (note that for this to work we have to compile twice
     node = self.root_node.targets.find { |i| i.properties[:field_name] == @value }
-    node.properties[:is_negative] = true if node
+    if node
+      node.properties[:is_negative] = true 
+      # We also use the same color
+      root_node.graph_properties[:colorList][node.index] = root_node.graph_properties[:colorList][parent.index]
+    end
     return operand
   end
 end
