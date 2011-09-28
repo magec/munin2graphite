@@ -4,7 +4,7 @@ class TestMuninGraph < Test::Unit::TestCase
 
   def setup
     Munin2Graphite::Config.config_file = TEST_CONFIG_FILE
-    @munin = Munin.new(Munin2Graphite::Config[:munin_node][:hostname],Munin2Graphite::Config[:munin_node][:port])
+    @munin = Munin.new(Munin2Graphite::Config["munin_node"]["hostname"],Munin2Graphite::Config["munin_node"]["port"])
     @simple_graph = MuninGraph.new(<<END
 graph_title ACPI Thermal zone temperatures
 graph_vlabel Celcius
@@ -73,29 +73,29 @@ dev104_16_wtime.cdef dev104_16_wtime,1000,/
 END
 )
     @simple_graph.config = Munin2Graphite::Config.merge({ 
-                                                                     :metric_prefix => "campus.frontends.linux",
-                                                                     :category => "sensors", 
-                                                                     :hostname => "aleia",
-                                                                     :metric => "acpi"}
+                                                                     "metric_prefix" => "campus.frontends.linux",
+                                                                     "category" => "sensors", 
+                                                                     "hostname" => "aleia",
+                                                                     "metric" => "acpi"}
                                                                    )
-    @apache_graph.config = Munin2Graphite::Config.merge({ :metric_prefix => "campus.frontends.linux",
-                                                                     :category => "apache",
-                                                                     :hostname => "aleia",
-                                                                     :metric => "apache_accesses"
-                                                                   })
+    @apache_graph.config = Munin2Graphite::Config.merge({ "metric_prefix" => "campus.frontends.linux",
+                                                          "category" => "apache",
+                                                          "hostname" => "aleia",
+                                                          "metric" => "apache_accesses"
+                                                        })
 
     @processes_graph.config = Munin2Graphite::Config.merge({ 
-                                                                        :metric_prefix => "campus.frontends.linux",
-                                                                        :category => "apache",
-                                                                        :hostname => "aleia",
-                                                                        :metric => "apache_processes"
-                                                                   })
+                                                             "metric_prefix" => "campus.frontends.linux",
+                                                             "category" => "apache",
+                                                             "hostname" => "aleia",
+                                                             "metric" => "apache_processes"
+                                                           })
     @log_graph.config = Munin2Graphite::Config.merge({
-                                                                        :metric_prefix => "campus.frontends.linux",
-                                                                        :category => "apache",
-                                                                        :hostname => "aleia",
-                                                                        :metric => "iostat_ios"
-                                                                })
+                                                       "metric_prefix" => "campus.frontends.linux",
+                                                       "category" => "apache",
+                                                       "hostname" => "aleia",
+                                                       "metric" => "iostat_ios"
+                                                     })
   end
 
   def test_get_title
@@ -177,7 +177,7 @@ graph_info The load average of the machine describes how many processes are in t
 load.info 5 minute load average
 END
 )
-    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
+    graph.config = Munin2Graphite::Config.merge({ 'metric' => "load",'hostname' => "localhost"})
     graph.root.url
   end
 
@@ -194,9 +194,9 @@ graph_info The load average of the machine describes how many processes are in t
 load.info 5 minute load average
 END
 )
-    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})    
+    graph.config = Munin2Graphite::Config.merge({ 'metric' => "load",'hostname' => "localhost"})    
     graph.root.url
-    assert_equal graph.root.properties[:hostname] , "Firewalls"
+    assert_equal graph.root.properties['hostname'] , "Firewalls"
   end
 
 
@@ -221,7 +221,7 @@ up.info Traffic of the eth2 interface. Maximum speed is 1000 Mbps.
 down.max 1000000000
 END
 )
-    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
+    graph.config = Munin2Graphite::Config.merge({ 'metric' => "load",'hostname' => "localhost"})
     graph.root.compile
     color_list = graph.root.graph_properties[:colorList]
     assert_equal color_list.first , color_list[1] # Thew should be drawn with the same color
@@ -276,7 +276,7 @@ fe_0_4_errors_out.max 2000000000
 fe_0_4_errors_out.min 0
 END
 )
-    graph.config = Munin2Graphite::Config.merge({ :metric => "load",:hostname => "localhost"})
+    graph.config = Munin2Graphite::Config.merge({ 'metric' => "load",'hostname' => "localhost"})
     graph.root.compile
     assert_equal graph.root.targets.length, 6
     
