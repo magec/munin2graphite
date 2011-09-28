@@ -15,7 +15,7 @@ class ASTNode
     @root_node = nil
     @raw_data = raw_data
     @children = []
-    @properties = {:graph_period => "seconds"}
+    @properties = {'graph_period' => "seconds"}
     @graph_properties = {}    
     @graph_properties[:colorList] = default_colors
     @parent = nil
@@ -61,8 +61,8 @@ class ASTNode
     [:vtitle,:title].each do |key|
       aux = properties[key]
       properties[key].scan(/\$\{(.*)\}/).each do 
-        if self.properties.has_key? $1.to_sym
-          aux.gsub!(/\$\{#{$1}\}/,self.properties[$1.to_sym])
+        if self.properties.has_key? $1
+          aux.gsub!(/\$\{#{$1}\}/,self.properties[$1])
         end
       end if properties[key]
       properties[key] = aux
@@ -135,7 +135,7 @@ end
 
 class GraphCategoryGlobalDeclarationNode < GlobalDeclarationNode
   def compile
-    root_node.properties[:category] = @value
+    root_node.properties["category"] = @value
   end
 end
 
@@ -147,7 +147,7 @@ class GraphGlobalDeclarationNode < GlobalDeclarationNode; end
 class HostNameGlobalDeclarationNode < GlobalDeclarationNode
   def compile
     if @raw_data =~ /host_name (.*)$/
-      root_node.properties[:hostname] = $1
+      root_node.properties['hostname'] = $1
     end
   end
 end
@@ -155,7 +155,7 @@ class UpdateGlobalDeclarationNode < GlobalDeclarationNode; end
 class GraphPeriodGlobalDeclarationNode < GlobalDeclarationNode; 
   def compile
     if @raw_data =~ /graph_period (.*)$/
-      root_node.properties[:graph_period] = $1
+      root_node.properties['graph_period'] = $1
     end
   end
 end
@@ -169,7 +169,7 @@ class GraphPrintFormatGlobalDeclarationNode < GlobalDeclarationNode; end
 class FieldDeclarationNode < ASTNode
  
   def metric
-    "#{root_node.properties[:graphite][:metric_prefix]}.#{root_node.properties[:hostname]}.#{root_node.properties[:category]}.#{root_node.properties[:metric]}.#{children.first.metric}"
+    "#{root_node.properties['graphite']['metric_prefix']}.#{root_node.properties['hostname']}.#{root_node.properties['category']}.#{root_node.properties['metric']}.#{children.first.metric}"
   end
 
   def compile
