@@ -1,4 +1,4 @@
-require 'yaml'
+require 'parseconfig'
 require 'logger'
 module Munin2Graphite
 
@@ -27,7 +27,7 @@ module Munin2Graphite
 
       def parse_config
         begin
-          @config = YAML.load(File.read(@config_file))
+          @config = ParseConfig.new(@config_file)
         rescue Errno::ENOENT
           raise ConfigFileNotFoundException.new("Error, trying to open the config file #{@config_file}")
         rescue ArgumentError => exception
@@ -35,7 +35,6 @@ module Munin2Graphite
         rescue
           raise "Unknown error when trying to open config file '#{@config_file}'"
         end
-        raise MalformedConfigFileException.new("The file is not a hash in yaml: the contents is as follows:\n#{@config.inspect}") unless @config.is_a? Hash
         @config
       end
 
@@ -43,9 +42,9 @@ module Munin2Graphite
       def check_config
         MANDATORY_GLOBAL_FIELDS.each do |k,v|
 
-          raise RequiredFieldMissingException.new("Error, required field not found in config ':#{k}'") unless @config[k] && @config[k] != ""
+          raise RequiredFieldMissingException.new("Error, required field not found in config ':#{k}'") unless @config.params[k.to_s] && @config.params[k.to_s] != ""
           v.each do |inner_field|
-            raise RequiredFieldMissingException.new("Error, required field not found in config ':#{k}:#{inner_field}'") unless @config[k][inner_field] && @config[k][inner_field] != ""
+            raise RequiredFieldMissingException.new("Error, required field not found in config ':#{k}:#{inner_field}'") unless @config.params[k.to_s][inner_field.to_s] && @config.params[k.to_s][inner_field.to_s] != ""
           end
         end
       end
@@ -57,8 +56,14 @@ module Munin2Graphite
           end
           raise NotConfiguredException.new("Not Configured") unless @config
         end
-        if @config.respond_to?(method_name)
-          return @config.send(method_name,*args)
+          
+        if method_name == :"[]"
+          if @config.params.has_key?(args.first.to_s)
+            return @config.params[args.first.to_s]
+          end
+        end
+        if @config.params.respond_to?method_name
+          return @config.params.send(method_name,*args)
         end
         super
       end
