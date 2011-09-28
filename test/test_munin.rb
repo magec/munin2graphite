@@ -3,7 +3,7 @@ require File.expand_path(File.join(File.dirname(__FILE__),"/test_init"))
 class TestMunin < Test::Unit::TestCase
   def setup
     Munin2Graphite::Config.config_file = TEST_CONFIG_FILE
-    @munin = Munin.new(Munin2Graphite::Config[:munin_node][:hostname],Munin2Graphite::Config[:munin_node][:port])
+    @munin = Munin.new(Munin2Graphite::Config["munin_node"]["hostname"],Munin2Graphite::Config["munin_node"]["port"])
   end
 
   def test_metric_lists
