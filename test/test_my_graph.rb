@@ -1,6 +1,7 @@
 $:.unshift(File.join(File.dirname(__FILE__) + "/../lib/"))
 require 'test/unit'
-require 'rgraphite'
+require 'graphite'
+
 class TestMyGraph < Test::Unit::TestCase
 
   def setup
