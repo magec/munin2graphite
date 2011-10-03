@@ -4,7 +4,7 @@ class TestMuninGraph < Test::Unit::TestCase
 
   def setup
     Munin2Graphite::Config.config_file = TEST_CONFIG_FILE
-    @munin = Munin.new(Munin2Graphite::Config["munin_node"]["hostname"],Munin2Graphite::Config["munin_node"]["port"])
+    @munin = Munin.new(Munin2Graphite::Config["munin_hostname"],Munin2Graphite::Config["munin_port"])
     @simple_graph = MuninGraph.new(<<END
 graph_title ACPI Thermal zone temperatures
 graph_vlabel Celcius

@@ -41,10 +41,9 @@ module Munin2Graphite
       MANDATORY_GLOBAL_FIELDS={:carbon => [:hostname,:port],:graphite => [:endpoint,:metric_prefix,:user,:password],:scheduler => [:metrics_period,:graphs_period]}
       def check_config
         MANDATORY_GLOBAL_FIELDS.each do |k,v|
-
-          raise RequiredFieldMissingException.new("Error, required field not found in config ':#{k}'") unless @config.params[k.to_s] && @config.params[k.to_s] != ""
           v.each do |inner_field|
-            raise RequiredFieldMissingException.new("Error, required field not found in config ':#{k}:#{inner_field}'") unless @config.params[k.to_s][inner_field.to_s] && @config.params[k.to_s][inner_field.to_s] != ""
+            field = "#{k}_#{inner_field}"
+            raise RequiredFieldMissingException.new("Error, required field not found in config ':#{field}'") unless @config.params[field]
           end
         end
       end
@@ -68,14 +67,13 @@ module Munin2Graphite
         super
       end
 
-      def log
-        
-        @log ||= if self[:global][:log] == "STDOUT"
+      def log        
+        @log ||= if self["log"] == "STDOUT"
                    Logger.new(STDOUT)
                  else
-                   Logger.new(self[:global][:log])
+                   Logger.new(self["log"])
                  end
-        @log.level = self[:global][:log_level] == "DEBUG" ? Logger::DEBUG : Logger::INFO
+        @log.level = self["log_level"] == "DEBUG" ? Logger::DEBUG : Logger::INFO
         @log
       end
 
