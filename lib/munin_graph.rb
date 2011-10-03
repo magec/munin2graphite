@@ -44,7 +44,7 @@ class MuninGraph
     self.root.properties[:category] ||= "other"
     
     graph.name = "#{@config["hostname"]}.#{self.root.properties["category"]}.#{self.root.properties["metric"]}"
-    graph.name = "#{@config["graphite"]["graph_prefix"]}.#{graph.name}" if @config["graphite"]["graph_prefix"] && @config["graphite"]["graph_prefix"] != "" 
+    graph.name = "#{@config["graphite_graph_prefix"]}.#{graph.name}" if @config["graphite_graph_prefix"] && @config["graphite_graph_prefix"] != "" 
     return graph
   end
 
