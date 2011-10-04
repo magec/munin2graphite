@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-  require 'rufus/scheduler'
+require 'rufus/scheduler'
 module Munin2Graphite
   ##
   # This class holds the main scheduler of the system, it will perform the applicacion loops
@@ -31,60 +31,64 @@ module Munin2Graphite
     # This is the loop of the metrics scheduling
     def obtain_metrics
       time = Time.now
-      @config.log.info("Begin getting metrics")
-      metric_base = @config["graphite"]["metric_prefix"]
-      all_metrics = Array.new
-      @munin  = Munin.new(@config["munin_node"]["hostname"],@config["munin_node"]["port"])
-      nodes = @config["munin_node"]["nodes"] || @munin.nodes
-      @munin.close
-      threads = []
-      nodes.each do |node|
-        threads << Thread.new do 
-          node_name = metric_base + "." + node.split(".").first
-	  @config.log.debug("Doing #{node_name}")
-          values = {}
-
-          
-          munin  = Munin.new(@config["munin_node"]["hostname"],@config["munin_node"]["port"])
-  	  @config.log.debug("Asking for: #{node}")		
-          metric_time = Time.now
-  	  metrics = munin.metrics(node)
-          metrics_threads = []
-          categories = {}
-          metrics.each do |metric|
-            metrics_threads << Thread.new do
-              local_munin  = Munin.new(@config["munin_node"]["hostname"],@config["munin_node"]["port"])
-              values[metric] =  local_munin.values_for metric
-              categories[metric] = local_munin.get_category(metric)
-              local_munin.close
-              local_munin = nil
-            end
-          end        
-          metrics_threads.each {|i| i.join;i.kill}
- 	  @config.log.debug("Done with: #{node} (#{Time.now - metric_time} s)")	
-          carbon = Carbon.new(@config["carbon"]["hostname"],@config["carbon"]["port"])
-          string_to_send = ""
-          values.each do |metric,results|          
-            category = categories[metric]
-            results.each do |k,v|
-              if v != "U" # Undefined values are ignored
-                string_to_send += "#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}\n".gsub("-","_")                
+      workers = @config.workers
+      workers.each do |worker|        
+        config = @config.config_for_worker(worker)
+        config.log.info("Begin getting metrics")
+        metric_base = config["graphite_metric_prefix"]
+        all_metrics = Array.new
+        @munin  = Munin.new(config["munin_hostname"],config["munin_port"])
+        nodes = config["munin_nodes"].split(",") || @munin.nodes
+        @munin.close
+        threads = []
+        nodes.each do |node|
+          threads << Thread.new do 
+            node_name = metric_base + "." + node.split(".").first
+            config.log.debug("Doing #{node_name}")
+            values = {}
+            
+            
+            munin  = Munin.new(config["munin_hostname"],config["munin_port"])
+            config.log.debug("Asking for: #{node}")		
+            metric_time = Time.now
+            metrics = munin.metrics(node)
+            metrics_threads = []
+            categories = {}
+            metrics.each do |metric|
+              metrics_threads << Thread.new do
+                local_munin  = Munin.new(config["munin_hostname"],config["munin_node"]["port"])
+                values[metric] =  local_munin.values_for metric
+                categories[metric] = local_munin.get_category(metric)
+                local_munin.close
+                local_munin = nil
+              end
+            end        
+            metrics_threads.each {|i| i.join;i.kill}
+            config.log.debug("Done with: #{node} (#{Time.now - metric_time} s)")	
+            carbon = Carbon.new(config["carbon_hostname"],config["carbon_port"])
+            string_to_send = ""
+            values.each do |metric,results|          
+              category = categories[metric]
+              results.each do |k,v|
+                if v != "U" # Undefined values are ignored
+                  string_to_send += "#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}\n".gsub("-","_")                
+                end
               end
             end
+            send_time = Time.now
+            carbon.send(string_to_send)
+            config.log.debug("Sent data (elapsed time #{Time.now - send_time}s)")
+            carbon.flush
+            carbon.close
+            carbon = nil 
+            munin.close
+            munin = nil
+            nil
           end
-          send_time = Time.now
-          carbon.send(string_to_send)
-          @config.log.debug("Sent data (elapsed time #{Time.now - send_time}s)")
-          carbon.flush
-          carbon.close
-          carbon = nil 
-          munin.close
-          munin = nil
-          nil
-	end
+        end
       end
       threads.each { |i| i.join }
-      @config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
+      config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
     end
 
     ##
@@ -92,8 +96,8 @@ module Munin2Graphite
     def obtain_graphs
       time = Time.now
       @config.log.info("Begin : Sending Graph Information to Graphite")
-      @munin  = Munin.new(@config["munin_node"]["hostname"],@config["munin_node"]["port"])
-      nodes = @config["munin_node"]["nodes"] || @munin.nodes
+      @munin  = Munin.new(@config["munin_hostname"],@config["munin_port"])
+      nodes = @config["munin_nodes"] || @munin.nodes
       nodes.each do |node|
       @config.log.info("Graphs for #{node}")
       @munin.metrics(node).each do |metric|
@@ -112,7 +116,7 @@ module Munin2Graphite
       @config.log.info("Scheduler started")
       @scheduler = Rufus::Scheduler.start_new
       obtain_metrics
-      @scheduler.every @config["scheduler"]["metrics_period"] do
+      @scheduler.every @config["scheduler_metrics_period"] do
         obtain_metrics
       end
       obtain_graphs
