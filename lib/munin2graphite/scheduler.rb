@@ -35,7 +35,8 @@ module Munin2Graphite
       workers = ["global"] if workers.empty?
       workers.each do |worker|        
         config = @config.config_for_worker(worker)
-        config.log.info("Begin getting metrics")
+        config.log.info("Begin getting metrics for worker #{worker}")
+
         metric_base = config["graphite_metric_prefix"]
         all_metrics = Array.new
         @munin  = Munin.new(config["munin_hostname"],config["munin_port"])
@@ -46,9 +47,7 @@ module Munin2Graphite
           threads << Thread.new do 
             node_name = metric_base + "." + node.split(".").first
             config.log.debug("Doing #{node_name}")
-            values = {}
-            
-            
+            values = {}                       
             munin  = Munin.new(config["munin_hostname"],config["munin_port"])
             config.log.debug("Asking for: #{node}")		
             metric_time = Time.now
@@ -57,7 +56,7 @@ module Munin2Graphite
             categories = {}
             metrics.each do |metric|
               metrics_threads << Thread.new do
-                local_munin  = Munin.new(config["munin_hostname"],config["munin_node"]["port"])
+                local_munin  = Munin.new(config["munin_hostname"],config["munin_port"])
                 values[metric] =  local_munin.values_for metric
                 categories[metric] = local_munin.get_category(metric)
                 local_munin.close
@@ -87,36 +86,45 @@ module Munin2Graphite
             nil
           end
         end
+        threads.each { |i| i.join }
       end
-      threads.each { |i| i.join }
-      config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
+      @config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
     end
 
     ##
     # The loop of the graphics creation
     def obtain_graphs
-      time = Time.now
-      @config.log.info("Begin : Sending Graph Information to Graphite")
-      @munin  = Munin.new(@config["munin_hostname"],@config["munin_port"])
-      nodes = @config["munin_nodes"] || @munin.nodes
-      nodes.each do |node|
-      @config.log.info("Graphs for #{node}")
-      @munin.metrics(node).each do |metric|
-        @config.log.info("Configuring #{metric}")
-        munin_graph = @munin.graph_for metric
-        munin_graph.config = Munin2Graphite::Config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
-	 @config.log.debug("Saving graph #{metric}")
-        munin_graph.to_graphite.save!
+
+      workers = @config.workers
+      workers.each do |worker|
+        time = Time.now 
+        config = @config.config_for_worker worker
+        config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")         
+        munin  = Munin.new(config["munin_hostname"],config["munin_port"])
+        nodes = config["munin_nodes"].split "," || munin.nodes
+        nodes.each do |node|
+          config.log.info("Graphs for #{node}")
+          munin.metrics(node).each do |metric|
+            config.log.info("Configuring #{metric}")
+            Graphite::Base.set_connection(config["carbon_hostname"])
+            Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
+            
+            munin_graph = munin.graph_for metric
+            munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
+            config.log.debug("Saving graph #{metric}")
+            munin_graph.to_graphite.save!
+          end
+        end
+        config.log.info("End   : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
+        munin.close
       end
-      end
-      @config.log.info("End   : Sending Graph Information to Graphite, elapsed time (#{Time.now - time}s)")
-      @munin.close
+
     end
 
     def start
       @config.log.info("Scheduler started")
       @scheduler = Rufus::Scheduler.start_new
-      obtain_metrics
+#      obtain_metrics
       @scheduler.every @config["scheduler_metrics_period"] do
         obtain_metrics
       end
