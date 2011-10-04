@@ -16,6 +16,21 @@ module Munin2Graphite
         return @config[klass.to_s.decamelize.to_sym]
       end
 
+      def workers
+        return @config.groups
+      end
+
+      attr_accessor :config
+
+      # This method will return a config class but for a given worker, so everything will be the same as in the original class
+      # but the config changes made in this worker
+      def config_for_worker(worker)
+        cloned = self.clone
+        cloned.config = @config.clone
+        cloned.config.params = @config.params.merge(@config.params[worker])
+        return cloned
+      end
+
       def deconfigure!
         @config = nil
         @config_file = nil
