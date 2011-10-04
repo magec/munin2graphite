@@ -59,7 +59,13 @@ module Munin2Graphite
         MANDATORY_GLOBAL_FIELDS.each do |k,v|
           v.each do |inner_field|
             field = "#{k}_#{inner_field}"
-            raise RequiredFieldMissingException.new("Error, required field not found in config ':#{field}'") unless @config.params[field]
+            if !@config.params[field] 
+              workers.each do |worker|
+                raise RequiredFieldMissingException.new("Error, required field not found in config ':#{field}' for worker #{worker}") unless @config.params[worker][field]
+              end
+              
+              raise RequiredFieldMissingException.new("Error, required field not found in config ':#{field}'") if workers.empty?
+            end
           end
         end
       end
