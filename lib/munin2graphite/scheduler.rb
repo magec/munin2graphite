@@ -32,6 +32,7 @@ module Munin2Graphite
     def obtain_metrics
       time = Time.now
       workers = @config.workers
+      workers = ["global"] if workers.empty?
       workers.each do |worker|        
         config = @config.config_for_worker(worker)
         config.log.info("Begin getting metrics")
