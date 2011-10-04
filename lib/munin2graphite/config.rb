@@ -25,6 +25,7 @@ module Munin2Graphite
       # This method will return a config class but for a given worker, so everything will be the same as in the original class
       # but the config changes made in this worker
       def config_for_worker(worker)
+        return self if worker == "global"
         cloned = self.clone
         cloned.config = @config.clone
         cloned.config.params = @config.params.merge(@config.params[worker])
