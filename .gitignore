@@ -9,8 +9,5 @@ Gemfile.lock
 db/schema.rb
 public/stylesheets/.sass-cache
 *~
-test/config.yml
 test/config.conf
-conf/config.yml
-conf/config.solaris.yml
-conf/config-*.yml
+conf/munin2graphite.conf
