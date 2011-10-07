@@ -11,9 +11,10 @@
 ### END INIT INFO
 
 require 'rubygems'        
-$:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 require 'daemons'
+#$:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+#require 'daemons'
 
-DAEMON="/server/graphite/bin/munin-graphite.rb"
+DAEMON=File.dirname(__FILE__)+ "../" + "/bin/munin-graphite.rb"
 Daemons.run(DAEMON,{:dir_mode  => :system, :monitor => true})
 
