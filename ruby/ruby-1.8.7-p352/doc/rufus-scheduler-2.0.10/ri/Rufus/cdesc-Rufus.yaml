@@ -1,0 +1,57 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: at_to_f
+- !ruby/object:RI::MethodSummary 
+  name: current_time_millis
+- !ruby/object:RI::MethodSummary 
+  name: duration_to_f
+- !ruby/object:RI::MethodSummary 
+  name: now
+- !ruby/object:RI::MethodSummary 
+  name: parse_time_string
+- !ruby/object:RI::MethodSummary 
+  name: time_to_iso8601_date
+- !ruby/object:RI::MethodSummary 
+  name: to_datetime
+- !ruby/object:RI::MethodSummary 
+  name: to_duration_hash
+- !ruby/object:RI::MethodSummary 
+  name: to_duration_string
+- !ruby/object:RI::MethodSummary 
+  name: to_gm_time
+- !ruby/object:RI::MethodSummary 
+  name: to_iso8601_date
+- !ruby/object:RI::MethodSummary 
+  name: to_local_time
+- !ruby/object:RI::MethodSummary 
+  name: to_ruby_time
+- !ruby/object:RI::MethodSummary 
+  name: to_ttime
+comment: ""
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: FLOAT_DURATION
+  value: /^\d*\.\d*$/
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DURATIONS2M
+  value: "[     [ 'y', 365 * 24 * 3600 ],     [ 'M', 30 * 24 * 3600 ],     [ 'w', 7 * 24 * 3600 ],     [ 'd', 24 * 3600 ],     [ 'h', 3600 ],     [ 'm', 60 ],     [ 's', 1 ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DURATIONS2
+  value: DURATIONS2M.dup
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DURATIONS
+  value: DURATIONS2M.inject({}) do |r, (k, v)|     r[k] = v
+full_name: Rufus
+includes: []
+
+instance_methods: []
+
+name: Rufus
+superclass: 

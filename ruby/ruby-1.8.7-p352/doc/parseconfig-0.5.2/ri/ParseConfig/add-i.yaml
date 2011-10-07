@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method adds an element to the config object (not the config file) By adding a Hash, you create a new group
+full_name: ParseConfig#add
+is_singleton: false
+name: add
+params: (param_name, value)
+visibility: public

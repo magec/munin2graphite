@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>const_missing (Module)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/rake/ext/module.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">const_name</span>)
+22:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">const_name</span>
+23:     <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:Task</span>
+24:       <span class="ruby-constant">Rake</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">const_warning</span>(<span class="ruby-identifier">const_name</span>)
+25:       <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">Task</span>
+26:     <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:FileTask</span>
+27:       <span class="ruby-constant">Rake</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">const_warning</span>(<span class="ruby-identifier">const_name</span>)
+28:       <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">FileTask</span>
+29:     <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:FileCreationTask</span>
+30:       <span class="ruby-constant">Rake</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">const_warning</span>(<span class="ruby-identifier">const_name</span>)
+31:       <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">FileCreationTask</span>
+32:     <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:RakeApp</span>
+33:       <span class="ruby-constant">Rake</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">const_warning</span>(<span class="ruby-identifier">const_name</span>)
+34:       <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">Application</span>
+35:     <span class="ruby-keyword kw">else</span>
+36:       <span class="ruby-identifier">rake_original_const_missing</span>(<span class="ruby-identifier">const_name</span>)
+37:     <span class="ruby-keyword kw">end</span>
+38:   <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

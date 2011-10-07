@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Legacy from the previous version of Rufus-Scheduler.
+- !ruby/struct:SM::Flow::P 
+  body: Consider all methods here as 'deprecated'.
+constants: []
+
+full_name: Rufus::Scheduler::LegacyMethods
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: at_job_count
+- !ruby/object:RI::MethodSummary 
+  name: cron_job_count
+- !ruby/object:RI::MethodSummary 
+  name: every_job_count
+- !ruby/object:RI::MethodSummary 
+  name: find_jobs
+- !ruby/object:RI::MethodSummary 
+  name: pending_job_count
+- !ruby/object:RI::MethodSummary 
+  name: precision
+name: LegacyMethods
+superclass: 

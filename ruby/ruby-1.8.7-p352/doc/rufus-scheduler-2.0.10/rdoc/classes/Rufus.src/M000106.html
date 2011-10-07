@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>to_duration_string (Rufus)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/rtime.rb, line 251</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Rufus</span>.<span class="ruby-identifier">to_duration_string</span>(<span class="ruby-identifier">seconds</span>, <span class="ruby-identifier">options</span>={})
+
+    <span class="ruby-keyword kw">return</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:drop_seconds</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">'0m'</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'0s'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">seconds</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
+
+    <span class="ruby-identifier">h</span> = <span class="ruby-identifier">to_duration_hash</span> <span class="ruby-identifier">seconds</span>, <span class="ruby-identifier">options</span>
+
+    <span class="ruby-identifier">s</span> = <span class="ruby-constant">DU_KEYS</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value str">''</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">count</span> = <span class="ruby-identifier">h</span>[<span class="ruby-identifier">key</span>]
+      <span class="ruby-identifier">count</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">r</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{count}#{key}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count</span>
+      <span class="ruby-identifier">r</span>
+    }
+
+    <span class="ruby-identifier">ms</span> = <span class="ruby-identifier">h</span>[<span class="ruby-identifier">:ms</span>]
+    <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ms</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ms</span>
+
+    <span class="ruby-identifier">s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

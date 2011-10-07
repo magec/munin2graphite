@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>strftime (TZInfo::Timezone)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/timezone.rb, line 475</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strftime</span>(<span class="ruby-identifier">format</span>, <span class="ruby-identifier">utc</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">utc</span>)      
+      <span class="ruby-identifier">period</span> = <span class="ruby-identifier">period_for_utc</span>(<span class="ruby-identifier">utc</span>)
+      <span class="ruby-identifier">local</span> = <span class="ruby-identifier">period</span>.<span class="ruby-identifier">to_local</span>(<span class="ruby-identifier">utc</span>)      
+      <span class="ruby-identifier">local</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">local</span>).<span class="ruby-identifier">utc</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">local</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Time</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">local</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">DateTime</span>)
+      <span class="ruby-identifier">abbreviation</span> = <span class="ruby-identifier">period</span>.<span class="ruby-identifier">abbreviation</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/%/</span>, <span class="ruby-value str">'%%'</span>)
+      
+      <span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/(.?)%Z/</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$1</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'%'</span>
+          <span class="ruby-comment cmt"># return %%Z so the real strftime treats it as a literal %Z too</span>
+          <span class="ruby-value str">'%%Z'</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-node">&quot;#$1#{abbreviation}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-identifier">local</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-identifier">format</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

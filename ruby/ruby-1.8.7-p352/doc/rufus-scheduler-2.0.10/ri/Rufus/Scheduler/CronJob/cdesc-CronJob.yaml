@@ -1,0 +1,40 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The block to call when triggering
+  name: block
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The CronLine instance, it holds all the info about the cron schedule
+  name: cron_line
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The job parameters (passed via the schedule method)
+  name: params
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Recurring job, cron style.
+constants: []
+
+full_name: Rufus::Scheduler::CronJob
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: determine_at
+- !ruby/object:RI::MethodSummary 
+  name: next_time
+- !ruby/object:RI::MethodSummary 
+  name: trigger_if_matches
+name: CronJob
+superclass: Job

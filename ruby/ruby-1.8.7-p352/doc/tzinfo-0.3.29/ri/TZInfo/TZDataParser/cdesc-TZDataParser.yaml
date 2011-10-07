@@ -1,0 +1,61 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Zones to exclude from generation when not using only_zones (set to an array containing zone identifiers).
+  name: exclude_zones
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Whether to generate country definitions (set to false to stop countries being generated).
+  name: generate_countries
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Whether to generate zone definitions (set to false to stop zones being generated).
+  name: generate_zones
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Limit the set of zones to generate (set to an array containing zone identifiers).
+  name: only_zones
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: parse_month
+- !ruby/object:RI::MethodSummary 
+  name: parse_offset
+- !ruby/object:RI::MethodSummary 
+  name: quote_str
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parses tzdata from ftp://elsie.nci.nih.gov/pub/ and transforms it into a set of Ruby modules that can be used through Timezone and Country.
+- !ruby/struct:SM::Flow::P 
+  body: Normally, this class wouldn't be used. It is only run to update the timezone data and index modules.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Minimum year that will be considered.
+  name: MIN_YEAR
+  value: "1800"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Maximum year that will be considered.
+  name: MAX_YEAR
+  value: "2050"
+full_name: TZInfo::TZDataParser
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: execute
+name: TZDataParser
+superclass: Object

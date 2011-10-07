@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>show_status (Daemons::Application)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/application.rb, line 445</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show_status</span>
+      <span class="ruby-identifier">running</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">running?</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{self.group.app_name}: #{running ? '' : 'not '}running#{(running and @pid.exist?) ? ' [pid ' + @pid.pid.to_s + ']' : ''}#{(@pid.exist? and not running) ? ' (but pid-file exists: ' + @pid.pid.to_s + ')' : ''}&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

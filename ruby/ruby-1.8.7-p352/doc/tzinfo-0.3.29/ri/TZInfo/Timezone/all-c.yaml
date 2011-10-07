@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns an array containing all the available Timezones.
+- !ruby/struct:SM::Flow::P 
+  body: Returns TimezoneProxy objects to avoid the overhead of loading Timezone definitions until a conversion is actually required.
+full_name: TZInfo::Timezone::all
+is_singleton: true
+name: all
+params: ()
+visibility: public

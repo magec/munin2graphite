@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>local_to_utc (TZInfo::Timezone)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/timezone.rb, line 439</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">local_to_utc</span>(<span class="ruby-identifier">local</span>, <span class="ruby-identifier">dst</span> = <span class="ruby-constant">Timezone</span>.<span class="ruby-identifier">default_dst</span>)
+      <span class="ruby-constant">TimeOrDateTime</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">local</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">wrapped</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+          <span class="ruby-identifier">period</span> = <span class="ruby-identifier">period_for_local</span>(<span class="ruby-identifier">wrapped</span>, <span class="ruby-identifier">dst</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">periods</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">periods</span> }
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">period</span> = <span class="ruby-identifier">period_for_local</span>(<span class="ruby-identifier">wrapped</span>, <span class="ruby-identifier">dst</span>)
+        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-identifier">period</span>.<span class="ruby-identifier">to_utc</span>(<span class="ruby-identifier">wrapped</span>)
+      }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

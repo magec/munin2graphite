@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Passes control to Daemons. This function does the same as Daemons.run except that not a script but a proc will be run as a daemon while this script provides command line options like 'start' or 'stop' and the whole pid-file management to control the proc.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "+app_name+:"
+    body: The name of the application. This will be used to contruct the name of the pid files and log files. Defaults to the basename of the script.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+options+:"
+    body: A hash that may contain one or more of the options listed in the documentation for Daemons.run
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: A block must be given to this function. The block will be used as the :proc entry in the options hash.
+- !ruby/struct:SM::Flow::RULE 
+  width: 3
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: "Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Daemons.run_proc('myproc.rb') do\n    loop do\n      accept_connection()\n      read_request()\n      send_response()\n      close_connection()\n    end\n  end\n"
+full_name: Daemons#run_proc
+is_singleton: false
+name: run_proc
+params: (app_name, options = {}, &block)
+visibility: public

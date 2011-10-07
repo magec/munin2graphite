@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Compares two Timezones based on their identifier. Returns -1 if tz is less than self, 0 if tz is equal to self and +1 if tz is greater than self.
+full_name: TZInfo::Timezone#<=>
+is_singleton: false
+name: <=>
+params: (tz)
+visibility: public

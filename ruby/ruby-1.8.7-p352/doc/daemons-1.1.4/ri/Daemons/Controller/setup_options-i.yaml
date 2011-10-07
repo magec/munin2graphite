@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This function is used to do a final update of the options passed to the application before they are really used.
+- !ruby/struct:SM::Flow::P 
+  body: Note that this function should only update <tt>@options</tt> and no other variables.
+full_name: Daemons::Controller#setup_options
+is_singleton: false
+name: setup_options
+params: ()
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The Timezone (actually a TimezoneProxy for performance reasons).
+full_name: TZInfo::CountryTimezone#timezone
+is_singleton: false
+name: timezone
+params: ()
+visibility: public

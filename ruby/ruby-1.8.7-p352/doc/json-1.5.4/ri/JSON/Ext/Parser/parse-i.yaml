@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parses the current JSON text <em>source</em> and returns the complete data structure as a result.
+full_name: JSON::Ext::Parser#parse
+is_singleton: false
+name: parse
+params: " parse()\n"
+visibility: public

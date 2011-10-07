@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #every"
+full_name: Rufus::Scheduler::SchedulerCore#schedule_every
+is_singleton: false
+name: schedule_every
+params: (t, s=nil, opts={}, &block)
+visibility: public

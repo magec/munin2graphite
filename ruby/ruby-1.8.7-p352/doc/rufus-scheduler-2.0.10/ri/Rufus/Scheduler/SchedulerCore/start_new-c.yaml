@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Instantiates and starts a new Rufus::Scheduler.
+full_name: Rufus::Scheduler::SchedulerCore::start_new
+is_singleton: true
+name: start_new
+params: (opts={})
+visibility: public

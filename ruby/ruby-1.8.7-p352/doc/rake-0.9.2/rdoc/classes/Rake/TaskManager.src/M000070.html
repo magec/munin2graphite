@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>in_namespace (Rake::TaskManager)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/rake/task_manager.rb, line 203</span>
+203:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_namespace</span>(<span class="ruby-identifier">name</span>)
+204:       <span class="ruby-identifier">name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">generate_name</span>
+205:       <span class="ruby-ivar">@scope</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">name</span>)
+206:       <span class="ruby-identifier">ns</span> = <span class="ruby-constant">NameSpace</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-ivar">@scope</span>)
+207:       <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">ns</span>)
+208:       <span class="ruby-identifier">ns</span>
+209:     <span class="ruby-keyword kw">ensure</span>
+210:       <span class="ruby-ivar">@scope</span>.<span class="ruby-identifier">pop</span>
+211:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

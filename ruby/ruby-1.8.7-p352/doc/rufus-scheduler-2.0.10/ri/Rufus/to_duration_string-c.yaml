@@ -1,0 +1,39 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Turns a number of seconds into a a time string
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Rufus.to_duration_string 0                    # =&gt; '0s'\n  Rufus.to_duration_string 60                   # =&gt; '1m'\n  Rufus.to_duration_string 3661                 # =&gt; '1h1m1s'\n  Rufus.to_duration_string 7 * 24 * 3600        # =&gt; '1w'\n  Rufus.to_duration_string 30 * 24 * 3600 + 1   # =&gt; &quot;4w2d1s&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: It goes from seconds to the year. Months are not counted (as they are of variable length). Weeks are counted.
+- !ruby/struct:SM::Flow::P 
+  body: For 30 days months to be counted, the second parameter of this method can be set to true.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Rufus.to_time_string 30 * 24 * 3600 + 1, true   # =&gt; &quot;1M1s&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: (to_time_string is an alias for to_duration_string)
+- !ruby/struct:SM::Flow::P 
+  body: If a Float value is passed, milliseconds will be displayed without 'marker'
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Rufus.to_duration_string 0.051                       # =&gt;&quot;51&quot;\n  Rufus.to_duration_string 7.051                       # =&gt;&quot;7s51&quot;\n  Rufus.to_duration_string 0.120 + 30 * 24 * 3600 + 1  # =&gt;&quot;4w2d1s120&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: (this behaviour mirrors the one found for parse_time_string()).
+- !ruby/struct:SM::Flow::P 
+  body: "Options are :"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: ":months, if set to true, months (M) of 30 days will be taken into account when building up the result"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: ":drop_seconds, if set to true, seconds and milliseconds will be trimmed from the result"
+  type: :BULLET
+full_name: Rufus::to_duration_string
+is_singleton: true
+name: to_duration_string
+params: (seconds, options={})
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Controller#catch_exceptions
+is_singleton: false
+name: catch_exceptions
+params: (&block)
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The default, plain, implementation. If 'blocking' is true, will simply call the block and return when the block is done. Else, it will call the block in a dedicated thread.
+- !ruby/struct:SM::Flow::P 
+  body: "TODO : clarify, the blocking here blocks the whole scheduler, while EmScheduler blocking triggers for the next tick. Not the same thing ..."
+full_name: Rufus::Scheduler::SchedulerCore#trigger_job
+is_singleton: false
+name: trigger_job
+params: (blocking, &block)
+visibility: protected

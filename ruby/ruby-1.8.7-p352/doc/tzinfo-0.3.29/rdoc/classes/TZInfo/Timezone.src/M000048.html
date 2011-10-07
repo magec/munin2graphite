@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>all_country_zones (TZInfo::Timezone)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/timezone.rb, line 204</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">all_country_zones</span>
+      <span class="ruby-constant">Country</span>.<span class="ruby-identifier">all_codes</span>.<span class="ruby-identifier">inject</span>([]) {<span class="ruby-operator">|</span><span class="ruby-identifier">zones</span>,<span class="ruby-identifier">country</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">zones</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">Country</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">country</span>).<span class="ruby-identifier">zones</span>
+      }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: app_name
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: group
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: options
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: split_argv
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COMMANDS
+  value: "[       'start',       'stop',       'restart',       'run',       'zap',       'reload',       'status'"
+full_name: Daemons::Controller
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: catch_exceptions
+- !ruby/object:RI::MethodSummary 
+  name: print_usage
+- !ruby/object:RI::MethodSummary 
+  name: run
+- !ruby/object:RI::MethodSummary 
+  name: setup_options
+name: Controller
+superclass: Object

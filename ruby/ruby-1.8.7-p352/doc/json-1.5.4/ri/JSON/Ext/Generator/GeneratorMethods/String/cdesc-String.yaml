@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: included
+- !ruby/object:RI::MethodSummary 
+  name: included
+comment: []
+
+constants: []
+
+full_name: JSON::Ext::Generator::GeneratorMethods::String
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: to_json
+- !ruby/object:RI::MethodSummary 
+  name: to_json
+- !ruby/object:RI::MethodSummary 
+  name: to_json_raw
+- !ruby/object:RI::MethodSummary 
+  name: to_json_raw
+- !ruby/object:RI::MethodSummary 
+  name: to_json_raw_object
+- !ruby/object:RI::MethodSummary 
+  name: to_json_raw_object
+name: String
+superclass: 

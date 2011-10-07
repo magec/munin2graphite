@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Equivalent to java.lang.System.currentTimeMillis()
+full_name: Rufus::current_time_millis
+is_singleton: true
+name: current_time_millis
+params: ()
+visibility: public

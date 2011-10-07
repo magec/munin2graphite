@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The method that does the &quot;wake up and trigger any job that should get triggered.
+full_name: Rufus::Scheduler::SchedulerCore#step
+is_singleton: false
+name: step
+params: ()
+visibility: protected

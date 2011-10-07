@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: if description is not nil, this method returns description; otherwise it returns timezone.friendly_identifier(true).
+full_name: TZInfo::CountryTimezone#description_or_friendly_identifier
+is_singleton: false
+name: description_or_friendly_identifier
+params: ()
+visibility: public

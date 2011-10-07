@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: CHANGES</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>CHANGES</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>CHANGES
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Sep 05 12:07:32 +0200 2011</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2>Version 0.3.29 (tzdata v2011h) - 27-Jun-2011</h2>
+<ul>
+<li>Updated to tzdata version 2011h (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3814">article.gmane.org/gmane.comp.time.tz/3814</a>).
+
+</li>
+<li>Allow the default value of the local_to_utc and period_for_local dst
+parameter to be specified globally with a Timezone.default_dst attribute.
+Thanks to Kurt Werle for the suggestion and patch.
+
+</li>
+</ul>
+<h2>Version 0.3.28 (tzdata v2011g) - 13-Jun-2011</h2>
+<ul>
+<li>Add support for Ruby 1.9.3 (trunk revision 31668 and later). Thanks to
+Aaron Patterson for reporting the problems running on the new version.
+Closes 29233.
+
+</li>
+</ul>
+<h2>Version 0.3.27 (tzdata v2011g) - 26-Apr-2011</h2>
+<ul>
+<li>Updated to tzdata version 2011g (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3758">article.gmane.org/gmane.comp.time.tz/3758</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.26 (tzdata v2011e) - 2-Apr-2011</h2>
+<ul>
+<li>Updated to tzdata version 2011e (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3707">article.gmane.org/gmane.comp.time.tz/3707</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.25 (tzdata v2011d) - 14-Mar-2011</h2>
+<ul>
+<li>Updated to tzdata version 2011d (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3662">article.gmane.org/gmane.comp.time.tz/3662</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.24 (tzdata v2010o) - 15-Jan-2011</h2>
+<ul>
+<li>Updated to tzdata version 2010o (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3473">article.gmane.org/gmane.comp.time.tz/3473</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.23 (tzdata v2010l) - 19-Aug-2010</h2>
+<ul>
+<li>Updated to tzdata version 2010l (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3354">article.gmane.org/gmane.comp.time.tz/3354</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.22 (tzdata v2010j) - 29-May-2010</h2>
+<ul>
+<li>Corrected file permissions issue with 0.3.21 release.
+
+</li>
+</ul>
+<h2>Version 0.3.21 (tzdata v2010j) - 28-May-2010</h2>
+<ul>
+<li>Updated to tzdata version 2010j (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3225">article.gmane.org/gmane.comp.time.tz/3225</a>).
+
+</li>
+<li>Change invalid timezone check to exclude characters not used in timezone
+identifiers and avoid &#8216;character class has duplicated range&#8217;
+warnings with Ruby 1.9.2.
+
+</li>
+<li>Ruby 1.9.2 has deprecated &quot;require &#8216;rational&#8217;&quot;, but
+older versions of Ruby need rational to be required. Require rational only
+when the Rational module has not already been loaded.
+
+</li>
+<li>Remove circular requires (now a warning in Ruby 1.9.2). Instead of using
+requires in each file for dependencies, tzinfo.rb now requires all tzinfo
+files. If you were previously requiring files within the tzinfo directory
+(e.g. require &#8216;tzinfo/timezone&#8217;), then you will now have to
+require &#8216;tzinfo&#8217; instead.
+
+</li>
+</ul>
+<h2>Version 0.3.20 (tzdata v2010i) - 19-Apr-2010</h2>
+<ul>
+<li>Updated to tzdata version 2010i (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3202">article.gmane.org/gmane.comp.time.tz/3202</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.19 (tzdata v2010h) - 5-Apr-2010</h2>
+<ul>
+<li>Updated to tzdata version 2010h (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3188">article.gmane.org/gmane.comp.time.tz/3188</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.18 (tzdata v2010g) - 29-Mar-2010</h2>
+<ul>
+<li>Updated to tzdata version 2010g (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3172">article.gmane.org/gmane.comp.time.tz/3172</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.17 (tzdata v2010e) - 8-Mar-2010</h2>
+<ul>
+<li>Updated to tzdata version 2010e (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3128">article.gmane.org/gmane.comp.time.tz/3128</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.16 (tzdata v2009u) - 5-Jan-2010</h2>
+<ul>
+<li>Support the use of &#8217;-&#8217; to denote &#8216;0&#8217; as an offset
+in the tz data files. Used for the first time in the SAVE field in tzdata
+v2009u.
+
+</li>
+<li>Updated to tzdata version 2009u (<a
+href="http://article.gmane.org/gmane.comp.time.tz/3053">article.gmane.org/gmane.comp.time.tz/3053</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.15 (tzdata v2009p) - 26-Oct-2009</h2>
+<ul>
+<li>Updated to tzdata version 2009p (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2953">article.gmane.org/gmane.comp.time.tz/2953</a>).
+
+</li>
+<li>Added a description to the gem spec.
+
+</li>
+<li>List test files in test_files instead of files in the gem spec.
+
+</li>
+</ul>
+<h2>Version 0.3.14 (tzdata v2009l) - 19-Aug-2009</h2>
+<ul>
+<li>Updated to tzdata version 2009l (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2818">article.gmane.org/gmane.comp.time.tz/2818</a>).
+
+</li>
+<li>Include current directory in load path to allow running tests on Ruby
+1.9.2, which doesn&#8216;t include it by default any more.
+
+</li>
+</ul>
+<h2>Version 0.3.13 (tzdata v2009f) - 15-Apr-2009</h2>
+<ul>
+<li>Updated to tzdata version 2009f (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2668">article.gmane.org/gmane.comp.time.tz/2668</a>).
+
+</li>
+<li>Untaint the timezone module filename after validation to allow use with
+$SAFE == 1 (e.g. under mod_ruby). Thanks to Dmitry Borodaenko for the
+suggestion. Closes 25349.
+
+</li>
+</ul>
+<h2>Version 0.3.12 (tzdata v2008i) - 12-Nov-2008</h2>
+<ul>
+<li>Updated to tzdata version 2008i (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2440">article.gmane.org/gmane.comp.time.tz/2440</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.11 (tzdata v2008g) - 7-Oct-2008</h2>
+<ul>
+<li>Updated to tzdata version 2008g (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2335">article.gmane.org/gmane.comp.time.tz/2335</a>).
+
+</li>
+<li>Support Ruby 1.9.0-5. Rational.new! has now been removed in Ruby 1.9. Only
+use Rational.new! if it is available (it is preferable in Ruby 1.8 for
+performance reasons). Thanks to Jeremy Kemper and Pratik Naik for reporting
+this. Closes 22312.
+
+</li>
+<li>Apply a patch from Pratik Naik to replace assert calls that have been
+deprecated in the Ruby svn trunk. Closes 22308.
+
+</li>
+</ul>
+<h2>Version 0.3.10 (tzdata v2008f) - 16-Sep-2008</h2>
+<ul>
+<li>Updated to tzdata version 2008f (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2293">article.gmane.org/gmane.comp.time.tz/2293</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.9 (tzdata v2008c) - 27-May-2008</h2>
+<ul>
+<li>Updated to tzdata version 2008c (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2183">article.gmane.org/gmane.comp.time.tz/2183</a>).
+
+</li>
+<li>Support loading timezone data in the latest trunk versions of Ruby 1.9.
+Rational.new! is now private, so call it using Rational.send :new! instead.
+Thanks to Jeremy Kemper and Pratik Naik for spotting this. Closes 19184.
+
+</li>
+<li>Prevent warnings from being output when running Ruby with the -v or -w
+command line options. Thanks to Paul McMahon for the patch. Closes 19719.
+
+</li>
+</ul>
+<h2>Version 0.3.8 (tzdata v2008b) - 24-Mar-2008</h2>
+<ul>
+<li>Updated to tzdata version 2008b (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2149">article.gmane.org/gmane.comp.time.tz/2149</a>).
+
+</li>
+<li>Support loading timezone data in Ruby 1.9.0. Use DateTime.new! if it is
+available instead of DateTime.new0 when constructing transition times.
+DateTime.new! was added in Ruby 1.8.6. DateTime.new0 was removed in Ruby
+1.9.0. Thanks to Joshua Peek for reporting this. Closes 17606.
+
+</li>
+<li>Modify some of the equality test cases to cope with the differences between
+Ruby 1.8.6 and Ruby 1.9.0.
+
+</li>
+</ul>
+<h2>Version 0.3.7 (tzdata v2008a) - 10-Mar-2008</h2>
+<ul>
+<li>Updated to tzdata version 2008a (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2071">article.gmane.org/gmane.comp.time.tz/2071</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.6 (tzdata v2007k) - 1-Jan-2008</h2>
+<ul>
+<li>Updated to tzdata version 2007k (<a
+href="http://article.gmane.org/gmane.comp.time.tz/2029">article.gmane.org/gmane.comp.time.tz/2029</a>).
+
+</li>
+<li>Removed deprecated RubyGems autorequire option.
+
+</li>
+</ul>
+<h2>Version 0.3.5 (tzdata v2007h) - 1-Oct-2007</h2>
+<ul>
+<li>Updated to tzdata version 2007h (<a
+href="http://article.gmane.org/gmane.comp.time.tz/1878">article.gmane.org/gmane.comp.time.tz/1878</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.4 (tzdata v2007g) - 21-Aug-2007</h2>
+<ul>
+<li>Updated to tzdata version 2007g (<a
+href="http://article.gmane.org/gmane.comp.time.tz/1810">article.gmane.org/gmane.comp.time.tz/1810</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.3 (tzdata v2006p) - 27-Nov-2006</h2>
+<ul>
+<li>Updated to tzdata version 2006p (<a
+href="http://article.gmane.org/gmane.comp.time.tz/1358">article.gmane.org/gmane.comp.time.tz/1358</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.2 (tzdata v2006n) - 11-Oct-2006</h2>
+<ul>
+<li>Updated to tzdata version 2006n (<a
+href="http://article.gmane.org/gmane.comp.time.tz/1288">article.gmane.org/gmane.comp.time.tz/1288</a>).
+Note that this release of tzdata removes the country Serbia and Montenegro
+(CS) and replaces it with separate Serbia (RS) and Montenegro (ME) entries.
+
+</li>
+</ul>
+<h2>Version 0.3.1 (tzdata v2006j) - 21-Aug-2006</h2>
+<ul>
+<li>Remove colon from case statements to avoid warning in Ruby 1.8.5. 5198.
+
+</li>
+<li>Use temporary variable to avoid dynamic string warning from rdoc.
+
+</li>
+<li>Updated to tzdata version 2006j (<a
+href="http://article.gmane.org/gmane.comp.time.tz/1175">article.gmane.org/gmane.comp.time.tz/1175</a>).
+
+</li>
+</ul>
+<h2>Version 0.3.0 (tzdata v2006g) - 17-Jul-2006</h2>
+<ul>
+<li>New timezone data format. Timezone data now occupies less space on disk and
+takes less memory once loaded. 4142, 4144.
+
+</li>
+<li>Timezone data is defined in modules rather than classes. Timezone instances
+returned by Timezone.get are no longer instances of data classes, but are
+instead instances of new DataTimezone and LinkedTimezone classes.
+
+</li>
+<li>Timezone instances can now be used with Marshal.dump and Marshal.load.
+4240.
+
+</li>
+<li>Added a Timezone.get_proxy method that returns a TimezoneProxy object for a
+given identifier.
+
+</li>
+<li>Country index data is now defined in a single module that is independent of
+the Country class implementation.
+
+</li>
+<li>Country instances can now be used with Marshal.dump and Marshal.load. 4240.
+
+</li>
+<li>Country has a new zone_info method that returns CountryTimezone objects
+containing additional information (latitude, longitude and a description)
+relating to each Timezone. 4140.
+
+</li>
+<li>Timezones within a Country are now returned in an order that makes
+geographic sense.
+
+</li>
+<li>The zdumptest utility now checks local to utc conversions in addition to
+utc to local conversions.
+
+</li>
+<li>eql? method defined on Country and Timezone that is equivalent to ==.
+
+</li>
+<li>== method of Timezone no longer raises an exception when passed an object
+with no identifier method.
+
+</li>
+<li>== method of Country no longer raises an exception when passed an object
+with no code method.
+
+</li>
+<li>hash method defined on Country that returns the hash of the code.
+
+</li>
+<li>hash method defined on Timezone that returns the hash of the identifier.
+
+</li>
+<li>Miscellaneous API documentation corrections and improvements.
+
+</li>
+<li>Timezone definition and indexes are now excluded from rdoc (the contents
+were previously ignored with #:nodoc: anyway).
+
+</li>
+<li>Removed no longer needed #:nodoc: directives from timezone data files
+(which are now excluded from the rdoc build).
+
+</li>
+<li>Installation of the gem now causes rdoc API documentation to be generated.
+4905.
+
+</li>
+<li>When optimizing transitions to generate zone definitions, check the UTC and
+standard offsets separately rather than just the total offset to UTC. Fixes
+an incorrect abbreviation issue with Europe/London, Europe/Dublin and
+Pacific/Auckland.
+
+</li>
+<li>Eliminated unnecessary .nil? calls to give a minor performance gain.
+
+</li>
+<li>Timezone.all and Timezone.all_identifiers now return all the
+Timezones/identifiers rather than just those associated with countries.
+4146.
+
+</li>
+<li>Added all_data_zones, all_data_zone_identifiers, all_linked_zones and
+all_linked_zone_identifiers class methods to Timezone.
+
+</li>
+<li>Added a strftime method to Timezone that converts a time in UTC to local
+time and then returns it formatted. %Z is replaced with the Timezone
+abbreviation for the given time (for example, EST or EDT). 4143.
+
+</li>
+<li>Fix escaping of quotes in TZDataParser. This affected country names and
+descriptions of timezones within countries.
+
+</li>
+</ul>
+<h2>Version 0.2.2 (tzdata v2006g) - 17-May-2006</h2>
+<ul>
+<li>Use class-scoped instance variables to store the Timezone identifier and
+singleton instance. Loading a linked zone no longer causes the parent
+zone&#8216;s identifier to be changed. The instance method of a linked zone
+class also now returns an instance of the linked zone class rather than the
+parent class. 4502.
+
+</li>
+<li>The zdumptest utility now compares the <a
+href="../classes/TZInfo.html">TZInfo</a> zone identifier with the zdump
+zone identifier.
+
+</li>
+<li>The zdumptestall utility now exits if not supplied with enough parameters.
+
+</li>
+<li>Updated to tzdata version 2006g (<a
+href="http://article.gmane.org/gmane.comp.time.tz/1008">article.gmane.org/gmane.comp.time.tz/1008</a>).
+
+</li>
+</ul>
+<h2>Version 0.2.1 (tzdata v2006d) - 17-Apr-2006</h2>
+<ul>
+<li>Fix a performance issue caused in 0.2.0 with Timezone.local_to_utc.
+Conversions performed on TimeOrDateTime instances passed to &lt;=&gt; are
+now cached as originally intended. Thanks to Michael Smedberg for spotting
+this.
+
+</li>
+<li>Fix a performance issue with the local_to_utc period search algorithm
+originally implemented in 0.1.0. The condition that was supposed to cause
+the search to terminate when enough periods had been found was only being
+evaluated in a small subset of cases. Thanks to Michael Smedberg and Jamis
+Buck for reporting this.
+
+</li>
+<li>Added abbreviation as an alias for TimezonePeriod.zone_identifier.
+
+</li>
+<li>Updated to tzdata version 2006d (<a
+href="http://article.gmane.org/gmane.comp.time.tz/936">article.gmane.org/gmane.comp.time.tz/936</a>).
+
+</li>
+<li>Ignore any offset in DateTimes passed in (as is already done for Times).
+All of the following now refer to the same UTC time (15:40 on 17 April
+2006). Previously, the DateTime in the second line would have been
+interpreted as 20:40.
+
+<pre>
+  tz.utc_to_local(DateTime.new(2006, 4, 17, 15, 40, 0))
+  tz.utc_to_local(DateTime.new(2006, 4, 17, 15, 40, 0).new_offset(Rational(5, 24)))
+  tz.utc_to_local(Time.utc(2006, 4, 17, 15, 40, 0))
+  tz.utc_to_local(Time.local(2006, 4, 17, 15, 40, 0))
+</pre>
+</li>
+</ul>
+<h2>Version 0.2.0 (tzdata v2006c) - 3-Apr-2006</h2>
+<ul>
+<li>Use timestamps rather than DateTime objects in zone files for times between
+1970 and 2037 (the range of Time).
+
+</li>
+<li>Don&#8216;t convert passed in Time objects to DateTime in most cases
+(provides a substantial performance improvement).
+
+</li>
+<li>Allow integer timestamps (time in seconds since 1970-1-1) to be used as
+well as Time and DateTime objects in all public methods that take times as
+parameters.
+
+</li>
+<li>Tool to compare <a href="../classes/TZInfo.html">TZInfo</a> conversions
+with output from zdump.
+
+</li>
+<li>TZDataParser zone generation algorithm rewritten. Now based on the zic
+code. <a href="../classes/TZInfo.html">TZInfo</a> is now 100% compatible
+with zic/zdump output.
+
+</li>
+<li>Riyadh Solar Time zones now included again (generation time has been
+reduced with TZDataParser changes).
+
+</li>
+<li>Use binary mode when writing zone and country files to get Unix (\n) new
+lines.
+
+</li>
+<li>Omit unnecessary quotes in zone identifier symbols.
+
+</li>
+<li>Omit the final transition to DST if there is a prior transition in the last
+year processed to standard time.
+
+</li>
+<li>Updated to tzdata version 2006c (<a
+href="http://article.gmane.org/gmane.comp.time.tz/920">article.gmane.org/gmane.comp.time.tz/920</a>).
+
+</li>
+</ul>
+<h2>Version 0.1.2 (tzdata v2006a) - 5-Feb-2006</h2>
+<ul>
+<li>Add lib directory to the load path when tzinfo is required. Makes it easier
+to use tzinfo gem when unpacked to vendor directory in rails.
+
+</li>
+<li>Updated to tzdata version 2006a (<a
+href="http://article.gmane.org/gmane.comp.time.tz/738">article.gmane.org/gmane.comp.time.tz/738</a>).
+
+</li>
+<li>build_tz_classes rake task now handles running svn add and svn delete as
+new timezones and countries are added and old ones are removed.
+
+</li>
+<li>Return a better error when attempting to use a Timezone instance that was
+constructed with Timezone.new(nil). This will occur when using Rails&#8217;
+composed_of. When the timezone identifier in the database is null,
+attempting to use the Timezone will now result in an UnknownTimezone
+exception rather than a NameError.
+
+</li>
+</ul>
+<h2>Version 0.1.1 (tzdata v2005q) - 18-Dec-2005</h2>
+<ul>
+<li>Timezones that are defined by a single unbounded period (e.g. UTC) now work
+again.
+
+</li>
+<li>Updated to tzdata version 2005q.
+
+</li>
+</ul>
+<h2>Version 0.1.0 (tzdata v2005n) - 27-Nov-2005</h2>
+<ul>
+<li>period_for_local and local_to_utc now allow resolution of ambiguous times
+(e.g. when switching from daylight savings to standard time). The behaviour
+of these methods when faced with an ambiguous local time has now changed.
+If you are using these methods you should check the documentation. Thanks
+to Cliff Matthews for suggesting this change.
+
+</li>
+<li>Added require &#8216;date&#8217; to timezone.rb (date isn&#8216;t loaded by
+default in all environments).
+
+</li>
+<li>Use rake to build packages and documentation.
+
+</li>
+<li>License file is now included in gem distribution.
+
+</li>
+<li>Dates in definitions stored as Astronomical Julian Day numbers rather than
+as civil dates (improves performance creating DateTime instances).
+
+</li>
+<li>Added options to TZDataParser to allow generation of specific zones and
+countries.
+
+</li>
+<li>Moved TimezonePeriod class to timezone_period.rb.
+
+</li>
+<li>New TimezonePeriodList class to store TimezonePeriods for a timezone and
+perform searches for periods.
+
+</li>
+<li>Timezones now defined using blocks. TimezonePeriods are only instantiated
+when they are needed. Thanks to Jamis Buck for the suggestion.
+
+</li>
+<li>Add options to TZDataParser to allow exclusion of specific zones and
+countries.
+
+</li>
+<li>Exclude the Riyadh Solar Time zones. The rules are only for 1987 to 1989
+and take a long time to generate and process. Riyadh Solar Time is no
+longer observed.
+
+</li>
+<li>The last TimezonePeriod for each Timezone is now written out with an
+unbounded rather than arbitrary end time.
+
+</li>
+<li>Construct the Rational offset in TimezonePeriod once when the
+TimezonePeriod is constructed rather than each time it is needed.
+
+</li>
+<li>Timezone and Country now keep a cache of loaded instances to avoid running
+require which can be slow on some platforms.
+
+</li>
+<li>Updated to tzdata version 2005n.
+
+</li>
+</ul>
+<h2>Version 0.0.4 (tzdata v2005m) - 18-Sep-2005</h2>
+<ul>
+<li>Removed debug output accidentally included in the previous release.
+
+</li>
+<li>Fixed a bug in the generation of friendly zone identifiers (was inserting
+apostrophes into UTC, GMT, etc).
+
+</li>
+<li>Fixed Country &lt;=&gt; operator (was comparing non-existent attribute)
+
+</li>
+<li>Fixed Timezone.period_for_local error when period not found.
+
+</li>
+<li>Added testcases for Timezone, TimezoneProxy, TimezonePeriod, Country and
+some selected timezones.
+
+</li>
+</ul>
+<h2>Version 0.0.3 (tzdata v2005m) - 17-Sep-2005</h2>
+<ul>
+<li>Reduced visibility of some methods added in Timezone#setup and
+Country#setup.
+
+</li>
+<li>Added name method to Timezone (returns the identifier).
+
+</li>
+<li>Added friendly_identifier method to Timezone. Returns a more friendly
+version of the identifier.
+
+</li>
+<li>Added to_s method to Timezone. Returns the friendly identifier.
+
+</li>
+<li>Added == and &lt;=&gt; operators to Timezone (compares identifiers).
+
+</li>
+<li>Timezone now includes Comparable.
+
+</li>
+<li>Added to_s method to Country.
+
+</li>
+<li>Added == and &lt;=&gt; operators to Country (compares ISO 3166 country
+codes).
+
+</li>
+<li>Country now includes Comparable.
+
+</li>
+<li>New TimezoneProxy class that behaves the same as a Timezone but
+doesn&#8216;t actually load in its definition until it is actually
+required.
+
+</li>
+<li>Modified Timezone and Country methods that return Timezones to return
+TimezoneProxy instances instead. This makes these methods much quicker.
+
+<p>
+In Ruby on Rails, you can now show a drop-down list of all timezones using
+the Rails time_zone_select helper method:
+</p>
+<p>
+&lt;%= time_zone_select &#8216;user&#8217;, &#8216;time_zone&#8217;,
+TZInfo::Timezone.all.sort, :model =&gt; <a
+href="../classes/TZInfo/Timezone.html">TZInfo::Timezone</a> %&gt;
+</p>
+</li>
+</ul>
+<h2>Version 0.0.2 (tzdata v2005m) - 13-Sep-2005</h2>
+<ul>
+<li>Country and Timezone data is now loaded into class rather than instance
+variables. This makes Timezone links more efficient and saves memory if
+creating specific Timezone and Country classes directly.
+
+</li>
+<li>TimezonePeriod zone_identifier is now defined as a symbol to save memory
+(was previously a string).
+
+</li>
+<li>TimezonePeriod zone_identifiers that were previously &#8217;&#8217; are now
+:Unknown.
+
+</li>
+<li>Timezones and Countries can now be returned using Timezone.new(identifier)
+and Country.new(identifier). When passed an identifier, the new method
+calls get to return an instance of the specified timezone or country.
+
+</li>
+<li>Added new class methods to Timezone to return sets of zones and
+identifiers.
+
+</li>
+</ul>
+<p>
+Thanks to Scott Barron of Lunchbox Software for the suggestions in his
+article about using <a href="../classes/TZInfo.html">TZInfo</a> with Rails
+(<a
+href="http://lunchroom.lunchboxsoftware.com/pages/tzinfo_rails">lunchroom.lunchboxsoftware.com/pages/tzinfo_rails</a>)
+</p>
+<h2>Version 0.0.1 (tzdata v2005m) - 29-Aug-2005</h2>
+<ul>
+<li>First release.
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

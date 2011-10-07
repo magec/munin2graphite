@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a time in UTC to local time and returns it as a string according to the given format. The formatting is identical to Time.strftime and DateTime.strftime, except %Z is replaced with the timezone abbreviation for the specified time (for example, EST or EDT).
+full_name: TZInfo::Timezone#strftime
+is_singleton: false
+name: strftime
+params: (format, utc = Time.now.utc)
+visibility: public

@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is the JSON parser implemented as a C extension. It can be configured to be used by setting
+- !ruby/struct:SM::Flow::VERB 
+  body: " JSON.parser = JSON::Ext::Parser\n"
+- !ruby/struct:SM::Flow::P 
+  body: with the method parser= in JSON.
+constants: []
+
+full_name: JSON::Ext::Parser
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: parse
+- !ruby/object:RI::MethodSummary 
+  name: parse
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode?
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode?
+- !ruby/object:RI::MethodSummary 
+  name: source
+- !ruby/object:RI::MethodSummary 
+  name: source
+name: Parser
+superclass: Object

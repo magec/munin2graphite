@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parses an offset string [-]h:m:s (minutes and seconds are optional). Returns the offset in seconds.
+full_name: TZInfo::TZDataParser::parse_offset
+is_singleton: true
+name: parse_offset
+params: (offset)
+visibility: public

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>trigger (Rufus::Scheduler::Job)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/jobs.rb, line 126</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trigger</span>(<span class="ruby-identifier">t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+
+      <span class="ruby-ivar">@last</span> = <span class="ruby-identifier">t</span>
+      <span class="ruby-identifier">job_thread</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">to_job</span> = <span class="ruby-keyword kw">nil</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@running</span> <span class="ruby-keyword kw">and</span> (<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:allow_overlapping</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>)
+
+      <span class="ruby-ivar">@running</span> = <span class="ruby-keyword kw">true</span>
+
+      <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:trigger_job</span>, <span class="ruby-ivar">@params</span>[<span class="ruby-identifier">:blocking</span>]) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-comment cmt"># Note that #trigger_job is protected, hence the #send</span>
+        <span class="ruby-comment cmt"># (Only jobs know about this method of the scheduler)</span>
+
+        <span class="ruby-identifier">job_thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>
+        <span class="ruby-identifier">job_thread</span>[
+          <span class="ruby-node">&quot;rufus_scheduler__trigger_thread__#{@scheduler.object_id}&quot;</span>
+        ] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-ivar">@last_job_thread</span> = <span class="ruby-identifier">job_thread</span>
+
+        <span class="ruby-keyword kw">begin</span>
+
+          <span class="ruby-identifier">trigger_block</span>
+
+          <span class="ruby-identifier">job_thread</span> = <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-identifier">to_job</span>.<span class="ruby-identifier">unschedule</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_job</span>
+
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+
+          <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">handle_exception</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">e</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-ivar">@running</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># note that add_job and add_cron_job ensured that :blocking is</span>
+      <span class="ruby-comment cmt"># not used along :timeout</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to</span> = <span class="ruby-ivar">@params</span>[<span class="ruby-identifier">:timeout</span>]
+
+        <span class="ruby-identifier">to_job</span> = <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">in</span>(<span class="ruby-identifier">to</span>, <span class="ruby-identifier">:parent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:tags</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'timeout'</span>) <span class="ruby-keyword kw">do</span>
+
+          <span class="ruby-comment cmt"># at this point, @job_thread might be set</span>
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">job_thread</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">job_thread</span>.<span class="ruby-identifier">alive?</span>
+            <span class="ruby-identifier">job_thread</span>.<span class="ruby-identifier">raise</span>(<span class="ruby-constant">Rufus</span><span class="ruby-operator">::</span><span class="ruby-constant">Scheduler</span><span class="ruby-operator">::</span><span class="ruby-constant">TimeOutError</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

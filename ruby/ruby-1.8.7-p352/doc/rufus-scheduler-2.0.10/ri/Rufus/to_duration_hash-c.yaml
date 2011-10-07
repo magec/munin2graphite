@@ -1,0 +1,27 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Turns a number of seconds (integer or Float) into a hash like in :"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Rufus.to_duration_hash 0.051\n    # =&gt; { :ms =&gt; &quot;51&quot; }\n  Rufus.to_duration_hash 7.051\n    # =&gt; { :s =&gt; 7, :ms =&gt; &quot;51&quot; }\n  Rufus.to_duration_hash 0.120 + 30 * 24 * 3600 + 1\n    # =&gt; { :w =&gt; 4, :d =&gt; 2, :s =&gt; 1, :ms =&gt; &quot;120&quot; }\n"
+- !ruby/struct:SM::Flow::P 
+  body: This method is used by to_duration_string (to_time_string) behind the scene.
+- !ruby/struct:SM::Flow::P 
+  body: "Options are :"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: ":months, if set to true, months (M) of 30 days will be taken into account when building up the result"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: ":drop_seconds, if set to true, seconds and milliseconds will be trimmed from the result"
+  type: :BULLET
+full_name: Rufus::to_duration_hash
+is_singleton: true
+name: to_duration_hash
+params: (seconds, options={})
+visibility: public

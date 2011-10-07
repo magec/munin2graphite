@@ -1,0 +1,126 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: from_state
+- !ruby/object:RI::MethodSummary 
+  name: from_state
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: []
+
+constants: []
+
+full_name: JSON::Ext::Generator::State
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: allow_nan?
+- !ruby/object:RI::MethodSummary 
+  name: allow_nan?
+- !ruby/object:RI::MethodSummary 
+  name: array_nl
+- !ruby/object:RI::MethodSummary 
+  name: array_nl
+- !ruby/object:RI::MethodSummary 
+  name: array_nl=
+- !ruby/object:RI::MethodSummary 
+  name: array_nl=
+- !ruby/object:RI::MethodSummary 
+  name: ascii_only?
+- !ruby/object:RI::MethodSummary 
+  name: ascii_only?
+- !ruby/object:RI::MethodSummary 
+  name: check_circular?
+- !ruby/object:RI::MethodSummary 
+  name: check_circular?
+- !ruby/object:RI::MethodSummary 
+  name: configure
+- !ruby/object:RI::MethodSummary 
+  name: configure
+- !ruby/object:RI::MethodSummary 
+  name: depth
+- !ruby/object:RI::MethodSummary 
+  name: depth
+- !ruby/object:RI::MethodSummary 
+  name: depth=
+- !ruby/object:RI::MethodSummary 
+  name: depth=
+- !ruby/object:RI::MethodSummary 
+  name: generate
+- !ruby/object:RI::MethodSummary 
+  name: generate
+- !ruby/object:RI::MethodSummary 
+  name: indent
+- !ruby/object:RI::MethodSummary 
+  name: indent
+- !ruby/object:RI::MethodSummary 
+  name: indent=
+- !ruby/object:RI::MethodSummary 
+  name: indent=
+- !ruby/object:RI::MethodSummary 
+  name: initialize_copy
+- !ruby/object:RI::MethodSummary 
+  name: initialize_copy
+- !ruby/object:RI::MethodSummary 
+  name: max_nesting
+- !ruby/object:RI::MethodSummary 
+  name: max_nesting
+- !ruby/object:RI::MethodSummary 
+  name: max_nesting=
+- !ruby/object:RI::MethodSummary 
+  name: max_nesting=
+- !ruby/object:RI::MethodSummary 
+  name: merge
+- !ruby/object:RI::MethodSummary 
+  name: merge
+- !ruby/object:RI::MethodSummary 
+  name: object_nl
+- !ruby/object:RI::MethodSummary 
+  name: object_nl
+- !ruby/object:RI::MethodSummary 
+  name: object_nl=
+- !ruby/object:RI::MethodSummary 
+  name: object_nl=
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode=
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode=
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode?
+- !ruby/object:RI::MethodSummary 
+  name: quirks_mode?
+- !ruby/object:RI::MethodSummary 
+  name: space
+- !ruby/object:RI::MethodSummary 
+  name: space
+- !ruby/object:RI::MethodSummary 
+  name: space=
+- !ruby/object:RI::MethodSummary 
+  name: space=
+- !ruby/object:RI::MethodSummary 
+  name: space_before
+- !ruby/object:RI::MethodSummary 
+  name: space_before
+- !ruby/object:RI::MethodSummary 
+  name: space_before=
+- !ruby/object:RI::MethodSummary 
+  name: space_before=
+- !ruby/object:RI::MethodSummary 
+  name: to_h
+- !ruby/object:RI::MethodSummary 
+  name: to_h
+name: State
+superclass: Object

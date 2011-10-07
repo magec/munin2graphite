@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Encloses the string in single quotes and escapes any single quotes in the content.
+full_name: TZInfo::TZDataParser::quote_str
+is_singleton: true
+name: quote_str
+params: (str)
+visibility: public

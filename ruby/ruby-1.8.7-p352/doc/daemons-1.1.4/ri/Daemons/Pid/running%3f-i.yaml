@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check whether the process is running
+full_name: Daemons::Pid#running?
+is_singleton: false
+name: running?
+params: ()
+visibility: public

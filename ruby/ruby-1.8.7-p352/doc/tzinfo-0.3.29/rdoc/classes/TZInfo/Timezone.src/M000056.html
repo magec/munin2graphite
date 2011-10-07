@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>friendly_identifier (TZInfo::Timezone)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/timezone.rb, line 266</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">friendly_identifier</span>(<span class="ruby-identifier">skip_first_part</span> = <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">parts</span> = <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-comment cmt"># shouldn't happen</span>
+        <span class="ruby-identifier">identifier</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>        
+        <span class="ruby-identifier">parts</span>[<span class="ruby-value">0</span>]
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">skip_first_part</span>
+          <span class="ruby-identifier">result</span> = <span class="ruby-value str">''</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">result</span> = <span class="ruby-identifier">parts</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">+</span> <span class="ruby-value str">' - '</span>
+        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-identifier">parts</span>[<span class="ruby-value">1</span>, <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">reverse_each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">part</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">part</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">' '</span>)
+          
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">part</span>.<span class="ruby-identifier">index</span>(<span class="ruby-regexp re">/[a-z]/</span>)
+            <span class="ruby-comment cmt"># Missing a space if a lower case followed by an upper case and the</span>
+            <span class="ruby-comment cmt"># name isn't McXxxx.</span>
+            <span class="ruby-identifier">part</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/([^M][a-z])([A-Z])/</span>, <span class="ruby-value str">'\1 \2'</span>)
+            <span class="ruby-identifier">part</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/([M][a-bd-z])([A-Z])/</span>, <span class="ruby-value str">'\1 \2'</span>)
+            
+            <span class="ruby-comment cmt"># Missing an apostrophe if two consecutive upper case characters.</span>
+            <span class="ruby-identifier">part</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/([A-Z])([A-Z])/</span>, <span class="ruby-value str">'\1\'\2'</span>)
+          <span class="ruby-keyword kw">end</span>
+          
+          <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">part</span>
+          <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">', '</span>
+        }
+        
+        <span class="ruby-identifier">result</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-identifier">result</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>, <span class="ruby-value">2</span>)
+        <span class="ruby-identifier">result</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

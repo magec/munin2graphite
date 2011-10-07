@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: When the job is supposed to trigger
+  name: at
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: last
+  rw: R
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The base class of at/in/every jobs.
+constants: []
+
+full_name: Rufus::Scheduler::SimpleJob
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: determine_at
+- !ruby/object:RI::MethodSummary 
+  name: next_time
+name: SimpleJob
+superclass: Job

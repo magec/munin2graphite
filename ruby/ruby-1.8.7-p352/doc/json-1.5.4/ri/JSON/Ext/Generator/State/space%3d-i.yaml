@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This string is used to insert a space between the tokens in a JSON string.
+full_name: JSON::Ext::Generator::State#space=
+is_singleton: false
+name: space=
+params: " space=(space)\n"
+visibility: public

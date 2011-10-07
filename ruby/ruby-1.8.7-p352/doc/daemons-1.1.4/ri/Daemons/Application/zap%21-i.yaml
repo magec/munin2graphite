@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Application#zap!
+is_singleton: false
+name: zap!
+params: ()
+visibility: public

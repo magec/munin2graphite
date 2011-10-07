@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Monitor::find
+is_singleton: true
+name: find
+params: (dir, app_name)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a Time instance to a DateTime one
+full_name: Rufus::to_datetime
+is_singleton: true
+name: to_datetime
+params: (time)
+visibility: public

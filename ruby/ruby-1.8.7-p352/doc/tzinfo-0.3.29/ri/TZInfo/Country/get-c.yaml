@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gets a Country by its ISO 3166 code. Raises an InvalidCountryCode exception if it couldn't be found.
+full_name: TZInfo::Country::get
+is_singleton: true
+name: get
+params: (identifier)
+visibility: public

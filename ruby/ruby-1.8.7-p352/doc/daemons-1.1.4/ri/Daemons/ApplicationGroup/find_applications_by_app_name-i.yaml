@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: identifiy the monitor process"
+full_name: Daemons::ApplicationGroup#find_applications_by_app_name
+is_singleton: false
+name: find_applications_by_app_name
+params: (app_name)
+visibility: public

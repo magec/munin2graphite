@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Collection of TZDataTransition instances used when building a zone class.
+constants: []
+
+full_name: TZInfo::TZDataTransitions
+includes: []
+
+instance_methods: []
+
+name: TZDataTransitions
+superclass: Object

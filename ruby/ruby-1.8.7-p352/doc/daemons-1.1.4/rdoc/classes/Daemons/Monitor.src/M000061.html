@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>start (Daemons::Monitor)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/monitor.rb, line 107</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>(<span class="ruby-identifier">applications</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">applications</span>.<span class="ruby-identifier">empty?</span>
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">PidFile</span>)
+        <span class="ruby-identifier">start_with_pidfile</span>(<span class="ruby-identifier">applications</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">start_without_pidfile</span>(<span class="ruby-identifier">applications</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
