@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>define_task (Rake::TaskManager)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/rake/task_manager.rb, line 23</span>
+23:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_task</span>(<span class="ruby-identifier">task_class</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+24:       <span class="ruby-identifier">task_name</span>, <span class="ruby-identifier">arg_names</span>, <span class="ruby-identifier">deps</span> = <span class="ruby-identifier">resolve_args</span>(<span class="ruby-identifier">args</span>)
+25:       <span class="ruby-identifier">task_name</span> = <span class="ruby-identifier">task_class</span>.<span class="ruby-identifier">scope_name</span>(<span class="ruby-ivar">@scope</span>, <span class="ruby-identifier">task_name</span>)
+26:       <span class="ruby-identifier">deps</span> = [<span class="ruby-identifier">deps</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_ary</span>)
+27:       <span class="ruby-identifier">deps</span> = <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> }
+28:       <span class="ruby-identifier">task</span> = <span class="ruby-identifier">intern</span>(<span class="ruby-identifier">task_class</span>, <span class="ruby-identifier">task_name</span>)
+29:       <span class="ruby-identifier">task</span>.<span class="ruby-identifier">set_arg_names</span>(<span class="ruby-identifier">arg_names</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">arg_names</span>.<span class="ruby-identifier">empty?</span>
+30:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">TaskManager</span>.<span class="ruby-identifier">record_task_metadata</span>
+31:         <span class="ruby-identifier">add_location</span>(<span class="ruby-identifier">task</span>)
+32:         <span class="ruby-identifier">task</span>.<span class="ruby-identifier">add_description</span>(<span class="ruby-identifier">get_description</span>(<span class="ruby-identifier">task</span>))
+33:       <span class="ruby-keyword kw">end</span>
+34:       <span class="ruby-identifier">task</span>.<span class="ruby-identifier">enhance</span>(<span class="ruby-identifier">deps</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+35:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>find (Daemons::Monitor)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/monitor.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">app_name</span>)
+      <span class="ruby-identifier">pid</span> = <span class="ruby-constant">PidFile</span>.<span class="ruby-identifier">find_files</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">app_name</span>, <span class="ruby-keyword kw">false</span>)[<span class="ruby-value">0</span>]
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pid</span>
+        <span class="ruby-identifier">pid</span> = <span class="ruby-constant">PidFile</span>.<span class="ruby-identifier">existing</span>(<span class="ruby-identifier">pid</span>)
+        
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">PidFile</span>.<span class="ruby-identifier">running?</span>(<span class="ruby-identifier">pid</span>.<span class="ruby-identifier">pid</span>)
+          <span class="ruby-keyword kw">begin</span>; <span class="ruby-identifier">pid</span>.<span class="ruby-identifier">cleanup</span>; <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>; <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">return</span>
+        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-identifier">monitor</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allocate</span>
+      
+        <span class="ruby-identifier">monitor</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@pid</span>, <span class="ruby-identifier">pid</span>)
+        
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">monitor</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

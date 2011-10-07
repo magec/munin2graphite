@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Raises an error if the job has the params :blocking and :timeout set
+full_name: Rufus::Scheduler::SchedulerCore#complain_if_blocking_and_timeout
+is_singleton: false
+name: complain_if_blocking_and_timeout
+params: (job)
+visibility: protected

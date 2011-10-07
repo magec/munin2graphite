@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>find_applications_by_app_name (Daemons::ApplicationGroup)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/application_group.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_applications_by_app_name</span>(<span class="ruby-identifier">app_name</span>)
+      <span class="ruby-identifier">pids</span> = []
+      
+      <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">x</span> = <span class="ruby-node">`ps auxw | grep -v grep | awk '{print $2, $11, $12}' | grep #{app_name}`</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">chomp!</span>
+        <span class="ruby-identifier">processes</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\n/</span>).<span class="ruby-identifier">compact</span>
+        <span class="ruby-identifier">processes</span> = <span class="ruby-identifier">processes</span>.<span class="ruby-identifier">delete_if</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">pid</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">add</span> = <span class="ruby-identifier">p</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\s/</span>)
+          <span class="ruby-comment cmt"># We want to make sure that the first part of the process name matches</span>
+          <span class="ruby-comment cmt"># so that app_name matches app_name_22</span>
+          
+          <span class="ruby-identifier">app_name</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">name</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">app_name</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)] <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">add</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">app_name</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">pids</span> = <span class="ruby-identifier">processes</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\s/</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>}
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">pids</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">app</span> = <span class="ruby-constant">Application</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, {}, <span class="ruby-constant">PidMem</span>.<span class="ruby-identifier">existing</span>(<span class="ruby-identifier">f</span>))
+        <span class="ruby-identifier">setup_app</span>(<span class="ruby-identifier">app</span>)
+        <span class="ruby-identifier">app</span>
+      }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

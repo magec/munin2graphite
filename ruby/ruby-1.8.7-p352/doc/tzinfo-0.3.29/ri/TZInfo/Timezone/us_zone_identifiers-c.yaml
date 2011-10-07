@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns all US zone identifiers. A shortcut for TZInfo::Country.get('US').zone_identifiers.
+full_name: TZInfo::Timezone::us_zone_identifiers
+is_singleton: true
+name: us_zone_identifiers
+params: ()
+visibility: public

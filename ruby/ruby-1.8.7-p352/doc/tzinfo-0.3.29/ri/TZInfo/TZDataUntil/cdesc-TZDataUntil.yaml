@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A tz data Zone until reference.
+constants: []
+
+full_name: TZInfo::TZDataUntil
+includes: []
+
+instance_methods: []
+
+name: TZDataUntil
+superclass: Object

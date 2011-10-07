@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Application#stop
+is_singleton: false
+name: stop
+params: (no_wait = false)
+visibility: public

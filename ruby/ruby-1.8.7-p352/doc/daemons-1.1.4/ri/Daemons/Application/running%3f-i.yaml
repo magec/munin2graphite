@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This function implements a (probably too simle) method to detect whether the program with the pid found in the pid-file is still running. It just searches for the pid in the output of <tt>ps ax</tt>, which is probably not a good idea in some cases. Alternatives would be to use a direct access method the unix process control system.
+full_name: Daemons::Application#running?
+is_singleton: false
+name: running?
+params: ()
+visibility: public

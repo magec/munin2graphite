@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: true if daylight savings is in effect for this period; otherwise false.
+full_name: TZInfo::TimezonePeriod#dst?
+is_singleton: false
+name: dst?
+params: ()
+visibility: public

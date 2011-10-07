@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return the invocation chain (list of Rake tasks) that were in effect when this exception was detected by rake. May be null if no tasks were active.
+full_name: Rake::InvocationExceptionMixin#chain
+is_singleton: false
+name: chain
+params: ()
+visibility: public

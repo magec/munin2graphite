@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>add_job (Rufus::Scheduler::SchedulerCore)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/scheduler.rb, line 306</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_job</span>(<span class="ruby-identifier">job</span>)
+
+      <span class="ruby-identifier">complain_if_blocking_and_timeout</span>(<span class="ruby-identifier">job</span>)
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">job</span>.<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:discard_past</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">job</span>.<span class="ruby-identifier">at</span>
+
+      <span class="ruby-ivar">@jobs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">job</span>
+
+      <span class="ruby-identifier">job</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>execute (TZInfo::TZDataParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/tzdataparser.rb, line 75</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute</span>
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-ivar">@input_dir</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">load_rules</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[^\.]+$/</span>        
+      }  
+      
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-ivar">@input_dir</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">load_zones</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[^\.]+$/</span>        
+      }
+      
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-ivar">@input_dir</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">load_links</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[^\.]+$/</span>        
+      }
+      
+      <span class="ruby-identifier">load_countries</span>
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@generate_zones</span>
+        <span class="ruby-identifier">modules</span> = []
+        
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@only_zones</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@only_zones</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-ivar">@zones</span>.<span class="ruby-identifier">each_value</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">zone</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">zone</span>.<span class="ruby-identifier">write_module</span>(<span class="ruby-ivar">@output_dir</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@exclude_zones</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">name</span>)
+          }
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@only_zones</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">zone</span> = <span class="ruby-ivar">@zones</span>[<span class="ruby-identifier">id</span>]
+            <span class="ruby-identifier">zone</span>.<span class="ruby-identifier">write_module</span>(<span class="ruby-ivar">@output_dir</span>)            
+          }          
+        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-identifier">write_timezones_index</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@generate_countries</span>        
+        <span class="ruby-identifier">write_countries_index</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

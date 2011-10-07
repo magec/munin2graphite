@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: def run
+- !ruby/struct:SM::Flow::VERB 
+  body: "  if @group.controller.options[:exec]\n    run_via_exec()\n  else\n    run_via_load()\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: end
+- !ruby/struct:SM::Flow::P 
+  body: def run_via_exec
+- !ruby/struct:SM::Flow::P 
+  body: end
+- !ruby/struct:SM::Flow::P 
+  body: def run_via_load
+- !ruby/struct:SM::Flow::P 
+  body: end
+full_name: Daemons::Application#reload
+is_singleton: false
+name: reload
+params: ()
+visibility: public

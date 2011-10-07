@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The longitude of this timezone in degrees as a Rational.
+full_name: TZInfo::CountryTimezone#longitude
+is_singleton: false
+name: longitude
+params: ()
+visibility: public

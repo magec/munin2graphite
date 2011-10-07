@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a proxy for the Timezone with the given identifier. The proxy will cause the real timezone to be loaded when an attempt is made to find a period or convert a time. get_proxy will not validate the identifier. If an invalid identifier is specified, no exception will be raised until the proxy is used.
+full_name: TZInfo::Timezone::get_proxy
+is_singleton: true
+name: get_proxy
+params: (identifier)
+visibility: public

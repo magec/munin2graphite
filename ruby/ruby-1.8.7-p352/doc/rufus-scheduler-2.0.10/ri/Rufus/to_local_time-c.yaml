@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Rufus::to_local_time
+is_singleton: true
+name: to_local_time
+params: (dtime)
+visibility: public

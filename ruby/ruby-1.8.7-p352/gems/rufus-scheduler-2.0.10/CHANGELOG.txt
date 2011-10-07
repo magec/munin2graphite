@@ -1,0 +1,62 @@
+
+= rufus-scheduler CHANGELOG.txt
+
+
+== rufus-scheduler - 2.0.10    released 2011/06/26
+
+- every and allow_overlapping now surviving exceptions. Thanks sha1dy
+
+
+== rufus-scheduler - 2.0.9    released 2011/04/22
+
+- Scheduler#first_at and :discard_past => true. Thanks concept47
+- Scheduler#cron and monthdays (sun#2 or mon#1)
+- Scheduler#unschedule_by_tag(t)
+
+
+== rufus-scheduler - 2.0.8    released 2010/12/31
+
+- issue with cron '0 7-23/2 * * *' fixed. Thanks Pickerel
+
+
+== rufus-scheduler - 2.0.7    released 2010/11/09
+
+- :allow_overlapping => false, thanks Adam Davies
+- cron and timezones, thanks Tanzeeb Khalili
+- Scheduler#trigger_threads, thanks Tim Uckun
+
+
+== rufus-scheduler - 2.0.6    released 2010/05/01
+
+- timeout jobs not outliving their parent job anymore, thanks Joel Wood
+
+
+== rufus-scheduler - 2.0.5    released 2010/03/02
+
+- fixed parse_time_string(s) issue, thanks Gonzalo Suarez
+
+
+== rufus-scheduler - 2.0.4    released 2010/02/12
+
+- addressing issue with every and timeout, thanks Tony Day
+
+
+== rufus-scheduler - 2.0.3    released 2009/11/04
+
+- made sure Schedulables with a call(job) method were OK when passed as second
+  parameter (thanks Nate Wiger)
+
+
+== rufus-scheduler - 2.0.2    released 2009/10/31
+
+- unified JobQueue and CronJobQueue, and handed @last_second management to the
+  latter
+- #trigger_block method for easier override
+- passing :job => job among Schedulable trigger parameters
+
+
+== rufus-scheduler - 2.0.1    released 2009/05/07
+== rufus-scheduler - 2.0.0    released 2009/05/07
+
+- initial release
+

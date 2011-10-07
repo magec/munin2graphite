@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>find_files (Daemons::PidFile)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/pidfile.rb, line 36</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-constant">PidFile</span>.<span class="ruby-identifier">find_files</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">progname</span>, <span class="ruby-identifier">delete</span> = <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">files</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-node">&quot;#{progname}*.pid&quot;</span>)]
+      
+      <span class="ruby-identifier">files</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">not</span> (<span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">f</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">f</span>))}
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">delete</span> 
+        <span class="ruby-identifier">files</span>.<span class="ruby-identifier">delete_if</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">pid</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">f</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">read</span>}.<span class="ruby-identifier">to_i</span>
+          <span class="ruby-identifier">rsl</span> =  <span class="ruby-operator">!</span> <span class="ruby-constant">Pid</span>.<span class="ruby-identifier">running?</span>(<span class="ruby-identifier">pid</span>)
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rsl</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;pid-file for killed process #{pid} found (#{f}), deleting.&quot;</span>
+            <span class="ruby-keyword kw">begin</span>; <span class="ruby-constant">File</span>.<span class="ruby-identifier">unlink</span>(<span class="ruby-identifier">f</span>); <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>; <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">rsl</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">files</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

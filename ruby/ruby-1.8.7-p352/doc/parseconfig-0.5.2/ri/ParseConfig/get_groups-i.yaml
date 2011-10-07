@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: List available sub-groups of the config.
+full_name: ParseConfig#get_groups
+is_singleton: false
+name: get_groups
+params: ()
+visibility: public

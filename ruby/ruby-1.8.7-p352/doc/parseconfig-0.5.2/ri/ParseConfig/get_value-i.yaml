@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method will provide the value held by the object &quot;@param&quot; where &quot;@param&quot; is actually the name of the param in the config file.
+- !ruby/struct:SM::Flow::P 
+  body: DEPRECATED - will be removed in future versions
+full_name: ParseConfig#get_value
+is_singleton: false
+name: get_value
+params: (param)
+visibility: public

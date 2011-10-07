@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: results
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the TimezonePeriod for the given local time. local can either be a DateTime, Time or integer timestamp (Time.to_i). Any timezone information in local is ignored (it is treated as a time in the current timezone).
+- !ruby/struct:SM::Flow::P 
+  body: "Warning: There are local times that have no equivalent UTC times (e.g. in the transition from standard time to daylight savings time). There are also local times that have more than one UTC equivalent (e.g. in the transition from daylight savings time to standard time)."
+- !ruby/struct:SM::Flow::P 
+  body: In the first case (no equivalent UTC time), a PeriodNotFound exception will be raised.
+- !ruby/struct:SM::Flow::P 
+  body: In the second case (more than one equivalent UTC time), an AmbiguousTime exception will be raised unless the optional dst parameter or block handles the ambiguity.
+- !ruby/struct:SM::Flow::P 
+  body: If the ambiguity is due to a transition from daylight savings time to standard time, the dst parameter can be used to select whether the daylight savings time or local time is used. For example,
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Timezone.get('America/New_York').period_for_local(DateTime.new(2004,10,31,1,30,0))\n"
+- !ruby/struct:SM::Flow::P 
+  body: would raise an AmbiguousTime exception.
+- !ruby/struct:SM::Flow::P 
+  body: Specifying dst=true would the daylight savings period from April to October 2004. Specifying dst=false would return the standard period from October 2004 to April 2005.
+- !ruby/struct:SM::Flow::P 
+  body: If the dst parameter does not resolve the ambiguity, and a block is specified, it is called. The block must take a single parameter - an array of the periods that need to be resolved. The block can select and return a single period or return nil or an empty array to cause an AmbiguousTime exception to be raised.
+- !ruby/struct:SM::Flow::P 
+  body: The default value of the dst parameter can be specified by setting Timezone.default_dst. If default_dst is not set, or is set to nil, then an AmbiguousTime exception will be raised in ambiguous situations unless a block is given to resolve the ambiguity.
+full_name: TZInfo::Timezone#period_for_local
+is_singleton: false
+name: period_for_local
+params: (local, dst = Timezone.default_dst) {|results| ...}
+visibility: public

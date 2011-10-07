@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reads the tzdata source and generates the classes. Takes a long time to run. Currently outputs debugging information to standard out.
+full_name: TZInfo::TZDataParser#execute
+is_singleton: false
+name: execute
+params: ()
+visibility: public

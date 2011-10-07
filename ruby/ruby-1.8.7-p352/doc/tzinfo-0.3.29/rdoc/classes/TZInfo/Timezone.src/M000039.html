@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get (TZInfo::Timezone)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/timezone.rb, line 95</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">identifier</span>)
+      <span class="ruby-identifier">instance</span> = <span class="ruby-ivar">@@loaded_zones</span>[<span class="ruby-identifier">identifier</span>]
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">instance</span>  
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidTimezoneIdentifier</span>, <span class="ruby-value str">'Invalid identifier'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">identifier</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/^[A-Za-z0-9\+\-_]+(\/[A-Za-z0-9\+\-_]+)*$/</span>
+        <span class="ruby-identifier">identifier</span> = <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/-/</span>, <span class="ruby-value str">'__m__'</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\+/</span>, <span class="ruby-value str">'__p__'</span>)
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-comment cmt"># Use a temporary variable to avoid an rdoc warning</span>
+          <span class="ruby-identifier">file</span> = <span class="ruby-node">&quot;tzinfo/definitions/#{identifier}&quot;</span>.<span class="ruby-identifier">untaint</span>
+          <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
+          
+          <span class="ruby-identifier">m</span> = <span class="ruby-constant">Definitions</span>
+          <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\//</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">part</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">m</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">part</span>)
+          }
+          
+          <span class="ruby-identifier">info</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">get</span>
+          
+          <span class="ruby-comment cmt"># Could make Timezone subclasses register an interest in an info</span>
+          <span class="ruby-comment cmt"># type. Since there are currently only two however, there isn't</span>
+          <span class="ruby-comment cmt"># much point.</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">info</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">DataTimezoneInfo</span>)
+            <span class="ruby-identifier">instance</span> = <span class="ruby-constant">DataTimezone</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info</span>)
+          <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">info</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">LinkedTimezoneInfo</span>)
+            <span class="ruby-identifier">instance</span> = <span class="ruby-constant">LinkedTimezone</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidTimezoneIdentifier</span>, <span class="ruby-node">&quot;No handler for info type #{info.class}&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          
+          <span class="ruby-ivar">@@loaded_zones</span>[<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">identifier</span>] = <span class="ruby-identifier">instance</span>         
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>, <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidTimezoneIdentifier</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-identifier">instance</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

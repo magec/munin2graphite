@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::PidFile#pid=
+is_singleton: false
+name: pid=
+params: (p)
+visibility: public

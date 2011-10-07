@@ -1,0 +1,51 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: config_file
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: groups
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: params
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Note: A group is a set of parameters defined for a subpart of a config file"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Version
+  value: "'0.5.2'"
+full_name: ParseConfig
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add
+- !ruby/object:RI::MethodSummary 
+  name: add_to_group
+- !ruby/object:RI::MethodSummary 
+  name: get_groups
+- !ruby/object:RI::MethodSummary 
+  name: get_params
+- !ruby/object:RI::MethodSummary 
+  name: get_value
+- !ruby/object:RI::MethodSummary 
+  name: import_config
+- !ruby/object:RI::MethodSummary 
+  name: nil_value
+- !ruby/object:RI::MethodSummary 
+  name: override_value
+- !ruby/object:RI::MethodSummary 
+  name: validate_config
+- !ruby/object:RI::MethodSummary 
+  name: write
+name: ParseConfig
+superclass: Object

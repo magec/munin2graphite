@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>stop (Daemons::Application)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/application.rb, line 370</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop</span>(<span class="ruby-identifier">no_wait</span> = <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">running?</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">zap</span>
+        <span class="ruby-keyword kw">return</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-identifier">pid</span> = <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">pid</span>
+      
+      <span class="ruby-comment cmt"># Catch errors when trying to kill a process that doesn't</span>
+      <span class="ruby-comment cmt"># exist. This happens when the process quits and hasn't been</span>
+      <span class="ruby-comment cmt"># restarted by the monitor yet. By catching the error, we allow the</span>
+      <span class="ruby-comment cmt"># pid file clean-up to occur.</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span>(<span class="ruby-constant">SIGNAL</span>, <span class="ruby-identifier">pid</span>)
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ESRCH</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{e} #{pid}&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;deleting pid-file.&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">no_wait</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@force_kill_waittime</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{self.group.app_name}: trying to stop process with pid #{pid}...&quot;</span>
+          <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">flush</span>
+          
+          <span class="ruby-keyword kw">begin</span>
+            <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-identifier">timeout</span>(<span class="ruby-ivar">@force_kill_waittime</span>) {
+              <span class="ruby-keyword kw">while</span> <span class="ruby-constant">Pid</span>.<span class="ruby-identifier">running?</span>(<span class="ruby-identifier">pid</span>)
+                <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.2</span>)
+              <span class="ruby-keyword kw">end</span>
+            }
+          <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{self.group.app_name}: process with pid #{pid} won't stop, we forcefully kill it...&quot;</span>
+            <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">flush</span>
+            
+            <span class="ruby-keyword kw">begin</span>
+              <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span>(<span class="ruby-value str">'KILL'</span>, <span class="ruby-identifier">pid</span>)
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ESRCH</span>
+            <span class="ruby-keyword kw">end</span>
+            
+            <span class="ruby-keyword kw">begin</span>
+              <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-identifier">timeout</span>(<span class="ruby-value">20</span>) {
+                <span class="ruby-keyword kw">while</span> <span class="ruby-constant">Pid</span>.<span class="ruby-identifier">running?</span>(<span class="ruby-identifier">pid</span>)
+                  <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+                <span class="ruby-keyword kw">end</span>
+              }
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{self.group.app_name}: unable to forcefully kill process with pid #{pid}.&quot;</span>
+              <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">flush</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        
+        
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.1</span>)
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Pid</span>.<span class="ruby-identifier">running?</span>(<span class="ruby-identifier">pid</span>)
+        <span class="ruby-comment cmt"># We try to remove the pid-files by ourselves, in case the application</span>
+        <span class="ruby-comment cmt"># didn't clean it up.</span>
+        <span class="ruby-keyword kw">begin</span>; <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">cleanup</span>; <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>; <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{self.group.app_name}: process with pid #{pid} successfully stopped.&quot;</span>
+        <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">flush</span>
+      <span class="ruby-keyword kw">end</span>
+      
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

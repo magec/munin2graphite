@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The identifier of the timezone, e.g. &quot;Europe/Paris&quot;.
+full_name: TZInfo::Timezone#identifier
+is_singleton: false
+name: identifier
+params: ()
+visibility: public

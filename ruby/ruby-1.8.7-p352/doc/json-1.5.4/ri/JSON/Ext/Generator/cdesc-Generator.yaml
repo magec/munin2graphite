@@ -1,0 +1,21 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is the JSON generator implemented as a C extension. It can be configured to be used by setting
+- !ruby/struct:SM::Flow::VERB 
+  body: " JSON.generator = JSON::Ext::Generator\n"
+- !ruby/struct:SM::Flow::P 
+  body: with the method generator= in JSON.
+constants: []
+
+full_name: JSON::Ext::Generator
+includes: []
+
+instance_methods: []
+
+name: Generator
+superclass: 

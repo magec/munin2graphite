@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Daemons::Application)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/application.rb, line 28</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">group</span>, <span class="ruby-identifier">add_options</span> = {}, <span class="ruby-identifier">pid</span> = <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-ivar">@group</span> = <span class="ruby-identifier">group</span>
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">add_options</span>)
+      
+      <span class="ruby-ivar">@dir_mode</span> = <span class="ruby-ivar">@dir</span> = <span class="ruby-ivar">@script</span> = <span class="ruby-keyword kw">nil</span>
+      
+      <span class="ruby-ivar">@force_kill_waittime</span> = <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:force_kill_waittime</span>] <span class="ruby-operator">||</span> <span class="ruby-value">20</span>
+      
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@pid</span> = <span class="ruby-identifier">pid</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:no_pidfiles</span>]
+          <span class="ruby-ivar">@pid</span> = <span class="ruby-constant">PidMem</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">pidfile_dir</span>
+          <span class="ruby-ivar">@pid</span> = <span class="ruby-constant">PidFile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">app_name</span>, <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">multiple</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@pid</span> = <span class="ruby-constant">PidMem</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Thrown by Timezone#get if the identifier given is not valid.
+constants: []
+
+full_name: TZInfo::InvalidTimezoneIdentifier
+includes: []
+
+instance_methods: []
+
+name: InvalidTimezoneIdentifier
+superclass: StandardError

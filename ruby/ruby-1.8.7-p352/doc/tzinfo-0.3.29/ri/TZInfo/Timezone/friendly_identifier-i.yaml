@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a friendlier version of the identifier. Set skip_first_part to omit the first part of the identifier (typically a region name) where there is more than one part.
+- !ruby/struct:SM::Flow::P 
+  body: "For example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Timezone.get('Europe/Paris').friendly_identifier(false)          #=&gt; &quot;Europe - Paris&quot;\n  Timezone.get('Europe/Paris').friendly_identifier(true)           #=&gt; &quot;Paris&quot;\n  Timezone.get('America/Indiana/Knox').friendly_identifier(false)  #=&gt; &quot;America - Knox, Indiana&quot;\n  Timezone.get('America/Indiana/Knox').friendly_identifier(true)   #=&gt; &quot;Knox, Indiana&quot;\n"
+full_name: TZInfo::Timezone#friendly_identifier
+is_singleton: false
+name: friendly_identifier
+params: (skip_first_part = false)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This integer returns the maximum level of data structure nesting in the generated JSON, max_nesting = 0 if no maximum is checked.
+full_name: JSON::Ext::Generator::State#max_nesting
+is_singleton: false
+name: max_nesting
+params: " max_nesting\n"
+visibility: public

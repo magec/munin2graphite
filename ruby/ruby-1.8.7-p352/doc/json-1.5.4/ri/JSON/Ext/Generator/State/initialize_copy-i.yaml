@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initializes this object from orig if it to be duplicated/cloned and returns it.
+full_name: JSON::Ext::Generator::State#initialize_copy
+is_singleton: false
+name: initialize_copy
+params: " initialize_copy(orig)\n"
+visibility: public

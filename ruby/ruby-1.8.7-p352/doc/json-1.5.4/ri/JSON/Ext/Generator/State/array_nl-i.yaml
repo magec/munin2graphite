@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This string is put at the end of a line that holds a JSON array.
+full_name: JSON::Ext::Generator::State#array_nl
+is_singleton: false
+name: array_nl
+params: " array_nl()\n"
+visibility: public

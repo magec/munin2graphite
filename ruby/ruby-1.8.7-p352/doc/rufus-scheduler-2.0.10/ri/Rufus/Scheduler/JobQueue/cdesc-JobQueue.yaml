@@ -1,0 +1,40 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Tracking at/in/every jobs.
+- !ruby/struct:SM::Flow::P 
+  body: In order of trigger time.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Mapping :at|:in|:every to their respective job classes.
+  name: JOB_TYPES
+  value: "{       :at => Rufus::Scheduler::AtJob,       :in => Rufus::Scheduler::InJob,       :every => Rufus::Scheduler::EveryJob"
+full_name: Rufus::Scheduler::JobQueue
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "<<"
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: job_to_trigger
+- !ruby/object:RI::MethodSummary 
+  name: select
+- !ruby/object:RI::MethodSummary 
+  name: size
+- !ruby/object:RI::MethodSummary 
+  name: to_h
+- !ruby/object:RI::MethodSummary 
+  name: trigger_matching_jobs
+- !ruby/object:RI::MethodSummary 
+  name: unschedule
+name: JobQueue
+superclass: Object
