@@ -6,7 +6,7 @@ require 'munin2graphite'
 if ARGV.last && File.stat(ARGV.last)
   Munin2Graphite::Config.config_file = ARGV.last
 else
-  Munin2Graphite::Config.config_file = File.expand_path(File.join(File.dirname(__FILE__),"..","conf","config.yml"))
+  Munin2Graphite::Config.config_file = File.expand_path(File.join(File.dirname(__FILE__),"..","conf","munin2graphite.conf"))
 end
 
 scheduler = Munin2Graphite::Scheduler.new(Munin2Graphite::Config)
