@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If identifier is a CountryInfo object, initializes the Country instance, otherwise calls get(identifier).
+full_name: TZInfo::Country::new
+is_singleton: true
+name: new
+params: (identifier)
+visibility: public

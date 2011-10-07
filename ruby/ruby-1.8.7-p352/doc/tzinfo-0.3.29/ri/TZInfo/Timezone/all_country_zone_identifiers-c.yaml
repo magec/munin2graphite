@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns all the zone identifiers defined for all Countries. This is not the complete set of zone identifiers as some are not country specific (e.g. 'Etc/GMT'). You can obtain a Timezone instance for a given identifier with the get method.
+full_name: TZInfo::Timezone::all_country_zone_identifiers
+is_singleton: true
+name: all_country_zone_identifiers
+params: ()
+visibility: public

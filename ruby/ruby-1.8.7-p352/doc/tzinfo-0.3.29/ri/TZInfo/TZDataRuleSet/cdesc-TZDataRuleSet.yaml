@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A rule set (as defined by Rule name in the tz data).
+constants: []
+
+full_name: TZInfo::TZDataRuleSet
+includes: []
+
+instance_methods: []
+
+name: TZDataRuleSet
+superclass: TZDataRules

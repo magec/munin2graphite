@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>start_none (Daemons::Application)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/application.rb, line 79</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start_none</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ontop</span>]
+        <span class="ruby-constant">Daemonize</span>.<span class="ruby-identifier">daemonize</span>(<span class="ruby-identifier">output_logfile</span>, <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">app_name</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-constant">Daemonize</span>.<span class="ruby-identifier">simulate</span>(<span class="ruby-identifier">output_logfile</span>)
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">pid</span> = <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
+      
+      
+      <span class="ruby-comment cmt"># We need this to remove the pid-file if the applications exits by itself.</span>
+      <span class="ruby-comment cmt"># Note that &lt;tt&gt;at_text&lt;/tt&gt; will only be run if the applications exits by calling </span>
+      <span class="ruby-comment cmt"># &lt;tt&gt;exit&lt;/tt&gt;, and not if it calls &lt;tt&gt;exit!&lt;/tt&gt; (so please don't call &lt;tt&gt;exit!&lt;/tt&gt;</span>
+      <span class="ruby-comment cmt"># in your application!</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-identifier">at_exit</span> {
+        <span class="ruby-keyword kw">begin</span>; <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">cleanup</span>; <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>; <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-comment cmt"># If the option &lt;tt&gt;:backtrace&lt;/tt&gt; is used and the application did exit by itself</span>
+        <span class="ruby-comment cmt"># create a exception log.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:backtrace</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ontop</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">$daemons_sigterm</span>
+          <span class="ruby-keyword kw">begin</span>; <span class="ruby-identifier">exception_log</span>(); <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>; <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+          
+      }
+      
+      <span class="ruby-comment cmt"># This part is needed to remove the pid-file if the application is killed by </span>
+      <span class="ruby-comment cmt"># daemons or manually by the user.</span>
+      <span class="ruby-comment cmt"># Note that the applications is not supposed to overwrite the signal handler for</span>
+      <span class="ruby-comment cmt"># 'TERM'.</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-identifier">trap</span>(<span class="ruby-constant">SIGNAL</span>) {
+        <span class="ruby-keyword kw">begin</span>; <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">cleanup</span>; <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>; <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">$daemons_sigterm</span> = <span class="ruby-keyword kw">true</span>
+        
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:hard_exit</span>]
+          <span class="ruby-identifier">exit!</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">exit</span>
+        <span class="ruby-keyword kw">end</span>
+      }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

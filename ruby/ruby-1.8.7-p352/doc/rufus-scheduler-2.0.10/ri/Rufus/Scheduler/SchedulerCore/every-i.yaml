@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: schedule_every
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Schedules a recurring job every t.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  scheduler.every '5m1w' do\n    puts 'check blood pressure'\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: checking blood pressure every 5 months and 1 week.
+full_name: Rufus::Scheduler::SchedulerCore#every
+is_singleton: false
+name: every
+params: (t, s=nil, opts={}, &block)
+visibility: public

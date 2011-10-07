@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add parameters to a group. Note that parameters with the same name could be placed in different groups
+full_name: ParseConfig#add_to_group
+is_singleton: false
+name: add_to_group
+params: (group, param_name, value)
+visibility: public

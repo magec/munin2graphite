@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Daemons::ApplicationGroup)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/application_group.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app_name</span>, <span class="ruby-identifier">options</span> = {})
+      <span class="ruby-ivar">@app_name</span> = <span class="ruby-identifier">app_name</span>
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:script</span>]
+        <span class="ruby-ivar">@script</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:script</span>])
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-comment cmt">#@controller = controller</span>
+      <span class="ruby-ivar">@monitor</span> = <span class="ruby-keyword kw">nil</span>
+      
+      <span class="ruby-comment cmt">#options = controller.options</span>
+      
+      <span class="ruby-ivar">@multiple</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:multiple</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+      
+      <span class="ruby-ivar">@dir_mode</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dir_mode</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">:script</span>
+      <span class="ruby-ivar">@dir</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dir</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">''</span>
+      
+      <span class="ruby-ivar">@keep_pid_files</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:keep_pid_files</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+      <span class="ruby-ivar">@no_pidfiles</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:no_pidfiles</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+      
+      <span class="ruby-comment cmt">#@applications = find_applications(pidfile_dir())</span>
+      <span class="ruby-ivar">@applications</span> = []
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

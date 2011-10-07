@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>stop (Daemons::Monitor)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/monitor.rb, line 118</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">pid</span> = <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">pid</span>
+        <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span>(<span class="ruby-constant">Application</span><span class="ruby-operator">::</span><span class="ruby-constant">SIGNAL</span>, <span class="ruby-identifier">pid</span>)
+                <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-identifier">timeout</span>(<span class="ruby-value">5</span>) {      
+          <span class="ruby-keyword kw">while</span> <span class="ruby-constant">Pid</span>.<span class="ruby-identifier">running?</span>(<span class="ruby-identifier">pid</span>)
+            <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.1</span>)
+          <span class="ruby-keyword kw">end</span>
+        }
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{e} #{pid}&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;deleting pid-file.&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-comment cmt"># We try to remove the pid-files by ourselves, in case the application</span>
+      <span class="ruby-comment cmt"># didn't clean it up.</span>
+      <span class="ruby-keyword kw">begin</span>; <span class="ruby-ivar">@pid</span>.<span class="ruby-identifier">cleanup</span>; <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>; <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

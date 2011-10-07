@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method returns all parameters/groups defined in a config file.
+full_name: ParseConfig#get_params
+is_singleton: false
+name: get_params
+params: ()
+visibility: public

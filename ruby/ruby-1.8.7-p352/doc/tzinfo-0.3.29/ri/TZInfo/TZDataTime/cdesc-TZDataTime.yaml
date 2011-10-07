@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A tz data time definition - an hour, minute, second and reference. Reference is either :utc, :standard or :wall_clock.
+constants: []
+
+full_name: TZInfo::TZDataTime
+includes: []
+
+instance_methods: []
+
+name: TZDataTime
+superclass: Object

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method is simple. Should you need to override a value dynamically, use override_value(param, value) where 'param' is the name of the paramater in the config file.
+- !ruby/struct:SM::Flow::P 
+  body: DEPRECATED - will be removed in future versions.
+full_name: ParseConfig#override_value
+is_singleton: false
+name: override_value
+params: (param, value)
+visibility: public

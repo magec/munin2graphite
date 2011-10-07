@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check that the options do not contain options not listed in <tt>optdecl</tt>. An ArgumentError exception is thrown if non-declared options are found.
+full_name: Rake::FileUtilsExt#rake_check_options
+is_singleton: false
+name: rake_check_options
+params: (options, *optdecl)
+visibility: public

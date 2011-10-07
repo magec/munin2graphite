@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Display the error message that caused the exception.
+full_name: Rake::Application#display_error_message
+is_singleton: false
+name: display_error_message
+params: (ex)
+visibility: public

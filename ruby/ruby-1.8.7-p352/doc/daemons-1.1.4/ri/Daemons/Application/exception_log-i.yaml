@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "This is a nice little function for debugging purposes: In case a multi-threaded ruby script exits due to an uncaught exception it may be difficult to find out where the exception came from because one cannot catch exceptions that are thrown in threads other than the main thread."
+- !ruby/struct:SM::Flow::P 
+  body: This function searches for all exceptions in memory and outputs them to STDERR (if it is connected) and to a log file in the pid-file directory.
+full_name: Daemons::Application#exception_log
+is_singleton: false
+name: exception_log
+params: ()
+visibility: public

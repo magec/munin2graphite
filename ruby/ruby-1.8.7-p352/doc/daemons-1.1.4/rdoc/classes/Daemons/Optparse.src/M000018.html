@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Daemons::Optparse)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/daemons/cmdline.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">controller</span>)
+      <span class="ruby-ivar">@controller</span> = <span class="ruby-identifier">controller</span>
+      <span class="ruby-ivar">@options</span> = {}
+      
+      <span class="ruby-ivar">@opts</span> = <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;&quot;</span>
+        
+<span class="ruby-comment cmt">#         opts.on(&quot;-v&quot;, &quot;--[no-]verbose&quot;, &quot;Run verbosely&quot;) do |v|</span>
+<span class="ruby-comment cmt">#           @options[:verbose] = v</span>
+<span class="ruby-comment cmt">#         end</span>
+        
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-t&quot;</span>, <span class="ruby-value str">&quot;--ontop&quot;</span>, <span class="ruby-value str">&quot;Stay on top (does not daemonize)&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:ontop</span>] = <span class="ruby-identifier">t</span>
+        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-f&quot;</span>, <span class="ruby-value str">&quot;--force&quot;</span>, <span class="ruby-value str">&quot;Force operation&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:force</span>] = <span class="ruby-identifier">t</span>
+        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-n&quot;</span>, <span class="ruby-value str">&quot;--no_wait&quot;</span>, <span class="ruby-value str">&quot;Do not wait for processes to stop&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:no_wait</span>] = <span class="ruby-identifier">t</span>
+        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-comment cmt">#opts.separator &quot;&quot;</span>
+        <span class="ruby-comment cmt">#opts.separator &quot;Specific options:&quot;</span>
+
+        
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">&quot;Common options:&quot;</span>
+
+        <span class="ruby-comment cmt"># No argument, shows at tail.  This will print an options summary</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;--help&quot;</span>, <span class="ruby-value str">&quot;Show this message&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-comment cmt">#puts opts</span>
+          <span class="ruby-comment cmt">#@usage = </span>
+          <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">print_usage</span>()
+          
+          <span class="ruby-identifier">exit</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Switch to print the version.</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-value str">&quot;--version&quot;</span>, <span class="ruby-value str">&quot;Show version&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;daemons version #{Daemons::VERSION}&quot;</span>
+          <span class="ruby-identifier">exit</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>  
+      
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-ivar">@usage</span> = <span class="ruby-ivar">@opts</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span> <span class="ruby-comment cmt"># work around a bug in ruby 1.9</span>
+        <span class="ruby-ivar">@usage</span> = <span class="ruby-value str">&quot;            -t, --ontop                      Stay on top (does not daemonize)\n            -f, --force                      Force operation\n            -n, --no_wait                    Do not wait for processes to stop\n\n        Common options:\n            -h, --help                       Show this message\n                --version                    Show version\n&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

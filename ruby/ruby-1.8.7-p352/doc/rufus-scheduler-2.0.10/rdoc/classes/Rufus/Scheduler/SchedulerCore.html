@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Rufus::Scheduler::SchedulerCore</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Rufus::Scheduler::SchedulerCore</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/rufus/sc/scheduler_rb.html">
+                lib/rufus/sc/scheduler.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The core of a rufus-scheduler. See implementations like <a
+href="PlainScheduler.html">Rufus::Scheduler::PlainScheduler</a> and <a
+href="EmScheduler.html">Rufus::Scheduler::EmScheduler</a> for directly
+usable stuff.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000161">add_cron_job</a>&nbsp;&nbsp;
+      <a href="#M000160">add_job</a>&nbsp;&nbsp;
+      <a href="#M000154">all_jobs</a>&nbsp;&nbsp;
+      <a href="#M000143">at</a>&nbsp;&nbsp;
+      <a href="#M000158">combine_opts</a>&nbsp;&nbsp;
+      <a href="#M000162">complain_if_blocking_and_timeout</a>&nbsp;&nbsp;
+      <a href="#M000147">cron</a>&nbsp;&nbsp;
+      <a href="#M000153">cron_jobs</a>&nbsp;&nbsp;
+      <a href="#M000145">every</a>&nbsp;&nbsp;
+      <a href="#M000155">find_by_tag</a>&nbsp;&nbsp;
+      <a href="#M000157">get_queue</a>&nbsp;&nbsp;
+      <a href="#M000151">handle_exception</a>&nbsp;&nbsp;
+      <a href="#M000141">in</a>&nbsp;&nbsp;
+      <a href="#M000152">jobs</a>&nbsp;&nbsp;
+      <a href="#M000139">new</a>&nbsp;&nbsp;
+      <a href="#M000148">schedule</a>&nbsp;&nbsp;
+      <a href="#M000144">schedule_at</a>&nbsp;&nbsp;
+      <a href="#M000146">schedule_every</a>&nbsp;&nbsp;
+      <a href="#M000142">schedule_in</a>&nbsp;&nbsp;
+      <a href="#M000140">start_new</a>&nbsp;&nbsp;
+      <a href="#M000159">step</a>&nbsp;&nbsp;
+      <a href="#M000163">trigger_job</a>&nbsp;&nbsp;
+      <a href="#M000156">trigger_threads</a>&nbsp;&nbsp;
+      <a href="#M000149">unschedule</a>&nbsp;&nbsp;
+      <a href="#M000150">unschedule_by_tag</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="LegacyMethods.html">LegacyMethods</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">options</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+classical options hash
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000139" class="method-detail">
+        <a name="M000139"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000139.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000139.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(opts={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Instantiates a <a href="../Scheduler.html">Rufus::Scheduler</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000140" class="method-detail">
+        <a name="M000140"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000140.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000140.html');return false;">
+          <span class="method-name">start_new</span><span class="method-args">(opts={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Instantiates and starts a <a href="SchedulerCore.html#M000139">new</a> <a
+href="../Scheduler.html">Rufus::Scheduler</a>.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000154" class="method-detail">
+        <a name="M000154"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000154.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000154.html');return false;">
+          <span class="method-name">all_jobs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a map job_id =&gt; job of all the <a
+href="SchedulerCore.html#M000152">jobs</a> currently <a
+href="SchedulerCore.html#M000141">in</a> the scheduler
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000143" class="method-detail">
+        <a name="M000143"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000143.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000143.html');return false;">
+          <span class="method-name">at</span><span class="method-args">(t, s=nil, opts={}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Schedules a job <a href="SchedulerCore.html#M000143">at</a> a given point
+<a href="SchedulerCore.html#M000141">in</a> time.
+</p>
+<pre>
+  scheduler.at 'Thu Mar 26 19:30:00 2009' do
+    puts 'order pizza'
+  end
+</pre>
+<p>
+pizza is for Thursday <a href="SchedulerCore.html#M000143">at</a> 2000 (if
+the shop brochure is right).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000147" class="method-detail">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000147.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000147.html');return false;">
+          <span class="method-name">cron</span><span class="method-args">(cronstring, s=nil, opts={}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Schedules a job given a <a href="SchedulerCore.html#M000147">cron</a>
+string.
+</p>
+<pre>
+  scheduler.cron '0 22 * * 1-5' do
+    # every day of the week at 00:22
+    puts 'activate security system'
+  end
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000153" class="method-detail">
+        <a name="M000153"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000153.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000153.html');return false;">
+          <span class="method-name">cron_jobs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a map job_id =&gt; job for <a
+href="SchedulerCore.html#M000147">cron</a> <a
+href="SchedulerCore.html#M000152">jobs</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000145" class="method-detail">
+        <a name="M000145"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000145.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000145.html');return false;">
+          <span class="method-name">every</span><span class="method-args">(t, s=nil, opts={}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Schedules a recurring job <a href="SchedulerCore.html#M000145">every</a> t.
+</p>
+<pre>
+  scheduler.every '5m1w' do
+    puts 'check blood pressure'
+  end
+</pre>
+<p>
+checking blood pressure <a href="SchedulerCore.html#M000145">every</a> 5
+months and 1 week.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000155" class="method-detail">
+        <a name="M000155"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000155.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000155.html');return false;">
+          <span class="method-name">find_by_tag</span><span class="method-args">(tag)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a list of <a href="SchedulerCore.html#M000152">jobs</a> with the
+given tag
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000151" class="method-detail">
+        <a name="M000151"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000151.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000151.html');return false;">
+          <span class="method-name">handle_exception</span><span class="method-args">(job, exception)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Feel free to override this method. The default implementation simply
+outputs the error message to STDOUT
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000141" class="method-detail">
+        <a name="M000141"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000141.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000141.html');return false;">
+          <span class="method-name">in</span><span class="method-args">(t, s=nil, opts={}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Schedules a job <a href="SchedulerCore.html#M000141">in</a> a given amount
+of time.
+</p>
+<pre>
+  scheduler.in '20m' do
+    puts &quot;order ristretto&quot;
+  end
+</pre>
+<p>
+will order an espresso (well sort of) <a
+href="SchedulerCore.html#M000141">in</a> 20 minutes.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000152" class="method-detail">
+        <a name="M000152"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000152.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000152.html');return false;">
+          <span class="method-name">jobs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a map job_id =&gt; job for at/in/every <a
+href="SchedulerCore.html#M000152">jobs</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000148" class="method-detail">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+          <span class="method-name">schedule</span><span class="method-args">(cronstring, s=nil, opts={}, &amp;block)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="SchedulerCore.html#M000147">cron</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000144" class="method-detail">
+        <a name="M000144"></a>
+
+        <div class="method-heading">
+          <span class="method-name">schedule_at</span><span class="method-args">(t, s=nil, opts={}, &amp;block)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="SchedulerCore.html#M000143">at</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000146" class="method-detail">
+        <a name="M000146"></a>
+
+        <div class="method-heading">
+          <span class="method-name">schedule_every</span><span class="method-args">(t, s=nil, opts={}, &amp;block)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="SchedulerCore.html#M000145">every</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000142" class="method-detail">
+        <a name="M000142"></a>
+
+        <div class="method-heading">
+          <span class="method-name">schedule_in</span><span class="method-args">(t, s=nil, opts={}, &amp;block)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="SchedulerCore.html#M000141">in</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000156" class="method-detail">
+        <a name="M000156"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000156.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000156.html');return false;">
+          <span class="method-name">trigger_threads</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the current list of trigger threads (threads) dedicated to the
+execution of <a href="SchedulerCore.html#M000152">jobs</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000149.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000149.html');return false;">
+          <span class="method-name">unschedule</span><span class="method-args">(job_id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Unschedules a job (<a href="SchedulerCore.html#M000147">cron</a> or
+at/every/in job) given its id.
+</p>
+<p>
+Returns the job that got unscheduled.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000150" class="method-detail">
+        <a name="M000150"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000150.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000150.html');return false;">
+          <span class="method-name">unschedule_by_tag</span><span class="method-args">(tag)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Given a tag, unschedules all the <a
+href="SchedulerCore.html#M000152">jobs</a> that bear that tag.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000161" class="method-detail">
+        <a name="M000161"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000161.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000161.html');return false;">
+          <span class="method-name">add_cron_job</span><span class="method-args">(job)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000160" class="method-detail">
+        <a name="M000160"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000160.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000160.html');return false;">
+          <span class="method-name">add_job</span><span class="method-args">(job)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000158" class="method-detail">
+        <a name="M000158"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000158.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000158.html');return false;">
+          <span class="method-name">combine_opts</span><span class="method-args">(schedulable, opts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000162" class="method-detail">
+        <a name="M000162"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000162.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000162.html');return false;">
+          <span class="method-name">complain_if_blocking_and_timeout</span><span class="method-args">(job)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Raises an error if the job has the params :blocking and :timeout set
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000157" class="method-detail">
+        <a name="M000157"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000157.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000157.html');return false;">
+          <span class="method-name">get_queue</span><span class="method-args">(type, opts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a job queue instance.
+</p>
+<p>
+(made it into a method for easy override)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000159" class="method-detail">
+        <a name="M000159"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000159.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000159.html');return false;">
+          <span class="method-name">step</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The method that does the &quot;wake up and trigger any job that should get
+triggered.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000163" class="method-detail">
+        <a name="M000163"></a>
+
+        <div class="method-heading">
+          <a href="SchedulerCore.src/M000163.html" target="Code" class="method-signature"
+            onclick="popupCode('SchedulerCore.src/M000163.html');return false;">
+          <span class="method-name">trigger_job</span><span class="method-args">(blocking, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The default, plain, implementation. If &#8216;blocking&#8217; is true, will
+simply call the block and return when the block is done. Else, it will call
+the block <a href="SchedulerCore.html#M000141">in</a> a dedicated thread.
+</p>
+<p>
+TODO : clarify, the blocking here blocks the whole scheduler, while <a
+href="EmScheduler.html">EmScheduler</a> blocking triggers for the next
+tick. Not the same thing &#8230;
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

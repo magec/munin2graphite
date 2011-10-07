@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set method
+full_name: Daemons::Pid#pid=
+is_singleton: false
+name: pid=
+params: (p)
+visibility: public

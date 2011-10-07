@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The ISO 3166 country code.
+full_name: TZInfo::Country#code
+is_singleton: false
+name: code
+params: ()
+visibility: public

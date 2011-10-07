@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The country index file includes CountryIndexDefinition which provides a country method used to define each country in the index.
+constants: []
+
+full_name: TZInfo::CountryIndexDefinition
+includes: []
+
+instance_methods: []
+
+name: CountryIndexDefinition
+superclass: 

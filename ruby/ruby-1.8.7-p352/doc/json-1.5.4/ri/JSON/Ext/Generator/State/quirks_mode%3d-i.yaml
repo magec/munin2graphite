@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If set to true, enables the quirks_mode mode.
+full_name: JSON::Ext::Generator::State#quirks_mode=
+is_singleton: false
+name: quirks_mode=
+params: " quirks_mode=(enable)\n"
+visibility: public

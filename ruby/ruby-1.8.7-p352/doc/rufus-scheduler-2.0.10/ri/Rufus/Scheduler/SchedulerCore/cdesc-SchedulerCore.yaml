@@ -1,0 +1,71 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: classical options hash
+  name: options
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: start_new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The core of a rufus-scheduler. See implementations like Rufus::Scheduler::PlainScheduler and Rufus::Scheduler::EmScheduler for directly usable stuff.
+constants: []
+
+full_name: Rufus::Scheduler::SchedulerCore
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: LegacyMethods
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_cron_job
+- !ruby/object:RI::MethodSummary 
+  name: add_job
+- !ruby/object:RI::MethodSummary 
+  name: all_jobs
+- !ruby/object:RI::MethodSummary 
+  name: at
+- !ruby/object:RI::MethodSummary 
+  name: combine_opts
+- !ruby/object:RI::MethodSummary 
+  name: complain_if_blocking_and_timeout
+- !ruby/object:RI::MethodSummary 
+  name: cron
+- !ruby/object:RI::MethodSummary 
+  name: cron_jobs
+- !ruby/object:RI::MethodSummary 
+  name: every
+- !ruby/object:RI::MethodSummary 
+  name: find_by_tag
+- !ruby/object:RI::MethodSummary 
+  name: get_queue
+- !ruby/object:RI::MethodSummary 
+  name: handle_exception
+- !ruby/object:RI::MethodSummary 
+  name: in
+- !ruby/object:RI::MethodSummary 
+  name: jobs
+- !ruby/object:RI::MethodSummary 
+  name: schedule
+- !ruby/object:RI::MethodSummary 
+  name: schedule_at
+- !ruby/object:RI::MethodSummary 
+  name: schedule_every
+- !ruby/object:RI::MethodSummary 
+  name: schedule_in
+- !ruby/object:RI::MethodSummary 
+  name: step
+- !ruby/object:RI::MethodSummary 
+  name: trigger_job
+- !ruby/object:RI::MethodSummary 
+  name: trigger_threads
+- !ruby/object:RI::MethodSummary 
+  name: unschedule
+- !ruby/object:RI::MethodSummary 
+  name: unschedule_by_tag
+name: SchedulerCore
+superclass: Object

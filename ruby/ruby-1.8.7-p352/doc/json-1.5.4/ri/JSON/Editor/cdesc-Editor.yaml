@@ -1,0 +1,47 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Beginning of the editor window title
+  name: TITLE
+  value: "'JSON Editor'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CONTENT_COL
+  value: 0, 1, 2
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: JSON primitive types (Containers)
+  name: CONTAINER_TYPES
+  value: "%w[Array Hash].sort"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: All JSON primitive types
+  name: ALL_TYPES
+  value: (%w[TrueClass FalseClass Numeric String NilClass] +                  CONTAINER_TYPES).sort
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Nodes necessary for the tree representation of a JSON document
+  name: ALL_NODES
+  value: (ALL_TYPES + %w[Key]).sort
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DEFAULT_DIALOG_KEY_PRESS_HANDLER
+  value: lambda do |dialog, event|       case event.keyval
+full_name: JSON::Editor
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Gtk
+instance_methods: []
+
+name: Editor
+superclass: 

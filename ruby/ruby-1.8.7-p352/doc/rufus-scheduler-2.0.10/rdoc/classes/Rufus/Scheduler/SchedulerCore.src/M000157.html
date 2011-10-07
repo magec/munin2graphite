@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_queue (Rufus::Scheduler::SchedulerCore)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/scheduler.rb, line 270</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_queue</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">opts</span>)
+
+      <span class="ruby-identifier">q</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:cron</span>
+        <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:cron_job_queue</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Rufus</span><span class="ruby-operator">::</span><span class="ruby-constant">Scheduler</span><span class="ruby-operator">::</span><span class="ruby-constant">CronJobQueue</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:job_queue</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Rufus</span><span class="ruby-operator">::</span><span class="ruby-constant">Scheduler</span><span class="ruby-operator">::</span><span class="ruby-constant">JobQueue</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">q</span>.<span class="ruby-identifier">scheduler</span> = <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:scheduler=</span>)
+
+      <span class="ruby-identifier">q</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

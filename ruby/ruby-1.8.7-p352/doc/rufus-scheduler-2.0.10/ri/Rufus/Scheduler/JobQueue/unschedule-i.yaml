@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Removes a job (given its id). Returns nil if the job was not found.
+full_name: Rufus::Scheduler::JobQueue#unschedule
+is_singleton: false
+name: unschedule
+params: (job_id)
+visibility: public

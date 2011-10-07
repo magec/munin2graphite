@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: the old method we used to generate our ISO datetime strings
+full_name: Rufus::time_to_iso8601_date
+is_singleton: true
+name: time_to_iso8601_date
+params: (time)
+visibility: public

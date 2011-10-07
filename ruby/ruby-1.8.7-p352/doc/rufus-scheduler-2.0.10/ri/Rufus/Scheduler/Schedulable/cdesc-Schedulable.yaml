@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: It's OK to pass an object responding to :trigger when scheduling a job (instead of passing a block).
+- !ruby/struct:SM::Flow::P 
+  body: This is simply a helper module. The rufus-scheduler will check if scheduled object quack (respond to :trigger anyway).
+constants: []
+
+full_name: Rufus::Scheduler::Schedulable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: call
+- !ruby/object:RI::MethodSummary 
+  name: trigger
+name: Schedulable
+superclass: 

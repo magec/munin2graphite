@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>handle_exception (Rufus::Scheduler::SchedulerCore)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/scheduler.rb, line 204</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handle_exception</span>(<span class="ruby-identifier">job</span>, <span class="ruby-identifier">exception</span>)
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:log_exception</span>)
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-comment cmt"># some kind of backward compatibility</span>
+
+        <span class="ruby-identifier">log_exception</span>(<span class="ruby-identifier">exception</span>)
+
+      <span class="ruby-keyword kw">else</span>
+
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">'='</span> <span class="ruby-operator">*</span> <span class="ruby-value">80</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;scheduler caught exception :&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">exception</span>
+        <span class="ruby-identifier">exception</span>.<span class="ruby-identifier">backtrace</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">l</span> }
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">'='</span> <span class="ruby-operator">*</span> <span class="ruby-value">80</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

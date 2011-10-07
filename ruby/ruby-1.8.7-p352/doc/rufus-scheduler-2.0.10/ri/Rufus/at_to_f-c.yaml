@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Ensures an 'at' value is translated to a float (to be compared with the float coming from time.to_f)
+full_name: Rufus::at_to_f
+is_singleton: true
+name: at_to_f
+params: (at)
+visibility: public

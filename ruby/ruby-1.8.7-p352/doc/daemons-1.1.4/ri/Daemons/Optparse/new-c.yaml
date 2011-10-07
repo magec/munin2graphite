@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Optparse::new
+is_singleton: true
+name: new
+params: (controller)
+visibility: public

@@ -1,0 +1,76 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The block to call when triggering
+  name: block
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The identifier for this job.
+  name: job_id
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Last time the job executed (for an {At|In}Job, it will mean 'not executed' if nil or when it got executed if set)
+  - !ruby/struct:SM::Flow::P 
+    body: ( Last time job got triggered (most useful with EveryJob, but can be useful with remaining instances of At/InJob (are they done ?)) )
+  name: last
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns the thread instance of the last triggered job. May be null (especially before the first trigger).
+  name: last_job_thread
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The job parameters (passed via the schedule method)
+  name: params
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A reference to the scheduler owning this job
+  name: scheduler
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The initial, raw, scheduling info (at / in / every / cron)
+  name: t
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The base class for all types of jobs.
+constants: []
+
+full_name: Rufus::Scheduler::Job
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: running
+- !ruby/object:RI::MethodSummary 
+  name: running?
+- !ruby/object:RI::MethodSummary 
+  name: schedule_info
+- !ruby/object:RI::MethodSummary 
+  name: tags
+- !ruby/object:RI::MethodSummary 
+  name: tags=
+- !ruby/object:RI::MethodSummary 
+  name: trigger
+- !ruby/object:RI::MethodSummary 
+  name: trigger_block
+- !ruby/object:RI::MethodSummary 
+  name: unschedule
+name: Job
+superclass: Object

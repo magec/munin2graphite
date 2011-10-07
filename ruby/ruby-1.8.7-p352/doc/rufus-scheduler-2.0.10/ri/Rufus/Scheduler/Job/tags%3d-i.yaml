@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets the list of tags attached to the job (Usually they are set via the schedule every/at/in/cron method).
+full_name: Rufus::Scheduler::Job#tags=
+is_singleton: false
+name: tags=
+params: (tags)
+visibility: public

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>quirks_mode= (JSON::Ext::Generator::State)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*
+ * call-seq: quirks_mode=(enable)
+ *
+ * If set to true, enables the quirks_mode mode.
+ */
+static VALUE cState_quirks_mode_set(VALUE self, VALUE enable)
+{
+    GET_STATE(self);
+    state-&gt;quirks_mode = RTEST(enable);
+    return Qnil;
+}</pre>
+</body>
+</html>

@@ -1,0 +1,67 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: days
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: hours
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: minutes
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: monthdays
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: months
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The string used for creating this cronline instance.
+  name: original
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: seconds
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: timezone
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: weekdays
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A 'cron line' is a line in the sense of a crontab (man 5 crontab) file line.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: WEEKDAYS
+  value: "%w[ sun mon tue wed thu fri sat ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DAY_IN_SECONDS
+  value: 7 * 24 * 3600
+full_name: Rufus::CronLine
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: matches?
+- !ruby/object:RI::MethodSummary 
+  name: next_time
+- !ruby/object:RI::MethodSummary 
+  name: to_array
+name: CronLine
+superclass: Object

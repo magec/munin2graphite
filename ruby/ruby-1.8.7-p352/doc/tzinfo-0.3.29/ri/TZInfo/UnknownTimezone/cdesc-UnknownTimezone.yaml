@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Thrown if an attempt is made to use a timezone created with Timezone.new(nil).
+constants: []
+
+full_name: TZInfo::UnknownTimezone
+includes: []
+
+instance_methods: []
+
+name: UnknownTimezone
+superclass: StandardError

@@ -1,0 +1,102 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: All functions and classes that Daemons provides reside in this module.
+- !ruby/struct:SM::Flow::P 
+  body: "Daemons is normally invoked by one of the following four ways:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "1."
+    body: "<tt>Daemons.run(script, options)</tt>: This is used in wrapper-scripts that are supposed to control other ruby scripts or external applications. Control is completely passed to the daemons library. Such wrapper script need to be invoked with command line options like 'start' or 'stop' to do anything useful."
+  - !ruby/struct:SM::Flow::LI 
+    label: "2."
+    body: "<tt>Daemons.run_proc(app_name, options) { (...) }</tt>: This is used in wrapper-scripts that are supposed to control a proc. Control is completely passed to the daemons library. Such wrapper script need to be invoked with command line options like 'start' or 'stop' to do anything useful."
+  - !ruby/struct:SM::Flow::LI 
+    label: "3."
+    body: "<tt>Daemons.call(options) { block }</tt>: Execute the block in a new daemon. <tt>Daemons.call</tt> will return immediately after spawning the daemon with the new Application object as a return value."
+  - !ruby/struct:SM::Flow::LI 
+    label: "4."
+    body: "<tt>Daemons.daemonize(options)</tt>: Daemonize the currently runnig process, i.e. the calling process will become a daemon."
+  type: :NUMBER
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: What does daemons internally do with my daemons?
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*or*:"
+    body: why do my daemons crash when they try to open a file?
+  - !ruby/struct:SM::Flow::LI 
+    label: "*or*:"
+    body: why can I not see any output from the daemon on the console (when using for example <tt>puts</tt>)?
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: "From a technical aspect of view, daemons does the following when creating a daemon:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "1."
+    body: Forks a child (and exits the parent process, if needed)
+  - !ruby/struct:SM::Flow::LI 
+    label: "2."
+    body: Becomes a session leader (which detaches the program from the controlling terminal).
+  - !ruby/struct:SM::Flow::LI 
+    label: "3."
+    body: Forks another child process and exits first child. This prevents the potential of acquiring a controlling terminal.
+  - !ruby/struct:SM::Flow::LI 
+    label: "4."
+    body: Changes the current working directory to &quot;/&quot;.
+  - !ruby/struct:SM::Flow::LI 
+    label: "5."
+    body: Clears the file creation mask (sets <tt>umask</tt> to 0000).
+  - !ruby/struct:SM::Flow::LI 
+    label: "6."
+    body: Closes file descriptors (reopens <tt>STDOUT</tt> and <tt>STDERR</tt> to point to a logfile if possible).
+  type: :NUMBER
+- !ruby/struct:SM::Flow::P 
+  body: "So what does this mean for your daemons:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: the current directory is '/'
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: you cannot receive any input from the console (for example no <tt>gets</tt>)
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: you cannot output anything from the daemons with <tt>puts</tt>/<tt>print</tt> unless a logfile is used
+  type: :BULLET
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: How do PidFiles work? Where are they stored?
+- !ruby/struct:SM::Flow::P 
+  body: Also, you are maybe interested in reading the documentation for the class PidFile. There you can find out about how Daemons works internally and how and where the so called <em>PidFiles</em> are stored.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VERSION
+  value: "\"1.1.4\""
+full_name: Daemons
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: call
+- !ruby/object:RI::MethodSummary 
+  name: controller
+- !ruby/object:RI::MethodSummary 
+  name: daemonize
+- !ruby/object:RI::MethodSummary 
+  name: group
+- !ruby/object:RI::MethodSummary 
+  name: run
+- !ruby/object:RI::MethodSummary 
+  name: run_proc
+name: Daemons
+superclass: 

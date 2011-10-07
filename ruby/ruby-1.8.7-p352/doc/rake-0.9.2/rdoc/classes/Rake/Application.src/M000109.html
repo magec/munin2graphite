@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Rake::Application)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/rake/application.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+32:       <span class="ruby-keyword kw">super</span>
+33:       <span class="ruby-ivar">@name</span> = <span class="ruby-value str">'rake'</span>
+34:       <span class="ruby-ivar">@rakefiles</span> = <span class="ruby-constant">DEFAULT_RAKEFILES</span>.<span class="ruby-identifier">dup</span>
+35:       <span class="ruby-ivar">@rakefile</span> = <span class="ruby-keyword kw">nil</span>
+36:       <span class="ruby-ivar">@pending_imports</span> = []
+37:       <span class="ruby-ivar">@imported</span> = []
+38:       <span class="ruby-ivar">@loaders</span> = {}
+39:       <span class="ruby-ivar">@default_loader</span> = <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>
+40:       <span class="ruby-ivar">@original_dir</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+41:       <span class="ruby-ivar">@top_level_tasks</span> = []
+42:       <span class="ruby-identifier">add_loader</span>(<span class="ruby-value str">'rb'</span>, <span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>)
+43:       <span class="ruby-identifier">add_loader</span>(<span class="ruby-value str">'rf'</span>, <span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>)
+44:       <span class="ruby-identifier">add_loader</span>(<span class="ruby-value str">'rake'</span>, <span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>)
+45:       <span class="ruby-ivar">@tty_output</span> = <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">tty?</span>
+46:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

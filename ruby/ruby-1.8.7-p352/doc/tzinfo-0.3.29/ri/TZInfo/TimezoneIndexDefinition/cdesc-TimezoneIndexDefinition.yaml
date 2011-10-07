@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The timezone index file includes TimezoneIndexDefinition which provides methods used to define timezones in the index.
+constants: []
+
+full_name: TZInfo::TimezoneIndexDefinition
+includes: []
+
+instance_methods: []
+
+name: TimezoneIndexDefinition
+superclass: 

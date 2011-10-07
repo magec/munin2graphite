@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Try to fork if at all possible retrying every 5 sec if the maximum process limit for the system has been reached
+full_name: Daemonize#safefork
+is_singleton: false
+name: safefork
+params: ()
+visibility: public

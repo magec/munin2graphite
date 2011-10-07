@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Validate the config file, and contents
+full_name: ParseConfig#validate_config
+is_singleton: false
+name: validate_config
+params: ()
+visibility: public

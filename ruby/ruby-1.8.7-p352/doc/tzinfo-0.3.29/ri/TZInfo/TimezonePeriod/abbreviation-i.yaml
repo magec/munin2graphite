@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: zone_identifier
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The identifier of this period, e.g. &quot;GMT&quot; (Greenwich Mean Time) or &quot;BST&quot; (British Summer Time) for &quot;Europe/London&quot;. The returned identifier is a symbol.
+full_name: TZInfo::TimezonePeriod#abbreviation
+is_singleton: false
+name: abbreviation
+params: ()
+visibility: public

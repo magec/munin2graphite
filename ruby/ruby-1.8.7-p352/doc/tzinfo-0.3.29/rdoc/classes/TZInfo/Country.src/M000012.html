@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get (TZInfo::Country)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tzinfo/country.rb, line 46</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">identifier</span>)
+      <span class="ruby-identifier">instance</span> = <span class="ruby-ivar">@@countries</span>[<span class="ruby-identifier">identifier</span>]
+      
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">instance</span>
+        <span class="ruby-identifier">load_index</span>
+        <span class="ruby-identifier">info</span> = <span class="ruby-constant">Indexes</span><span class="ruby-operator">::</span><span class="ruby-constant">Countries</span>.<span class="ruby-identifier">countries</span>[<span class="ruby-identifier">identifier</span>]        
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidCountryCode</span>.<span class="ruby-identifier">new</span>, <span class="ruby-value str">'Invalid identifier'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">info</span>
+        <span class="ruby-identifier">instance</span> = <span class="ruby-constant">Country</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info</span>)
+        <span class="ruby-ivar">@@countries</span>[<span class="ruby-identifier">identifier</span>] = <span class="ruby-identifier">instance</span>
+      <span class="ruby-keyword kw">end</span>      
+      
+      <span class="ruby-identifier">instance</span>        
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

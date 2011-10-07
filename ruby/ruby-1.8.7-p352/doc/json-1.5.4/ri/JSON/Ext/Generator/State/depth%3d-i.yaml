@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This sets the maximum level of data structure nesting in the generated JSON to the integer depth, max_nesting = 0 if no maximum should be checked.
+full_name: JSON::Ext::Generator::State#depth=
+is_singleton: false
+name: depth=
+params: " depth=(depth)\n"
+visibility: public

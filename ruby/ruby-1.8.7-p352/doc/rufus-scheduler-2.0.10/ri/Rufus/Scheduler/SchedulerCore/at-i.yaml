@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: schedule_at
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Schedules a job at a given point in time.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  scheduler.at 'Thu Mar 26 19:30:00 2009' do\n    puts 'order pizza'\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: pizza is for Thursday at 2000 (if the shop brochure is right).
+full_name: Rufus::Scheduler::SchedulerCore#at
+is_singleton: false
+name: at
+params: (t, s=nil, opts={}, &block)
+visibility: public

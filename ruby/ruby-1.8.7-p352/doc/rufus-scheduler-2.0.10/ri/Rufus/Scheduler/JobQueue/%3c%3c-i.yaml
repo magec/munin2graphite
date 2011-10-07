@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Adds this job to the map.
+full_name: Rufus::Scheduler::JobQueue#<<
+is_singleton: false
+name: "<<"
+params: (job)
+visibility: public

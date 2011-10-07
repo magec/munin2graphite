@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: pid
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: existing
+comment: 
+constants: []
+
+full_name: Daemons::PidMem
+includes: []
+
+instance_methods: []
+
+name: PidMem
+superclass: Pid

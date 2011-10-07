@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Stops the scheduler.
+- !ruby/struct:SM::Flow::P 
+  body: If the :stop_em option is passed and set to true, it will stop the EventMachine (but only if it started the EM by itself !).
+full_name: Rufus::Scheduler::EmScheduler#stop
+is_singleton: false
+name: stop
+params: (opts={})
+visibility: public

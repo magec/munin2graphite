@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the directory that should be used to write the pid file to depending on the given mode.
+- !ruby/struct:SM::Flow::P 
+  body: Some modes may require an additionaly hint, others may determine the directory automatically.
+- !ruby/struct:SM::Flow::P 
+  body: If no valid directory is found, returns nil.
+full_name: Daemons::Pid::dir
+is_singleton: true
+name: dir
+params: (dir_mode, dir, script)
+visibility: public

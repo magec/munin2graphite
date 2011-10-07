@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: CurrentProcess::change_privilege
+is_singleton: true
+name: change_privilege
+params: (user, group=user)
+visibility: public

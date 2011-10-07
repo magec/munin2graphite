@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This string is used to insert a space before the ':' in JSON objects.
+full_name: JSON::Ext::Generator::State#space_before=
+is_singleton: false
+name: space_before=
+params: " space_before=(space_before)\n"
+visibility: public

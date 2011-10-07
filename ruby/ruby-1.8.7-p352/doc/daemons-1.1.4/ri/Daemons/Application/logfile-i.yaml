@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Daemons::Application#logfile
+is_singleton: false
+name: logfile
+params: ()
+visibility: public

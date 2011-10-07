@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The frequency, in seconds, of this EveryJob
+  name: frequency
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Recurring job with a certain frequency.
+constants: []
+
+full_name: Rufus::Scheduler::EveryJob
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: determine_at
+- !ruby/object:RI::MethodSummary 
+  name: determine_frequency
+- !ruby/object:RI::MethodSummary 
+  name: schedule_next
+- !ruby/object:RI::MethodSummary 
+  name: trigger
+name: EveryJob
+superclass: SimpleJob

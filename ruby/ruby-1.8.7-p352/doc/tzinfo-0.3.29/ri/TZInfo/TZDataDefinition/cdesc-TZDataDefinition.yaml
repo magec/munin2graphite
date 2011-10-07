@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Base class for Zones and Links.
+constants: []
+
+full_name: TZInfo::TZDataDefinition
+includes: []
+
+instance_methods: []
+
+name: TZDataDefinition
+superclass: Object

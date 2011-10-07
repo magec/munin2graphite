@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a time in UTC to the local timezone. utc can either be a DateTime, Time or timestamp (Time.to_i). The returned time has the same type as utc. Any timezone information in utc is ignored (it is treated as a UTC time).
+full_name: TZInfo::Timezone#utc_to_local
+is_singleton: false
+name: utc_to_local
+params: (utc)
+visibility: public

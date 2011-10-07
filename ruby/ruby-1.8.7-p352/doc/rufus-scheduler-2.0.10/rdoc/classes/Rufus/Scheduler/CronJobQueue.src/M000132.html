@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>trigger_matching_jobs (Rufus::Scheduler::CronJobQueue)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/rufus/sc/jobqueues.rb, line 136</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trigger_matching_jobs</span>
+
+      <span class="ruby-identifier">now</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">sec</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@last_cron_second</span>
+      <span class="ruby-ivar">@last_cron_second</span> = <span class="ruby-identifier">now</span>.<span class="ruby-identifier">sec</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-comment cmt"># ensuring the crons are checked within 1 second (not 1.2 second)</span>
+
+      <span class="ruby-identifier">jobs</span> = <span class="ruby-ivar">@mutex</span>.<span class="ruby-identifier">synchronize</span> { <span class="ruby-ivar">@jobs</span>.<span class="ruby-identifier">dup</span> }
+
+      <span class="ruby-identifier">jobs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">job</span><span class="ruby-operator">|</span> <span class="ruby-identifier">job</span>.<span class="ruby-identifier">trigger_if_matches</span>(<span class="ruby-identifier">now</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
