@@ -40,7 +40,10 @@ module Munin2Graphite
         metric_base = config["graphite_metric_prefix"]
         all_metrics = Array.new
         @munin  = Munin.new(config["munin_hostname"],config["munin_port"])
-        nodes = config["munin_nodes"].split(",") || @munin.nodes
+        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : @munin.nodes
+
+        @config.log.info(nodes.inspect)
+
         @munin.close
         threads = []
         nodes.each do |node|
@@ -52,12 +55,14 @@ module Munin2Graphite
             config.log.debug("Asking for: #{node}")		
             metric_time = Time.now
             metrics = munin.metrics(node)
+	    config.log.debug("Metrics " + metrics.join(","))
             metrics_threads = []
             categories = {}
             metrics.each do |metric|
               metrics_threads << Thread.new do
                 local_munin  = Munin.new(config["munin_hostname"],config["munin_port"])
                 values[metric] =  local_munin.values_for metric
+		config.log.debug("Values for metric #{metric}: #{values[metric].inspect}")
                 categories[metric] = local_munin.get_category(metric)
                 local_munin.close
                 local_munin = nil
@@ -76,6 +81,7 @@ module Munin2Graphite
               end
             end
             send_time = Time.now
+	    config.log.debug(string_to_send)
             carbon.send(string_to_send)
             config.log.debug("Sent data (elapsed time #{Time.now - send_time}s)")
             carbon.flush
@@ -96,12 +102,14 @@ module Munin2Graphite
     def obtain_graphs
 
       workers = @config.workers
+      workers = ["global"] if workers.empty?
+
       workers.each do |worker|
         time = Time.now 
         config = @config.config_for_worker worker
         config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")         
         munin  = Munin.new(config["munin_hostname"],config["munin_port"])
-        nodes = config["munin_nodes"].split "," || munin.nodes
+        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : @munin.nodes
         nodes.each do |node|
           config.log.info("Graphs for #{node}")
           munin.metrics(node).each do |metric|
@@ -124,7 +132,7 @@ module Munin2Graphite
     def start
       @config.log.info("Scheduler started")
       @scheduler = Rufus::Scheduler.start_new
-#      obtain_metrics
+      obtain_metrics
       @scheduler.every @config["scheduler_metrics_period"] do
         obtain_metrics
       end
