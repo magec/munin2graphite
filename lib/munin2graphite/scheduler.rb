@@ -109,7 +109,7 @@ module Munin2Graphite
         config = @config.config_for_worker worker
         config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")         
         munin  = Munin.new(config["munin_hostname"],config["munin_port"])
-        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : @munin.nodes
+        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
         nodes.each do |node|
           config.log.info("Graphs for #{node}")
           munin.metrics(node).each do |metric|
