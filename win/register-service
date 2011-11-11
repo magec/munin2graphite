@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+require 'rubygems'        
+require 'daemons'
+THIS_FILE = File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
+
+
+DAEMON="c:\\Ruby193\\bin\\ruby.exe " + File.expand_path(File.dirname(THIS_FILE)+ "/../" + "/bin/munin-graphite-service.rb.")
+
+require "win32/service"
+include Win32
+# Create a new service
+Service.create(:service_name => "Munin2Graphite",
+      :service_type       => Service::WIN32_OWN_PROCESS,
+      :description        => 'Munin2Graphite proccess',
+      :start_type         => Service::AUTO_START,
+      :error_control      => Service::ERROR_NORMAL,
+      :binary_path_name   => DAEMON,
+      :load_order_group   => 'Network',
+      :dependencies       => ['munin-node'],
+      :display_name       => 'Munin2Graphite'
+)
+
+
