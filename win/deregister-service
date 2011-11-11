@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require 'rubygems'        
+require 'daemons'
+THIS_FILE = File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
+
+
+DAEMON="ruby.exe " + File.expand_path(File.dirname(THIS_FILE)+ "/../" + "/bin/munin-graphite-service.rb.")
+
+require "win32/service"
+include Win32
+
+Service.delete("Munin2Graphite")
+
+
