@@ -82,23 +82,13 @@ class Munin
 
 private
   def get_response(cmd)
-    begin
-      @munin.puts(cmd)
-    rescue
-      new_connection
-      @munin.puts(cmd)
-    end
+    @munin.puts(cmd)
     stop = false 
     response = Array.new
     while stop == false
-      begin
-        line = @munin.gets
-      rescue
-        new_connection
-        line = @munin.gets
-      end
+      line = @munin.gets
       line.chomp! if line
-      if line == '.'
+      if line == '.' || line == ""
         stop = true
       else
         response << line 
