@@ -324,7 +324,9 @@ class NegativeFieldPropertyNode < FieldPropertyNode
     if node
       node.properties[:is_negative] = true 
       # We also use the same color
-      root_node.graph_properties[:colorList][node.index] = root_node.graph_properties[:colorList][parent.index]
+#      config.log.info("Begin getting metrics negative (node : #{node.index} with : #{parent.index} parent Color = root_node.graph_properties[:colorList][parent.index] ")
+
+      root_node.graph_properties[:colorList][node.index] = root_node.graph_properties[:colorList][parent.index] if root_node.graph_properties[:colorList][parent.index]
     end
     return operand
   end
