@@ -39,12 +39,12 @@ module Munin2Graphite
 
         metric_base = config["graphite_metric_prefix"]
         all_metrics = Array.new
-        @munin  = Munin.new(config["munin_hostname"],config["munin_port"])
+        @munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
         nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : @munin.nodes
 
         @config.log.info(nodes.inspect)
 
-        @munin.close
+        @munin.disconnect
         threads = []
         nodes.each do |node|
           threads << Thread.new do 
@@ -54,17 +54,17 @@ module Munin2Graphite
             munin  = Munin.new(config["munin_hostname"],config["munin_port"])
             config.log.debug("Asking for: #{node}")		
             metric_time = Time.now
-            metrics = munin.metrics(node)
+            metrics = munin.list(node)
 	    config.log.debug("Metrics " + metrics.join(","))
             metrics_threads = []
             categories = {}
             metrics.each do |metric|
               metrics_threads << Thread.new do
-                local_munin  = Munin.new(config["munin_hostname"],config["munin_port"])
+                local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
                 values[metric] =  local_munin.values_for metric
 		config.log.debug("Values for metric #{metric}: #{values[metric].inspect}")
                 categories[metric] = local_munin.get_category(metric)
-                local_munin.close
+                local_munin.disconnect
                 local_munin = nil
               end
             end        
@@ -87,7 +87,7 @@ module Munin2Graphite
             carbon.flush
             carbon.close
             carbon = nil 
-            munin.close
+            munin.disconnect
             munin = nil
             nil
           end
@@ -108,23 +108,23 @@ module Munin2Graphite
         time = Time.now 
         config = @config.config_for_worker worker
         config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")         
-        munin  = Munin.new(config["munin_hostname"],config["munin_port"])
+        munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
         nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
         nodes.each do |node|
           config.log.info("Graphs for #{node}")
-          munin.metrics(node).each do |metric|
+          munin.list(node).each do |metric|
             config.log.info("Configuring #{metric}")
             Graphite::Base.set_connection(config["carbon_hostname"])
             Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
+            munin_graph = MuninGraph.graph_for munin.config(metric,true)[metric]
             
-            munin_graph = munin.graph_for metric
             munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
             config.log.debug("Saving graph #{metric}")
             munin_graph.to_graphite.save!
           end
         end
         config.log.info("End   : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
-        munin.close
+        munin.disconnect
       end
 
     end
