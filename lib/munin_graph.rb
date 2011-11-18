@@ -27,6 +27,10 @@ require 'graphite'
 #
 class MuninGraph
 
+  def self.graph_for(config)
+    MuninGraph.new(config)
+  end
+
   def initialize(config)
     @raw_config = config
     parse_config

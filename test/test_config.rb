@@ -4,7 +4,7 @@ class TestMunin < Test::Unit::TestCase
 
   def setup
     Munin2Graphite::Config.config_file = TEST_CONFIG_FILE
-    @munin = Munin.new(Munin2Graphite::Config["munin_hostname"],Munin2Graphite::Config["munin_port"])
+    @munin = Munin::Node.new(Munin2Graphite::Config["munin_hostname"],Munin2Graphite::Config["munin_port"])
   end
   
   def test_config
