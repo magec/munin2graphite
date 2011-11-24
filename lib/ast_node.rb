@@ -107,6 +107,10 @@ class GlobalDeclarationNode < ASTNode
   end
 end
 
+def string_to_ansi(string)
+  string.unpack("U*").map{|c|c.chr}.join
+end
+
 class GraphTitleGlobalDeclarationNode < GlobalDeclarationNode
   def compile
     root_node.graph_properties[:title] = @value
@@ -169,7 +173,7 @@ class GraphPrintFormatGlobalDeclarationNode < GlobalDeclarationNode; end
 class FieldDeclarationNode < ASTNode
  
   def metric
-    "#{root_node.properties['graphite_metric_prefix']}.#{root_node.properties['hostname']}.#{root_node.properties['category']}.#{root_node.properties['metric']}.#{children.first.metric}"
+    "#{root_node.properties['graphite_metric_prefix']}.#{root_node.properties['hostname'].split('.').first}.#{root_node.properties['category']}.#{root_node.properties['metric']}.#{children.first.metric}"
   end
 
   def compile
