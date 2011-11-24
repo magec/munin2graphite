@@ -73,27 +73,27 @@ dev104_16_wtime.cdef dev104_16_wtime,1000,/
 END
 )
     @simple_graph.config = Munin2Graphite::Config.merge({ 
-                                                                     "metric_prefix" => "campus.frontends.linux",
+                                                                     "metric_prefix" => "test.frontends.linux",
                                                                      "category" => "sensors", 
-                                                                     "hostname" => "aleia",
+                                                                     "hostname" => "myhost",
                                                                      "metric" => "acpi"}
                                                                    )
-    @apache_graph.config = Munin2Graphite::Config.merge({ "metric_prefix" => "campus.frontends.linux",
+    @apache_graph.config = Munin2Graphite::Config.merge({ "metric_prefix" => "test.frontends.linux",
                                                           "category" => "apache",
-                                                          "hostname" => "aleia",
+                                                          "hostname" => "myhost",
                                                           "metric" => "apache_accesses"
                                                         })
 
     @processes_graph.config = Munin2Graphite::Config.merge({ 
-                                                             "metric_prefix" => "campus.frontends.linux",
+                                                             "metric_prefix" => "test.frontends.linux",
                                                              "category" => "apache",
-                                                             "hostname" => "aleia",
+                                                             "hostname" => "myhost",
                                                              "metric" => "apache_processes"
                                                            })
     @log_graph.config = Munin2Graphite::Config.merge({
-                                                       "metric_prefix" => "campus.frontends.linux",
+                                                       "metric_prefix" => "test.frontends.linux",
                                                        "category" => "apache",
-                                                       "hostname" => "aleia",
+                                                       "hostname" => "myhost",
                                                        "metric" => "iostat_ios"
                                                      })
   end
@@ -107,7 +107,7 @@ END
     root = @simple_graph.root
     root.compile
     field_declarations = root.children_of_class(FieldDeclarationNode)
-    assert_equal field_declarations.first.compile,"alias(campus.frontends.linux.aleia.sensors.acpi.THM0,'THM0')"
+    assert_equal field_declarations.first.compile,"alias(test.frontends.linux.myhost.sensors.acpi.THM0,'THM0')"
     assert_equal root.graph_properties[:vtitle], "Celcius"
     assert_equal root.graph_properties[:title], "ACPI Thermal zone temperatures"
   end
@@ -116,7 +116,7 @@ END
     root = @apache_graph.root
     field_declarations = root.children_of_class(FieldDeclarationNode)
     root.compile
-    assert_equal field_declarations.first.compile,"alias(scale(nonNegativeDerivative(campus.frontends.linux.aleia.apache.apache_accesses.accesses80),0.0166666666666667),'port 80')"
+    assert_equal field_declarations.first.compile,"alias(scale(nonNegativeDerivative(test.frontends.linux.myhost.apache.apache_accesses.accesses80),0.0166666666666667),'port 80')"
     assert_equal root.graph_properties[:yMax], 1000000
     assert_equal root.graph_properties[:yMin], 0
     assert_equal root.properties[:base] , 1000
@@ -225,7 +225,7 @@ END
     graph.root.compile
     color_list = graph.root.graph_properties[:colorList]
     assert_equal color_list.first , color_list[1] # Thew should be drawn with the same color
-    assert_match graph.root.url , /alias\(scale\(scale\(scale\(nonNegativeDerivative\(campus.frontends.linux.localhost.network.load.down\),0.0166666666666667\),8\),-1/
+    assert_match graph.root.url , /alias\(scale\(scale\(scale\(nonNegativeDerivative\(test.frontends.linux.localhost.network.load.down\),0.0166666666666667\),8\),-1/
     assert_equal graph.root.children_of_class(FieldDeclarationNode).length , 2
      graph.root.url
   end
@@ -233,9 +233,8 @@ END
   def test_network_graph
     graph = MuninGraph.new(<<END
 host_name Switxos
-graph_category cdshospitalet
-graph_title cdshospitalet
-graph_info Model: 1H582x25 Firmware: 03.07.14.1
+graph_category switch
+graph_title One switck
 graph_args --base 1000
 graph_vlabel Errors in (G) / out (B) per ${graph_period}
 fe_0_1_errors_in.label Errors IN
