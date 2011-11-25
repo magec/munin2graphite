@@ -27,6 +27,14 @@ module Munin2Graphite
       @config = config
     end
     
+    def category_from_config(config)
+      config.each_line do |configline|
+        if configline =~ /^graph_category (\w+)$/
+          return configline.split[1]
+        end
+      end      
+    end
+
     #
     # This is the loop of the metrics scheduling
     def obtain_metrics
@@ -51,7 +59,7 @@ module Munin2Graphite
             node_name = metric_base + "." + node.split(".").first
             config.log.debug("Doing #{node_name}")
             values = {}                       
-            munin  = Munin.new(config["munin_hostname"],config["munin_port"])
+            munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
             config.log.debug("Asking for: #{node}")		
             metric_time = Time.now
             metrics = munin.list(node)
@@ -59,29 +67,32 @@ module Munin2Graphite
             metrics_threads = []
             categories = {}
             metrics.each do |metric|
-              metrics_threads << Thread.new do
+#              metrics_threads << Thread.new do
                 local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-                values[metric] =  local_munin.values_for metric
-		config.log.debug("Values for metric #{metric}: #{values[metric].inspect}")
-                categories[metric] = local_munin.get_category(metric)
+                values[metric] =  local_munin.fetch metric
+		#config.log.debug("Values for metric #{metric}: #{values[metric].inspect}")
+                category = category_from_config(munin.config(metric,true)[metric])
+                config.log.debug("Category #{category}")
+                categories[metric] = category
                 local_munin.disconnect
                 local_munin = nil
-              end
+  #            end
             end        
-            metrics_threads.each {|i| i.join;i.kill}
+ #           metrics_threads.each {|i| i.join;i.kill}
             config.log.debug("Done with: #{node} (#{Time.now - metric_time} s)")	
             carbon = Carbon.new(config["carbon_hostname"],config["carbon_port"])
             string_to_send = ""
             values.each do |metric,results|          
               category = categories[metric]
               results.each do |k,v|
-                if v != "U" # Undefined values are ignored
-                  string_to_send += "#{node_name}.#{category}.#{metric}.#{k} #{v} #{Time.now.to_i}\n".gsub("-","_")                
+                config.log.debug(".------------------__>          " +k.inspect + "------------------> "+ v.inspect)
+                v.each do |c_metric,c_value|
+                  string_to_send += "#{node_name}.#{category}.#{metric}.#{c_metric} #{c_value} #{Time.now.to_i}\n".gsub("-","_")  if c_value != "U"
                 end
               end
             end
             send_time = Time.now
-	    config.log.debug(string_to_send)
+#	    config.log.debug(string_to_send)
             carbon.send(string_to_send)
             config.log.debug("Sent data (elapsed time #{Time.now - send_time}s)")
             carbon.flush
