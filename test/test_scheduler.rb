@@ -7,7 +7,7 @@ class TestMuninGraph < Test::Unit::TestCase
     @scheduler = Munin2Graphite::Scheduler.new(Munin2Graphite::Config)
   end
 
-  def tdest_obtain_metrics
+  def test_obtain_metrics
     @scheduler.obtain_metrics
   end
 
