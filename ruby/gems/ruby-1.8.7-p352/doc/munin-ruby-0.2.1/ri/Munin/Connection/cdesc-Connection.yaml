@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: host
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: port
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Munin::Connection
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Munin::Parser
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: connected?
+- !ruby/object:RI::MethodSummary 
+  name: open
+- !ruby/object:RI::MethodSummary 
+  name: read_line
+- !ruby/object:RI::MethodSummary 
+  name: read_packet
+- !ruby/object:RI::MethodSummary 
+  name: send_data
+name: Connection
+superclass: Object

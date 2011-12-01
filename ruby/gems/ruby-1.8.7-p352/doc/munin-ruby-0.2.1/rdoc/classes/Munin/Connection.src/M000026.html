@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>read_packet (Munin::Connection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/munin-ruby/connection.rb, line 84</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_packet</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">lines</span> = []
+        <span class="ruby-keyword kw">while</span>(<span class="ruby-identifier">str</span> = <span class="ruby-ivar">@socket</span>.<span class="ruby-identifier">readline</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">strip</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'.'</span>
+          <span class="ruby-identifier">lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">strip</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">parse_error</span>(<span class="ruby-identifier">lines</span>)
+        <span class="ruby-identifier">lines</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ETIMEDOUT</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ECONNREFUSED</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ECONNRESET</span>, <span class="ruby-constant">EOFError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Munin</span><span class="ruby-operator">::</span><span class="ruby-constant">ConnectionError</span>, <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

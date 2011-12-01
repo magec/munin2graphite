@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Munin::Cache#cache_get
+is_singleton: false
+name: cache_get
+params: (key)
+visibility: protected

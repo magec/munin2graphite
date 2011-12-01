@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parse 'fetch' request
+full_name: Munin::Parser#parse_fetch
+is_singleton: false
+name: parse_fetch
+params: (data)
+visibility: public

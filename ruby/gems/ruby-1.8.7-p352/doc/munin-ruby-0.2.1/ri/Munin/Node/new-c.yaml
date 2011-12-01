@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initialize a new Node instance
+- !ruby/struct:SM::Flow::P 
+  body: "host - Server host port - Server port reconnect - Reconnect if connection was closed (default: true)"
+full_name: Munin::Node::new
+is_singleton: true
+name: new
+params: (host='127.0.0.1', port=4949, reconnect=true)
+visibility: public
