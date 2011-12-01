@@ -18,5 +18,6 @@ export LOAD_PATH=$RUBY_BASE/rubies/ruby-1.8.7-p352/lib/ruby/site_ruby/1.8/
 export PATH=$RUBY_BASE/rubies/ruby-1.8.7-p352/bin:$PATH:/usr/local/bin
 export LD_LIBRARY_PATH=$RUBY_BASE/rubies/ruby-1.8.7-p352/lib/
 export GEM_PATH=$RUBY_BASE/gems/ruby-1.8.7-p352
+export GEM_HOME=$GEM_PATH
 export MY_RUBY_HOME=$RUBY_BASE/gems/ruby-1.8.7-p352/
 `dirname $LINK`/munin2graphite $@
