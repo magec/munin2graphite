@@ -33,6 +33,7 @@ module Munin2Graphite
           return configline.split[1]
         end
       end      
+      return "other"
       raise "CategoryNotFound in #{config}"
     end
 
