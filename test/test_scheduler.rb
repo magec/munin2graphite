@@ -4,14 +4,15 @@ class TestMuninGraph < Test::Unit::TestCase
 
   def setup
     Munin2Graphite::Config.config_file = TEST_CONFIG_FILE
-    @scheduler = Munin2Graphite::Scheduler.new(Munin2Graphite::Config)
   end
 
   def test_obtain_metrics
+    @scheduler = Munin2Graphite::Scheduler.new(Munin2Graphite::Config)
     @scheduler.obtain_metrics
   end
 
   def test_obtain_graphs
+    @scheduler = Munin2Graphite::Scheduler.new(Munin2Graphite::Config)
     @scheduler.obtain_graphs
   end
 
