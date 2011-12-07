@@ -1,0 +1,35 @@
+# Log config
+# log: The logfile, STDOUT if stdout is needed
+# log_level: Either DEBUG, INFO or WARN
+log=/var/log/munin2graphite.log
+log_level=INFO
+
+# Carbon backend
+# This has to point to the carbon backend to submit metrics
+# carbon_hostname=
+carbon_port=2003
+
+# Graphite endpoint
+# This is needed to send graph data to graphite
+graphite_endpoint=http://graphite/
+
+# prefix for the metrics usually, the user name have to be put as a prefix
+graphite_metric_prefix=
+graphite_graph_prefix=
+graphite_user=test
+graphite_password=
+
+# The period for sending the metrics and the graph info
+# its format is the one of rufus-scheduler
+scheduler_metrics_period=1m
+scheduler_graphs_period=10m
+
+# The munin node hostname and its port
+munin_hostname=localhost
+munin_port=4949
+
+# Apart from the global configuration, you can define workers so a new thread is opened with the new configuration,
+# this is particulary useful when you have a single munin-node with several nodes configured and want to send different graphs
+# with different prefixes
+[test_worker1]
+munin_hostname=127.0.0.1

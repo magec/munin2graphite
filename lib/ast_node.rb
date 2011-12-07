@@ -15,7 +15,7 @@ class ASTNode
     @root_node = nil
     @raw_data = raw_data
     @children = []
-    @properties = {'graph_period' => "seconds"}
+    @properties = {'graph_period' => "seconds","category" => "other"}
     @graph_properties = {}    
     @graph_properties[:colorList] = default_colors
     @parent = nil
