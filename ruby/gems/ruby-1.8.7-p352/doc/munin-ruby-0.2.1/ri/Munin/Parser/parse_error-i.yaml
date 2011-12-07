@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Detect error from output
+full_name: Munin::Parser#parse_error
+is_singleton: false
+name: parse_error
+params: (lines)
+visibility: public

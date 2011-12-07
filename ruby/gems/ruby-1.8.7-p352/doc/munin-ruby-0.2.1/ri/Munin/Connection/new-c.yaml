@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initialize a new connection to munin-node server
+- !ruby/struct:SM::Flow::P 
+  body: "host - Server host (default: 127.0.0.1) port - Server port (default: 4949)"
+full_name: Munin::Connection::new
+is_singleton: true
+name: new
+params: (host='127.0.0.1', port=4949, reconnect=true)
+visibility: public

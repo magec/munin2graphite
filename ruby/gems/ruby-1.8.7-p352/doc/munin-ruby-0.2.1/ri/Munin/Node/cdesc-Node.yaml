@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: connection
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Munin::Node
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Munin::Parser
+- !ruby/object:RI::IncludedModule 
+  name: Munin::Cache
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: config
+- !ruby/object:RI::MethodSummary 
+  name: connect
+- !ruby/object:RI::MethodSummary 
+  name: disconnect
+- !ruby/object:RI::MethodSummary 
+  name: fetch
+- !ruby/object:RI::MethodSummary 
+  name: list
+- !ruby/object:RI::MethodSummary 
+  name: nodes
+- !ruby/object:RI::MethodSummary 
+  name: version
+name: Node
+superclass: Object

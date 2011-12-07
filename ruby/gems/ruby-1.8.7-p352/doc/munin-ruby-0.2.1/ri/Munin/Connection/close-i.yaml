@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Close connection
+full_name: Munin::Connection#close
+is_singleton: false
+name: close
+params: (reconnect=true)
+visibility: public

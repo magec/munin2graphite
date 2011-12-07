@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Munin::Parser
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: parse_config
+- !ruby/object:RI::MethodSummary 
+  name: parse_config_args
+- !ruby/object:RI::MethodSummary 
+  name: parse_error
+- !ruby/object:RI::MethodSummary 
+  name: parse_fetch
+- !ruby/object:RI::MethodSummary 
+  name: parse_version
+- !ruby/object:RI::MethodSummary 
+  name: process_data
+name: Parser
+superclass: 
