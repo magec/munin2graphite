@@ -54,9 +54,9 @@ module Munin2Graphite
         @config
       end
 
-      MANDATORY_GLOBAL_FIELDS={:carbon => [:hostname,:port],:graphite => [:endpoint,:metric_prefix,:user,:password],:scheduler => [:metrics_period,:graphs_period]}
       def check_config
-        MANDATORY_GLOBAL_FIELDS.each do |k,v|
+        fields={:carbon => [:hostname,:port],:graphite => [:endpoint,:metric_prefix,:user,:password],:scheduler => [:metrics_period,:graphs_period]}
+        fields.each do |k,v|
           v.each do |inner_field|
             field = "#{k}_#{inner_field}"
             if !@config.params[field] 
