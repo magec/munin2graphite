@@ -6,7 +6,7 @@ log_level=INFO
 
 # Carbon backend
 # This has to point to the carbon backend to submit metrics
-# carbon_hostname=
+carbon_hostname=
 carbon_port=2003
 
 # Graphite endpoint
@@ -31,5 +31,5 @@ munin_port=4949
 # Apart from the global configuration, you can define workers so a new thread is opened with the new configuration,
 # this is particulary useful when you have a single munin-node with several nodes configured and want to send different graphs
 # with different prefixes
-[test_worker1]
-munin_hostname=127.0.0.1
+#[test_worker1]
+#munin_hostname=127.0.0.1
