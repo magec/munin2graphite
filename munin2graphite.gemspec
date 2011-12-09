@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "bin/munin2graphite",
     "bin/munin2graphite-daemon",
+    "conf/munin2graphite.conf.example",
     "etc/munin2graphite/munin2graphite.conf.example",
     "lib/ast_node.rb",
     "lib/carbon.rb",
