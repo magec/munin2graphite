@@ -12,10 +12,9 @@
 
 require 'rubygems'        
 require 'daemons'
-#$:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
-#require 'daemons'
+
 THIS_FILE = File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
 
-DAEMON=File.dirname(THIS_FILE)+ "/../" + "/bin/munin-graphite.rb"
+DAEMON=File.dirname(THIS_FILE)+ "/munin2graphite"
 Daemons.run(DAEMON,{:dir_mode  => :system, :monitor => true})
 
