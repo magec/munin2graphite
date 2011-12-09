@@ -76,7 +76,7 @@ You can run it either as a daemon or as an executable. To run it as an executabl
 
     munin2graphite config.conf
 
-There is also a daemon version, bassically the same thing but wrapped up with the daemons gem. Its usage is as follows. By default the config file location will be /etc/munin2graphite/munin2graphite.conf
+There is also a daemon version, bassically the same thing but wrapped up with the daemons gem. Its usage is as follows. By default the config file location will be /etc/munin2graphite/munin2graphite.conf. This daemon also supports to be run from /etc/init.d by means of a symbolic link.
 
 
     Usage: munin-graphite.rb <command> <options> -- <application options>
@@ -98,7 +98,7 @@ There is also a daemon version, bassically the same thing but wrapped up with th
                              
     Common options:
       -h, --help                       Show this message
-      --version                    Show version
+          --version                    Show version
 
 Contributing to munin2graphite
 ------------------------------- 
