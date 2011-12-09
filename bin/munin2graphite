@@ -6,7 +6,7 @@ require 'munin2graphite'
 if ARGV.last && File.stat(ARGV.last)
   Munin2Graphite::Config.config_file = ARGV.last
 else
-  Munin2Graphite::Config.config_file = File.expand_path("/etc","conf","munin2graphite.conf"))
+  Munin2Graphite::Config.config_file = File.expand_path("/etc","conf","munin2graphite.conf")
 end
 
 Thread.abort_on_exception = true 
