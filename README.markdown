@@ -100,6 +100,11 @@ There is also a daemon version, bassically the same thing but wrapped up with th
       -h, --help                       Show this message
           --version                    Show version
 
+
+Troubleshooting
+-----------------
+You better start testing the conf with the not daemonized mode and then swap to the daemon, another aproarch is to use the daemon but adding a -t (stay on top) when running.
+
 Contributing to munin2graphite
 ------------------------------- 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
