@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "munin2graphite"
   gem.homepage = "http://github.com/magec/munin2graphite"
   gem.license = "MIT"
-  gem.summary = %Q{Allows to post both data and graphic info from munin to gtaphite (https://launchpad.net/graphite)}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Allows to post both data and graphic info from munin to graphite (https://launchpad.net/graphite)}
+  gem.description = %Q{This gem will install as a daemon and can be used to connect to a graphite and a carbon backend. It will not only post the data for the metrics but also create graphs into graphite, by means of a translation from munin-node.}
   gem.email = "jfernandezperez@gmail.com"
   gem.authors = ["Jose Fernandez (magec)"]
   # dependencies defined in Gemfile

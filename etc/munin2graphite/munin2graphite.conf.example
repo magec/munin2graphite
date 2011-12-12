@@ -6,7 +6,7 @@ log_level=INFO
 
 # Carbon backend
 # This has to point to the carbon backend to submit metrics
-carbon_hostname=localhost 
+carbon_hostname=
 carbon_port=2003
 
 # Graphite endpoint

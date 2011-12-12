@@ -7,7 +7,7 @@ source "http://rubygems.org"
 gem "rufus-scheduler", "2.0.10"
 gem "daemons", "1.1.4"
 gem "parseconfig"
-gem "munin-ruby", :git => "https://github.com/sosedoff/munin-ruby.git"
+gem "munin-ruby", "~> 0.2.1"
 
 
 # Add dependencies to develop your gem here.
