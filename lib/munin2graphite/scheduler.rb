@@ -44,24 +44,27 @@ module Munin2Graphite
       workers.each do |worker|
         @munin_config[worker] = {}
         config = @config.config_for_worker(worker)
-        munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
-        @munin_config[worker][:nodes] = {}
-        nodes.each do |node|
-
-          @munin_config[worker][:nodes][node] = {:metrics => munin.list(node)}
-          @munin_config[worker][:nodes][node][:categories] = {}
-
-          @munin_config[worker][:nodes][node][:metrics].each do |metric|
-            @munin_config[worker][:nodes][node][:config] = munin.config(metric)[metric]
-            @munin_config[worker][:nodes][node][:raw_config] = munin.config(metric,true)[metric]
-            @munin_config[worker][:nodes][node][:categories][metric] = category_from_config(@munin_config[worker][:nodes][node][:raw_config])
+        begin
+          munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
+          @munin_config[worker][:nodes] = {}
+          nodes.each do |node|
+            @munin_config[worker][:nodes][node] = {:metrics => munin.list(node)}
+            @munin_config[worker][:nodes][node][:categories] = {}
+            @munin_config[worker][:nodes][node][:metrics].each do |metric|
+              @munin_config[worker][:nodes][node][:config] = munin.config(metric)[metric]
+              @munin_config[worker][:nodes][node][:raw_config] = munin.config(metric,true)[metric]
+              @munin_config[worker][:nodes][node][:categories][metric] = category_from_config(@munin_config[worker][:nodes][node][:raw_config])
+            end
           end
+          munin.disconnect
+        rescue Exception
+          config.log.error("There was an error trying to obtain info from node #{config["munin_hostname"]}")
+          config.log.error $!
         end
-        munin.disconnect
       end
       @munin_config
-    end      
+    end
 
     def workers
       @workers ||= (@config.workers.empty? ?  ["global"] : @config.workers )
@@ -176,3 +179,4 @@ module Munin2Graphite
     
   end
 end
+
