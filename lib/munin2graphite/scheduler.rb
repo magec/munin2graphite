@@ -95,9 +95,14 @@ module Munin2Graphite
             categories = {}
             metrics.each do |metric|
               metrics_threads << Thread.new do
-                local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-                values[metric] =  local_munin.fetch metric
-                local_munin.disconnect
+                begin
+                  local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+                  values[metric] =  local_munin.fetch metric
+                  local_munin.disconnect
+                rescue Exception
+                  config.log.error("Error when trying to obtain values for #{metric}. Ignored")
+                  config.log.error $!
+                end
               end            
             end 
             metrics_threads.each {|i| i.join;i.kill}
@@ -142,11 +147,15 @@ module Munin2Graphite
             config.log.info("Configuring #{metric}")
             Graphite::Base.set_connection(config["carbon_hostname"])
             Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
-            munin_graph = MuninGraph.graph_for munin.config(metric,true)[metric]
-            
-            munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
-            config.log.debug("Saving graph #{metric}")
-            munin_graph.to_graphite.save!
+            begin 
+              munin_graph = MuninGraph.graph_for munin.config(metric,true)[metric]
+              munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
+              config.log.debug("Saving graph #{metric}")
+              munin_graph.to_graphite.save!
+            rescue Exception
+              config.log.error("Error when trying to obtain graph conf, for #{metric}. Ignored")
+              config.log.error $!
+            end
           end
         end
         config.log.info("End   : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
