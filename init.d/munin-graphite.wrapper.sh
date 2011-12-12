@@ -9,7 +9,7 @@
 # Short-Description: Populates carbon agents with munin-node data
 # Description:    munin graphs to graphite servers
 ### END INIT INFO
-LINK=$( stat  -t  -c %N $0|awk '{print $3}'|sed "s/'//g"|sed "s/\`//g" )
+LINK=$( stat  -t  -c %N $0|awk '{print $3}'|sed "s/['«»]//g"|sed "s/\`//g" )
 
 export RUBY_BASE=`dirname $LINK`/../ruby/
 export RUBY_LIB_PREFIX=$RUBY_BASE/rubies/ruby-1.8.7-p352/
