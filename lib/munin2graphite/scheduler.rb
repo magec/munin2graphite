@@ -44,24 +44,27 @@ module Munin2Graphite
       workers.each do |worker|
         @munin_config[worker] = {}
         config = @config.config_for_worker(worker)
-        munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
-        @munin_config[worker][:nodes] = {}
-        nodes.each do |node|
-
-          @munin_config[worker][:nodes][node] = {:metrics => munin.list(node)}
-          @munin_config[worker][:nodes][node][:categories] = {}
-
-          @munin_config[worker][:nodes][node][:metrics].each do |metric|
-            @munin_config[worker][:nodes][node][:config] = munin.config(metric)[metric]
-            @munin_config[worker][:nodes][node][:raw_config] = munin.config(metric,true)[metric]
-            @munin_config[worker][:nodes][node][:categories][metric] = category_from_config(@munin_config[worker][:nodes][node][:raw_config])
+        begin
+          munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
+          @munin_config[worker][:nodes] = {}
+          nodes.each do |node|
+            @munin_config[worker][:nodes][node] = {:metrics => munin.list(node)}
+            @munin_config[worker][:nodes][node][:categories] = {}
+            @munin_config[worker][:nodes][node][:metrics].each do |metric|
+              @munin_config[worker][:nodes][node][:config] = munin.config(metric)[metric]
+              @munin_config[worker][:nodes][node][:raw_config] = munin.config(metric,true)[metric]
+              @munin_config[worker][:nodes][node][:categories][metric] = category_from_config(@munin_config[worker][:nodes][node][:raw_config])
+            end
           end
+          munin.disconnect
+        rescue Exception
+          config.log.error("There was an error trying to obtain info from node #{config["munin_hostname"]}")
+          config.log.error $!
         end
-        munin.disconnect
       end
       @munin_config
-    end      
+    end
 
     def workers
       @workers ||= (@config.workers.empty? ?  ["global"] : @config.workers )
@@ -95,9 +98,14 @@ module Munin2Graphite
             categories = {}
             metrics.each do |metric|
               metrics_threads << Thread.new do
-                local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-                values[metric] =  local_munin.fetch metric
-                local_munin.disconnect
+                begin
+                  local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+                  values[metric] =  local_munin.fetch metric
+                  local_munin.disconnect
+                rescue Exception
+                  config.log.error("Error when trying to obtain values for #{metric}. Ignored")
+                  config.log.error $!
+                end
               end            
             end 
             metrics_threads.each {|i| i.join;i.kill}
@@ -142,11 +150,15 @@ module Munin2Graphite
             config.log.info("Configuring #{metric}")
             Graphite::Base.set_connection(config["carbon_hostname"])
             Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
-            munin_graph = MuninGraph.graph_for munin.config(metric,true)[metric]
-            
-            munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
-            config.log.debug("Saving graph #{metric}")
-            munin_graph.to_graphite.save!
+            begin 
+              munin_graph = MuninGraph.graph_for munin.config(metric,true)[metric]
+              munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
+              config.log.debug("Saving graph #{metric}")
+              munin_graph.to_graphite.save!
+            rescue Exception
+              config.log.error("Error when trying to obtain graph conf, for #{metric}. Ignored")
+              config.log.error $!
+            end
           end
         end
         config.log.info("End   : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
@@ -167,3 +179,4 @@ module Munin2Graphite
     
   end
 end
+
