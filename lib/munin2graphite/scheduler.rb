@@ -125,7 +125,7 @@ module Munin2Graphite
             carbon.flush
             carbon.close
            end
-        end
+        end if munin_config[worker][:nodes]
         threads.each { |i| i.join }
       end
       @config.log.info("End   getting metrics, elapsed time (#{Time.now - time}s)")
@@ -142,27 +142,23 @@ module Munin2Graphite
         time = Time.now 
         config = @config.config_for_worker worker
         config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")         
-        munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
-        nodes.each do |node|
-          config.log.info("Graphs for #{node}")
-          munin.list(node).each do |metric|
-            config.log.info("Configuring #{metric}")
-            Graphite::Base.set_connection(config["carbon_hostname"])
-            Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
-            begin 
-              munin_graph = MuninGraph.graph_for munin.config(metric,true)[metric]
-              munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
-              config.log.debug("Saving graph #{metric}")
-              munin_graph.to_graphite.save!
-            rescue Exception
-              config.log.error("Error when trying to obtain graph conf, for #{metric}. Ignored")
-              config.log.error $!
+	begin
+          munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
+          nodes.each do |node|
+            config.log.info("Graphs for #{node}")
+            munin.list(node).each do |metric|
+              config.log.info("Configuring #{metric}")
+              Graphite::Base.set_connection(config["carbon_hostname"])
+              Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
             end
           end
+          config.log.info("End   : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
+          munin.disconnect
+        rescue Exception
+          config.log.error("Error when trying to obtain graph conf. Ignored")
+          config.log.error $!
         end
-        config.log.info("End   : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
-        munin.disconnect
       end
 
     end
@@ -179,4 +175,3 @@ module Munin2Graphite
     
   end
 end
-
