@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jose Fernandez (magec)"]
-  s.date = "2011-12-09"
+  s.date = "2011-12-12"
   s.description = "This gem will install as a daemon and can be used to connect to a graphite and a carbon backend. It will not only post the data for the metrics but also create graphs into graphite, by means of a translation from munin-node."
   s.email = "jfernandezperez@gmail.com"
   s.executables = ["munin2graphite", "munin2graphite-daemon"]
@@ -71,6 +71,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<daemons>, ["= 1.1.4"])
       s.add_runtime_dependency(%q<parseconfig>, [">= 0"])
       s.add_runtime_dependency(%q<munin-ruby>, ["~> 0.2.1"])
+      s.add_runtime_dependency(%q<json>, ["~> 1.6.3"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
@@ -79,6 +80,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<daemons>, ["= 1.1.4"])
       s.add_dependency(%q<parseconfig>, [">= 0"])
       s.add_dependency(%q<munin-ruby>, ["~> 0.2.1"])
+      s.add_dependency(%q<json>, ["~> 1.6.3"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
@@ -88,6 +90,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<daemons>, ["= 1.1.4"])
     s.add_dependency(%q<parseconfig>, [">= 0"])
     s.add_dependency(%q<munin-ruby>, ["~> 0.2.1"])
+    s.add_dependency(%q<json>, ["~> 1.6.3"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
