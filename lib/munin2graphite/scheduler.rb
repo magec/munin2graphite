@@ -141,19 +141,26 @@ module Munin2Graphite
       workers.each do |worker|
         time = Time.now 
         config = @config.config_for_worker worker
-        config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")         
+        config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")
 	begin
           munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+          Graphite::Base.set_connection(config["graphite_endpoint"])
+          Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
+
           nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
           nodes.each do |node|
             config.log.info("Graphs for #{node}")
             munin.list(node).each do |metric|
               config.log.info("Configuring #{metric}")
-              Graphite::Base.set_connection(config["carbon_hostname"])
-              Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
+	      munin_graph = MuninGraph.graph_for munin.config(metric,true)[metric]
+              munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
+              config.log.debug("Saving graph #{metric}")
+              munin_graph.to_graphite.save!
             end
           end
           config.log.info("End   : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
+  	  munin_graph.to_graphite.save!
+
           munin.disconnect
         rescue Exception
           config.log.error("Error when trying to obtain graph conf. Ignored")
@@ -172,6 +179,5 @@ module Munin2Graphite
       end
       obtain_graphs
     end
-    
   end
 end
