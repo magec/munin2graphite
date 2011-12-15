@@ -89,8 +89,8 @@ module Munin2Graphite
         super
       end
 
-      def log        
-        shift_age  = self["log_shift_age"].to_i || 1
+      def log
+        shift_age  = self["log_shift_age"] ? self["log_shift_age"].to_i : 1
         shift_size = self["log_shift_size"].to_i || 100000
         @log ||= if self["log"] == "STDOUT"
                    Logger.new(STDOUT, shift_age, shift_size)
