@@ -1,5 +1,4 @@
 #!/bin/bash 
-
 ### BEGIN INIT INFO
 # Provides: munin2graphite
 # Required-Start: $network $remote_fs $munin-node
@@ -20,5 +19,5 @@ export LD_LIBRARY_PATH=$RUBY_BASE/rubies/ruby-1.8.7-p352/lib/
 export GEM_PATH=$RUBY_BASE/gems/ruby-1.8.7-p352
 export GEM_HOME=$GEM_PATH
 export MY_RUBY_HOME=$RUBY_BASE/gems/ruby-1.8.7-p352/
-`dirname $LINK`/munin2graphite $@
 
+/opt/local/munin2graphite/bin/munin2graphite-daemon 

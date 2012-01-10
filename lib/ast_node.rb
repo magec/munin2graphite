@@ -248,8 +248,9 @@ class TypeFieldPropertyNode < FieldPropertyNode
   
   def apply_function(operand)
     if @value == "DERIVE" || @value == "COUNTER"
-      # The scaling is because of the minutes/seconds"
-      return "scale(nonNegativeDerivative(#{operand}),0.0166666666666667)"
+      # The scaling is because of the minutes/(60*seconds)"
+      #return "scale(nonNegativeDerivative(#{operand}),0.0166666666666667)"
+      return "scale(nonNegativeDerivative(#{operand}),0.00333333333333333)"
     end
     operand
   end
