@@ -1,8 +1,12 @@
 # Log config
 # log: The logfile, STDOUT if stdout is needed
 # log_level: Either DEBUG, INFO or WARN
+# Rotation (shift_age and shift_size)
+# 
 log=/var/log/munin2graphite.log
 log_level=INFO
+log_shift_age=1        # 0 if for no rotation
+log_shift_size=100000
 
 # Carbon backend
 # This has to point to the carbon backend to submit metrics

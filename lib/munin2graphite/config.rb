@@ -89,11 +89,13 @@ module Munin2Graphite
         super
       end
 
-      def log        
+      def log
+        shift_age  = self["log_shift_age"] ? self["log_shift_age"].to_i : 1
+        shift_size = self["log_shift_size"].to_i || 100000
         @log ||= if self["log"] == "STDOUT"
-                   Logger.new(STDOUT)
+                   Logger.new(STDOUT, shift_age, shift_size)
                  else
-                   Logger.new(self["log"])
+                   Logger.new(self["log"], shift_age, shift_size)
                  end
         @log.level = self["log_level"] == "DEBUG" ? Logger::DEBUG : Logger::INFO
         @log
