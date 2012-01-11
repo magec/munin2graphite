@@ -29,7 +29,7 @@ module Munin2Graphite
     
     def category_from_config(config)
       config.each_line do |configline|
-        if configline =~ /^graph_category ([\w-_]+)$/
+        if configline =~ /^graph_category ([\w\-_]+)$/
           return configline.split[1]
         end
       end      
