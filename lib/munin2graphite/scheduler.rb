@@ -41,30 +41,34 @@ module Munin2Graphite
       @munin_config = {}
       @munin_config[:workers] = []
       workers.each do |worker|
-        begin
-          current_config = {}
-          config = @config.config_for_worker(worker)
-          munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
-          current_config[:nodes] = {}
-          nodes.each do |node|
-            current_config[:nodes][node] = {:metrics => munin.list(node)}
-            current_config[:nodes][node][:categories] = {}
-            current_config[:nodes][node][:metrics].each do |metric|
-              current_config[:nodes][node][:config] = munin.config(metric)[metric]
-              current_config[:nodes][node][:raw_config] = munin.config(metric,true)[metric]
-              current_config[:nodes][node][:categories][metric] = category_from_config(current_config[:nodes][node][:raw_config])
+        current_config = {}
+        config = @config.config_for_worker(worker)
+        munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
+        current_config[:nodes] = {}
+        nodes.each do |node|
+          metrics = munin.list(node)
+          current_config[:nodes][node] = { :metrics => {} }
+          metrics.each do |metric|
+            begin
+              raw_config = munin.config(metric,true)[metric]
+              category = category_from_config(raw_config)
+              current_config[:nodes][node][:metrics][metric] = {
+                :config => munin.config(metric)[metric],
+                :raw_config => raw_config,
+                :category => category
+              }
+            rescue Exception
+              config.log.error("Error when trying to obtain graph conf. Ignored (config was #{raw_config})")
             end
           end
-          @munin_config[worker] = current_config
-          @munin_config[:workers] << worker
-        rescue Exception
-          config.log.error("Error when trying to obtain graph conf. Ignored")
-          config.log.error $!
         end
+        #       @config.log.debug(current_config.inspect)
+        @munin_config[worker] = current_config
+        @munin_config[:workers] << worker
         munin.disconnect
       end
-      @config.log.debug(@munin_config.inspect)
+#      @config.log.debug(@munin_config.inspect)
       @munin_config
     end
 
@@ -80,35 +84,41 @@ module Munin2Graphite
       config = @config.config_for_worker(worker)
       config.log.info("Worker #{worker}")
       metric_base = config["graphite_metric_prefix"]
-      munin_config[worker][:nodes].keys.each do |node|
+      munin_config[worker][:nodes].each do |node,node_conf|
         node_name = metric_base + "." + node.split(".").first
         config.log.debug("Doing #{node_name}")
         values = {}
         config.log.debug("Asking for: #{node}")
         metric_time = Time.now
-        metrics = munin_config[worker][:nodes][node][:metrics]
+        metrics = node_conf[:metrics].keys
         config.log.debug("Metrics " + metrics.join(","))
         metrics_threads = []
         categories = {}
         metrics.each do |metric|
           metrics_threads << Thread.new do
-            local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-            values[metric] =  local_munin.fetch metric
-            local_munin.disconnect
+            begin
+              local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+              values[metric] =  local_munin.fetch metric
+              local_munin.disconnect
+            rescue
+              @config.log.info("There was a problem when getting the metric #{metric} for #{node} , Ignored")
+            end
           end
         end
         metrics_threads.each {|i| i.join;i.kill}
+        config.log.debug(values.inspect)
         config.log.info("Done with: #{node} (#{Time.now - metric_time} s)")
         carbon = Carbon.new(config["carbon_hostname"],config["carbon_port"])
         string_to_send = ""
         values.each do |metric,results|
-          category = munin_config[worker][:nodes][node][:categories][metric]
+          category = node_conf[:metrics][metric][:category]
           results.each do |k,v|
             v.each do |c_metric,c_value|
               string_to_send += "#{node_name}.#{category}.#{metric}.#{c_metric} #{c_value} #{Time.now.to_i}\n".gsub("-","_")  if c_value != "U"
             end
           end
         end
+        @config.log.debug(string_to_send)
         send_time = Time.now
         carbon.send(string_to_send)
         carbon.flush
@@ -127,10 +137,9 @@ module Munin2Graphite
         Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
         munin_config[worker][:nodes].keys.each do |node|
           @config.log.info("Graphs for #{node}")
-          metrics = munin_config[worker][:nodes][node][:metrics]
-          metrics.each do |metric|
+          munin_config[worker][:nodes][node][:metrics].each do |metric,value|
             @config.log.info("Configuring #{metric}")
-            munin_graph = MuninGraph.graph_for munin_config[worker][:nodes][node][:raw_config]
+            munin_graph = MuninGraph.graph_for value[:raw_config]
             munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
             @config.log.debug("Saving graph #{metric}")
             munin_graph.to_graphite.save!
