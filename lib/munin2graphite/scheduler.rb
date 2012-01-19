@@ -101,7 +101,7 @@ module Munin2Graphite
               values[metric] =  local_munin.fetch metric
               local_munin.disconnect
             rescue
-              @config.log.info("There was a problem when getting the metric #{metric} for #{node} , Ignored")
+              @config.log.error("There was a problem when getting the metric #{metric} for #{node} , Ignored")
             end
           end
         end
