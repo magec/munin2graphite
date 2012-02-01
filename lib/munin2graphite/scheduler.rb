@@ -39,6 +39,7 @@ module Munin2Graphite
     def munin_config
       return @munin_config if @munin_config
       @munin_config = {}
+      @config.log.info("Obtaining metrics configuration")
       @munin_config[:workers] = []
       workers.each do |worker|
         current_config = {}
@@ -84,13 +85,14 @@ module Munin2Graphite
       config = @config.config_for_worker(worker)
       config.log.info("Worker #{worker}")
       metric_base = config["graphite_metric_prefix"]
-      munin_config[worker][:nodes].each do |node,node_conf|
+      
+      munin_config[worker][:nodes].each do |node,node_info|
         node_name = metric_base + "." + node.split(".").first
         config.log.debug("Doing #{node_name}")
         values = {}
         config.log.debug("Asking for: #{node}")
         metric_time = Time.now
-        metrics = node_conf[:metrics].keys
+        metrics = node_info[:metrics].keys
         config.log.debug("Metrics " + metrics.join(","))
         metrics_threads = []
         categories = {}
@@ -110,8 +112,8 @@ module Munin2Graphite
         config.log.info("Done with: #{node} (#{Time.now - metric_time} s)")
         carbon = Carbon.new(config["carbon_hostname"],config["carbon_port"])
         string_to_send = ""
-        values.each do |metric,results|
-          category = node_conf[:metrics][metric][:category]
+        values.each do |metric,results|          
+          category = node_info[:metrics][metric][:category] 
           results.each do |k,v|
             v.each do |c_metric,c_value|
               string_to_send += "#{node_name}.#{category}.#{metric}.#{c_metric} #{c_value} #{Time.now.to_i}\n".gsub("-","_")  if c_value != "U"
@@ -153,11 +155,24 @@ module Munin2Graphite
       @config.log.info("Scheduler started")
       obtain_graphs
       @scheduler = Rufus::Scheduler.start_new
-      workers.each do |worker|
-        config = @config.config_for_worker worker
-        @config.log.info("Scheduling worker #{worker} every  #{config["scheduler_metrics_period"]} ")
+      workers.each do |worker|        
+        config = @config.config_for_worker worker        
+        config.log.info("Scheduling worker #{worker} every  #{config["scheduler_metrics_period"]} ")
         @scheduler.every config["scheduler_metrics_period"] do
-          obtain_metrics(worker)
+          config = @config.config_for_worker worker        
+          retries = 3
+          begin
+            obtain_metrics(worker)
+          rescue => e
+            config.log.error("Exception found: (#{e.to_s})")
+	    e.backtrace.each { |line| config.log.error(line) }
+            sleep 1
+            retries -= 1
+	    config.log.error("Retrying")
+            retry unless retries < 0
+            config.log.error("Exitting, exception not solved")
+            exit(1)
+          end
         end
       end
     end
