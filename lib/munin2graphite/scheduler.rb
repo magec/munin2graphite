@@ -151,6 +151,23 @@ module Munin2Graphite
       end
     end
 
+    def metric_loop(worker)
+      config = @config.config_for_worker worker        
+      retries = 3
+      begin
+        obtain_metrics(worker)
+      rescue => e
+        config.log.error("Exception found: (#{e.to_s})")
+        e.backtrace.each { |line| config.log.error(line) }
+        sleep 1
+        retries -= 1
+        config.log.error("Retrying")
+        retry unless retries < 0
+        config.log.error("Exitting, exception not solved")
+        exit(1)
+      end    
+    end
+
     def start
       @config.log.info("Scheduler started")
       obtain_graphs
@@ -158,23 +175,11 @@ module Munin2Graphite
       workers.each do |worker|        
         config = @config.config_for_worker worker        
         config.log.info("Scheduling worker #{worker} every  #{config["scheduler_metrics_period"]} ")
+        metric_loop(worker)
         @scheduler.every config["scheduler_metrics_period"] do
-          config = @config.config_for_worker worker        
-          retries = 3
-          begin
-            obtain_metrics(worker)
-          rescue => e
-            config.log.error("Exception found: (#{e.to_s})")
-	    e.backtrace.each { |line| config.log.error(line) }
-            sleep 1
-            retries -= 1
-	    config.log.error("Retrying")
-            retry unless retries < 0
-            config.log.error("Exitting, exception not solved")
-            exit(1)
-          end
+          metric_loop(worker)
         end
-      end
+      end      
     end
   end
 end
