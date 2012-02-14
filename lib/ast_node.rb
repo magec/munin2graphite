@@ -96,6 +96,22 @@ class ASTNode
     url = "#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map{|i| i.compile}.compact.join("&target="))
   end
 
+  def to_gdash
+    output = ""
+    self.compile
+    self.graph_properties.each do |k,v| 
+      output += k.to_s + "\t\t" + '"' + v.to_s + '"' + "\n" unless k == :colorList || k == :yMin || k== :yMax
+    end
+    count = 0
+    targets.each do |tg|
+      metric_alias = tg.properties.delete(:alias)
+      tg.children.delete_if { |i| i.class == LabelFieldPropertyNode}
+      output += "field :#{tg.metric.split(".").last.to_sym},:alias => '#{metric_alias}', :data => \"#{tg.compile}\"\n"
+      count += 1
+    end
+    return output
+  end
+
 end
 
 

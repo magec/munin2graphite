@@ -52,6 +52,11 @@ class MuninGraph
     return graph
   end
 
+  def to_gdash
+    self.root.compile
+    self.root.to_gdash
+  end
+
   attr_reader :root
   
   # This array of hashes will be used to match what kind of line we are dealing with and 

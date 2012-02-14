@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+$:.unshift(File.expand_path(File.join(File.dirname(__FILE__),"..","lib")))
+require 'rubygems'
+require 'munin2graphite'
+require 'optparse'
+require 'erb'
+
+options = {} 
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options]"
+
+  opts.on( '-t', '--template-dir TEMPLATE_DIR', 'The directory you want the template files to be placed' ) do |td|
+    options[:template_dir] = td
+  end
+
+  options[:config_file] = "/etc/munin2graphite/munin2graphite.conf"
+  opts.on( '-c', '--config CONFIG_FILE', 'The munin2graphite config file' ) do |td|
+    options[:config_file] = td
+  end  
+
+  opts.on( '-n', '--node NODE', "The munin node you want the data to be extracted from") do |n|
+    options[:node] = n
+  end
+end
+
+optparse.parse!
+
+if !options[:template_dir]
+  puts "Error, no template dir specified"
+  puts optparse.help
+  exit 1
+end
+  
+Munin2Graphite::Config.config_file = options[:config_file]
+scheduler = Munin2Graphite::Scheduler.new(Munin2Graphite::Config)
+
+munin_config = scheduler.munin_config
+munin_config[:workers].each do |worker|
+  time = Time.now
+  config = Munin2Graphite::Config.config_for_worker worker
+  munin_config[worker][:nodes].keys.each do |node|
+    config.log.info("Graphs for #{node}")
+    munin_config[worker][:nodes][node][:metrics].each do |metric,value|
+      munin_graph = MuninGraph.graph_for value[:raw_config]
+      munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
+      File.open(File.join(options[:template_dir],metric.to_s + ".graph"), "w+") do |file|
+        file.write munin_graph.to_gdash 
+      end
+    end
+  end
+  config.log.info("End : Sending Graph Information to Graphite for worker #{worker}, elapsed time (#{Time.now - time}s)")
+end
+#puts scheduler.munin_config
+scheduler
