@@ -5,14 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = "munin2graphite"
-  s.version = "0.1.3"
+  s.version = "0.1.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jose Fernandez (magec)"]
-  s.date = "2011-12-15"
+  s.date = "2012-02-17"
   s.description = "This gem will install as a daemon and can be used to connect to a graphite and a carbon backend. It will not only post the data for the metrics but also create graphs into graphite, by means of a translation from munin-node."
   s.email = "jfernandezperez@gmail.com"
-  s.executables = ["munin2graphite", "munin2graphite-daemon"]
+  s.executables = ["munin2gdash", "munin2graphite", "munin2graphite-daemon"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.markdown"
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "README.markdown",
     "Rakefile",
     "VERSION",
+    "bin/munin2gdash",
     "bin/munin2graphite",
     "bin/munin2graphite-daemon",
     "conf/munin2graphite.conf.example",
