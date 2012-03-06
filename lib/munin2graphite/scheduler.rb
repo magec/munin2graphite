@@ -116,7 +116,8 @@ module Munin2Graphite
           category = node_info[:metrics][metric][:category] 
           results.each do |k,v|
             v.each do |c_metric,c_value|
-              string_to_send += "#{node_name}.#{category}.#{metric}.#{c_metric} #{c_value} #{Time.now.to_i}\n".gsub("-","_")  if c_value != "U"
+              name = "#{node_name}.#{category}.#{metric}.#{c_metric} #{c_value}".gsub("-","_")
+              string_to_send += "#{name} #{c_value} #{Time.now.to_i}\n" if c_value != "U"
             end
           end
         end
