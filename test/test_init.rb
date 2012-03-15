@@ -1,7 +1,7 @@
 $:.unshift(File.join(File.dirname(__FILE__) + "/../lib/"))
 require 'rubygems'
 require 'test/unit'
-require '../munin-ruby/lib/munin-ruby'
+require 'munin-ruby'
 require 'graphite'
 require 'munin2graphite'
 require 'munin_graph'
