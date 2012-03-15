@@ -11,7 +11,7 @@ carbon_port=2003
 
 # Graphite endpoint
 # This is needed to send graph data to graphite
-graphite_endpoint=http://graphite/
+graphite_endpoint=http://graphite:port/pathprefix/
 
 # prefix for the metrics usually, the user name have to be put as a prefix
 graphite_metric_prefix=
