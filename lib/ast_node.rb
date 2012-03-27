@@ -266,7 +266,7 @@ class TypeFieldPropertyNode < FieldPropertyNode
     if @value == "DERIVE" || @value == "COUNTER"
       # The scaling is because of the minutes/(60*seconds)"
       #return "scale(nonNegativeDerivative(#{operand}),0.0166666666666667)"
-      return "scale(nonNegativeDerivative(#{operand}),0.00333333333333333)"
+      return "scaleToSeconds(nonNegativeDerivative(#{operand}),1)"
     end
     operand
   end
