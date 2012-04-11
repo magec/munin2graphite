@@ -43,10 +43,12 @@ module Munin2Graphite
       @config.log.info("Obtaining metrics configuration")
       @munin_config[:workers] = []
       semaphore = Mutex.new
+      threads = []
       workers.each do |worker|
-        threads = Thread.new do 
+        threads << Thread.new do 
           current_config = {}
           config = @config.config_for_worker(worker)
+          config.log.info("Config for #{worker}")
           munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
           nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
           current_config[:nodes] = {}
@@ -73,6 +75,7 @@ module Munin2Graphite
             @munin_config[:workers] << worker
           end
           munin.disconnect
+          config.log.info("Config for #{worker} obtained")
         end
       end
       threads.each { |i| i.join }
