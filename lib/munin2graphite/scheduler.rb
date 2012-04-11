@@ -16,6 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 require 'rufus/scheduler'
+require 'thread'
 module Munin2Graphite
   ##
   # This class holds the main scheduler of the system, it will perform the applicacion loops
@@ -41,35 +42,40 @@ module Munin2Graphite
       @munin_config = {}
       @config.log.info("Obtaining metrics configuration")
       @munin_config[:workers] = []
+      semaphore = Mutex.new
       workers.each do |worker|
-        current_config = {}
-        config = @config.config_for_worker(worker)
-        munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-        nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
-        current_config[:nodes] = {}
-        nodes.each do |node|
-          metrics = munin.list(node)
-          current_config[:nodes][node] = { :metrics => {} }
-          metrics.each do |metric|
-            begin
-              raw_config = munin.config(metric,true)[metric]
-              category = category_from_config(raw_config)
-              current_config[:nodes][node][:metrics][metric] = {
-                :config => munin.config(metric)[metric],
-                :raw_config => raw_config,
-                :category => category
-              }
-            rescue Exception
-              config.log.error("Error when trying to obtain graph conf. Ignored (config was #{raw_config})")
+        threads = Thread.new do 
+          current_config = {}
+          config = @config.config_for_worker(worker)
+          munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
+          current_config[:nodes] = {}
+          nodes.each do |node|
+            metrics = munin.list(node)
+            current_config[:nodes][node] = { :metrics => {} }
+            metrics.each do |metric|
+              begin
+                raw_config = munin.config(metric,true)[metric]
+                category = category_from_config(raw_config)
+                current_config[:nodes][node][:metrics][metric] = {
+                  :config => munin.config(metric)[metric],
+                  :raw_config => raw_config,
+                  :category => category
+                }
+              rescue Exception
+                config.log.error("Error when trying to obtain graph conf. Ignored (config was #{raw_config})")
+              end
             end
           end
+          #       @config.log.debug(current_config.inspect)
+          semaphore.synchronize do 
+            @munin_config[worker] = current_config
+            @munin_config[:workers] << worker
+          end
+          munin.disconnect
         end
-        #       @config.log.debug(current_config.inspect)
-        @munin_config[worker] = current_config
-        @munin_config[:workers] << worker
-        munin.disconnect
       end
-#      @config.log.debug(@munin_config.inspect)
+      threads.each { |i| i.join }
       @munin_config
     end
 
