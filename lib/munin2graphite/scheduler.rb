@@ -48,33 +48,43 @@ module Munin2Graphite
         threads << Thread.new do 
           current_config = {}
           config = @config.config_for_worker(worker)
-          config.log.info("Config for #{worker}")
-          munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin.nodes
+          munin_worker  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin_worker.nodes
           current_config[:nodes] = {}
+          semaphore_nodes = Mutex.new
+          threads_nodes = []
           nodes.each do |node|
-            metrics = munin.list(node)
-            current_config[:nodes][node] = { :metrics => {} }
-            metrics.each do |metric|
-              begin
-                raw_config = munin.config(metric,true)[metric]
-                category = category_from_config(raw_config)
-                current_config[:nodes][node][:metrics][metric] = {
-                  :config => munin.config(metric)[metric],
-                  :raw_config => raw_config,
-                  :category => category
-                }
-              rescue Exception
-                config.log.error("Error when trying to obtain graph conf. Ignored (config was #{raw_config})")
+            threads_nodes << Thread.new do
+              munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+              metrics = munin.list(node)
+              config.log.info("Config for node #{worker}::#{node}")
+              semaphore_nodes.synchronize do 
+                current_config[:nodes][node] = { :metrics => {} }
+              end
+              metrics.each do |metric|
+                begin
+                  raw_config = munin.config(metric,true)[metric]
+                  category = category_from_config(raw_config)
+                  semaphore_nodes.synchronize do 
+                    current_config[:nodes][node][:metrics][metric] = {
+                      :config => munin.config(metric)[metric],
+                      :raw_config => raw_config,
+                      :category => category
+                    }
+                  end
+                rescue Exception
+                  config.log.error("Error when trying to obtain graph conf for #{worker}::#{node}::#{metric} Ignored")
+                end
               end
             end
           end
+          threads_nodes.each { |i| i.join }
           #       @config.log.debug(current_config.inspect)
           semaphore.synchronize do 
             @munin_config[worker] = current_config
             @munin_config[:workers] << worker
           end
-          munin.disconnect
+          munin_worker.disconnect
           config.log.info("Config for #{worker} obtained")
         end
       end
