@@ -51,6 +51,7 @@ Imagine, for example, that we have two munin-nodes in two different servers (mun
     # The period for sending the metrics
     # its format is the one of rufus-scheduler    
     scheduler_metrics_period=1m
+    scheduler_graphs_period=1m
     
     # The munin node hostname and its port
     munin_hostname=localhost
