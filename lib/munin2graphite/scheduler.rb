@@ -106,7 +106,8 @@ module Munin2Graphite
       metric_base = config["graphite_metric_prefix"]
       
       munin_config[worker][:nodes].each do |node,node_info|
-        node_name = metric_base + "." + node.split(".").first
+        #node_name = metric_base + "." + node.split(".").first
+        node_name = metric_base + "." + worker.split(".").first
         config.log.debug("Doing #{node_name}")
         values = {}
         config.log.debug("Asking for: #{node}")
@@ -151,6 +152,7 @@ module Munin2Graphite
 
     def obtain_graphs
       munin_config
+      @new_config
       munin_config[:workers].each do |worker|
         time = Time.now
         config = @config.config_for_worker worker
@@ -162,7 +164,8 @@ module Munin2Graphite
           munin_config[worker][:nodes][node][:metrics].each do |metric,value|
             @config.log.info("Configuring #{metric}")
             munin_graph = MuninGraph.graph_for value[:raw_config]
-            munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
+            #munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
+            munin_graph.config = config.merge("metric" => "#{metric}","hostname" => worker.split(".").first)
             @config.log.debug("Saving graph #{metric}")
             munin_graph.to_graphite.save!
           end
