@@ -65,6 +65,12 @@ module Munin2Graphite
                 begin
                   raw_config = munin.config(metric,true)[metric]
                   category = category_from_config(raw_config)
+                  # We prepend the worker name to the graph title for clarity
+                  if ( raw_config.match("graph_title ") )
+                    raw_config.gsub!("graph_title ","graph_title #{worker} ")
+                  else 
+                    raw_config << "\ngraph_title #{worker}"
+                  end
                   semaphore_nodes.synchronize do 
                     current_config[:nodes][node][:metrics][metric] = {
                       :config => munin.config(metric)[metric],
