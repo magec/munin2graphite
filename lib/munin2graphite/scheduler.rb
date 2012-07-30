@@ -200,6 +200,19 @@ module Munin2Graphite
       end    
     end
 
+    def start1r_metrics
+      @config.log.info("One-run started: metrics")
+      workers.each do |worker|        
+        config = @config.config_for_worker worker        
+        metric_loop(worker)
+      end      
+    end
+
+    def start1r_graphs
+      @config.log.info("One-run started: graphs")
+      obtain_graphs
+    end
+
     def start
       @config.log.info("Scheduler started")
       obtain_graphs
