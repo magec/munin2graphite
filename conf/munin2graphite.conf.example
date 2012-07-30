@@ -25,6 +25,8 @@ graphite_password=
 
 # Use node or worker for nodename (default node)
 graphite_name_schema=
+# Prepend nodename to graph legend (default no)
+graph_legend_prepend=
 
 # The period for sending the metrics and the graph info
 # its format is the one of rufus-scheduler
