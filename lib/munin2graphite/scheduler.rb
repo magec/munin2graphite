@@ -76,11 +76,31 @@ module Munin2Graphite
                   raw_config = munin.config(metric,true)[metric]
                   category = category_from_config(raw_config)
                   semaphore_nodes.synchronize do 
-                    current_config[:nodes][node][:metrics][metric] = {
-                      :config => munin.config(metric)[metric],
-                      :raw_config => raw_config,
-                      :category => category
-                    }
+                    current_config[:nodes][node] = { :metrics => {} }
+                  end
+                  metrics.each do |metric|
+                    begin
+                      raw_config = munin.config(metric,true)[metric]
+                      category = category_from_config(raw_config)
+                      # We prepend the worker name to the graph title for clarity
+                      if config["graph_legend_prepend"] == "true"
+                        nodename = config["graphite_name_schema"] == "worker" ? worker : node
+                        if raw_config.match("graph_title ")
+                          raw_config.gsub!("graph_title ","graph_title #{nodename} ")
+                        else 
+                          raw_config << "\ngraph_title #{nodename}"
+                        end
+                      end
+                      semaphore_nodes.synchronize do 
+                        current_config[:nodes][node][:metrics][metric] = {
+                          :config => munin.config(metric)[metric],
+                          :raw_config => raw_config,
+                          :category => category
+                        }
+                      end
+                    rescue Exception
+                      config.log.error("Error when trying to obtain graph conf for #{worker}::#{node}::#{metric} Ignored")
+                    end
                   end
                 rescue Exception
                   config.log.error("Error when trying to obtain graph conf for #{worker}::#{node}::#{metric} Ignored")
