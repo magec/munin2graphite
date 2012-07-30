@@ -23,6 +23,9 @@ graphite_graph_prefix=
 graphite_user=test
 graphite_password=
 
+# Use node or worker for nodename (default node)
+graphite_name_schema=
+
 # The period for sending the metrics and the graph info
 # its format is the one of rufus-scheduler
 scheduler_metrics_period=1m

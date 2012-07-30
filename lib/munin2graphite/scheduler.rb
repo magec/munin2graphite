@@ -67,10 +67,11 @@ module Munin2Graphite
                       raw_config = munin.config(metric,true)[metric]
                       category = category_from_config(raw_config)
                       # We prepend the worker name to the graph title for clarity
+                      nodename = config["graphite_name_schema"] == "worker" ? worker : node
                       if raw_config.match("graph_title ")
-                        raw_config.gsub!("graph_title ","graph_title #{worker} ")
+                        raw_config.gsub!("graph_title ","graph_title #{nodename} ")
                       else 
-                        raw_config << "\ngraph_title #{worker}"
+                        raw_config << "\ngraph_title #{nodename}"
                       end
                       semaphore_nodes.synchronize do 
                         current_config[:nodes][node][:metrics][metric] = {
@@ -115,7 +116,8 @@ module Munin2Graphite
       metric_base = config["graphite_metric_prefix"]
       
       munin_config[worker][:nodes].each do |node,node_info|
-        node_name = metric_base + "." + worker.split(".").first
+        nodename = config["graphite_name_schema"] == "worker" ? worker : node
+        node_name = metric_base + "." + nodename.split(".").first
         config.log.debug("Doing #{node_name}")
         values = {}
         config.log.debug("Asking for: #{node}")
@@ -165,6 +167,7 @@ module Munin2Graphite
         time = Time.now
         config = @config.config_for_worker worker
         @config.log.info("Begin : Sending Graph Information to Graphite for worker #{worker}")
+        nodename = config["graphite_name_schema"] == "worker" ? worker : node
         Graphite::Base.set_connection(config["graphite_endpoint"])
         Graphite::Base.authenticate(config["graphite_user"],config["graphite_password"])
         munin_config[worker][:nodes].keys.each do |node|
@@ -172,7 +175,7 @@ module Munin2Graphite
           munin_config[worker][:nodes][node][:metrics].each do |metric,value|
             @config.log.info("Configuring #{metric}")
             munin_graph = MuninGraph.graph_for value[:raw_config]
-            munin_graph.config = config.merge("metric" => "#{metric}","hostname" => worker.split(".").first)
+            munin_graph.config = config.merge("metric" => "#{metric}","hostname" => nodename.split(".").first)
             @config.log.debug("Saving graph #{metric}")
             munin_graph.to_graphite.save!
           end
