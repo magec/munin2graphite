@@ -46,52 +46,55 @@ module Munin2Graphite
       threads = []
       workers.each do |worker|
         threads << Thread.new do 
-          current_config = {}
-          config = @config.config_for_worker(worker)
-          munin_worker  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin_worker.nodes
-          current_config[:nodes] = {}
-          semaphore_nodes = Mutex.new
-          threads_nodes = []
-          nodes.each do |node|
-            threads_nodes << Thread.new do
-              munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-              metrics = munin.list(node)
-              config.log.info("Config for node #{worker}::#{node}")
-              semaphore_nodes.synchronize do 
-                current_config[:nodes][node] = { :metrics => {} }
-              end
-              metrics.each do |metric|
-                begin
-                  raw_config = munin.config(metric,true)[metric]
-                  category = category_from_config(raw_config)
-                  # We prepend the worker name to the graph title for clarity
-                  if ( raw_config.match("graph_title ") )
-                    raw_config.gsub!("graph_title ","graph_title #{worker} ")
-                  else 
-                    raw_config << "\ngraph_title #{worker}"
-                  end
+          begin
+            current_config = {}
+            config = @config.config_for_worker(worker)
+              munin_worker  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+              nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin_worker.nodes
+              current_config[:nodes] = {}
+              semaphore_nodes = Mutex.new
+              threads_nodes = []
+              nodes.each do |node|
+                threads_nodes << Thread.new do
+                  munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+                  metrics = munin.list(node)
+                  config.log.info("Config for node #{worker}::#{node}")
                   semaphore_nodes.synchronize do 
-                    current_config[:nodes][node][:metrics][metric] = {
-                      :config => munin.config(metric)[metric],
-                      :raw_config => raw_config,
-                      :category => category
-                    }
+                    current_config[:nodes][node] = { :metrics => {} }
                   end
-                rescue Exception
-                  config.log.error("Error when trying to obtain graph conf for #{worker}::#{node}::#{metric} Ignored")
+                  metrics.each do |metric|
+                    begin
+                      raw_config = munin.config(metric,true)[metric]
+                      category = category_from_config(raw_config)
+                      # We prepend the worker name to the graph title for clarity
+                      if raw_config.match("graph_title ")
+                        raw_config.gsub!("graph_title ","graph_title #{worker} ")
+                      else 
+                        raw_config << "\ngraph_title #{worker}"
+                      end
+                      semaphore_nodes.synchronize do 
+                        current_config[:nodes][node][:metrics][metric] = {
+                          :config => munin.config(metric)[metric],
+                          :raw_config => raw_config,
+                          :category => category
+                        }
+                      end
+                    rescue Exception
+                      config.log.error("Error when trying to obtain graph conf for #{worker}::#{node}::#{metric} Ignored")
+                    end
+                  end
                 end
               end
+            threads_nodes.each { |i| i.join }
+            semaphore.synchronize do 
+              @munin_config[worker] = current_config
+              @munin_config[:workers] << worker
             end
+            munin_worker.disconnect
+            config.log.info("Config for #{worker} obtained")
+          rescue Exception
+            config.log.error("Error trying to connecto to #{worker} Skipping")
           end
-          threads_nodes.each { |i| i.join }
-          #       @config.log.debug(current_config.inspect)
-          semaphore.synchronize do 
-            @munin_config[worker] = current_config
-            @munin_config[:workers] << worker
-          end
-          munin_worker.disconnect
-          config.log.info("Config for #{worker} obtained")
         end
       end
       threads.each { |i| i.join }
@@ -112,7 +115,6 @@ module Munin2Graphite
       metric_base = config["graphite_metric_prefix"]
       
       munin_config[worker][:nodes].each do |node,node_info|
-        #node_name = metric_base + "." + node.split(".").first
         node_name = metric_base + "." + worker.split(".").first
         config.log.debug("Doing #{node_name}")
         values = {}
@@ -170,7 +172,6 @@ module Munin2Graphite
           munin_config[worker][:nodes][node][:metrics].each do |metric,value|
             @config.log.info("Configuring #{metric}")
             munin_graph = MuninGraph.graph_for value[:raw_config]
-            #munin_graph.config = config.merge("metric" => "#{metric}","hostname" => node.split(".").first)
             munin_graph.config = config.merge("metric" => "#{metric}","hostname" => worker.split(".").first)
             @config.log.debug("Saving graph #{metric}")
             munin_graph.to_graphite.save!
