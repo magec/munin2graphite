@@ -116,7 +116,7 @@ END
     root = @apache_graph.root
     field_declarations = root.children_of_class(FieldDeclarationNode)
     root.compile
-    assert_equal field_declarations.first.compile,"alias(scale(nonNegativeDerivative(test.frontends.linux.myhost.apache.apache_accesses.accesses80),0.0166666666666667),'port 80')"
+    assert_equal field_declarations.first.compile,"alias(scaleToSeconds(nonNegativeDerivative(test.frontends.linux.myhost.apache.apache_accesses.accesses80),1),'port 80')"
     assert_equal root.graph_properties[:yMax], 1000000
     assert_equal root.graph_properties[:yMin], 0
     assert_equal root.properties[:base] , 1000
@@ -225,7 +225,7 @@ END
     graph.root.compile
     color_list = graph.root.graph_properties[:colorList]
     assert_equal color_list.first , color_list[1] # Thew should be drawn with the same color
-    assert_match graph.root.url , /alias\(scale\(scale\(scale\(nonNegativeDerivative\(test.frontends.linux.localhost.network.load.down\),0.0166666666666667\),8\),-1/
+    assert_match graph.root.url , /alias\(scale\(scale\(scaleToSeconds\(nonNegativeDerivative\(test.frontends.linux.localhost.network.load.down\),1\),8\),-1/
     assert_equal graph.root.children_of_class(FieldDeclarationNode).length , 2
      graph.root.url
   end
