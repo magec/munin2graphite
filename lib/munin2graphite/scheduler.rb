@@ -28,6 +28,10 @@ module Munin2Graphite
       @config = config
     end
 
+    def carbon=(socket)
+      @carbon = Carbon.new(socket)
+    end
+
     def category_from_config(config)
       config.each_line do |configline|
         if configline =~ /^graph_category ([\w\-_\.]+)$/
@@ -121,15 +125,17 @@ module Munin2Graphite
               local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
               values[metric] =  local_munin.fetch metric
               local_munin.disconnect
-            rescue
+            rescue Exception => e
               @config.log.error("There was a problem when getting the metric #{metric} for #{node} , Ignored")
+              @config.log.error(e.message)
+              @config.log.error(e.backtrace.inspect)
             end
           end
         end
-        metrics_threads.each {|i| i.join;i.kill}
+        metrics_threads.each {|i| i.join}
         config.log.debug(values.inspect)
         config.log.info("Done with: #{node} (#{Time.now - metric_time} s)")
-        carbon = Carbon.new(config["carbon_hostname"],config["carbon_port"])
+        carbon = @carbon || Carbon.new(config["carbon_hostname"],config["carbon_port"])
         string_to_send = ""
         values.each do |metric,results|          
           category = node_info[:metrics][metric][:category] 

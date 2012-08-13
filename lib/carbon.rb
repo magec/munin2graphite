@@ -19,10 +19,15 @@ require 'socket'
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 class Carbon
+
+  def initialize(socket)
+    @carbon = socket
+  end
+
   def initialize(chost='localhost', port=2003)
     @carbon = TCPSocket.new(chost, port)
   end
-  
+
   def send(msg)
     @carbon.write(msg)
   end
