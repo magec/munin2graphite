@@ -109,13 +109,13 @@ module Munin2Graphite
     #
     # This is the loop of the metrics scheduling
     def obtain_metrics(worker = "global")
-      config = @config.config_for_worker("global")
+      my_munin_config = munin_config.dup
       time = Time.now
       config = @config.config_for_worker(worker)
       config.log.info("Worker #{worker}")
       metric_base = config["graphite_metric_prefix"]
       
-      munin_config[worker][:nodes].each do |node,node_info|
+      my_munin_config[worker][:nodes].each do |node,node_info|
         node_name = metric_base + "." + node.split(".").first
         config.log.debug("Doing #{node_name}")
         values = {}
@@ -157,12 +157,12 @@ module Munin2Graphite
         carbon.send(string_to_send)
         carbon.flush
         carbon.close
-      end if munin_config[worker]
+      end if my_munin_config[worker]
       @config.log.info("End getting metrics for worker #{worker}, elapsed time (#{Time.now - time}s)")
     end
 
     def obtain_graphs
-      munin_config
+      munin_config(true)
       munin_config[:workers].each do |worker|
         time = Time.now
         config = @config.config_for_worker worker
@@ -211,6 +211,11 @@ module Munin2Graphite
         @scheduler.every config["scheduler_metrics_period"] do
           metric_loop(worker)
         end
+
+        @scheduler.every config["scheduler_graphs_period"] do
+          obtain_graphs
+        end
+
       end      
     end
   end
