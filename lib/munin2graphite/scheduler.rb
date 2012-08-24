@@ -41,8 +41,8 @@ module Munin2Graphite
       raise "CategoryNotFound in #{config}"
     end
 
-    def munin_config
-      return @munin_config if @munin_config
+    def munin_config(reload = false)
+      return @munin_config if @munin_config && !reload
       @munin_config = {}
       @config.log.info("Obtaining metrics configuration")
       @munin_config[:workers] = []
