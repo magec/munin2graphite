@@ -113,7 +113,7 @@ module Munin2Graphite
       time = Time.now
       config = @config.config_for_worker(worker)
       config.log.info("Worker #{worker}")
-      metric_base = config["graphite_metric_prefix"]
+      metric_base = config["graphite_user"] + config["graphite_prefix"]
       
       my_munin_config[worker][:nodes].each do |node,node_info|
         node_name = metric_base + "." + node.split(".").first

@@ -189,7 +189,7 @@ class GraphPrintFormatGlobalDeclarationNode < GlobalDeclarationNode; end
 class FieldDeclarationNode < ASTNode
  
   def metric
-    "#{root_node.properties['graphite_metric_prefix']}.#{root_node.properties['hostname'].split('.').first}.#{root_node.properties['category']}.#{root_node.properties['metric']}.#{children.first.metric}"
+    "#{root_node.properties['graphite_user']}.#{root_node.properties['graphite_prefix']}.#{root_node.properties['hostname'].split('.').first}.#{root_node.properties['category']}.#{root_node.properties['metric']}.#{children.first.metric}"
   end
 
   def compile

@@ -55,7 +55,7 @@ module Munin2Graphite
       end
 
       def check_config
-        fields={:carbon => [:hostname,:port],:graphite => [:endpoint,:metric_prefix,:user,:password],:scheduler => [:metrics_period,:graphs_period]}
+        fields={:carbon => [:hostname,:port],:graphite => [:endpoint,:prefix,:user,:password],:scheduler => [:metrics_period,:graphs_period]}
         fields.each do |k,v|
           v.each do |inner_field|
             field = "#{k}_#{inner_field}"
