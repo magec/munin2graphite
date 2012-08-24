@@ -52,8 +52,14 @@ module Munin2Graphite
         threads << Thread.new do 
           current_config = {}
           config = @config.config_for_worker(worker)
-          munin_worker  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-          nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin_worker.nodes
+          begin
+            munin_worker  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+            nodes = config["munin_nodes"] ? config["munin_nodes"].split(",") : munin_worker.nodes
+          rescue Exception => e
+            config.log.error("Error when trying to connect to munin-node on #{config["munin_hostname"]}:#{config["munin_port"]}")
+            config.log.error("This node will be skipped")
+            exit
+          end
           current_config[:nodes] = {}
           semaphore_nodes = Mutex.new
           threads_nodes = []
