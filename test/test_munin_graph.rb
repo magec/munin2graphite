@@ -303,10 +303,63 @@ up.info Traffic of the eth0 interface. Maximum speed is 1000 Mbps.
 down.max 1000000000
 END
 )
-    graph.config = Munin2Graphite::Config.merge({ "graphite_user" => "campus",'metric' => "if_eth0",'hostname' => "orpi"})
+    graph.config = Munin2Graphite::Config.merge({ "graphite_user" => "testing",'metric' => "if_eth0",'hostname' => "test"})
     graph.root.compile
     assert_not_match graph.root.url, /received/
-    puts graph.root.url.inspect
+  end
+
+  def test_network
+    graph = MuninGraph.new(<<END
+graph_category gtw.gtw4
+graph_title gtw4
+graph_info Model: 7206VXR Firmware: 12.2(15)T8
+graph_args --base 1000
+graph_vlabel Octets in (G) / out (B) per ${graph_period}
+GigabitEthernet0_2_octets_in.label Conn
+GigabitEthernet0_2_octets_in.negative GigabitEthernet0_2_octets_out
+GigabitEthernet0_2_octets_in.draw LINE1
+GigabitEthernet0_2_octets_in.type DERIVE
+GigabitEthernet0_2_octets_in.cdef GigabitEthernet0_2_octets_in,8,*
+GigabitEthernet0_2_octets_in.max 2000000000
+GigabitEthernet0_2_octets_in.min 0
+GigabitEthernet0_2_octets_out.label Conn
+GigabitEthernet0_2_octets_out.draw LINE1
+GigabitEthernet0_2_octets_out.type DERIVE
+GigabitEthernet0_2_octets_out.cdef GigabitEthernet0_2_octets_out,8,*
+GigabitEthernet0_2_octets_out.max 2000000000
+GigabitEthernet0_2_octets_out.min 0
+FastEthernet1_0_octets_in.label VLAN Internet - IN
+FastEthernet1_0_octets_in.negative FastEthernet1_0_octets_out
+FastEthernet1_0_octets_in.draw LINE1
+FastEthernet1_0_octets_in.type DERIVE
+FastEthernet1_0_octets_in.cdef FastEthernet1_0_octets_in,8,*
+FastEthernet1_0_octets_in.max 2000000000
+FastEthernet1_0_octets_in.min 0
+FastEthernet1_0_octets_out.label VLAN Internet - OUT
+FastEthernet1_0_octets_out.draw LINE1
+FastEthernet1_0_octets_out.type DERIVE
+FastEthernet1_0_octets_out.cdef FastEthernet1_0_octets_out,8,*
+FastEthernet1_0_octets_out.max 2000000000
+FastEthernet1_0_octets_out.min 0
+FastEthernet1_1_octets_in.label FW
+FastEthernet1_1_octets_in.negative FastEthernet1_1_octets_out
+FastEthernet1_1_octets_in.draw LINE1
+FastEthernet1_1_octets_in.type DERIVE
+FastEthernet1_1_octets_in.cdef FastEthernet1_1_octets_in,8,*
+FastEthernet1_1_octets_in.max 2000000000
+FastEthernet1_1_octets_in.min 0
+FastEthernet1_1_octets_out.label FW
+FastEthernet1_1_octets_out.draw LINE1
+FastEthernet1_1_octets_out.type DERIVE
+FastEthernet1_1_octets_out.cdef FastEthernet1_1_octets_out,8,*
+FastEthernet1_1_octets_out.max 2000000000
+FastEthernet1_1_octets_out.min 0
+END
+                           )
+    graph.config = Munin2Graphite::Config.merge({ "graphite_prefix" => "","munin_nodes" => "routers", "graphite_user" => "network",'metric' => "snmp_routers_gtw_gtw4_octets",'hostname' => "routers"})
+    graph.root.compile
+    assert_not_match graph.root.url, /received/
+    assert_not_match graph.root.url, /\.\./
   end
 
 
