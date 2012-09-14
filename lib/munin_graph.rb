@@ -22,7 +22,7 @@ require 'graphite'
 
 ##
 # This class allows the transformation between graphite and munin config. It constructs an AST parsing the munin config information and
-# allows to output a valid graphic in graphite url format
+# outputs a valid graphic in graphite url format
 # Jose Fernandez 2011
 #
 class MuninGraph
