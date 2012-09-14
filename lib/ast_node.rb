@@ -205,6 +205,7 @@ class FieldDeclarationNode < ASTNode
     end
     if self.properties[:is_negative]
       aux = "scale(#{aux},-1)"
+      self.properties[:alias] = "" # legend is discarded in this case (munin does so)
     end
     if self.properties[:alias]
       aux =  "alias(#{aux},'#{self.properties[:alias]}')"

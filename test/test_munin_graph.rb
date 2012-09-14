@@ -225,7 +225,7 @@ END
     graph.root.compile
     color_list = graph.root.graph_properties[:colorList]
     assert_equal color_list.first , color_list[1] # Thew should be drawn with the same color
-    assert_match graph.root.url , /alias\(scale\(scale\(scaleToSeconds\(nonNegativeDerivative\(test.frontends.linux.localhost.network.load.down\),1\),8\),-1/
+    assert_match graph.root.url , /scale\(scale\(scaleToSeconds\(nonNegativeDerivative\(test.frontends.linux.localhost.network.load.down\),1\),8\)/
     assert_equal graph.root.children_of_class(FieldDeclarationNode).length , 2
      graph.root.url
   end
@@ -281,6 +281,33 @@ END
     
   end
 
+
+  def test_negative_graphs
+    graph = MuninGraph.new(<<END
+graph_order down up
+graph_title eth0 traffic
+graph_args --base 1000
+graph_vlabel bits in (-) / out (+) per ${graph_period}
+graph_category network
+graph_info This graph shows the traffic of the eth0 network interface. Please note that the traffic is shown in bits per second, not bytes. IMPORTANT: On 32 bit systems the data source for this plugin uses 32bit counters, which makes the plugin unreliable and unsuitable for most 100Mb (or faster) interfaces, where traffic is expected to exceed 50Mbps over a 5 minute period.  This means that this plugin is unsuitable for most 32 bit production environments. To avoid this problem, use the ip_ plugin instead.  There should be no problems on 64 bit systems running 64 bit kernels.
+down.label received
+down.type COUNTER
+down.graph no
+down.cdef down,8,*
+up.label bps
+up.type COUNTER
+up.negative down
+up.cdef up,8,*
+up.max 1000000000
+up.info Traffic of the eth0 interface. Maximum speed is 1000 Mbps.
+down.max 1000000000
+END
+)
+    graph.config = Munin2Graphite::Config.merge({ "graphite_user" => "campus",'metric' => "if_eth0",'hostname' => "orpi"})
+    graph.root.compile
+    assert_not_match graph.root.url, /received/
+    puts graph.root.url.inspect
+  end
 
 
 end
