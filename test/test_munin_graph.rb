@@ -303,7 +303,7 @@ up.info Traffic of the eth0 interface. Maximum speed is 1000 Mbps.
 down.max 1000000000
 END
 )
-    graph.config = Munin2Graphite::Config.merge({ "graphite_user" => "testing",'metric' => "if_eth0",'hostname' => "test"})
+    graph.config = Munin2Graphite::Config.merge({ "graphite_user" => "",'metric' => "if_eth0",'hostname' => "test"})
     graph.root.compile
     assert_not_match graph.root.url, /received/
   end
@@ -360,6 +360,13 @@ END
     graph.root.compile
     assert_not_match graph.root.url, /received/
     assert_not_match graph.root.url, /\.\./
+  end
+
+  def test_default_graph_properties
+    graph = MuninGraph.new("")
+    graph.config = Munin2Graphite::Config
+    graph.root.compile
+    assert_match graph.root.url, /#{ASTNode::DEFAULT_GRAPH_PROPERTIES.keys.first}/
   end
 
 

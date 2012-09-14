@@ -4,6 +4,8 @@ class ASTNode
 
   attr_accessor :properties, :children, :parent , :root_node, :graph_properties
 
+  DEFAULT_GRAPH_PROPERTIES = {"hideLegend" => "false"}
+
   def default_colors
     %w(#00CC00 #0066B3 #FF8000 #FFCC00 #330099 #990099 #CCFF00 #FF0000 #808080
        #008F00 #00487D #B35A00 #B38F00         #6B006B #8FB300 #B30000 #BEBEBE
@@ -16,7 +18,7 @@ class ASTNode
     @raw_data = raw_data
     @children = []
     @properties = {'graph_period' => "seconds","category" => "other"}
-    @graph_properties = {}    
+    @graph_properties = DEFAULT_GRAPH_PROPERTIES
     @graph_properties[:colorList] = default_colors
     @parent = nil
   end
