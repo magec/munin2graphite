@@ -107,7 +107,7 @@ END
     root = @simple_graph.root
     root.compile
     field_declarations = root.children_of_class(FieldDeclarationNode)
-    assert_equal field_declarations.first.compile,"alias(test.frontends.linux.myhost.sensors.acpi.THM0,'THM0')"
+    assert_match "alias(test.frontends.linux.myhost.sensors.acpi.THM0,'THM0')", field_declarations.first.compile
     assert_equal root.graph_properties[:vtitle], "Celcius"
     assert_equal root.graph_properties[:title], "ACPI Thermal zone temperatures"
   end
@@ -116,7 +116,7 @@ END
     root = @apache_graph.root
     field_declarations = root.children_of_class(FieldDeclarationNode)
     root.compile
-    assert_equal field_declarations.first.compile,"alias(scaleToSeconds(nonNegativeDerivative(test.frontends.linux.myhost.apache.apache_accesses.accesses80),1),'port 80')"
+    assert_match "alias(scaleToSeconds(nonNegativeDerivative(test.frontends.linux.myhost.apache.apache_accesses.accesses80),1),'port 80')",field_declarations.first.compile
     assert_equal root.graph_properties[:yMax], 1000000
     assert_equal root.graph_properties[:yMin], 0
     assert_equal root.properties[:base] , 1000
@@ -367,7 +367,7 @@ END
     graph.config = Munin2Graphite::Config
     graph.root.compile
     assert_match graph.root.url, /#{ASTNode::DEFAULT_GRAPH_PROPERTIES.keys.first}/
-  end
 
+  end
 
 end

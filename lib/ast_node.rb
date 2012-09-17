@@ -6,6 +6,10 @@ class ASTNode
 
   DEFAULT_GRAPH_PROPERTIES = {"hideLegend" => "false"}
 
+  # An array of proc functions to be applied on compile time, the first argument is the metric node and the second, the current string
+  # its result will be assigned to the compiled string
+  METRIC_PROC_FUNCTIONS = [ Proc.new { |metric,aux| metric.properties[:is_negative] ? aux : "cactiStyle(#{aux})" } ]
+
   def default_colors
     %w(#00CC00 #0066B3 #FF8000 #FFCC00 #330099 #990099 #CCFF00 #FF0000 #808080
        #008F00 #00487D #B35A00 #B38F00         #6B006B #8FB300 #B30000 #BEBEBE
@@ -212,13 +216,21 @@ class FieldDeclarationNode < ASTNode
     if self.properties[:stacked]
       aux = "stacked(#{aux})"
     end
+
+
     if self.properties[:is_negative]
       aux = "scale(#{aux},-1)"
       self.properties[:alias] = "" # legend is discarded in this case (munin does so)
     end
+
     if self.properties[:alias]
       aux =  "alias(#{aux},'#{self.properties[:alias]}')"
     end
+
+    METRIC_PROC_FUNCTIONS.each do |proc|
+      aux = proc.call(self,aux)
+    end
+
     if self.properties[:hide]
       return nil
     else
