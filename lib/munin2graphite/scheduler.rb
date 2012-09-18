@@ -76,37 +76,20 @@ module Munin2Graphite
                   raw_config = munin.config(metric,true)[metric]
                   category = category_from_config(raw_config)
                   # We prepend the worker name to the graph title for clarity
-                  if ( raw_config.match("graph_title ") )
-                    raw_config.gsub!("graph_title ","graph_title #{worker} ")
-                  else 
-                    raw_config << "\ngraph_title #{worker}"
+                  if config["graph_legend_prepend"] == "true"
+                    nodename = config["graphite_name_schema"] == "worker" ? worker : node
+                    if raw_config.match("graph_title ")
+                      raw_config.gsub!("graph_title ","graph_itle #{nodename} ")
+                    else 
+                      raw_config << "\ngraph_title #{nodename}"
+                    end
                   end
                   semaphore_nodes.synchronize do 
-                    current_config[:nodes][node] = { :metrics => {} }
-                  end
-                  metrics.each do |metric|
-                    begin
-                      raw_config = munin.config(metric,true)[metric]
-                      category = category_from_config(raw_config)
-                      # We prepend the worker name to the graph title for clarity
-                      if config["graph_legend_prepend"] == "true"
-                        nodename = config["graphite_name_schema"] == "worker" ? worker : node
-                        if raw_config.match("graph_title ")
-                          raw_config.gsub!("graph_title ","graph_title #{nodename} ")
-                        else 
-                          raw_config << "\ngraph_title #{nodename}"
-                        end
-                      end
-                      semaphore_nodes.synchronize do 
-                        current_config[:nodes][node][:metrics][metric] = {
-                          :config => munin.config(metric)[metric],
-                          :raw_config => raw_config,
-                          :category => category
-                        }
-                      end
-                    rescue Exception
-                      config.log.error("Error when trying to obtain graph conf for #{worker}::#{node}::#{metric} Ignored")
-                    end
+                    current_config[:nodes][node][:metrics][metric] = {
+                      :config => munin.config(metric)[metric],
+                      :raw_config => raw_config,
+                      :category => category
+                    }
                   end
                 rescue Exception
                   config.log.error("Error when trying to obtain graph conf for #{worker}::#{node}::#{metric} Ignored")
@@ -139,7 +122,7 @@ module Munin2Graphite
       time = Time.now
       config = @config.config_for_worker(worker)
       config.log.info("Worker #{worker}")
-      metric_base = config["graphite_user"] + config["graphite_prefix"]
+      metric_base = [config["graphite_user"], config["graphite_prefix"]].reject{|i| i== ""}.compact.join(".")
       
       my_munin_config[worker][:nodes].each do |node,node_info|
         node_name = metric_base + "." + node.split(".").first
@@ -251,9 +234,12 @@ module Munin2Graphite
           metric_loop(worker)
         end
 
+=begin
+	# Graph rereading is disabled by now there are concurrency problems
         @scheduler.every config["scheduler_graphs_period"] do
           obtain_graphs
         end
+=end
 
       end      
     end
