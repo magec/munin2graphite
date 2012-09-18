@@ -47,8 +47,13 @@ class MuninGraph
     graph.url = self.root.url
     self.root.properties[:category] ||= "other"
     
+    if @config["graphite_prefix"] == "" || !@config["graphite_prefix"]  && @config["graphite_graph_prefix"] && @config["graphite_graph_prefix"] != ""
+      puts "DEPRECATION WARNING: parameter graphite_graph_prefix is not used anymore, please use graphite_prefix instead."
+      @config["graphite_prefix"] =  @config["graphite_graph_prefix"]
+    end
+
     graph.name = "#{@config["hostname"]}.#{self.root.properties["category"]}.#{self.root.properties["metric"]}"
-    graph.name = "#{@config["graphite_graph_prefix"]}.#{graph.name}" if @config["graphite_graph_prefix"] && @config["graphite_graph_prefix"] != "" 
+    graph.name = "#{@config["graphite_prefix"]}.#{graph.name}" if @config["graphite_prefix"] && @config["graphite_prefix"] != "" 
     return graph
   end
 
