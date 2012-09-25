@@ -116,8 +116,7 @@ END
     root = @apache_graph.root
     field_declarations = root.children_of_class(FieldDeclarationNode)
     root.compile
-    assert_match "alias(scaleToSeconds(nonNegativeDerivative(test.frontends.linux.myhost.apache.apache_accesses.accesses80),1),'port 80')",field_declarations.first.compile
-    assert_equal root.graph_properties[:yMax], 1000000
+    assert_match "alias(scaleToSeconds(nonNegativeDerivative(test.frontends.linux.myhost.apache.apache_accesses.accesses80,1000000),1),'port 80')",field_declarations.first.compile
     assert_equal root.graph_properties[:yMin], 0
     assert_equal root.properties[:base] , 1000
     assert_equal root.graph_properties[:title], "Apache accesses"
@@ -218,7 +217,6 @@ up.negative down
 up.cdef up,8,*
 up.max 1000000000
 up.info Traffic of the eth2 interface. Maximum speed is 1000 Mbps.
-down.max 1000000000
 END
 )
     graph.config = Munin2Graphite::Config.merge({ 'metric' => "load",'hostname' => "localhost"})

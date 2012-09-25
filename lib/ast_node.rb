@@ -213,11 +213,16 @@ class FieldDeclarationNode < ASTNode
     if self.root_node.properties[:logarithmic]
       # NOT IMPLEMENTED the logarithmic means that a logarithmic scale is to be used not that a log function has to be implemented aux = "log(#{aux},10)"
     end
+
     if self.properties[:stacked]
       aux = "stacked(#{aux})"
     end
-
-
+    
+    if self.properties[:yMax] && !self.properties[:proccessed]
+      self.properties[:proccessed] = true
+      return self.compile
+    end
+    
     if self.properties[:is_negative]
       aux = "scale(#{aux},-1)"
       self.properties[:alias] = "" # legend is discarded in this case (munin does so)
@@ -288,7 +293,12 @@ class TypeFieldPropertyNode < FieldPropertyNode
     if @value == "DERIVE" || @value == "COUNTER"
       # The scaling is because of the minutes/(60*seconds)"
       #return "scale(nonNegativeDerivative(#{operand}),0.0166666666666667)"
-      return "scaleToSeconds(nonNegativeDerivative(#{operand}),1)"
+
+      if parent.properties[:yMax]
+        return "scaleToSeconds(nonNegativeDerivative(#{operand},#{parent.properties[:yMax]}),1)"
+      else
+        return "scaleToSeconds(nonNegativeDerivative(#{operand}),1)"
+      end
     end
     operand
   end
@@ -314,8 +324,7 @@ end
 
 class MaxFieldPropertyNode < FieldPropertyNode
   def apply_function(operand)
-    self.root_node.graph_properties[:yMax] ||= @value.to_i
-    self.root_node.graph_properties[:yMax] = @value.to_i if  self.root_node.graph_properties[:yMax] < @value.to_i 
+    parent.properties[:yMax] = @value.to_i
     return operand
   end
 end
