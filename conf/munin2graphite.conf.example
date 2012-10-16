@@ -14,17 +14,16 @@ carbon_hostname=localhost
 carbon_port=2003
 
 # Graphite endpoint
-# This is needed to send graph data to graphite
-graphite_endpoint=http://graphite/
+# The url of the grphite-web application this is used to config the graphs
+graphite_endpoint=http://graphite_webapp_hostname:port/
 
 # prefix for the metrics usually, the user name have to be put as a prefix
-graphite_metric_prefix=
-graphite_graph_prefix=
+graphite_prefix=prefix
 graphite_user=test
-graphite_password=
+graphite_password=XXXXX
 
 # Prepend nodename to graph legend (default no)
-graph_legend_prepend=
+# graph_legend_prepend=
 
 # The period for sending the metrics and the graph info
 # its format is the one of rufus-scheduler

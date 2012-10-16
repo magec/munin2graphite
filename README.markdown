@@ -31,22 +31,15 @@ Imagine, for example, that we have two munin-nodes in two different servers (mun
     # This has to point to the carbon backend to submit metrics
     carbon_hostname=carbon.example.com
     carbon_port=2003
-    
-    # Graphite endpoint
-    # This is needed to send graph data to graphite
-    graphite_endpoint=http://graphite.example.com/
-    
-    # User and password of the graphite web UI
-    graphite_user=test
-    graphite_password=secret
 
-    # This is the prefix you want the on metrics
-    graphite_metric_prefix=test.server
-    
-    # The prefix you want in the graphics, note that in the UI the grapichs are shown under the user name, so the user name is also added prfixed
-    # to this prefix. That's why conveniently, I used 'test' (the user name) in the metric prefix
-    graphite_graph_prefix=server
-    
+    # Graphite endpoint
+    # The url of the grphite-web application this is used to config the graphs
+    graphite_endpoint=http://graphite_webapp_hostname:port/
+
+    # prefix for the metrics usually, the user name have to be put as a prefix
+    graphite_prefix=prefix
+    graphite_user=test
+    graphite_password=XXXXX
     
     # The period for sending the metrics
     # its format is the one of rufus-scheduler    
