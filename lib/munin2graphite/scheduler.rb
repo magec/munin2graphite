@@ -49,7 +49,7 @@ module Munin2Graphite
       semaphore = Mutex.new
       threads = []
       workers.each do |worker|
-        threads << Thread.new do 
+        threads << Thread.new do
           current_config = {}
           config = @config.config_for_worker(worker)
           begin
@@ -58,7 +58,7 @@ module Munin2Graphite
           rescue Exception => e
             config.log.error("Error when trying to connect to munin-node on #{config["munin_hostname"]}:#{config["munin_port"]}")
             config.log.error("This node will be skipped")
-            exit
+            Thread.current.exit
           end
           current_config[:nodes] = {}
           semaphore_nodes = Mutex.new
@@ -68,7 +68,7 @@ module Munin2Graphite
               munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
               metrics = munin.list(node)
               config.log.info("Config for node #{worker}::#{node}")
-              semaphore_nodes.synchronize do 
+              semaphore_nodes.synchronize do
                 current_config[:nodes][node] = { :metrics => {} }
               end
               metrics.each do |metric|
@@ -80,11 +80,11 @@ module Munin2Graphite
                     nodename = config["graphite_name_schema"] == "worker" ? worker : node
                     if raw_config.match("graph_title ")
                       raw_config.gsub!("graph_title ","graph_itle #{nodename} ")
-                    else 
+                    else
                       raw_config << "\ngraph_title #{nodename}"
                     end
                   end
-                  semaphore_nodes.synchronize do 
+                  semaphore_nodes.synchronize do
                     current_config[:nodes][node][:metrics][metric] = {
                       :config => munin.config(metric)[metric],
                       :raw_config => raw_config,
@@ -99,7 +99,7 @@ module Munin2Graphite
           end
           threads_nodes.each { |i| i.join }
           #       @config.log.debug(current_config.inspect)
-          semaphore.synchronize do 
+          semaphore.synchronize do
             @munin_config[worker] = current_config
             @munin_config[:workers] << worker
           end
@@ -123,7 +123,7 @@ module Munin2Graphite
       config = @config.config_for_worker(worker)
       config.log.info("Worker #{worker}")
       metric_base = [config["graphite_user"], config["graphite_prefix"]].reject{|i| i== ""}.compact.join(".")
-      
+
       my_munin_config[worker][:nodes].each do |node,node_info|
         node_name = metric_base + "." + node.split(".").first
         config.log.debug("Doing #{node_name}")
@@ -152,8 +152,8 @@ module Munin2Graphite
         config.log.info("Done with: #{node} (#{Time.now - metric_time} s)")
         carbon = @carbon || Carbon.new(config["carbon_hostname"],config["carbon_port"])
         string_to_send = ""
-        values.each do |metric,results|          
-          category = node_info[:metrics][metric][:category] 
+        values.each do |metric,results|
+          category = node_info[:metrics][metric][:category]
           results.each do |k,v|
             v.each do |c_metric,c_value|
               name = "#{node_name}.#{category}.#{metric}.#{c_metric}".gsub("-","_")
@@ -193,7 +193,7 @@ module Munin2Graphite
     end
 
     def metric_loop(worker)
-      config = @config.config_for_worker worker        
+      config = @config.config_for_worker worker
       retries = 3
       begin
         obtain_metrics(worker)
@@ -206,15 +206,15 @@ module Munin2Graphite
         retry unless retries < 0
         config.log.error("Exitting, exception not solved")
         exit(1)
-      end    
+      end
     end
 
     def start1r_metrics
       @config.log.info("One-run started: metrics")
-      workers.each do |worker|        
-        config = @config.config_for_worker worker        
+      workers.each do |worker|
+        config = @config.config_for_worker worker
         metric_loop(worker)
-      end      
+      end
     end
 
     def start1r_graphs
@@ -226,8 +226,8 @@ module Munin2Graphite
       @config.log.info("Scheduler started")
       obtain_graphs
       @scheduler = Rufus::Scheduler.start_new
-      workers.each do |worker|        
-        config = @config.config_for_worker worker        
+      workers.each do |worker|
+        config = @config.config_for_worker worker
         config.log.info("Scheduling worker #{worker} every  #{config["scheduler_metrics_period"]} ")
         metric_loop(worker)
         @scheduler.every config["scheduler_metrics_period"] do
@@ -235,13 +235,13 @@ module Munin2Graphite
         end
 
 =begin
-	# Graph rereading is disabled by now there are concurrency problems
+        # Graph rereading is disabled by now there are concurrency problems
         @scheduler.every config["scheduler_graphs_period"] do
           obtain_graphs
         end
 =end
 
-      end      
+      end
     end
   end
 end
