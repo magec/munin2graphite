@@ -7,7 +7,6 @@ module Graphite
 
     # connection instance (shared with every instance of the class)
     def self.connection      
-      @@path = ""
       @init_header ||= {}
       @@connection ||= begin
                          endpoint_uri = URI.parse(@@endpoint)
@@ -18,9 +17,10 @@ module Graphite
 
     # If the operation needs authentication you have to call this first
     def self.authenticate(user = @@user,password = @@password)
+      connection = self.connection
       url = @@path + "/account/login"
       url.gsub!("//","/")
-      response = self.connection.post(url,"nextPage=/&password=#{password}&username=#{user}")
+      response = connection.post(url,"nextPage=/&password=#{password}&username=#{user}")
       @@init_header =  {"Cookie" => response.get_fields('Set-Cookie').first}
     end
     
