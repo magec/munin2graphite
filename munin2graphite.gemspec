@@ -67,16 +67,16 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<parseconfig>, [">= 0"])
       s.add_runtime_dependency(%q<munin-ruby>, ["~> 0.2.1"])
       s.add_runtime_dependency(%q<json>, ["~> 1.8.2"])
+      s.add_runtime_dependency(%q<diplomat>, [">= 0.15.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
-      s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
     else
       s.add_dependency(%q<rufus-scheduler>, ["= 2.0.10"])
       s.add_dependency(%q<daemons>, ["= 1.1.4"])
       s.add_dependency(%q<parseconfig>, [">= 0"])
+      s.add_dependency(%q<diplomat>, [">= 0.15.0"])
       s.add_dependency(%q<munin-ruby>, ["~> 0.2.1"])
       s.add_dependency(%q<json>, ["~> 1.8.2"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
-      s.add_dependency(%q<yard>, ["~> 0.6.0"])
     end
   else
     s.add_dependency(%q<rufus-scheduler>, ["= 2.0.10"])
@@ -85,7 +85,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<munin-ruby>, ["~> 0.2.1"])
     s.add_dependency(%q<json>, ["~> 1.8.2"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
-    s.add_dependency(%q<yard>, ["~> 0.6.0"])
+    s.add_dependency(%q<diplomat>, [">= 0.15.0"])
   end
 end
 

@@ -17,6 +17,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 require 'rufus/scheduler'
 require 'thread'
+require 'diplomat'
 module Munin2Graphite
   ##
   # This class holds the main scheduler of the system, it will perform the applicacion loops
@@ -41,13 +42,30 @@ module Munin2Graphite
       raise "CategoryNotFound in #{config}"
     end
 
+    def workers_from_consul_config!
+      return unless @config['consul_url']
+      Diplomat.configure do |c|
+        c.url = @config['consul_url']
+      end
+      Diplomat::Service.get(@config['consul_service'], :all).each do |i|
+        @config.config.params['workers'] ||= []
+        @config.config.params['workers'] << i['Node']
+        @config.config.params[i['Node']] =  {
+          'munin_hostname' => i['Address'],
+          'munin_port'     => i['ServicePort'],
+        }
+      end
+    end
+
     def munin_config(reload = false)
       return @munin_config if @munin_config && !reload
       @munin_config = {}
       @config.log.info("Obtaining metrics configuration")
       @munin_config[:workers] = []
+
       semaphore = Mutex.new
       threads = []
+
       workers.each do |worker|
         threads << Thread.new do
           current_config = {}
@@ -60,6 +78,7 @@ module Munin2Graphite
             config.log.error("This node will be skipped")
             Thread.current.exit
           end
+
           current_config[:nodes] = {}
           semaphore_nodes = Mutex.new
           threads_nodes = []
@@ -112,6 +131,7 @@ module Munin2Graphite
     end
 
     def workers
+      workers_from_consul_config!
       @workers ||= (@config.workers.empty? ?  ["global"] : @config.workers )
     end
 
@@ -135,19 +155,16 @@ module Munin2Graphite
         metrics_threads = []
         categories = {}
         metrics.each do |metric|
-          metrics_threads << Thread.new do
-            begin
-              local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
-              values[metric] =  local_munin.fetch metric
-              local_munin.disconnect
-            rescue Exception => e
-              @config.log.error("There was a problem when getting the metric #{metric} for #{node} , Ignored")
-              @config.log.error(e.message)
-              @config.log.error(e.backtrace.inspect)
-            end
+          begin
+            local_munin  = Munin::Node.new(config["munin_hostname"],config["munin_port"])
+            values[metric] =  local_munin.fetch metric
+            local_munin.disconnect
+          rescue Exception => e
+            @config.log.error("There was a problem when getting the metric #{metric} for #{node} , Ignored")
+            @config.log.error(e.message)
+            @config.log.error(e.backtrace.inspect)
           end
         end
-        metrics_threads.each {|i| i.join}
         config.log.debug(values.inspect)
         config.log.info("Done with: #{node} (#{Time.now - metric_time} s)")
         carbon = @carbon || Carbon.new(config["carbon_hostname"],config["carbon_port"])
@@ -233,14 +250,6 @@ module Munin2Graphite
         @scheduler.every config["scheduler_metrics_period"] do
           metric_loop(worker)
         end
-
-=begin
-        # Graph rereading is disabled by now there are concurrency problems
-        @scheduler.every config["scheduler_graphs_period"] do
-          obtain_graphs
-        end
-=end
-
       end
     end
   end

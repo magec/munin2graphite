@@ -17,7 +17,7 @@ module Munin2Graphite
       end
 
       def workers
-        return @config.groups
+        return @config.groups + @config.params['workers'].to_a
       end
 
       attr_accessor :config

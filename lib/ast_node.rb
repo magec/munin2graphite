@@ -1,4 +1,4 @@
-require 'uri'
+require 'cgi'
 
 class ASTNode
 
@@ -92,14 +92,14 @@ class ASTNode
       aux_graph_properties.delete :yMin
     end
 
-    aux = aux_graph_properties.map{|i,j| "#{i}=#{URI.escape(j.to_s.gsub('%','percent'))}"}.join("&")
+    aux = aux_graph_properties.map{|i,j| "#{i}=#{CGI.escape(j.to_s.gsub('%','percent'))}"}.join("&")
     return aux
   end
 
   # This returns the url field of the graph after compiling it
   def url
     self.compile
-    url = "#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + URI.escape(targets.map{|i| i.compile}.compact.join("&target="))
+    url = "#{properties[:endpoint]}/render/?width=586&height=308&#{properties_to_url}&target=" + CGI.escape(targets.map{|i| i.compile}.compact.join("&target="))
   end
 
   def to_gdash
@@ -124,7 +124,7 @@ end
 class GlobalDeclarationNode < ASTNode
   def initialize(line)
     super
-    line =~ /^([\w_]*)\ (.*)/
+    line =~ /^([\w]*)\ (.*)/
     @value = $2
   end
 end
@@ -254,7 +254,7 @@ class FieldPropertyNode < ASTNode
   
   def initialize(line)
     super   
-    line =~ /([\w_]+)\.(\w+)\ (.*)$/
+    line =~ /([\w]+)\.(\w+)\ (.*)$/
     @metric   = $1
     @function = $2
     @value    = $3

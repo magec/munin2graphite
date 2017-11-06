@@ -9,6 +9,7 @@ gem "daemons", "1.1.4"
 gem "parseconfig"
 gem "munin-ruby", "~> 0.2.1"
 gem "json", "~> 1.8.2"
+gem 'diplomat', '~> 2.0', '>= 2.0.2'
 
 
 # Add dependencies to develop your gem here.
